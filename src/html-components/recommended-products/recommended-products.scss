@@ -1,0 +1,15 @@
+.recommended-products {
+    width: 100%;
+    padding-bottom: 26px;
+    &__header-text {
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding-bottom: 19px;
+    }
+    &__item-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}

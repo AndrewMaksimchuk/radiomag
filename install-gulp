@@ -1,0 +1,4 @@
+clear
+npm install -D gulp gulp-clean gulp-file-include gulp-sass node-sass browser-sync gulp-autoprefixer gulp-csso gulp-rename gulp-htmlmin
+mkdir src
+mkdir dist

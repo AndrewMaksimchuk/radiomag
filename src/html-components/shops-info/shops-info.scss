@@ -1,0 +1,63 @@
+.background {
+    width: 100%;
+    background-color: var(--color-white);
+    margin-top: 43px;
+    position: relative;
+}
+
+.shops-info {
+    min-width: 100%;
+    padding: 28px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &__shop {
+        width: 268px;
+        padding: 13px;
+
+        &-header-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            padding-bottom: 26px;
+            letter-spacing: 1px;
+
+            &_uppercase {
+                text-transform: uppercase;
+            }
+        }
+
+        &-item {
+            margin: 0;
+            padding-bottom: 20px;
+            letter-spacing: 1px;
+            color: var(--color-black-light);
+            font-style: normal;
+        }
+
+        &-link {
+            text-decoration: none;
+            color: var(--color-black-light);
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &::after {
+            content: '';
+        }
+
+    }
+
+}
+
+.vertical-line {
+    width: 1px;
+    min-height: 100%;
+    background-color: var(--color-gray-light);
+
+    &:last-child {
+        display: none;
+    }
+}
