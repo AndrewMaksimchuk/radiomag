@@ -6,8 +6,14 @@
     <ul class="filter__container">
 
       <li class="filter__item" v-for="(item, index) in filterData" :key="index">
-        <input class="filter__item-input" type="checkbox" name="" :id="filterId + index">
-        <label class="filter__item-label" :for="filterId + index">{{ item.title }}</label>
+        <input
+          class="filter__item-input"
+          type="checkbox"
+          :name="item.title"
+          :id="filterId + index">
+        <label
+          class="filter__item-label"
+          :for="filterId + index">{{ item.title }} ({{ item.qty}})</label>
       </li>
 
     </ul>
@@ -57,6 +63,7 @@ export default {
     list-style: none;
     padding: 0;
     overflow-y: auto;
+    overflow-x: hidden;
     height: 85%;
 
     &::-webkit-scrollbar {

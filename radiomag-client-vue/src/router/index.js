@@ -15,7 +15,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: 'Радіомаг - інтернет магазин',
+      title: 'Радіомаг - Магазин електронних компонентів',
     },
   },
   {
@@ -34,7 +34,7 @@ const routes = [
     component: Goods,
     props: true,
     meta: {
-      title: 'Товар ',
+      title: 'Товар',
     },
   },
   {

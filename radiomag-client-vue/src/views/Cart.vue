@@ -1,21 +1,32 @@
 <template>
   <section class="cart">
-    <Order/>
-    <ContactFormOrder/>
+    <div v-if="lengthOfGoodsInOrder">
+      <Order :cart="getCart"/>
+      <OrderContactForm/>
+    </div>
+    <div v-else>
+      <h2>Корзина порожня...</h2>
+    </div>
   </section>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Order from '@/components/Order.vue';
-import ContactFormOrder from '@/components/ContactFormOrder.vue';
+import OrderContactForm from '@/components/OrderContactForm.vue';
 
 export default {
   name: 'Cart',
   components: {
     Order,
-    ContactFormOrder,
+    OrderContactForm,
   },
-
+  computed: {
+    ...mapGetters(['getCart']),
+    lengthOfGoodsInOrder() {
+      return this.getCart.length;
+    },
+  },
 };
 </script>
 

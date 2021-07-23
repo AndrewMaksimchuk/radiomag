@@ -7,7 +7,10 @@
         <router-link
           class="products__item-link"
           :to="{ name: 'group', params: { id: item.id, groupName: item.name } }">
-            <img class="products__item-group-img" :src="'/images/groups/' + item.img" alt="">
+            <img
+              class="products__item-group-img"
+              :src="'/images/groups/' + item.img"
+              :alt="item.name">
             <h2 class="products__item-group-name">{{ item.name }}</h2>
         </router-link>
     </li>

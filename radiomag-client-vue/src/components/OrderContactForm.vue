@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'ContactFormOrder',
+  name: 'OrderContactForm',
 
 };
 </script>

@@ -1,32 +1,59 @@
 <template>
   <article class="slider">
+
     <div class="slider__cards">
-      <CardSmall/>
-      <CardSmall/>
-      <CardSmall/>
-      <CardSmall/>
-      <CardSmall/>
+        <CardSmall
+        v-for="(data, index) in cardDataToShow"
+        :key="index"
+        :data="data"/>
     </div>
+
     <div class="slider__controls">
-      <div
-        class="slider__controls-button slider__controls-button_active"
-        data-slider-button-1
-      ></div>
-      <div class="slider__controls-button" data-slider-button-2></div>
-      <div class="slider__controls-button" data-slider-button-3></div>
-      <div class="slider__controls-button" data-slider-button-4></div>
-      <div class="slider__controls-button" data-slider-button-5></div>
+      <SliderButton
+        v-for="(butt, index) in numberOfButtons"
+        :key="index"
+        :activeButton="activeButton"
+        :index="index"
+        v-on:makeActive="makeActive"
+        />
     </div>
+
   </article>
 </template>
 
 <script>
+import { sliderData } from '@/services/index';
 import CardSmall from './CardSmall.vue';
+import SliderButton from './SliderButton.vue';
 
 export default {
   name: 'Slider',
   components: {
     CardSmall,
+    SliderButton,
+  },
+  data() {
+    return {
+      activeButton: 0,
+    };
+  },
+  computed: {
+    numberOfButtons() {
+      const numberOfButtons = [];
+      numberOfButtons.length = 3;
+      numberOfButtons.fill(1);
+      return numberOfButtons;
+    },
+    cardDataToShow() {
+      const start = this.activeButton * 5;
+      const end = start + 5;
+      return sliderData.slice(start, end);
+    },
+  },
+  methods: {
+    makeActive(index) {
+      this.activeButton = index;
+    },
   },
 };
 </script>
@@ -38,7 +65,9 @@ export default {
   &__cards {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    row-gap: 11px;
     padding-bottom: 23px;
   }
   &__controls {

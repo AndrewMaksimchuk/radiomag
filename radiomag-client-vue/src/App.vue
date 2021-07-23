@@ -1,7 +1,11 @@
 <template>
   <Header/>
-  <ModalWindow v-if="showModalWindow"/>
-  <router-view class="container"/>
+  <ModalWindow
+    v-if="isModalVisible"/>
+  <ImageShowBig
+    v-if="isBigImageShowed"/>
+  <router-view
+    class="container"/>
   <ShopInfo/>
   <Footer/>
   <Copyright/>
@@ -13,6 +17,8 @@ import Footer from '@/components/Footer.vue';
 import Copyright from '@/components/Copyright.vue';
 import ShopInfo from '@/components/ShopInfo.vue';
 import ModalWindow from '@/components/ModalWindow.vue';
+import ImageShowBig from '@/components/ImageShowBig.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'App',
@@ -22,11 +28,19 @@ export default {
     Footer,
     Copyright,
     ModalWindow,
+    ImageShowBig,
   },
   computed: {
-    showModalWindow() {
-      return this.$store.getters.isModalVisible;
-    },
+    ...mapGetters(['isModalVisible', 'isBigImageShowed', 'getCart']),
+  },
+  beforeCreate() {
+    const localStore = localStorage.getItem('cart');
+    if (localStore) {
+      const data = JSON.parse(localStore);
+      if (data.length > 0) {
+        this.$store.commit('putCartDataFromLocalStorage', data);
+      }
+    }
   },
 };
 </script>

@@ -124,10 +124,12 @@ export default {
     },
     addToCart() {
       this.$store.commit('addGoodsToCart', { product: this.product, quantity: this.quantityOfProduct });
-      // Show notification that goods is added to cart
     },
     showBigImage() {
-      console.log('Показати великого розміру та якості фото товару у модальному вікні по центрк документа');
+      const imgSrc = `https://www.rcscomponents.kiev.ua${this.product.image}`;
+      const pageOffset = window.pageYOffset;
+      const alt = this.product.description[0];
+      this.$store.commit('showBigImage', { imgSrc, pageOffset, alt });
     },
     showPossibleReplacements() {
       console.log('Показати можливі заміни у модальному вікні');
@@ -296,6 +298,7 @@ export default {
 
     &-form {
     width: 128px;
+    position: relative;
 
       &-line {
         width: 100%;

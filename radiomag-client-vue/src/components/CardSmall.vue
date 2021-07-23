@@ -2,19 +2,25 @@
   <article class="small-goods-card">
     <img
       class="small-goods-card__image"
-      src="https://www.rcscomponents.kiev.ua/modules/Asers_Shop/images/productimages/hantek-2c42-2ch-dmm-40mhz-250msa-s-1ch-1.jpg"
-      alt=""
+      :src="data.imgsrc"
+      :alt="data.title"
     />
     <h3 class="small-goods-card__header-text">
-      <a class="reset-text-decor color--black-light" href="#">Назва товара</a>
+      <a class="reset-text-decor color--black-light" href="#">{{ data.title }}</a>
     </h3>
-    <p class="small-goods-card__description">Портативний 2х канальний осцилограф з мультиметром.</p>
+    <p class="small-goods-card__description">{{ data.description }}</p>
   </article>
 </template>
 
 <script>
 export default {
   name: 'Card',
+  props: {
+    data: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
 
