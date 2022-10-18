@@ -110,7 +110,7 @@ export default {
   },
   data() {
     return {
-      productName: null,
+      productName: '',
       searchPlaceholder: 'Введіть текст',
     };
   },

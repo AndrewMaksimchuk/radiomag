@@ -1,4 +1,4 @@
-import getListOfCatalogGroups from '@/services/index';
+import { getListOfCatalogGroups } from '@/services';
 
 const actions = {
   async getCatalogGroupList(context, payloadId) {

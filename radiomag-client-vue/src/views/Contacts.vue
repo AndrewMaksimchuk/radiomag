@@ -1,7 +1,8 @@
 <template>
   <article class="contacts">
 
-    <ContactSection v-for="(item, index) in allContacts" :key="index" :headerText="item.headerText">
+    <ContactSection
+      v-for="(item, index) in getAllContacts" :key="index" :headerText="item.headerText">
       <Map/>
       <ContactShopList :datas="item.list"/>
     </ContactSection>
@@ -10,7 +11,7 @@
 </template>
 
 <script>
-import { allContacts } from '@/services/index';
+import { getAllContacts } from '@/services/index';
 import ContactSection from '@/components/ContactSection.vue';
 import Map from '@/components/Map.vue';
 import ContactShopList from '@/components/ContactShopList.vue';
@@ -24,7 +25,7 @@ export default {
   },
   data() {
     return {
-      allContacts,
+      getAllContacts,
     };
   },
 };

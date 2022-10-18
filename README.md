@@ -19,3 +19,6 @@ and restore data when user open shop page again
 ![](index.png)
 ![](cart.png)
 ![](group.png)
+
+Makefile containe all commands for development.  
+For run application you need first run server and then run client.  

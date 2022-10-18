@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import getListOfCatalogGroups from '@/services';
+import { getListOfCatalogGroups } from '@/services';
 
 export default {
   name: 'Products',

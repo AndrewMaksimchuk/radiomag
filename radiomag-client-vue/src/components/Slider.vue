@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { sliderData } from '@/services/index';
+import { getSliderData } from '@/services';
 import CardSmall from './CardSmall.vue';
 import SliderButton from './SliderButton.vue';
 
@@ -47,7 +47,7 @@ export default {
     cardDataToShow() {
       const start = this.activeButton * 5;
       const end = start + 5;
-      return sliderData.slice(start, end);
+      return getSliderData.slice(start, end);
     },
   },
   methods: {
