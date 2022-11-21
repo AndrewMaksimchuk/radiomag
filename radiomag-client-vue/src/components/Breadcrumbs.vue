@@ -1,10 +1,10 @@
 <template>
-  <section class="breadcrumbs" v-if="getBreadcrumbs.length">
+  <section class="container breadcrumbs" v-if="store.length">
     <nav class="breadcrumbs__nav">
       <ul class="breadcrumbs__list">
 
         <li class="breadcrumbs__item">
-          <router-link class="breadcrumbs__link" to="/">
+          <RouterLink class="breadcrumbs__link" to="/">
             <svg class="breadcrumbs__icon" version="1.1" id="Capa_1"
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -33,18 +33,18 @@
                 </g>
               </g>
             </svg>
-          </router-link>
+          </RouterLink>
         </li>
 
         <li
           class="breadcrumbs__item"
-          v-for="(item, index) in getBreadcrumbs"
+          v-for="(item, index) in store.breadcrumbs"
           :key="index">
-            <router-link
+            <RouterLink
               class="breadcrumbs__link"
               :to="item.path">
-              {{ item.meta.breadcrumbsName }}
-              </router-link>
+              {{ item.name }}
+            </RouterLink>
         </li>
 
       </ul>
@@ -53,15 +53,9 @@
   </section>
 </template>
 
-<script>
-import { mapGetters } from 'vuex';
-
-export default {
-  name: 'Breadcrumbs',
-  computed: {
-    ...mapGetters(['getBreadcrumbs']),
-  },
-};
+<script setup>
+import { useBreadcrumbs } from '@/store/breadcrumbs';
+const store = useBreadcrumbs();
 </script>
 
 <style lang="scss">

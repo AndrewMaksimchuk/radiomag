@@ -18,25 +18,28 @@
     <td class="order-card__row">
       <ProductAvailability
         :inStock="goods.product.stock_data"
-        :unit="goods.product.pcs"/>
+        :unit="goods.product.pcs"
+      />
     </td>
 
     <td class="order-card__row">
       <ProductPrice
-        :productPriceArray="goods.product.prices"/>
+        :productPriceArray="goods.product.prices"
+      />
     </td>
 
     <td class="order-card__row">
       <QuantitySelectionForm
         :isBayButtonVisible="false"
         :quantityOfProduct="goods.quantity"
-        v-on:changeQuantityOfProduct="changeQuantityOfProduct"/>
+        v-on:changeQuantityOfProduct="changeQuantityOfProduct"
+      />
     </td>
 
     <td class="order-card__row">
       <button
         class="order-card__button-delete"
-        @click="deleteProduct">
+        @click="store.remove(index)">
         <img
           class="order-card__button-delete-img"
           src="@/assets/images/delete.svg"
@@ -47,19 +50,13 @@
   </tr>
 </template>
 
-<script>
+<script setup>
+import { useCart } from '@/store/cart';
 import ProductAvailability from './ProductAvailability.vue';
 import ProductPrice from './ProductPrice.vue';
 import QuantitySelectionForm from './QuantitySelectionForm.vue';
 
-export default {
-  name: 'OrderCard',
-  components: {
-    ProductAvailability,
-    ProductPrice,
-    QuantitySelectionForm,
-  },
-  props: {
+defineProps({
     goods: {
       type: Object,
       required: true,
@@ -68,16 +65,10 @@ export default {
       type: Number,
       required: true,
     },
-  },
-  methods: {
-    changeQuantityOfProduct(value) {
-      this.$store.commit('changeQuantityOfProduct', { code: this.goods.product.id, quantity: value });
-    },
-    deleteProduct() {
-      this.$store.commit('removeFromCart', this.index);
-    },
-  },
-};
+});
+
+const store = useCart();
+const changeQuantityOfProduct = (value) => store.changeQuantity( { code: goods.product.id, quantity: value });
 </script>
 
 <style lang="scss">

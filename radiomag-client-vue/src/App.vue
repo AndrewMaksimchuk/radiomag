@@ -1,50 +1,26 @@
 <template>
-  <Header/>
-  <ModalWindow
-    v-if="isModalVisible"/>
-  <ImageShowBig
-    v-if="isBigImageShowed"/>
-  <router-view
-    class="container"/>
-  <ShopInfo/>
-  <Footer/>
-  <Copyright/>
+  <div class="app">
+    <Header/>
+    <Breadcrumbs/>
+    <ModalWindow/>
+    <ImageShowBig/>
+    <RouterView class="container"/>
+    <ShopInfo/>
+    <Footer/>
+    <Copyright/>
+  </div>
 </template>
 
-<script>
+<script setup>
+import { RouterView } from 'vue-router'
 import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
-import Copyright from '@/components/Copyright.vue';
-import ShopInfo from '@/components/ShopInfo.vue';
+import Breadcrumbs from '@/components/Breadcrumbs.vue';
 import ModalWindow from '@/components/ModalWindow.vue';
 import ImageShowBig from '@/components/ImageShowBig.vue';
-import { mapGetters } from 'vuex';
+import ShopInfo from '@/components/ShopInfo.vue';
+import Footer from '@/components/Footer.vue';
+import Copyright from '@/components/Copyright.vue';
+import { useCart } from '@/store/cart';
 
-export default {
-  name: 'App',
-  components: {
-    Header,
-    ShopInfo,
-    Footer,
-    Copyright,
-    ModalWindow,
-    ImageShowBig,
-  },
-  computed: {
-    ...mapGetters(['isModalVisible', 'isBigImageShowed', 'getCart']),
-  },
-  beforeCreate() {
-    const localStore = localStorage.getItem('cart');
-    if (localStore) {
-      const data = JSON.parse(localStore);
-      if (data.length > 0) {
-        this.$store.commit('putCartDataFromLocalStorage', data);
-      }
-    }
-  },
-};
+useCart().loadLocalStorage();
 </script>
-
-<style lang="scss">
-
-</style>

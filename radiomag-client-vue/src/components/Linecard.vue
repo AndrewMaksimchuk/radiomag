@@ -16,12 +16,6 @@
   </article>
 </template>
 
-<script>
-export default {
-  name: 'Linecard',
-};
-</script>
-
 <style lang="scss">
 .linecard {
   width: var(--width-card);

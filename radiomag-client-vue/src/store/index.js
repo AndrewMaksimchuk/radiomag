@@ -1,22 +1,13 @@
-import { createStore } from 'vuex';
-import { mutations } from './mutations';
-import { actions } from './actions';
-import { getters } from './getters';
+// import { createStore } from 'vuex';
+// import { mutations } from './mutations';
+// import { getters } from './getters';
 
-export default createStore({
-  state: {
-    isModalVisible: false,
-    isBigImageShowed: false,
-    modalDataProductCatalog: [],
-    bigImage: {},
-    breadcrumbs: [],
-    dataOfGroupProducts: {},
-    cart: [],
-    goods: {},
-  },
-  mutations,
-  actions,
-  getters,
-  modules: {
-  },
-});
+// export default createStore({
+//   state: {
+//     dataOfGroupProducts: {},
+//     breadcrumbs: [],
+//   },
+//   mutations,
+//   getters,
+
+// });

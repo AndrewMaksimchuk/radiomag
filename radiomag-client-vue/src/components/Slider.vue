@@ -3,59 +3,29 @@
 
     <div class="slider__cards">
         <CardSmall
-        v-for="(data, index) in cardDataToShow"
-        :key="index"
-        :data="data"/>
+          v-for="(data, index) in store.toShow"
+          :key="index"
+          :data="data"/>
     </div>
 
     <div class="slider__controls">
-      <SliderButton
-        v-for="(butt, index) in numberOfButtons"
-        :key="index"
-        :activeButton="activeButton"
-        :index="index"
-        v-on:makeActive="makeActive"
+        <SliderButton
+          v-for="btnNumber in store.numberOfButtons"
+          :key="btnNumber"
+          :isActive="store.activeButton === btnNumber"
+          @click="store.active(btnNumber)"
         />
     </div>
 
   </article>
 </template>
 
-<script>
-import { getSliderData } from '@/services';
+<script setup>
+import { useSlider } from '../store/slider';
 import CardSmall from './CardSmall.vue';
 import SliderButton from './SliderButton.vue';
 
-export default {
-  name: 'Slider',
-  components: {
-    CardSmall,
-    SliderButton,
-  },
-  data() {
-    return {
-      activeButton: 0,
-    };
-  },
-  computed: {
-    numberOfButtons() {
-      const numberOfButtons = [];
-      numberOfButtons.length = 3;
-      numberOfButtons.fill(1);
-      return numberOfButtons;
-    },
-    cardDataToShow() {
-      const start = this.activeButton * 5;
-      const end = start + 5;
-      return getSliderData.slice(start, end);
-    },
-  },
-  methods: {
-    makeActive(index) {
-      this.activeButton = index;
-    },
-  },
-};
+const store = useSlider();
 </script>
 
 <style lang="scss">

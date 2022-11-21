@@ -1,13 +1,14 @@
 <template>
   <div
     class="image-show-big"
+    v-if="store.isVisible"
     @click="closeWindow">
 
     <img
       class="image-show-big__image"
       :style="{ 'padding-top': pageOffsetTop }"
-      :src="bigImageSrc"
-      :alt="bigImageAlt">
+      :src="store.data.src"
+      :alt="store.data.alt">
 
       <button
         class="image-show-big__button-close"
@@ -22,31 +23,24 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ImageShowBig',
-  computed: {
-    bigImageSrc() {
-      return this.$store.getters.getBigImage.imgSrc;
-    },
-    bigImageAlt() {
-      return this.$store.getters.getBigImage.alt;
-    },
-    pageOffsetTop() {
-      const tenOfWindow = window.innerHeight * 0.1;
-      const offsetInPx = `${this.$store.getters.getBigImage.pageOffset + tenOfWindow}px`;
-      return offsetInPx;
-    },
-  },
-  methods: {
-    closeWindow() {
-      this.$store.commit('hiddenBigImage');
-    },
-  },
-};
+<script setup>
+import { useImageShow } from '@/store/imageShow';
+
+const store = useImageShow();
+const closeWindow = () => store.hide();
+
+//   computed: {
+//     pageOffsetTop() {
+//       const tenOfWindow = window.innerHeight * 0.1;
+//       return `${this.$store.getters.getBigImage.pageOffset + tenOfWindow}px`;
+//       const offsetInPx = `${this.$store.getters.getBigImage.pageOffset + tenOfWindow}px`;
+//       return offsetInPx;
+//     },
+//   },
 </script>
 
 <style lang="scss">
+// TODO: Change to display: fixed; !!!
 .image-show-big {
   position: absolute;
   background-color: var(--color-black-light);

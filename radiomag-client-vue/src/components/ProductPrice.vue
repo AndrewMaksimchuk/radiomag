@@ -11,20 +11,14 @@
   </ul>
 </template>
 
-<script>
+<script setup>
 import PriceItem from './PriceItem.vue';
 
-export default {
-  name: 'ProductPrice',
-  components: {
-    PriceItem,
-  },
-  props: {
-    productPriceArray: {
+defineProps({
+  productPriceArray: {
       type: Array,
     },
-  },
-};
+});
 </script>
 
 <style lang="scss">

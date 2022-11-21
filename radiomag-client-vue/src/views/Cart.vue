@@ -1,7 +1,7 @@
 <template>
   <section class="cart">
-    <div v-if="lengthOfGoodsInOrder">
-      <Order :cart="getCart"/>
+    <div v-if="store.length">
+      <Order :cart="store.cart"/>
       <OrderContactForm/>
     </div>
     <div v-else>
@@ -10,24 +10,12 @@
   </section>
 </template>
 
-<script>
-import { mapGetters } from 'vuex';
+<script setup>
+import { useCart } from '@/store/cart';
 import Order from '@/components/Order.vue';
 import OrderContactForm from '@/components/OrderContactForm.vue';
 
-export default {
-  name: 'Cart',
-  components: {
-    Order,
-    OrderContactForm,
-  },
-  computed: {
-    ...mapGetters(['getCart']),
-    lengthOfGoodsInOrder() {
-      return this.getCart.length;
-    },
-  },
-};
+const store = useCart();
 </script>
 
 <style lang="scss">

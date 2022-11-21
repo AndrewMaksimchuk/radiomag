@@ -1,52 +1,32 @@
 <template>
-  <article
-    class="card-line">
+  <article class="card-line">
 
     <div class="card-line__left">
-      <img
-        class="card-line__left-img"
-        :src="'https://www.rcscomponents.kiev.ua' + product.image"
-
-        :alt="product.description[0]"
-        loading="lazy"
-        @click="showBigImage">
-      <!-- <button
-        class="card-line__left-button"
-        @click="showPossibleReplacements">
-        Можливі заміни</button> -->
+      <img class="card-line__left-img" :src="'https://www.rcscomponents.kiev.ua' + product.image"
+        :alt="product.description[0]" loading="lazy" @click="showBigImage">
     </div>
 
     <div class="card-line__center">
-
       <div class="card-line__center-description">
-
-        <router-link
-          class="card-line__center-description-header-text"
-          :to="{ name: 'goods', params: { code: product.id } }"
-          @click="addGoodsToStorage">
-            <h3>{{ product.description[0] }}</h3>
-        </router-link>
+        <RouterLink class="card-line__center-description-header-text"
+          :to="{ name: 'goods', params: { code: product.id } }" @click="addGoodsToStorage">
+          <h3>{{ product.description[0] }}</h3>
+        </RouterLink>
 
         <div class="card-line__center-description-small">
-
-          <router-link
-            :to="{ name: 'goods', params: { code: product.id } }"
+          <RouterLink class="common-link" :to="{ name: 'goods', params: { code: product.id } }"
             @click="addGoodsToStorage">
-            <p
-              class="card-line__center-description-small-paragraph">
+            <p class="card-line__center-description-small-paragraph">
               Код товара:
-              <span
-                class="card-line__center-description-small-paragraph_light-color">
-                {{ product.id }}</span>
+              <span class="card-line__center-description-small-paragraph_light-color">
+                {{ product.id }}
+              </span>
             </p>
-          </router-link>
+          </RouterLink>
 
-          <p
-            v-if="product.description[1]"
-            class="card-line__center-description-small-paragraph">
+          <p v-if="product.description[1]" class="card-line__center-description-small-paragraph">
             Виробник:
-            <span
-              class="card-line__center-description-small-paragraph_light-color">
+            <span class="card-line__center-description-small-paragraph_light-color">
               {{ product.description[1] }}</span>
           </p>
         </div>
@@ -54,107 +34,81 @@
         <p class="card-line__center-description-main-text">{{ sumOfAllDescription }}</p>
 
         <p class="card-line__center-description-tech-info">
-          <img class="card-line__center-description-tech-info-icon"
-            src="/images/pdf.svg"
-            alt="file specification">
-          <a
-            class="card-line__center-description-tech-info-link"
-            href="#"
-            @click.prevent="showSpecification">Технічна інформація</a>
+          <img class="card-line__center-description-tech-info-icon" src="/images/pdf.svg" alt="file specification">
+          <a class="card-line__center-description-tech-info-link" href="#" @click.prevent="showSpecification">Технічна
+            інформація</a>
         </p>
 
       </div>
 
       <div class="card-line__center-availability">
         <h3 class="card-line__center-availability-header-text">Наявність: </h3>
-        <ProductAvailability
-          :inStock="product.stock_data"
-          :unit="product.pcs"/>
+        <ProductAvailability :inStock="product.stock_data" :unit="product.pcs" />
       </div>
 
       <div class="card-line__center-price">
         <h3 class="card-line__center-price-header-text">Ціна: </h3>
-        <ProductPrice :productPriceArray="product.prices"/>
+        <ProductPrice :productPriceArray="product.prices" />
       </div>
 
     </div>
 
     <QuantitySelectionForm
-      :quantityOfProduct="quantityOfProduct"
+      :quantityOfProduct="quantityOfProduct" 
       v-on:changeQuantityOfProduct="changeQuantityOfProduct"
-      v-on:addToCart="addToCart"/>
+      v-on:addToCart="addToCart" />
 
   </article>
 </template>
 
-<script>
+<script setup>
+import { ref, computed } from 'vue';
+import { useCart } from '@/store/cart';
+import { useImageShow } from '@/store/imageShow';
+import { useGoods } from '@/store/goods';
+
 import ProductAvailability from './ProductAvailability.vue';
 import ProductPrice from './ProductPrice.vue';
 import QuantitySelectionForm from './QuantitySelectionForm.vue';
 
-export default {
-  name: 'Card-line',
-  components: {
-    ProductAvailability,
-    ProductPrice,
-    QuantitySelectionForm,
+const props = defineProps({
+  product: {
+    required: true,
+    type: Object,
   },
-  props: {
-    product: {
-      required: true,
-      type: Object,
-    },
-    filterHeaders: {
-      type: Array,
-      required: true,
-    },
+  filterHeaders: {
+    type: Array,
+    required: true,
   },
-  data() {
-    return {
-      quantityOfProduct: 1,
-    };
-  },
-  methods: {
-    changeQuantityOfProduct(quantity) {
-      this.quantityOfProduct = quantity;
-    },
-    sumDescription(total, currentValue, index) {
-      if (index === 0 || currentValue === undefined) return total;
-      return `${total + currentValue} `;
-    },
-    addToCart() {
-      this.$store.commit('addGoodsToCart', { product: this.product, quantity: this.quantityOfProduct });
-    },
-    showBigImage() {
-      const imgSrc = `https://www.rcscomponents.kiev.ua${this.product.image}`;
-      const pageOffset = window.pageYOffset;
-      const alt = this.product.description[0];
-      this.$store.commit('showBigImage', { imgSrc, pageOffset, alt });
-    },
-    showPossibleReplacements() {
-      console.log('Показати можливі заміни у модальному вікні');
-    },
-    showSpecification() {
-      console.log('Показати специфікацію на прилад у модальному вікні(відкрити, відобразити .pdf файл)');
-    },
-    addGoodsToStorage() {
-      this.$store.commit('addGoods',
-        { product: this.product, filterHeaders: this.filterHeaders });
-    },
-  },
-  watch: {
-    quantityOfProduct() {
-      if (this.quantityOfProduct <= 0) {
-        this.quantityOfProduct = 1;
-      }
-    },
-  },
-  computed: {
-    sumOfAllDescription() {
-      return this.product.description.reduce(this.sumDescription, '');
-    },
-  },
-};
+});
+
+const storeCart = useCart();
+const storeImageShow = useImageShow();
+const storeGoods = useGoods();
+
+const quantityOfProduct = ref(1);
+
+const sumOfAllDescription = computed(() => props.product.description.reduce(sumDescription, ''));
+
+const changeQuantityOfProduct = (quantity) => quantityOfProduct.value = quantity;
+
+const sumDescription = (total, currentValue, index) => {
+  if (index === 0 || currentValue === undefined) return total;
+  return `${total + currentValue} `;
+}
+
+const addToCart = () => storeCart.add({ product: props.product, quantity: quantityOfProduct.value })
+
+const showBigImage = () => {
+  const src = `https://www.rcscomponents.kiev.ua${props.product.image}`;
+  const alt = props.product.description[0];
+  storeImageShow.show({ src, alt });
+}
+
+const showSpecification = () => console.log('Показати специфікацію на прилад у модальному вікні(відкрити, відобразити .pdf файл)');
+
+const addGoodsToStorage = () => storeGoods.add({ product: props.product, filterHeaders: props.filterHeaders });
+
 </script>
 
 <style lang="scss">
@@ -297,8 +251,8 @@ export default {
     align-items: center;
 
     &-form {
-    width: 128px;
-    position: relative;
+      width: 128px;
+      position: relative;
 
       &-line {
         width: 100%;
@@ -307,6 +261,7 @@ export default {
       }
 
     }
+
     &-input {
       width: 36px;
       height: 32px;

@@ -10,12 +10,6 @@
 </article>
 </template>
 
-<script>
-export default {
-  name: 'Manufacturers',
-};
-</script>
-
 <style lang="scss">
 .manufacturers {
     margin-bottom: 23px;

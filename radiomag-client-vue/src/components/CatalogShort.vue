@@ -1,36 +1,25 @@
 <template>
-  <nav class="catalog-of-products">
+  <nav class="catalog-of-products" v-if="store.length">
     <h2 class="catalog-of-products__header">Каталог компонентів</h2>
     <ul class="catalog-of-products__list ">
-      <CatalogShortItem v-for="(item, index) in catalog" :key="index" :data="item"/>
+      <CatalogShortItem v-for="(item, index) in store.catalog" :key="index" :data="item" />
     </ul>
   </nav>
 </template>
 
-<script>
+<script setup>
+import { useCatalog } from '@/store/catalog';
 import CatalogShortItem from './CatalogShortItem.vue';
 
-export default {
-  name: 'CatalogShort',
-  components: {
-    CatalogShortItem,
-  },
-  data() {
-    return {
-      catalog: [
-        { name: 'Електронни компоненти та комплектующі', img: 'electronic_components.png', id: 1 },
-        { name: 'Інструменти та обладнання', img: 'soldering.png', id: 2 },
-        { name: 'Навчающі конструктори "Практична електроніка"', img: 'constructors.jpg', id: 3 },
-      ],
-    };
-  },
-};
+const store = useCatalog();
+store.useMenu()
 </script>
 
 <style lang="scss">
 .catalog-of-products {
   width: 253px;
   padding-bottom: 23px;
+
   &__header {
     width: 100%;
     height: 41px;
@@ -42,18 +31,25 @@ export default {
     color: #fff;
     text-align: center;
   }
+
   &__link {
+    width: 100%;
     display: flex;
     align-items: center;
     text-decoration: none;
+    border: none;
+    background: transparent;
+
     &:hover {
       cursor: pointer;
       text-decoration: underline;
     }
   }
+
   &__list {
     padding: 0;
     list-style: none;
+
     &-item {
       width: 100%;
       height: 101px;
@@ -61,10 +57,12 @@ export default {
       background-color: var(--color-white);
     }
   }
+
   &__image-container {
     width: 91px;
     height: 101px;
   }
+
   &__image {
     width: 60px;
     transform: translateY(-50%);
@@ -72,6 +70,7 @@ export default {
     display: block;
     margin-top: 50%;
   }
+
   &__item-header {
     width: 162px;
     font-size: 16px;

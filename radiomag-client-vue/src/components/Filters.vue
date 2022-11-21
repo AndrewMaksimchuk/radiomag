@@ -1,43 +1,38 @@
 <template>
   <div class="filter">
-
-    <h2 class="filter__header-text"> {{ filterHeader }} </h2>
-
+    <h2 class="filter__header-text"> {{ header }} </h2>
     <ul class="filter__container">
 
-      <li class="filter__item" v-for="(item, index) in filterData" :key="index">
+      <li class="filter__item" v-for="(item, index) in data" :key="index">
         <input
           class="filter__item-input"
           type="checkbox"
           :name="item.title"
-          :id="filterId + index">
+          :id="id + index">
         <label
           class="filter__item-label"
-          :for="filterId + index">{{ item.title }} ({{ item.qty}})</label>
+          :for="id + index">{{ item.title }} ({{ item.qty}})</label>
       </li>
 
     </ul>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Filter',
-  props: {
-    filterId: {
-      required: true,
-      type: String,
-    },
-    filterHeader: {
-      required: true,
-      type: String,
-    },
-    filterData: {
-      required: true,
-      type: Array,
-    },
+<script setup>
+defineProps({
+  header: {
+    required: true,
+    type: String,
   },
-};
+  id: {
+    required: true,
+    type: Number,
+  },
+  data: {
+    required: true,
+    type: Array,
+  },
+});
 </script>
 
 <style lang="scss">
@@ -92,7 +87,7 @@ export default {
 
     &-label {
       &::first-letter {
-      text-transform: uppercase;
+        text-transform: uppercase;
       }
     }
   }

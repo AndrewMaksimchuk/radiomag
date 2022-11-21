@@ -19,12 +19,6 @@
 </div>
 </template>
 
-<script>
-export default {
-  name: 'SpinnerLoader',
-};
-</script>
-
 <style>
 .spinner {
   display: flex;
@@ -38,7 +32,6 @@ export default {
   position: relative;
   width: 80px;
   height: 80px;
-  transform: translateY(-100%);
 }
 .lds-spinner div {
   transform-origin: 40px 40px;

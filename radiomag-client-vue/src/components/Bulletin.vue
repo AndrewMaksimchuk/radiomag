@@ -18,12 +18,6 @@
   </article>
 </template>
 
-<script>
-export default {
-  name: 'Bulletin',
-};
-</script>
-
 <style lang="scss">
 
 .bulletin__input {

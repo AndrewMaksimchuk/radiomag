@@ -132,15 +132,8 @@
   </section>
 </template>
 
-<script>
+<script setup>
 import ButtonToUp from './ButtonToUp.vue';
-
-export default {
-  name: 'ShopInfo',
-  components: {
-    ButtonToUp,
-  },
-};
 </script>
 
 <style lang="scss">

@@ -1,6 +1,5 @@
 <template>
   <div class="contact-list">
-
     <ContactShop
       v-for="(item, index) in datas"
       :key="index"
@@ -8,21 +7,15 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import ContactShop from './ContactShop.vue';
 
-export default {
-  name: 'ContactShopList',
-  props: {
-    datas: {
+defineProps({
+  datas: {
       type: Array,
       required: true,
     },
-  },
-  components: {
-    ContactShop,
-  },
-};
+});
 </script>
 
 <style lang="scss">

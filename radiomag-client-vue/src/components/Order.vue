@@ -18,30 +18,24 @@
           v-for="(product, index) in cart"
           :key="index"
           :index="index"
-          :goods="product"/>
+          :goods="product"
+        />
       </tbody>
     </table>
     <OrderForm/>
   </section>
 </template>
 
-<script>
+<script setup>
 import OrderCard from './OrderCard.vue';
 import OrderForm from './OrderForm.vue';
 
-export default {
-  name: 'Order',
-  components: {
-    OrderCard,
-    OrderForm,
-  },
-  props: {
-    cart: {
+defineProps({
+  cart: {
       type: Array,
       required: true,
     },
-  },
-};
+});
 </script>
 
 <style lang="scss">

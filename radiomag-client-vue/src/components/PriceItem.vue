@@ -2,10 +2,10 @@
   <span>{{ priceFixed }}&nbsp;{{ currency }}</span>
 </template>
 
-<script>
-export default {
-  name: 'PriceItem',
-  props: {
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
     price: {
       type: [Number, String],
       default: '-',
@@ -14,11 +14,7 @@ export default {
       type: String,
       default: 'грн',
     },
-  },
-  computed: {
-    priceFixed() {
-      return this.price.toFixed(2);
-    },
-  },
-};
+});
+
+const priceFixed = computed(() => props.price.toFixed(2));
 </script>

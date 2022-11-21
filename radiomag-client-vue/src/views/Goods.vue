@@ -3,86 +3,72 @@
 
     <img
       class="goods__img"
-      :src="'https://www.rcscomponents.kiev.ua' + productDescription.image"
-      :alt="productDescription.description[0]">
+      :src="'https://www.rcscomponents.kiev.ua' + store.goods.product.image"
+      :alt="store.goods.product.description[0]"
+    >
 
     <div class="goods__descriptions">
-      <h2 class="goods__descriptions-text-header">{{ productDescription.description[0] }}</h2>
+      <h2 class="goods__descriptions-text-header">{{ store.goods.product.description[0] }}</h2>
       <p class="goods__descriptions-item">
         <span>Код товара: </span>
-        <span>{{ productDescription.id }}</span>
+        <span>{{ store.goods.product.id }}</span>
       </p>
       <p
         class="goods__descriptions-item"
-        v-for="(item, index) in nameDescriptionItems"
+        v-for="(item, index) in store.goods.filterHeaders"
         :key="index">
         <span>{{ item }}: </span>
-        <span>{{ productDescription.description[index + 1] }}</span>
+        <span>{{ store.goods.product.description[index + 1] }}</span>
       </p>
     </div>
 
     <div class="card-line__center-availability">
       <h3 class="card-line__center-availability-header-text font-size-14">Наявність: </h3>
       <ProductAvailability
-        :inStock="productDescription.stock_data"
-        :unit="productDescription.pcs"/>
+        :inStock="store.goods.product.stock_data"
+        :unit="store.goods.product.pcs"/>
+    </div>
+
+    <div class="card-line__center-price">
+        <h3 class="card-line__center-price-header-text">Ціна: </h3>
+        <ProductPrice :productPriceArray="store.goods.product.prices"/>
     </div>
 
     <QuantitySelectionForm
       :style="{ 'flex-direction': 'column' }"
-      :quantityOfProduct="quantityOfProduct"
+      :quantityOfProduct="quantity"
       v-on:changeQuantityOfProduct="changeQuantityOfProduct"
       v-on:addToCart="addToCart">
-      <ProductPrice :productPriceArray="productDescription.prices"/>
     </QuantitySelectionForm>
 
   </article>
 </template>
 
-<script>
+<script setup>
+import { ref, onBeforeMount, watch } from 'vue'
+import { useGoods } from '@/store/goods';
+import {useCart} from '@/store/cart';
 import ProductAvailability from '@/components/ProductAvailability.vue';
 import ProductPrice from '@/components/ProductPrice.vue';
 import QuantitySelectionForm from '@/components/QuantitySelectionForm.vue';
 
-export default {
-  name: 'Goods',
-  components: {
-    ProductAvailability,
-    ProductPrice,
-    QuantitySelectionForm,
-  },
-  data() {
-    return {
-      productDescription: null,
-      nameDescriptionItems: null,
-      quantityOfProduct: 1,
-    };
-  },
-  created() {
-    window.scrollTo(0, 0);
-    const { product, filterHeaders } = this.$store.getters.getGoods;
-    this.productDescription = product;
-    this.nameDescriptionItems = filterHeaders;
-    console.log('nameDescriptionItems: ', this.nameDescriptionItems);
-    console.log('productDescription: ', this.productDescription);
-  },
-  methods: {
-    changeQuantityOfProduct(quantity) {
-      this.quantityOfProduct = quantity;
-    },
-    addToCart() {
-      this.$store.commit('addGoodsToCart', { product: this.productDescription, quantity: this.quantityOfProduct });
-      // Show notification that goods is added to cart
-    },
-  },
-  watch: {
-    quantityOfProduct() {
-      if (this.quantityOfProduct <= 0) {
-        this.quantityOfProduct = 1;
-      }
-    },
-  },
-};
+const quantity = ref(1);
+const store = useGoods();
+const storeCart = useCart();
+
+onBeforeMount(() => window.scrollTo(0, 0));
+
+const changeQuantityOfProduct = (newQuantity) => quantity.value = newQuantity;
+
+const addToCart = () => {
+  storeCart.add({ product: store.goods.product, quantity });
+  // Show notification that goods is added to cart
+}
+
+watch(quantity, (newValue, oldValue) => {
+  if (newValue.value <= 0) quantity.value = 1;
+});
+
 </script>
 
 <style lang="scss">

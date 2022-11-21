@@ -2,24 +2,14 @@
 <template>
   <section class="container search-box">
     <h2 class="search-box__header-text">Результат пошуку для "{{ $route.params.name }}":</h2>
-    <CardLine/>
-    <CardLine/>
-    <CardLine/>
+    <!-- <CardLine/> -->
+    <!-- <CardLine/> -->
+    <!-- <CardLine/> -->
   </section>
 </template>
 
-<script>
+<script setup>
 import CardLine from '@/components/CardLine.vue';
-
-export default {
-  name: 'Search',
-  components: {
-    CardLine,
-  },
-  created() {
-    // console.log(this.$route.params.name);
-  },
-};
 </script>
 
 <style lang="scss">

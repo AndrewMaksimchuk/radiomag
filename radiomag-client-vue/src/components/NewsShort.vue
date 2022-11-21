@@ -93,12 +93,6 @@
   </article>
 </template>
 
-<script>
-export default {
-  name: 'NewsShort',
-};
-</script>
-
 <style lang="scss">
 .news {
   &__header-text {

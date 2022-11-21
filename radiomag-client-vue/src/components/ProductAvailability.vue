@@ -9,18 +9,15 @@
   </ul>
 </template>
 
-<script>
-export default {
-  name: 'ProductAvailability',
-  props: {
+<script setup>
+defineProps({
     inStock: {
       type: Array,
     },
     unit: {
       type: String,
     },
-  },
-};
+});
 </script>
 
 <style lang="scss">

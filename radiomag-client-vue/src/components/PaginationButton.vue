@@ -1,28 +1,18 @@
 <template>
-  <button
-      :class="{ 'active-button': isActive }"
-      >{{ buttonNumber }}</button>
+  <button 
+    class="pagination__button" 
+    v-for="buttonNumber in store.whichButtonsDisplayed"
+    :key="buttonNumber"
+    :class="{ 'active-button': buttonNumber === store.activePage }"
+    @click="store.setActive(buttonNumber)"
+  >
+    {{ buttonNumber }}
+  </button>
 </template>
 
-<script>
-export default {
-  name: 'PaginationButton',
-  props: {
-    buttonNumber: {
-      type: Number,
-      required: true,
-    },
-    page: {
-      type: Number,
-      required: true,
-    },
-  },
-  computed: {
-    isActive() {
-      return this.page === this.buttonNumber;
-    },
-  },
-};
+<script setup>
+import { usePagination } from '@/store/pagination';
+const store = usePagination();
 </script>
 
 <style lang="scss">

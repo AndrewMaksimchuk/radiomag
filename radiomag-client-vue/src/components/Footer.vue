@@ -114,12 +114,6 @@
 
 </template>
 
-<script>
-export default {
-  name: 'Footer',
-};
-</script>
-
 <style lang="scss">
 .footer {
   min-width: 100%;

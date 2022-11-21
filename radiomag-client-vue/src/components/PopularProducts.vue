@@ -1,18 +1,16 @@
 <template>
-  <div class="popular-products">
+  <div class="popular-products" v-if="store.length">
     <h2 class="popular-products__heaer-text">Популярні товари</h2>
     <Slider/>
-</div>
+  </div>
 </template>
-<script>
-import Slider from './Slider.vue';
 
-export default {
-  name: 'PopularProducts',
-  components: {
-    Slider,
-  },
-};
+<script setup>
+import Slider from './Slider.vue';
+import { useSlider } from '../store/slider';
+
+const store = useSlider();
+store.load();
 </script>
 
 <style lang="scss">

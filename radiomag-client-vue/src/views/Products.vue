@@ -2,39 +2,27 @@
   <ul class="products">
     <li
       class="products__item"
-      v-for="(item, index) in listOfGroups"
+      v-for="(item, index) in store.allMenuGroups"
       :key="index">
-        <router-link
+        <RouterLink
           class="products__item-link"
-          :to="{ name: 'group', params: { id: item.id, groupName: item.name } }">
+          :to="{ name: 'group', params: { id: item.id } }">
             <img
               class="products__item-group-img"
               :src="'/images/groups/' + item.img"
-              :alt="item.name">
+              :alt="item.name"
+            >
             <h2 class="products__item-group-name">{{ item.name }}</h2>
-        </router-link>
+        </RouterLink>
     </li>
   </ul>
 </template>
 
-<script>
-import { getListOfCatalogGroups } from '@/services';
+<script setup>
+import { useCatalog } from '../store/catalog';
 
-export default {
-  name: 'Products',
-  data() {
-    return {
-      listOfGroups: [],
-    };
-  },
-  async created() {
-    this.listOfGroups.push(...await getListOfCatalogGroups(1));
-    this.listOfGroups.push(...await getListOfCatalogGroups(2));
-    this.listOfGroups.push(...await getListOfCatalogGroups(3));
-
-    console.log(this.listOfGroups);
-  },
-};
+const store = useCatalog();
+store.useAllMenuGroups();
 </script>
 
 <style lang="scss">

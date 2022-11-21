@@ -1,31 +1,19 @@
 <template>
-  <router-link :to="{ name: 'cart' }">
+  <RouterLink :to="{ name: 'cart' }">
     <button class="header__info-item card">
       <img
         src="@/assets/images/shopping-cart.svg"
         alt="shopping cart"
         class="header__img-info"
       />Ваша корзина:
-      <span class="card__text">{{ lengthOfCart }}</span>
+      <span class="card__text">{{ cart.length }}</span>
     </button>
-  </router-link>
+  </RouterLink>
 </template>
 
-<script>
-import { mapGetters } from 'vuex';
+<script setup>
+import { RouterLink } from "vue-router";
+import { useCart } from '@/store/cart';
 
-export default {
-  name: 'HeaderCart',
-  computed: {
-    ...mapGetters(['getCart']),
-    lengthOfCart() {
-      if (this.getCart.length) return `${this.getCart.length} шт.`;
-      return 'пуста';
-    },
-  },
-};
+const cart = useCart();
 </script>
-
-<style lang="scss">
-
-</style>

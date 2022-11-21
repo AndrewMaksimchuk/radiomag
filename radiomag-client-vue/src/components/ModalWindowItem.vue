@@ -1,34 +1,22 @@
 <template>
-
-  <router-link class="modal-window-item"
-    :to="{ name: 'group', params: { id: data.id, groupName: data.name } }"
-    @click="hideModalWindow">
-    <img class="modal-window-item__img" :src="'images/groups/' + data.img" :alt="data.name">
-    <p class="modal-window-item__text">{{ data.name }}</p>
-  </router-link>
-
+  <RouterLink class="modal-window-item" :to="{ name: 'group', params: { id: data.id }}" @click="store.hide">
+      <img class="modal-window-item__img" :src="'images/groups/' + data.img" :alt="data.name">
+      <p class="modal-window-item__text">{{ data.name }}</p>
+  </RouterLink>
 </template>
 
-<script>
-import { mapGetters } from 'vuex';
+<script setup>
+import { RouterLink } from 'vue-router';
+import { useModalWindow } from '@/store/modalWindow';
 
-export default {
-  name: 'ModalWindowItem',
-  props: {
-    data: {
-      required: true,
-      type: Object,
-    },
-  },
-  computed: {
-    ...mapGetters(['dataOfModalWindow']),
-  },
-  methods: {
-    hideModalWindow() {
-      this.$store.commit('hideModalWindow');
-    },
-  },
-};
+defineProps({
+  data: {
+    type: Object,
+    required: true,
+  }
+});
+
+const store = useModalWindow();
 </script>
 
 <style lang="scss">
@@ -57,6 +45,7 @@ export default {
     width: 120px;
     max-height: 120px;
     padding-bottom: 5px;
+    object-fit: contain;
   }
 
   &__text {

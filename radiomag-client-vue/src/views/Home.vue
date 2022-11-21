@@ -19,25 +19,13 @@
   </main>
 </template>
 
-<script>
+<script setup>
 import CatalogShort from '@/components/CatalogShort.vue';
 import Linecard from '@/components/Linecard.vue';
 import PopularProducts from '@/components/PopularProducts.vue';
 import NewsShort from '@/components/NewsShort.vue';
 import Manufacturers from '@/components/Manufacturers.vue';
 import Bulletin from '@/components/Bulletin.vue';
-
-export default {
-  name: 'Home',
-  components: {
-    CatalogShort,
-    Linecard,
-    PopularProducts,
-    NewsShort,
-    Manufacturers,
-    Bulletin,
-  },
-};
 </script>
 
 <style lang="scss">

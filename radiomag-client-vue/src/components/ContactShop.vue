@@ -57,21 +57,17 @@
   </article>
 </template>
 
-<script>
-export default {
-  name: 'ContactShop',
-  props: {
-    shopInfo: {
+<script setup>
+import { computed } from 'vue';
+
+const props = defineProps({
+  shopInfo: {
       type: Object,
       required: true,
     },
-  },
-  computed: {
-    formatPhoneNumber() {
-      return this.shopInfo.telephons.replaceAll('-', '');
-    },
-  },
-};
+});
+
+const formatPhoneNumber = computed(() => props.shopInfo.telephons.replaceAll('-', ''));
 </script>
 
 <style lang="scss">

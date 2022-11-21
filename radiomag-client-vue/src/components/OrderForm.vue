@@ -9,14 +9,16 @@
         class="order-form__button order-form__button_color-gray"
         @click="clearCart">
           Очистити корзину
-        </button>
-      <router-link
+      </button>
+
+      <RouterLink
         :to="{ name: 'products' }">
         <button
           class="order-form__button order-form__button_color-gray">
           Продовжити покупку
         </button>
-      </router-link>
+      </RouterLink>
+
       <button
         class="order-form__button order-form__button_color-red">
         Оформити замовлення
@@ -26,45 +28,39 @@
   </section>
 </template>
 
-<script>
-import { mapGetters } from 'vuex';
+<script setup>
+import { computed } from 'vue';
+import { useCart } from '@/store/cart';
+const store = useCart();
 
-export default {
-  name: 'OrderForm',
-  computed: {
-    ...mapGetters(['getCart']),
-    totalCost() {
-      function getTotalPriceOfProduct(prod) {
-        const { quantity } = prod;
-        const { prices } = prod.product;
-        const clonePrices = [...prices];
+const totalCost = computed(() => {
+  function getTotalPriceOfProduct(prod) {
+    const { quantity } = prod;
+    const { prices } = prod.product;
+    const clonePrices = [...prices];
 
-        function getPrice(val) {
-          const { q } = val;
-          return quantity >= q;
-        }
+    function getPrice(val) {
+      const { q } = val;
+      return quantity >= q;
+    }
 
-        const priceObject = clonePrices.reverse().filter(getPrice);
-        const priceForCalculation = priceObject[0].p;
-        return quantity * priceForCalculation;
-      }
+    const priceObject = clonePrices.reverse().filter(getPrice);
+    const priceForCalculation = priceObject[0].p;
+    return quantity * priceForCalculation;
+  }
 
-      function reduce(acc, curr) {
-        return acc + getTotalPriceOfProduct(curr);
-      }
+  function reduce(acc, curr) {
+    return acc + getTotalPriceOfProduct(curr);
+  }
 
-      const totalCostValue = this.getCart.reduce(reduce, 0);
+  const totalCostValue = store.cart.reduce(reduce, 0);
+  return totalCostValue.toFixed(2);
+});
 
-      return totalCostValue.toFixed(2);
-    },
-  },
-  methods: {
-    clearCart() {
-      this.$store.commit('clearCart');
-      window.scrollTo(0, 0);
-    },
-  },
-};
+const clearCart = () => {
+  store.clear();
+  window.scrollTo(0, 0);
+}
 </script>
 
 <style lang="scss">

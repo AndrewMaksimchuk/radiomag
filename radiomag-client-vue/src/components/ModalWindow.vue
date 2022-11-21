@@ -1,46 +1,34 @@
 <template>
-  <div class="modal-window container">
+  <div class="modal-window container" v-if="store.isVisible">
     <header class="modal-window__header">
-      <h2 class="modal-window__header-text">Електронні компоненти та комплектуючі</h2>
-      <button class="modal-window__header-close-button close-button" @click="hideModalWindow">
+      <h2 class="modal-window__header-text">{{ store.headerText }}</h2>
+      <button class="close-button" @click="store.hide">
         <div class="close-button__line"></div>
         <div class="close-button__line close-button__line_rotate-180"></div>
       </button>
     </header>
     <div class="modal-window__slot">
-      <ModalWindowItem v-for="item in dataOfModalWindow" :key="item.id" :data='item'/>
+      <ModalWindowItem v-for="item in store.data" :key="item.id" :data='item'/>
     </div>
     <slot></slot>
   </div>
 </template>
 
-<script>
-import { mapGetters } from 'vuex';
+<script setup>
 import ModalWindowItem from './ModalWindowItem.vue';
+import { useModalWindow } from '@/store/modalWindow';
 
-export default {
-  name: 'ModalWindow',
-  components: {
-    ModalWindowItem,
-  },
-  methods: {
-    hideModalWindow() {
-      this.$store.commit('hideModalWindow');
-    },
-  },
-  computed: {
-    ...mapGetters(['dataOfModalWindow']),
-  },
-};
+const store = useModalWindow();
 </script>
 
 <style lang="scss">
 .close-button {
-  width: 100%;
-  height: 100%;
+  width: 24px;
+  height: 24px;
   border: none;
   background: none;
   margin: 0;
+  margin-left: 15px;
   padding: 0;
   position: relative;
   opacity: .3;
@@ -52,8 +40,9 @@ export default {
     position: absolute;
     width: 100%;
     height: 6px;
-    background-color: #fff;
+    top: 9px;
     left: 0;
+    background-color: #fff;
     transform: rotate(45deg);
 
     &_rotate-180 {
@@ -69,7 +58,6 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   z-index: 99;
-  // box-shadow: 0 0 0 9999px #000000b0;
 
   &__header {
     width: 100%;
@@ -81,11 +69,8 @@ export default {
     justify-content: space-between;
     align-items: center;
     &-text {
-    margin: 0;
-    }
-    &-close-button {
-      width: 24px;
-      height: 24px;
+      margin: 0;
+      color: inherit;
     }
   }
 
@@ -93,11 +78,8 @@ export default {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    // column-gap: 20px;
-    // row-gap: 20px; // 90px
     background-color: #fff;
     padding: 20px;
-    // justify-content: space-around;
   }
 
 }

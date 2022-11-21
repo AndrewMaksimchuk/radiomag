@@ -12,16 +12,13 @@
   </article>
 </template>
 
-<script>
-export default {
-  name: 'Card',
-  props: {
-    data: {
-      type: Object,
-      required: true,
-    },
-  },
-};
+<script setup>
+defineProps({
+  data: {
+    required: true,
+    type: Object,
+  }
+});
 </script>
 
 <style lang="scss">

@@ -4,12 +4,6 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: 'Copyright',
-};
-</script>
-
 <style lang="scss">
 .copyright {
   height: 60px;

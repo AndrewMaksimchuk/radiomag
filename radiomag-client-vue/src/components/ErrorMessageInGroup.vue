@@ -4,16 +4,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ErrorMessageInGroup',
-  props: {
-    errorMessage: {
-      required: true,
-      type: String,
-    },
+<script setup>
+defineProps({
+  errorMessage: {
+    required: true,
+    type: String,
   },
-};
+});
 </script>
 
 <style lang="scss">
