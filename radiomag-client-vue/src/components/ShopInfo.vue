@@ -132,7 +132,7 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import ButtonToUp from './ButtonToUp.vue';
 </script>
 

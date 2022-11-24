@@ -28,32 +28,23 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
-import { useCart } from '@/store/cart';
+import { useCart, type CartItem } from '@/store/cart';
 const store = useCart();
 
 const totalCost = computed(() => {
-  function getTotalPriceOfProduct(prod) {
+  function getTotalPriceOfProduct(prod: CartItem) {
     const { quantity } = prod;
     const { prices } = prod.product;
     const clonePrices = [...prices];
 
-    function getPrice(val) {
-      const { q } = val;
-      return quantity >= q;
-    }
-
-    const priceObject = clonePrices.reverse().filter(getPrice);
+    const priceObject = clonePrices.reverse().filter((value) => quantity >= value.q );
     const priceForCalculation = priceObject[0].p;
     return quantity * priceForCalculation;
   }
 
-  function reduce(acc, curr) {
-    return acc + getTotalPriceOfProduct(curr);
-  }
-
-  const totalCostValue = store.cart.reduce(reduce, 0);
+  const totalCostValue = store.cart.reduce((acc, curr) => acc + getTotalPriceOfProduct(curr), 0);
   return totalCostValue.toFixed(2);
 });
 

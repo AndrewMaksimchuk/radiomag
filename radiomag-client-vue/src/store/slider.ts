@@ -4,8 +4,7 @@ import { GET } from "../httpClient";
 
 export const useSlider = defineStore("slider", () => {
   const numberOfShowedCards = 5;
-  /** @type {{ imgsrc: string, title: string, description: string }[]} */
-  const data = ref([]);
+  const data = ref<Slider>([]);
   const activeButton = ref(1);
 
   const length = computed(() => data.value.length);
@@ -20,7 +19,7 @@ export const useSlider = defineStore("slider", () => {
     return data.value.slice(start, end);
   });
 
-  const active = (item) => (activeButton.value = item);
+  const active = (item: number) => (activeButton.value = item);
 
   const load = async () => {
     const [error, updatableValue] = await GET.slider();

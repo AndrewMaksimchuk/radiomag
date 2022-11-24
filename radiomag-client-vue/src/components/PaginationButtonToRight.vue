@@ -4,7 +4,7 @@
     </button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { usePagination } from '@/store/pagination';
 const store = usePagination();
 </script>

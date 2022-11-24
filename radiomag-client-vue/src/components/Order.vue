@@ -26,16 +26,14 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { Cart } from '@/store/cart';
 import OrderCard from './OrderCard.vue';
 import OrderForm from './OrderForm.vue';
 
-defineProps({
-  cart: {
-      type: Array,
-      required: true,
-    },
-});
+defineProps<{
+  cart: Cart,
+}>();
 </script>
 
 <style lang="scss">

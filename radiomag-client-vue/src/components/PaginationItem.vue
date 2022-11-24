@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { usePagination } from '@/store/pagination';
 import PaginationButtonToStart from './PaginationButtonToStart.vue';
 import PaginationButtonToLeft from './PaginationButtonToLeft.vue';

@@ -48,8 +48,8 @@ export const usePagination = defineStore("pagination", () => {
     return { start, end };
   });
 
-  const setLength = (number) => (length.value = number);
-  const setActive = (number) => (activePage.value = number);
+  const setLength = (number: number) => (length.value = number);
+  const setActive = (number: number) => (activePage.value = number);
   const moveLeft = () => (activePage.value -= 1);
   const moveRight = () => (activePage.value += 1);
   const toFirst = () => (activePage.value = 1);

@@ -7,7 +7,7 @@
   </nav>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useCatalog } from '@/store/catalog';
 import CatalogShortItem from './CatalogShortItem.vue';
 

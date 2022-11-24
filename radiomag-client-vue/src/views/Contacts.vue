@@ -2,7 +2,8 @@
   <article class="contacts">
 
     <ContactSection
-      v-for="(item, index) in getAllContacts" :key="index" :headerText="item.headerText">
+      v-for="(item, index) in getAllContacts" :key="index" :headerText="item.headerText"
+    >
       <Map/>
       <ContactShopList :datas="item.list"/>
     </ContactSection>
@@ -10,7 +11,7 @@
   </article>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { getAllContacts } from '@/services/index';
 import ContactSection from '@/components/ContactSection.vue';
 import Map from '@/components/Map.vue';

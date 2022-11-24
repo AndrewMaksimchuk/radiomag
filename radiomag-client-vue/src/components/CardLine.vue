@@ -3,7 +3,7 @@
 
     <div class="card-line__left">
       <img class="card-line__left-img" :src="'https://www.rcscomponents.kiev.ua' + product.image"
-        :alt="product.description[0]" loading="lazy" @click="showBigImage">
+        :alt="String(product.description[0])" loading="lazy" @click="showBigImage">
     </div>
 
     <div class="card-line__center">
@@ -61,26 +61,20 @@
   </article>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useCart } from '@/store/cart';
-import { useImageShow } from '@/store/imageShow';
 import { useGoods } from '@/store/goods';
+import { useImageShow } from '@/store/imageShow';
 
 import ProductAvailability from './ProductAvailability.vue';
 import ProductPrice from './ProductPrice.vue';
 import QuantitySelectionForm from './QuantitySelectionForm.vue';
 
-const props = defineProps({
-  product: {
-    required: true,
-    type: Object,
-  },
-  filterHeaders: {
-    type: Array,
-    required: true,
-  },
-});
+const props = defineProps<{
+  product: WorkerProduct,
+  filterHeaders: string[],
+}>();
 
 const storeCart = useCart();
 const storeImageShow = useImageShow();
@@ -88,14 +82,12 @@ const storeGoods = useGoods();
 
 const quantityOfProduct = ref(1);
 
-const sumOfAllDescription = computed(() => props.product.description.reduce(sumDescription, ''));
-
-const changeQuantityOfProduct = (quantity) => quantityOfProduct.value = quantity;
-
-const sumDescription = (total, currentValue, index) => {
+const sumOfAllDescription = computed(() => props.product.description.reduce((total, currentValue, index) => {
   if (index === 0 || currentValue === undefined) return total;
   return `${total + currentValue} `;
-}
+}, ''));
+
+const changeQuantityOfProduct = (quantity: number) => quantityOfProduct.value = quantity;
 
 const addToCart = () => storeCart.add({ product: props.product, quantity: quantityOfProduct.value })
 

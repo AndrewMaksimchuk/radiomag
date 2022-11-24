@@ -6,7 +6,7 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import HeaderInfo from './HeaderInfo.vue';
 import HeaderSearch from './HeaderSearch.vue';
 import HeaderNav from './HeaderNav.vue';

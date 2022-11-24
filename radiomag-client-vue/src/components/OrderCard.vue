@@ -50,25 +50,20 @@
   </tr>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { CartItem } from '@/store/cart';
 import { useCart } from '@/store/cart';
 import ProductAvailability from './ProductAvailability.vue';
 import ProductPrice from './ProductPrice.vue';
 import QuantitySelectionForm from './QuantitySelectionForm.vue';
 
-defineProps({
-    goods: {
-      type: Object,
-      required: true,
-    },
-    index: {
-      type: Number,
-      required: true,
-    },
-});
+const props = defineProps<{
+    goods: CartItem,
+    index: number,
+}>();
 
 const store = useCart();
-const changeQuantityOfProduct = (value) => store.changeQuantity( { code: goods.product.id, quantity: value });
+const changeQuantityOfProduct = (value: number) => store.changeQuantity({ code: props.goods.product.id, quantity: value });
 </script>
 
 <style lang="scss">

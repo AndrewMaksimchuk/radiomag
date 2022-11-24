@@ -15,12 +15,6 @@
   </article>
 </template>
 
-<script>
-export default {
-  name: "RecommendedProducts"
-};
-</script>
-
 <style lang="scss">
 .recommended-products {
   width: 100%;

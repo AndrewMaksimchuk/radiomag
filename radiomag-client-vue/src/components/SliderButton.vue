@@ -3,11 +3,8 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
-  isActive: {
-      type: Boolean,
-      required: true,
-    },
-})
+<script setup lang="ts">
+defineProps<{
+  isActive: boolean,
+}>();
 </script>

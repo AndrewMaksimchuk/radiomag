@@ -13,7 +13,7 @@
   </button>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const toUp = () => window.scrollTo(0, 0);
 </script>
 

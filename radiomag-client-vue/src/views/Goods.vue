@@ -1,5 +1,5 @@
 <template>
-  <article class="goods">
+  <article class="goods" v-if="store.goods">
 
     <img
       class="goods__img"
@@ -44,10 +44,10 @@
   </article>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onBeforeMount, watch } from 'vue'
 import { useGoods } from '@/store/goods';
-import {useCart} from '@/store/cart';
+import { useCart } from '@/store/cart';
 import ProductAvailability from '@/components/ProductAvailability.vue';
 import ProductPrice from '@/components/ProductPrice.vue';
 import QuantitySelectionForm from '@/components/QuantitySelectionForm.vue';
@@ -58,15 +58,15 @@ const storeCart = useCart();
 
 onBeforeMount(() => window.scrollTo(0, 0));
 
-const changeQuantityOfProduct = (newQuantity) => quantity.value = newQuantity;
+const changeQuantityOfProduct = (newQuantity: number) => quantity.value = newQuantity;
 
 const addToCart = () => {
-  storeCart.add({ product: store.goods.product, quantity });
+  store.goods && storeCart.add({ product: store.goods.product, quantity: quantity.value });
   // Show notification that goods is added to cart
 }
 
-watch(quantity, (newValue, oldValue) => {
-  if (newValue.value <= 0) quantity.value = 1;
+watch(quantity, (newValue) => {
+  if (newValue <= 0) quantity.value = 1;
 });
 
 </script>

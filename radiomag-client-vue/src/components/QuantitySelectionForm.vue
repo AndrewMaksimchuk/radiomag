@@ -17,7 +17,7 @@
           class="card-line__right-input"
           type="text"
           v-model="inputValue"
-          @input="changeInputValue($event)">
+          @input="changeInputValue()">
         <button
           class="card-line__right-button"
           @click.prevent="changeQuantityOfProduct('+')">+</button>
@@ -33,36 +33,36 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, watch, onBeforeMount } from 'vue';
 
-const props = defineProps({
-      quantityOfProduct: {
-        type: Number,
-        required: true,
-    }
-});
+const props = defineProps<{
+  quantityOfProduct: number,
+}>();
 
-const emits = defineEmits(['addToCart', 'changeQuantityOfProduct']);
+const emits = defineEmits<{
+  (e: 'addToCart'): void,
+  (e: 'changeQuantityOfProduct', value: number): void,
+}>();
 
 const inputValue = ref(1);
 const isAddedToCart = ref(false);
 
-const isZero = (quantity) => quantity === 0;
-const isGreaterThatZero = (quantity) => quantity > 0;
-const toNumber = (num) => parseInt(num, 10);
+const isZero = (quantity: number) => quantity === 0;
+const isGreaterThatZero = (quantity: number) => quantity > 0;
 
 watch(props, (value, oldValue) => {
   inputValue.value = value.quantityOfProduct;
   console.log({value, oldValue});
 });
 
+watch(inputValue, (value) => (typeof value === 'string') ? inputValue.value = parseInt(value, 10): undefined );
+
 onBeforeMount(() => inputValue.value = props.quantityOfProduct);
 
 const updateInputValue = () => {
-  const val = parseInt(inputValue.value, 10);
-  return isGreaterThatZero(val) 
-    ? inputValue.value = val
+  return isGreaterThatZero(inputValue.value) 
+    ? inputValue.value
     : inputValue.value = props.quantityOfProduct;
 }
 
@@ -71,12 +71,12 @@ const changeInputValue = () => {
   emits('changeQuantityOfProduct', inputValue.value);
 }
 
-const changeQuantityOfProduct = (sign) => {
+const changeQuantityOfProduct = (sign: "+" | "-") => {
   let returnQuantityOfProduct = 0;
   
-  sign === '+' 
-    ? returnQuantityOfProduct = toNumber(inputValue.value) + 1
-    : returnQuantityOfProduct = toNumber(inputValue.value) - 1
+  sign === '+'
+    ? returnQuantityOfProduct = inputValue.value + 1
+    : returnQuantityOfProduct = inputValue.value - 1
 
   return isZero(returnQuantityOfProduct)
     ? undefined

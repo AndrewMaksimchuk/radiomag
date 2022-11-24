@@ -10,7 +10,7 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useCart } from '@/store/cart';
 import Order from '@/components/Order.vue';
 import OrderContactForm from '@/components/OrderContactForm.vue';

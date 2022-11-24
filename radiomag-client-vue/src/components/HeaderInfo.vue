@@ -34,6 +34,6 @@
     </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import HeaderCart from './HeaderCart.vue';
 </script>

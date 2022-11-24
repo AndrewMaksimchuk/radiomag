@@ -4,17 +4,14 @@
   <PaginationItem/>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { watch } from 'vue';
 import { usePagination } from '@/store/pagination';
 import PaginationItem from './PaginationItem.vue';
 
-const props = defineProps({
-  length: {
-      type: Number,
-      required: true,
-    },
-});
+const props = defineProps<{
+  length: number,
+}>();
 
 const store = usePagination();
 watch(props, (newPropsValue) => store.setLength(newPropsValue.length));

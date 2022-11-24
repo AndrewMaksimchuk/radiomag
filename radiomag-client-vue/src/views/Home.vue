@@ -19,7 +19,7 @@
   </main>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import CatalogShort from '@/components/CatalogShort.vue';
 import Linecard from '@/components/Linecard.vue';
 import PopularProducts from '@/components/PopularProducts.vue';

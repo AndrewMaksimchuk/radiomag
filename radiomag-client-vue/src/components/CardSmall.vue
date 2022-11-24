@@ -12,13 +12,11 @@
   </article>
 </template>
 
-<script setup>
-defineProps({
-  data: {
-    required: true,
-    type: Object,
-  }
-});
+<script setup lang="ts">
+defineProps<{
+  data: SliderItem,
+}>();
+
 </script>
 
 <style lang="scss">

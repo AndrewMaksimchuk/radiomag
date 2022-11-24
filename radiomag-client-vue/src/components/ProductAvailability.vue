@@ -9,15 +9,17 @@
   </ul>
 </template>
 
-<script setup>
-defineProps({
-    inStock: {
-      type: Array,
-    },
-    unit: {
-      type: String,
-    },
-});
+<script setup lang="ts">
+
+type InStock = {
+    stock: string,
+    stockName: string,
+}[]
+
+defineProps<{
+    inStock: InStock,
+    unit: string,
+}>();
 </script>
 
 <style lang="scss">

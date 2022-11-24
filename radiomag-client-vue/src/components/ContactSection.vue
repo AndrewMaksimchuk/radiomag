@@ -7,13 +7,10 @@
   </section>
 </template>
 
-<script setup>
-defineProps({
-  headerText: {
-      required: true,
-      type: String,
-    },
-});
+<script setup lang="ts">
+defineProps<{
+  headerText: string,
+}>();
 </script>
 
 <style lang="scss">

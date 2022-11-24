@@ -4,7 +4,7 @@
     </li>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
     link: {
         type: String,

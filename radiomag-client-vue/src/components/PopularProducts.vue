@@ -5,9 +5,9 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { useSlider } from '@/store/slider';
 import Slider from './Slider.vue';
-import { useSlider } from '../store/slider';
 
 const store = useSlider();
 store.load();

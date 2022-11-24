@@ -4,13 +4,10 @@
   </div>
 </template>
 
-<script setup>
-defineProps({
-  errorMessage: {
-    required: true,
-    type: String,
-  },
-});
+<script setup lang="ts">
+defineProps<{
+  errorMessage: string,
+}>();
 </script>
 
 <style lang="scss">

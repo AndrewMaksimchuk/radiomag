@@ -53,7 +53,7 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useBreadcrumbs } from '@/store/breadcrumbs';
 const store = useBreadcrumbs();
 </script>

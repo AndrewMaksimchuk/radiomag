@@ -18,7 +18,7 @@
   </ul>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useCatalog } from '../store/catalog';
 
 const store = useCatalog();

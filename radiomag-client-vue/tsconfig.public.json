@@ -1,0 +1,10 @@
+{
+  "include": [ "src/public/*.ts" ],
+  "exclude": [],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": ["ESNext", "DOM"],
+    "outDir": "public/js",
+    "declaration": false,
+  }
+}

@@ -1,51 +1,42 @@
-postMessage('Worker is created!');
-
-let products = []; // Array of prepared data for reuse
-let dataFromGroupComponent = {};
-
-// function putToProductsArray(element) {
-//   products.push(element);
-// }
-
-function getDescription(descriptionArray) {
-  function throughArray(element, index) {
-    if (index === 0) return element;
-    const descriptionValue = dataFromGroupComponent.descriptions_titles[element].value;
-    return descriptionValue;
-  }
-  return descriptionArray.map(throughArray);
-}
-
-// function getPrices(prices) {
-//   return ;
-// }
-
-function getStock(inStock) {
-  function getStockName(stockData) {
-    const stockNameId = stockData.stock_id;
-    const allStockNames = dataFromGroupComponent.stock_names;
-    const stockName = allStockNames[stockNameId];
-    return { stock: stockData.stock, stockName };
-  }
-  return inStock.map(getStockName);
-}
-
-function sumAllProductParameters(product) {
-  product.description = getDescription(product.description);
-  // product.prices = getPrices(product.prices);
-  product.stock_data = getStock(product.stock_data.items);
-  return product;
-}
-
-onmessage = function sumProductDescription(e) {
-  const { typeOfWork, data } = e.data;
-  dataFromGroupComponent = data;
-
-  if (typeOfWork === 'sum_all_product_description') {
-    products = data.items.map(sumAllProductParameters);
-    postMessage({ typeOfWork: 'return_sum_all_product_description', data: products });
-  }
-
-  // postMessage({ typeOfWork, data });
-  // postMessage(e.data);
-}
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var products;
+var dataFromGroupComponent;
+var getDescription = function (descriptionArray) {
+    return descriptionArray.map(function (element, index) {
+        if (index === 0)
+            return element;
+        return dataFromGroupComponent.descriptions_titles[element].value;
+    });
+};
+var getStock = function (inStock) {
+    return inStock.map(function (stockData) {
+        var stockNameId = stockData.stock_id;
+        var allStockNames = dataFromGroupComponent.stock_names;
+        var stockName = stockNameId ? allStockNames[stockNameId] : "";
+        return { stock: stockData.stock, stockName: stockName };
+    });
+};
+var sumAllProductParameters = function (product) {
+    var description = getDescription(product.description);
+    var stock_data = getStock(product.stock_data.items);
+    return __assign(__assign({}, product), { description: description, stock_data: stock_data });
+};
+var sumProductDescription = function (event) {
+    var _a = event.data, type = _a.type, data = _a.data;
+    if (type === 'sum_all_product_description') {
+        dataFromGroupComponent = data;
+        products = data.items.map(sumAllProductParameters);
+        postMessage({ type: 'return_sum_all_product_description', data: products });
+    }
+};
+onmessage = sumProductDescription;

@@ -11,14 +11,12 @@
   </ul>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import PriceItem from './PriceItem.vue';
 
-defineProps({
-  productPriceArray: {
-      type: Array,
-    },
-});
+defineProps<{
+  productPriceArray: Price,
+}>();
 </script>
 
 <style lang="scss">

@@ -57,15 +57,12 @@
   </article>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
 
-const props = defineProps({
-  shopInfo: {
-      type: Object,
-      required: true,
-    },
-});
+const props = defineProps<{
+  shopInfo: ContactItemList,
+}>();
 
 const formatPhoneNumber = computed(() => props.shopInfo.telephons.replaceAll('-', ''));
 </script>

@@ -20,8 +20,8 @@
   </article>
 </template>
 
-<script setup>
-import { useSlider } from '../store/slider';
+<script setup lang="ts">
+import { useSlider } from '@/store/slider';
 import CardSmall from './CardSmall.vue';
 import SliderButton from './SliderButton.vue';
 

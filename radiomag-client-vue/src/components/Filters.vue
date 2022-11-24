@@ -8,31 +8,22 @@
           class="filter__item-input"
           type="checkbox"
           :name="item.title"
-          :id="id + index">
+          :id="(id + index).toString()">
         <label
           class="filter__item-label"
-          :for="id + index">{{ item.title }} ({{ item.qty}})</label>
+          :for="(id + index).toString()">{{ item.title }} ({{ item.qty}})</label>
       </li>
 
     </ul>
   </div>
 </template>
 
-<script setup>
-defineProps({
-  header: {
-    required: true,
-    type: String,
-  },
-  id: {
-    required: true,
-    type: Number,
-  },
-  data: {
-    required: true,
-    type: Array,
-  },
-});
+<script setup lang="ts">
+defineProps<{
+  header: string,
+  id: number,
+  data: { title: string, qty: number }[],
+}>();
 </script>
 
 <style lang="scss">

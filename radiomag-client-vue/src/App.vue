@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { RouterView } from 'vue-router'
 import Header from '@/components/Header.vue';
 import Breadcrumbs from '@/components/Breadcrumbs.vue';

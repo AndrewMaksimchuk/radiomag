@@ -1,3 +1,4 @@
+import type { RouteLocationNormalized, RouteMeta } from 'vue-router';
 import { createRouter, createWebHistory } from 'vue-router';
 import home from './public/home';
 import group from './public/group';
@@ -26,7 +27,15 @@ const router = createRouter({
   routes,
 });
 
-const setTitle = ({ meta: { title }}) => title ? document.title = title : undefined;
+interface MyRouteMeta extends RouteMeta {  // TODO: Fixed to correct name
+  title?: string,
+}
+
+interface MyRouteLocationNormalized extends RouteLocationNormalized {  // TODO: Fixed to correct name
+  meta: MyRouteMeta,
+}
+
+const setTitle = <T extends MyRouteLocationNormalized>({ meta: { title }}: T) => title ? document.title = title : undefined;
 
 router.beforeEach((to, from, next) => {
   setTitle(to);

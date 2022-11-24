@@ -11,7 +11,7 @@
   </RouterLink>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { RouterLink } from "vue-router";
 import { useCart } from '@/store/cart';
 

@@ -7,15 +7,12 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import ContactShop from './ContactShop.vue';
 
-defineProps({
-  datas: {
-      type: Array,
-      required: true,
-    },
-});
+defineProps<{
+  datas: ContactItemList[],
+}>();
 </script>
 
 <style lang="scss">

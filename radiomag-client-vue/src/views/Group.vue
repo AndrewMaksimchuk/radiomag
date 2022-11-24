@@ -28,7 +28,9 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { RouteParams } from 'vue-router';
+
 import { ref, computed, onBeforeMount, onBeforeUnmount } from 'vue';
 import { useRoute } from 'vue-router';
 import { useGroup } from '@/store/group';
@@ -43,11 +45,13 @@ const route = useRoute();
 const store = useGroup();
 const storePagination = usePagination();
 
-const { id } = route.params;
-const allDataToShow = ref([]);
-const filterHeaders = ref([]);
-const allFilters = ref([]);
-const groupWorker = ref(null);
+type RouteWithId = RouteParams & { id: string }
+
+const { id } = route.params as RouteWithId;
+const allDataToShow = ref<WorkerProduct[]>([]);
+const filterHeaders = ref<string[]>([]);
+const allFilters = ref<{ title: string, qty: number }[][]>([]);
+const groupWorker = ref<Worker>();
 
 const toShow = computed(() => {
   const { start, end } = storePagination.getRange;
@@ -56,17 +60,11 @@ const toShow = computed(() => {
 
 const allDataToShowLength = computed(() => allDataToShow.value.length);
 
-const work = (event) =>  {
-  const { typeOfWork, data } = event.data;
-  if (typeOfWork === 'return_sum_all_product_description') {
-    allDataToShow.value = data;
-  }
-}
-
 const putFilters = () => {
   const descriptionsTitles = store.data[id].descriptions_titles;
-  filterHeaders.value = store.data[id].column_headers.product_descriptions.slice(1);
+  filterHeaders.value = Object.values(store.data[id].column_headers.product_descriptions).slice(1);
   const { filters } = store.data[id];
+
   allFilters.value = filters.filter((item) => item.length)
     .map((filterData) => filterData.map((data) => {
       const returnedData = { qty: data.qty, title: descriptionsTitles[data.title].value };
@@ -81,16 +79,23 @@ onBeforeMount(async () => {
   window.document.title = `${store.groupName}`;
   putFilters();
 
-  const cloneData = JSON.parse(JSON.stringify(store.data[id]));
+  const cloneData: Group = JSON.parse(JSON.stringify(store.data[id]));
 
   groupWorker.value = new Worker('/js/groupWorker.js');
-  groupWorker.value.onmessage = work;
-  groupWorker.value.postMessage({ typeOfWork: 'sum_all_product_description', data: cloneData });
+  groupWorker.value.onmessage = (event: MessageEvent<TransferObject>) =>  {
+    const { type, data } = event.data;
+    if (type === 'return_sum_all_product_description') {
+      allDataToShow.value = data;
+    }
+  };
+  groupWorker.value.postMessage({ type: 'sum_all_product_description', data: cloneData });
 });
 
 onBeforeUnmount(() => {
+  if (groupWorker.value != undefined) {
     groupWorker.value.terminate();
-    groupWorker.value = null;
+    groupWorker.value = undefined;
+  }
 });
 </script>
 

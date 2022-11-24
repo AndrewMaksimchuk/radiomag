@@ -13,22 +13,19 @@
   </li>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useCatalog } from '@/store/catalog';
 import { useModalWindow } from '@/store/modalWindow';
 
-defineProps({
-  data: {
-    type: Object,
-    required: true,
-  }
-});
+defineProps<{
+  data: CatalogItem
+}>();
 
 const catalogStore = useCatalog();
 const modalStore = useModalWindow();
 
-const showModalWindow = async (id) => {
+const showModalWindow = async (id: number) => {
   const data = await catalogStore.useMenuGroups(id);
-  modalStore.show(data);
+  if (Array.isArray(data)) modalStore.show(data);
 }
 </script>

@@ -8,7 +8,7 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import CardLine from '@/components/CardLine.vue';
 </script>
 

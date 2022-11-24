@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import ModalWindowItem from './ModalWindowItem.vue';
 import { useModalWindow } from '@/store/modalWindow';
 
