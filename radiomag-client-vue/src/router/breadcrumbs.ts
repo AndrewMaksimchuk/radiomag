@@ -1,7 +1,7 @@
+import type { RouteLocationNormalized } from 'vue-router';
 // import { useBreadcrumbs } from '@/store/breadcrumbs';
 
-export default function breadcrumbsLogic(to, from) {
-
+export default <T extends RouteLocationNormalized>(to: T, from: T) => {
   console.log({to, from})
 
   // const findSamePath = (currentValue) => currentValue.path === to.path;
