@@ -51,5 +51,5 @@ update_server_interactive:
 	$(to_server) && npx npm-check-updates && npx npm-check-updates -i
 
 hooks:
-	cp ./.hooks/* ./.git/hooks && chmod +x ./.git/hooks/commit-msg
+	cp ./.hooks/* ./.git/hooks && chmod +x ./.git/hooks/commit-msg && chmod +x ./.git/hooks/pre-commit
 
