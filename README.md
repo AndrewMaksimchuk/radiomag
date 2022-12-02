@@ -22,3 +22,15 @@ and restore data when user open shop page again
 
 Makefile containe all commands for development.  
 For run application you need first run server and then run client.  
+
+Git commit style: "Title: Start message."  
+Git commit titles: 
+- "Added"
+- "Changed"
+- "Fixed"
+- "Removed"
+- "Deprecated"
+- "Security"
+- "Performance"
+- "Other"
+- "Release"

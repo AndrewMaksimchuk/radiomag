@@ -24,7 +24,7 @@ start_ide:
 start_browser:
 	chromium http://localhost:5173/ > /dev/null 2>&1 &
 
-install: install_server install_client
+install: install_server install_client hooks
 
 install_client:
 	$(to_client) && npm i
@@ -49,4 +49,7 @@ update_clien_interactive:
 
 update_server_interactive:
 	$(to_server) && npx npm-check-updates && npx npm-check-updates -i
+
+hooks:
+	cp ./.hooks/* ./.git/hooks
 
