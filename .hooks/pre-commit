@@ -1,6 +1,15 @@
-#!/bin/sh
+# !/bin/sh
+
 FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
 [ -z "$FILES" ] && exit 0
+
+# ESLint
+# LINTFILES=$(echo "$FILES" | grep -E '(.js|.ts|.vue)$')
+# ESLINT=$(echo "$LINTFILES" | xargs ./node_modules/.bin/eslint)
+# if [ "$ESLINT" != *"0 problems"* ]; then
+#     echo "$ESLINT"
+#     exit 1
+# fi
 
 # Prettify all selected files
 echo "$FILES" | xargs ./node_modules/.bin/prettier --ignore-unknown --write

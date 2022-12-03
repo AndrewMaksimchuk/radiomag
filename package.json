@@ -1,10 +1,16 @@
 {
   "name": "radiomag",
+  "private": true,
   "scripts": {
     "formatting": "prettier --write .",
-    "formatting-check": "prettier --check ."
+    "formatting-check": "prettier --check .",
+    "lint": "eslint '**/*.{js,ts.vue}'"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "eslint": "^8.29.0",
+    "eslint-plugin-vue": "^9.8.0",
     "prettier": "2.8.0"
   }
 }

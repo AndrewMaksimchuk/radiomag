@@ -1,9 +1,6 @@
 {
   "scripts": {
     "dev": "vite",
-    "js-build": "vite build",
-    "js-preview": "vite preview --port 4173",
-    "js-test:unit": "vitest --environment jsdom",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "test:unit": "vitest --environment jsdom --root src/",
@@ -37,5 +34,7 @@
     "node": ">=18.9.1",
     "npm": "~8.19.1"
   },
-  "os":["linux"]
+  "os": [
+    "linux"
+  ]
 }
