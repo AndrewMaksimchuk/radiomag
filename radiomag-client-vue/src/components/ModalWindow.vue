@@ -1,24 +1,33 @@
 <template>
-  <div class="modal-window container" v-if="store.isVisible">
+  <section class="modal-window container" v-if="store.isVisible">
     <header class="modal-window__header">
       <h2 class="modal-window__header-text">{{ store.headerText }}</h2>
-      <button class="close-button" @click="store.hide">
+      <button class="close-button" @click="store.hide" ref="close">
         <div class="close-button__line"></div>
         <div class="close-button__line close-button__line_rotate-180"></div>
       </button>
     </header>
     <div class="modal-window__slot">
-      <ModalWindowItem v-for="item in store.data" :key="item.id" :data='item'/>
+      <ModalWindowItem v-for="item in store.data" :key="item.id" :data="item" />
     </div>
     <slot></slot>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
-import ModalWindowItem from './ModalWindowItem.vue';
-import { useModalWindow } from '@/store/modalWindow';
+import { ref, onUpdated } from "vue";
+import ModalWindowItem from "./ModalWindowItem.vue";
+import { useModalWindow } from "@/store/modalWindow";
 
 const store = useModalWindow();
+const close = ref<HTMLElement | null>(null);
+
+onUpdated(() => {
+  console.log(close.value);
+  if (close.value) {
+    close.value.focus();
+  }
+});
 </script>
 
 <style lang="scss">
@@ -31,7 +40,7 @@ const store = useModalWindow();
   margin-left: 15px;
   padding: 0;
   position: relative;
-  opacity: .3;
+  opacity: 0.3;
   &:hover {
     opacity: 1;
     cursor: pointer;
@@ -81,6 +90,5 @@ const store = useModalWindow();
     background-color: #fff;
     padding: 20px;
   }
-
 }
 </style>
