@@ -38,7 +38,6 @@ onMounted(() => {
 
 <style lang="scss">
 .modal-window-item {
-  width: 150px;
   height: 230px;
   padding: 15px;
   display: flex;

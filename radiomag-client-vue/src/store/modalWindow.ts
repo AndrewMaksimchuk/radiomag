@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { defineStore } from "pinia";
 
 export interface ModalItem {
@@ -23,6 +23,14 @@ export const useModalWindow = defineStore("modalWindow", () => {
     isVisible.value = false;
     data.value = [];
   };
+
+  const scroll = (state: boolean) => {
+    return state
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "");
+  };
+
+  watch(isVisible, (value) => scroll(value));
 
   return { isVisible, headerText, data, show, hide };
 });
