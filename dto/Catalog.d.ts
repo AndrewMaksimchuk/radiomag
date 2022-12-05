@@ -6,7 +6,4 @@ interface CatalogItem {
 
 type Catalog = CatalogItem[];
 
-type CatalogGroups = Record<
-  string,
-  CatalogItem[],
->;
+type CatalogGroups = Record<string, CatalogItem[]>;

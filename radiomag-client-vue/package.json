@@ -6,11 +6,13 @@
     "test:unit": "vitest --environment jsdom --root src/",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "dev:public": "tsc -p tsconfig.public.json --watch"
+    "dev:public": "tsc -p tsconfig.public.json --watch",
+    "build:public": "tsc -p tsconfig.public.json --noEmit && node ./buildPublic.js"
   },
   "name": "radiomag-client-vue",
   "version": "1.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "pinia": "^2.0.21",
     "vue": "^3.2.38",
