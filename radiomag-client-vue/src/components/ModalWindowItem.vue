@@ -1,22 +1,39 @@
 <template>
-  <RouterLink class="modal-window-item" :to="{ name: 'group', params: { id: data.id }}" @click="store.hide">
-      <img class="modal-window-item__img" :src="'images/groups/' + data.img" :alt="data.name">
-      <p class="modal-window-item__text">{{ data.name }}</p>
+  <RouterLink
+    class="modal-window-item"
+    :to="{ name: 'group', params: { id: data.id } }"
+    @click="store.hide"
+    ref="link"
+  >
+    <img
+      class="modal-window-item__img"
+      :src="'images/groups/' + data.img"
+      :alt="data.name"
+    />
+    <p class="modal-window-item__text">{{ data.name }}</p>
   </RouterLink>
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
-import { useModalWindow } from '@/store/modalWindow';
+import { ref, onMounted } from "vue";
+import { RouterLink } from "vue-router";
+import { useModalWindow, type ModalItem } from "@/store/modalWindow";
 
-defineProps({
-  data: {
-    type: Object,
-    required: true,
-  }
-});
+interface RouterLinkExtends extends InstanceType<typeof RouterLink> {
+  $el: HTMLElement;
+}
+
+const props = defineProps<{
+  data: ModalItem;
+  index: number;
+}>();
 
 const store = useModalWindow();
+const link = ref<RouterLinkExtends | null>(null);
+
+onMounted(() => {
+  if (link.value && link.value.$el && props.index === 0) link.value.$el.focus();
+});
 </script>
 
 <style lang="scss">

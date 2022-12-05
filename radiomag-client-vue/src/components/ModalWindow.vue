@@ -2,32 +2,28 @@
   <section class="modal-window container" v-if="store.isVisible">
     <header class="modal-window__header">
       <h2 class="modal-window__header-text">{{ store.headerText }}</h2>
-      <button class="close-button" @click="store.hide" ref="close">
+      <button class="close-button" @click="store.hide">
         <div class="close-button__line"></div>
         <div class="close-button__line close-button__line_rotate-180"></div>
       </button>
     </header>
     <div class="modal-window__slot">
-      <ModalWindowItem v-for="item in store.data" :key="item.id" :data="item" />
+      <ModalWindowItem
+        v-for="(item, index) in store.data"
+        :key="item.id"
+        :data="item"
+        :index="index"
+      />
     </div>
     <slot></slot>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, onUpdated } from "vue";
 import ModalWindowItem from "./ModalWindowItem.vue";
 import { useModalWindow } from "@/store/modalWindow";
 
 const store = useModalWindow();
-const close = ref<HTMLElement | null>(null);
-
-onUpdated(() => {
-  console.log(close.value);
-  if (close.value) {
-    close.value.focus();
-  }
-});
 </script>
 
 <style lang="scss">
