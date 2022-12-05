@@ -1,19 +1,27 @@
 <template>
-  <RouterLink class="modal-window-item" :to="{ name: 'group', params: { id: data.id }}" @click="store.hide">
-      <img class="modal-window-item__img" :src="'images/groups/' + data.img" :alt="data.name">
-      <p class="modal-window-item__text">{{ data.name }}</p>
+  <RouterLink
+    class="modal-window-item"
+    :to="{ name: 'group', params: { id: data.id } }"
+    @click="store.hide"
+  >
+    <img
+      class="modal-window-item__img"
+      :src="'images/groups/' + data.img"
+      :alt="data.name"
+    />
+    <p class="modal-window-item__text">{{ data.name }}</p>
   </RouterLink>
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
-import { useModalWindow } from '@/store/modalWindow';
+import { RouterLink } from "vue-router";
+import { useModalWindow } from "@/store/modalWindow";
 
 defineProps({
   data: {
     type: Object,
     required: true,
-  }
+  },
 });
 
 const store = useModalWindow();
@@ -21,7 +29,6 @@ const store = useModalWindow();
 
 <style lang="scss">
 .modal-window-item {
-  width: 150px;
   height: 230px;
   padding: 15px;
   display: flex;
