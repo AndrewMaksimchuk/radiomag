@@ -8,7 +8,7 @@ type TransferObject =
       data: WorkerProduct[];
     };
 
-interface WorkerProduct extends Omit<Product, "stock_data"> {
+export interface WorkerProduct extends Omit<Product, "stock_data"> {
   description: string[];
   stock_data: {
     stock: string;
