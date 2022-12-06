@@ -1,4 +1,5 @@
-@import "variables.scss";
+@import "variables";
+@import "components";
 
 * {
   margin: 0;
@@ -9,9 +10,7 @@
 *:focus-visible {
   text-decoration: underline;
   border-radius: 5px;
-  outline-width: 3px;
-  outline-style: solid;
-  outline-color: black;
+  outline: black solid 3px;
 }
 
 html {
@@ -30,6 +29,11 @@ body {
   max-width: 1440px;
 }
 
+.hover:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 h1,
 h2,
 h3,
@@ -38,5 +42,3 @@ h5,
 h6 {
   color: var(--color-black-light);
 }
-
-@import "components.scss";
