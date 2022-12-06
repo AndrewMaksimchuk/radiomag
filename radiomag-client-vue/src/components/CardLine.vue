@@ -146,7 +146,7 @@ const addGoodsToStorage = () =>
 <style lang="scss">
 .card-line {
   width: 100%;
-  min-height: 175px;
+  height: 175px;
   border: 1px solid var(--color-gray-light);
   background-color: var(--color-white);
   display: flex;
@@ -162,7 +162,7 @@ const addGoodsToStorage = () =>
 
     &-img {
       width: 120px;
-      height: 90px;
+      height: 100%;
       padding-bottom: 10px;
       object-fit: contain;
 
