@@ -1,0 +1,11 @@
+#!/bin/sh
+
+TESTS_SERVER=$(cd ./radiomag-server-express && npm run tests)
+CODE=$(echo "$?")
+
+if [ ! "$CODE" -eq "0" ]
+then
+   exit 1
+fi
+
+exit 0
