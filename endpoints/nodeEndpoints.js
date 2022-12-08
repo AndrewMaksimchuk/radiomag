@@ -1,15 +1,14 @@
 module.exports = {
+  // PAGE
+  home: "/",
 
-    // PAGE
-    home: '/',
+  // API
+  contacts: "/api/contacts",
+  catalog: "/api/catalog",
+  slider: "/api/slider",
 
-    // API
-    catalog: '/api/catalog',
-    catalogGroups: '/api/catalog/:id',
-    slider: '/api/slider',
-
-    group: '/api/group/:id',
-    groupName: '/api/groupName/:id',
-    search: '/api/search/:name',
-
-}
+  catalogGroups: "/api/catalog/:id",
+  group: "/api/group/:id",
+  groupName: "/api/groupName/:id",
+  search: "/api/search/:name",
+};

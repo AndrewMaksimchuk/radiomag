@@ -4,6 +4,7 @@ const sizeof = require("object-sizeof");
 const getAllGroupInfo = require("../services/getAllGroupData");
 const HTTPget = require("../../endpoints/nodeEndpoints");
 const catalogGroups = require("../database/catalogGroups");
+const contacts = require("../database/contacts");
 
 const cache = {};
 
@@ -75,7 +76,7 @@ router.get(HTTPget.groupName, function (req, res) {
   if (group) {
     res.json(group.name);
   }
-  res.json({error: "Group with that id not exist!"});
+  res.json({ error: "Group with that id not exist!" });
 });
 
 router.get(HTTPget.slider, (req, res) => {
@@ -173,5 +174,7 @@ router.get(HTTPget.slider, (req, res) => {
   ];
   res.json(data);
 });
+
+router.get(HTTPget.contacts, (req, res) => res.json(contacts));
 
 module.exports = router;

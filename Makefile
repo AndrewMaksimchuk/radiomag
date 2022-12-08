@@ -53,3 +53,5 @@ update_server_interactive:
 hooks:
 	cp ./.hooks/* ./.git/hooks && chmod +x ./.git/hooks/commit-msg && chmod +x ./.git/hooks/pre-commit
 
+tests_server:
+	cd $(server) && npm run tests
