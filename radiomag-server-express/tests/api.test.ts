@@ -1,5 +1,5 @@
-const request = require("supertest");
-const endpoints = require("../../endpoints/nodeEndpoints");
+import request from "supertest";
+import { endpoints } from "../../endpoints/nodeEndpoints";
 
 const baseURL = "http://localhost:3000";
 

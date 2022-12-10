@@ -1,4 +1,4 @@
-const contacts = [
+export const contacts = [
   {
     headerText: "Відділ продажів",
     list: [
@@ -55,5 +55,3 @@ const contacts = [
     ],
   },
 ];
-
-module.exports = contacts;

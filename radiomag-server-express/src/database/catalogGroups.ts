@@ -48,10 +48,11 @@ const list_3 = [
   { id: 341, name: "Коснтруктори набори", img: "masterkit.gif" },
 ];
 
-const catalogGroups = {
+export const catalogGroups = {
   1: list_1,
   2: list_2,
   3: list_3,
 };
 
-module.exports = catalogGroups;
+export type CatalogGroupsItem = typeof list_3;
+export type CatalogGroup = CatalogGroupsItem[number];

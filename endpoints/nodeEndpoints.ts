@@ -1,8 +1,4 @@
-module.exports = {
-  // PAGE
-  home: "/",
-
-  // API
+const endpoints = {
   contacts: "/api/contacts",
   catalog: "/api/catalog",
   slider: "/api/slider",
@@ -12,3 +8,5 @@ module.exports = {
   groupName: "/api/groupName/:id",
   search: "/api/search/:name",
 };
+
+module.exports = { endpoints };
