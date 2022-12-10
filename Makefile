@@ -55,3 +55,6 @@ hooks:
 
 tests_server:
 	cd $(server) && npm run tests
+
+git_clear:
+	git branch | grep -v -e "dev" -e "main" | xargs git branch -d
