@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon ./src/app.ts -e ts",
-    "tests": "jest",
+    "tests": "jest --silent",
     "build": "tsc -p ."
   },
   "dependencies": {
