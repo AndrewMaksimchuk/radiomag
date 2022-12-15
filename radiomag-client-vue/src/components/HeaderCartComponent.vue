@@ -5,7 +5,7 @@
         src="@/assets/images/shopping-cart.svg"
         alt="shopping cart"
         class="header__img-info"
-      />Ваша корзина:
+      />{{ $t("header.info.basket") }}:
       <span class="card__text">{{ cart.length }}</span>
     </button>
   </RouterLink>

@@ -1,92 +1,110 @@
 <template>
   <section class="container">
-      <footer class="footer">
+    <footer class="footer">
       <section class="footer-catalog">
-        <a href="#" class="footer-catalog__item">
+        <a
+          href="#"
+          class="footer-catalog__item"
+          v-for="item in store.catalog"
+          :key="item"
+        >
           <img
             class="footer-catalog__item-image"
-            src="@/assets/images/catalog/electronic_components.png"
+            :src="'/images/catalog/' + item.img"
             alt=""
           />
-          <h2 class="footer-catalog__item-text">Електронні компоненти та комплектующі</h2>
-        </a>
-
-        <a href="#" class="footer-catalog__item">
-          <img
-            class="footer-catalog__item-image"
-            src="@/assets/images/catalog/soldering.png"
-            alt=""
-          />
-          <h2 class="footer-catalog__item-text">Інструменти та обладнання</h2>
-        </a>
-
-        <a href="#" class="footer-catalog__item">
-          <img
-            class="footer-catalog__item-image"
-            src="@/assets/images/catalog/constructors.jpg"
-            alt=""
-          />
-          <h2 class="footer-catalog__item-text">Конструктори та набори</h2>
+          <h2 class="footer-catalog__item-text">{{ item.name }}</h2>
         </a>
       </section>
 
       <section class="footer-description">
         <div class="footer-description__item">
-          <h2 class="footer-description__item-header-text">Відділ продажу</h2>
-          <address class="shops-info__shop-item footer-description__item_padding-bottom">
-            м. Київ, Чоколівський бульвар, 42А, офіс 134-1
+          <h2 class="footer-description__item-header-text">
+            {{ storeContacts.salesDepartment.headerText }}
+          </h2>
+          <address
+            class="shops-info__shop-item footer-description__item_padding-bottom"
+          >
+            {{ storeContacts.salesDepartment.location }}
           </address>
           <a
             class="shops-info__shop-link footer-description__item_padding-bottom"
-            href="tel:+380631815267"
-            >+38-044-299-77-44</a
+            :href="
+              'tel:' +
+              storeContacts.salesDepartment.telephons?.replaceAll('-', '')
+            "
+            >{{ storeContacts.salesDepartment.telephons }}</a
           >
-          <a
-            class="shops-info__shop-link footer-description__item_padding-bottom"
-            href="tel:+0930582943"
-            >+38-067-240-79-27</a
+          <p
+            class="shops-info__shop-item footer-description__item_padding-bottom"
           >
-          <a
-            class="shops-info__shop-link footer-description__item_padding-bottom"
-            href="tel:+0930582943"
-            >+38-067-240-79-28</a
-          >
-          <p class="shops-info__shop-item footer-description__item_padding-bottom">
-            Години роботи: Пн-Сб 8:30-17:00
+            {{ storeContacts.salesDepartment.workTime }}
           </p>
-          <p class="shops-info__shop-item footer-description__item_padding-bottom">
-            <a class="shops-info__shop-link" href="emailto:sales@radiomag.com.ua"
-              >sales@radiomag.com.ua</a
+          <p
+            class="shops-info__shop-item footer-description__item_padding-bottom"
+          >
+            <a
+              class="shops-info__shop-link"
+              :href="'emailto:' + storeContacts.salesDepartment.email"
+              >{{ storeContacts.salesDepartment.email }}</a
             >
           </p>
         </div>
 
         <div class="footer-description__item footer-description__item_row-gap">
-          <a class="footer-description__item-link" href="#">Продукція</a>
-          <a class="footer-description__item-link" href="#">Новини</a>
-          <a class="footer-description__item-link" href="#">Магазини</a>
-          <a class="footer-description__item-link" href="#">Контакти</a>
+          <a class="footer-description__item-link" href="#">{{
+            $t("footer.product")
+          }}</a>
+          <a class="footer-description__item-link" href="#">{{
+            $t("footer.news")
+          }}</a>
+          <a class="footer-description__item-link" href="#">{{
+            $t("footer.shops")
+          }}</a>
+          <a class="footer-description__item-link" href="#">{{
+            $t("footer.contacts")
+          }}</a>
         </div>
 
         <div class="footer-description__item footer-description__item_row-gap">
-          <a class="footer-description__item-link" href="#">Відгуки та пропозиції</a>
-          <a class="footer-description__item-link" href="#">Як купувати</a>
-          <a class="footer-description__item-link" href="#">Доставка</a>
+          <a class="footer-description__item-link" href="#">{{
+            $t("footer.feedbackSuggestions")
+          }}</a>
+          <a class="footer-description__item-link" href="#">{{
+            $t("footer.howBuy")
+          }}</a>
+          <a class="footer-description__item-link" href="#">{{
+            $t("footer.delivery")
+          }}</a>
         </div>
 
         <div class="footer-description__item footer-description__item_row-gap">
-          <a class="footer-description__item-link" href="#">Персональна інформація</a>
-          <a class="footer-description__item-link" href="#">Замовлення</a>
-          <a class="footer-description__item-link" href="#">Корзина</a>
+          <a class="footer-description__item-link" href="#">{{
+            $t("footer.personalInformation")
+          }}</a>
+          <a class="footer-description__item-link" href="#">{{
+            $t("footer.order")
+          }}</a>
+          <a class="footer-description__item-link" href="#">{{
+            $t("footer.basket")
+          }}</a>
         </div>
 
         <div class="footer-description__item-social">
           <div class="footer-description__item-social-links social-links">
             <a class="social-links__link" href="#">
-              <img class="social-links__image" src="@/assets/images/vkontakte.svg" alt="" />
+              <img
+                class="social-links__image"
+                src="@/assets/images/vkontakte.svg"
+                alt=""
+              />
             </a>
             <a class="social-links__link" href="#">
-              <img class="social-links__image" src="@/assets/images/facebook.svg" alt="" />
+              <img
+                class="social-links__image"
+                src="@/assets/images/facebook.svg"
+                alt=""
+              />
             </a>
           </div>
 
@@ -111,8 +129,21 @@
       </section>
     </footer>
   </section>
-
 </template>
+
+<script setup lang="ts">
+import { onBeforeMount } from "vue";
+import { useCatalog } from "@/store/catalog";
+import { useContacts } from "@/store/contacts";
+
+const store = useCatalog();
+const storeContacts = useContacts();
+
+onBeforeMount(() => {
+  store.useMenu();
+  storeContacts.load();
+});
+</script>
 
 <style lang="scss">
 .footer {

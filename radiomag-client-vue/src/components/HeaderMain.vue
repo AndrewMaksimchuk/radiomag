@@ -7,9 +7,9 @@
 </template>
 
 <script setup lang="ts">
-import HeaderInfo from "./HeaderInfo.vue";
+import HeaderInfo from "./HeaderInfoComponent.vue";
 import HeaderSearch from "./HeaderSearch.vue";
-import HeaderNav from "./HeaderNav.vue";
+import HeaderNav from "./HeaderNavComponent.vue";
 </script>
 
 <style lang="scss">

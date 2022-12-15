@@ -1,18 +1,20 @@
 <template>
   <div class="lang-choose">
     <button class="lang-choose__select hover" @click="toggle">
-      {{ lang }}
+      {{ useI18n.locale }}
     </button>
 
     <div
       class="lang-choose__options-list"
       :class="{ 'lang-choose__options-list_open': isOpen }"
     >
-      <button class="lang-choose__options-item hover" @click="choose('UA')">
-        UA
-      </button>
-      <button class="lang-choose__options-item hover" @click="choose('EN')">
-        EN
+      <button
+        class="lang-choose__options-item hover"
+        v-for="lang in useI18n.availableLocales"
+        :key="lang"
+        @click="choose(lang)"
+      >
+        {{ lang }}
       </button>
     </div>
   </div>
@@ -20,15 +22,16 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { useI18nStore } from "@/store/i18n";
 
-const lang = ref("UA");
+const useI18n = useI18nStore();
 const isOpen = ref(false);
 
 const toggle = () => (isOpen.value = !isOpen.value);
 const close = () => (isOpen.value = false);
 
 const choose = (value: string) => {
-  lang.value = value;
+  useI18n.setLocale(value);
   close();
 };
 </script>
@@ -53,6 +56,7 @@ const choose = (value: string) => {
     background-color: inherit;
     display: block;
     color: inherit;
+    text-transform: uppercase;
   }
 
   &__options-list {
@@ -73,7 +77,7 @@ const choose = (value: string) => {
     background-color: transparent;
     color: inherit;
     border: none;
-    text-transform: capitalize;
+    text-transform: uppercase;
     font-size: inherit;
     display: block;
     padding: 5px 0;

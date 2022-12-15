@@ -1,6 +1,6 @@
 <template>
   <section class="copyright">
-    &copy; 2021 Радіомаг
+    &copy; 2021 - {{ new Date().getFullYear() }} {{ $t("copyright") }}
   </section>
 </template>
 

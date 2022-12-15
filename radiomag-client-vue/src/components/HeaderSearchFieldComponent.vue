@@ -21,15 +21,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useRouter } from "vue-router";
+import { useI18nStore } from "@/store/i18n";
 
 const router = useRouter();
+const useI18n = useI18nStore();
 const productName = ref("");
-const searchPlaceholder = ref("Введіть текст");
+const searchPlaceholder = ref("");
+
+searchPlaceholder.value = useI18n.t("header.search.empty");
 
 const searchProduct = () =>
   productName.value
     ? router.push({ name: "search", params: { name: productName.value } })
-    : (searchPlaceholder.value = "Поле пусте, потрібно ввести текст");
+    : (searchPlaceholder.value = useI18n.t("header.search.emptyWhenClick"));
+
+watch(
+  useI18n,
+  () => (searchPlaceholder.value = useI18n.t("header.search.empty"))
+);
 </script>

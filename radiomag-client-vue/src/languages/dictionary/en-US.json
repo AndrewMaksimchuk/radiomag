@@ -1,0 +1,84 @@
+{
+  "header": {
+    "info": {
+      "subscription": "Subscription",
+      "loginRegistration": "Login / Registration",
+      "basket": "Basket"
+    },
+    "search": {
+      "empty": "Enter the text",
+      "emptyWhenClick": "The field is empty, you need to enter text"
+    },
+    "nav": {
+      "product": "Products",
+      "news": "News",
+      "shops": "Shops",
+      "contacts": "Contacts",
+      "feedbackSuggestions": "Feedback or suggestions",
+      "howBuy": "How to buy?",
+      "delivery": "Delivery"
+    }
+  },
+  "catalogComponents": "Catalog of components",
+  "linecard": {
+    "label": "To see products, select a manufacturer or category.",
+    "productions": "All manufacturers",
+    "categories": "All categories",
+    "submit": "Show"
+  },
+  "news": {
+    "header": "News",
+    "readAll": "Read all news"
+  },
+  "manufacturers": "Components of manufacturers",
+  "bulletin": {
+    "header": "Bulletin",
+    "label": "Information about events, promotions and new products directly to your basket.",
+    "placeholder": "Write your E-mail",
+    "submit": "Subscription"
+  },
+  "buttonToUp": "Up",
+  "footer": {
+    "product": "Product",
+    "news": "News",
+    "shops": "Shops",
+    "contacts": "Contacts",
+    "feedbackSuggestions": "Feedback and suggestions",
+    "howBuy": "How to buy",
+    "delivery": "Delivery",
+    "personalInformation": "Personal information",
+    "order": "Order",
+    "basket": "Basket"
+  },
+  "copyright": "Radiomag",
+  "order": {
+    "header": "Order",
+    "photo": "Photo",
+    "name": "Name",
+    "inStock": "Available",
+    "cost": "Cost",
+    "quantity": "Number",
+    "codeGoods": "Product code",
+    "empty": "Cart is empty...",
+    "form": {
+      "totalCost": "the total cost",
+      "clearCart": "Clear the basket",
+      "continueShopping": "Continue shopping",
+      "toOrder": "To order"
+    }
+  },
+  "popularProducts": "Popular products",
+  "pagination": {
+    "toStart": "To the beginning",
+    "toEnd": "To the end"
+  },
+  "card": {
+    "codeGoods": "Product code",
+    "production": "Producer",
+    "technicalInformation": "Technical information",
+    "availability": "Availability",
+    "price": "Price",
+    "addedCart": "Added to cart",
+    "buy": "Buy"
+  }
+}

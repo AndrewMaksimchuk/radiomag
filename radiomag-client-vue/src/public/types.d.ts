@@ -1,4 +1,4 @@
-type TransferObject =
+export type TransferObject =
   | {
       type: "sum_all_product_description";
       data: Group;

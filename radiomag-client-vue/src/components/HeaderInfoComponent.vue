@@ -33,14 +33,14 @@
         src="@/assets/images/mail-send.svg"
         alt="subscribe"
         class="header__img-info"
-      />Підписка
+      />{{ $t("header.info.subscription") }}
     </button>
     <button class="header__info-item login-registration">
       <img
         src="@/assets/images/user.svg"
         alt="login"
         class="header__img-info"
-      />Вхід / Реєстрація
+      />{{ $t("header.info.loginRegistration") }}
     </button>
 
     <HeaderCart />
@@ -50,6 +50,6 @@
 </template>
 
 <script setup lang="ts">
-import HeaderCart from "./HeaderCart.vue";
-import LangChoose from "./LangChoose.vue";
+import HeaderCart from "./HeaderCartComponent.vue";
+import LangChoose from "./LangChooseComponent.vue";
 </script>

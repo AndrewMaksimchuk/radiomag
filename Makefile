@@ -22,7 +22,7 @@ start_ide:
 	code
 
 start_browser:
-	chromium http://localhost:5173/ > /dev/null 2>&1 &
+	chromium --auto-open-devtools-for-tabs --start-fullscreen http://localhost:5173/ > /dev/null 2>&1 &
 
 install: install_server install_client hooks
 
@@ -55,6 +55,11 @@ hooks:
 
 tests_server:
 	cd $(server) && npm run tests
+
+tests_client:
+	cd $(client) && npm run test:unit
+
+tests: tests_server tests_client
 
 git_clear:
 	git branch | grep -v -e "dev" -e "main" | xargs git branch -d

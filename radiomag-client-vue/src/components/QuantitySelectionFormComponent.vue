@@ -3,7 +3,7 @@
     <slot></slot>
     <form class="card-line__right-form">
       <span class="notification-added-to-cart" v-if="isAddedToCart">
-        Додано до корзини
+        {{ $t("card.addedCart") }}
       </span>
 
       <section class="card-line__right-form-line">
@@ -29,7 +29,7 @@
       </section>
 
       <button class="card-line__right-button-buy" @click.prevent="addToCart">
-        Купити
+        {{ $t("card.buy") }}
       </button>
     </form>
   </div>

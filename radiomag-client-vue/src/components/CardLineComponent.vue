@@ -27,7 +27,7 @@
             @click="addGoodsToStorage"
           >
             <p class="card-line__center-description-small-paragraph">
-              Код товара:
+              {{ $t("card.codeGoods") }}:
               <span
                 class="card-line__center-description-small-paragraph_light-color"
               >
@@ -40,7 +40,7 @@
             v-if="product.description[1]"
             class="card-line__center-description-small-paragraph"
           >
-            Виробник:
+            {{ $t("card.production") }}:
             <span
               class="card-line__center-description-small-paragraph_light-color"
             >
@@ -63,13 +63,16 @@
             class="card-line__center-description-tech-info-link"
             href="#"
             @click.prevent="showSpecification"
-            >Технічна інформація</a
           >
+            {{ $t("card.technicalInformation") }}
+          </a>
         </p>
       </div>
 
       <div class="card-line__center-availability">
-        <h3 class="card-line__center-availability-header-text">Наявність:</h3>
+        <h3 class="card-line__center-availability-header-text">
+          {{ $t("card.availability") }}:
+        </h3>
         <ProductAvailability
           :inStock="product.stock_data"
           :unit="product.pcs"
@@ -77,7 +80,9 @@
       </div>
 
       <div class="card-line__center-price">
-        <h3 class="card-line__center-price-header-text">Ціна:</h3>
+        <h3 class="card-line__center-price-header-text">
+          {{ $t("card.price") }}:
+        </h3>
         <ProductPrice :productPriceArray="product.prices" />
       </div>
     </div>
@@ -99,7 +104,7 @@ import { useImageShow } from "@/store/imageShow";
 
 import ProductAvailability from "./ProductAvailability.vue";
 import ProductPrice from "./ProductPrice.vue";
-import QuantitySelectionForm from "./QuantitySelectionForm.vue";
+import QuantitySelectionForm from "./QuantitySelectionFormComponent.vue";
 
 const props = defineProps<{
   product: WorkerProduct;
@@ -146,7 +151,7 @@ const addGoodsToStorage = () =>
 <style lang="scss">
 .card-line {
   width: 100%;
-  height: 175px;
+  min-height: 175px;
   border: 1px solid var(--color-gray-light);
   background-color: var(--color-white);
   display: flex;
@@ -196,7 +201,7 @@ const addGoodsToStorage = () =>
     font-size: 1.2rem;
 
     &-description {
-      flex: 6;
+      flex: 5;
       color: var(--color-gray-dark);
       padding-right: 28px;
 

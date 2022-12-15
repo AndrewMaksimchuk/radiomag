@@ -1,18 +1,22 @@
 <template>
   <nav class="catalog-of-products" v-if="store.length">
-    <h2 class="catalog-of-products__header">Каталог компонентів</h2>
-    <ul class="catalog-of-products__list ">
-      <CatalogShortItem v-for="(item, index) in store.catalog" :key="index" :data="item" />
+    <h2 class="catalog-of-products__header">{{ $t("catalogComponents") }}</h2>
+    <ul class="catalog-of-products__list">
+      <CatalogShortItem
+        v-for="(item, index) in store.catalog"
+        :key="index"
+        :data="item"
+      />
     </ul>
   </nav>
 </template>
 
 <script setup lang="ts">
-import { useCatalog } from '@/store/catalog';
-import CatalogShortItem from './CatalogShortItem.vue';
+import { useCatalog } from "@/store/catalog";
+import CatalogShortItem from "./CatalogShortItem.vue";
 
 const store = useCatalog();
-store.useMenu()
+store.useMenu();
 </script>
 
 <style lang="scss">

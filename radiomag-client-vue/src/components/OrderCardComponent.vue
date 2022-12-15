@@ -1,18 +1,16 @@
 <template>
-  <tr
-    class="order-card">
-
-    <td
-      class="order-card__row">
+  <tr class="order-card">
+    <td class="order-card__row">
       <img
         class="order-card__img"
         :src="'https://www.rcscomponents.kiev.ua' + goods.product.image"
-        :alt="goods.product.description[0]">
+        :alt="goods.product.description[0]"
+      />
     </td>
 
     <td class="order-card__row order-card__row_fix-size">
       <h3>{{ goods.product.description[0] }}</h3>
-      <p>Код товара: {{ goods.product.id }}</p>
+      <p>{{ $t("order.codeGoods") }}: {{ goods.product.id }}</p>
     </td>
 
     <td class="order-card__row">
@@ -23,9 +21,7 @@
     </td>
 
     <td class="order-card__row">
-      <ProductPrice
-        :productPriceArray="goods.product.prices"
-      />
+      <ProductPrice :productPriceArray="goods.product.prices" />
     </td>
 
     <td class="order-card__row">
@@ -37,33 +33,32 @@
     </td>
 
     <td class="order-card__row">
-      <button
-        class="order-card__button-delete"
-        @click="store.remove(index)">
+      <button class="order-card__button-delete" @click="store.remove(index)">
         <img
           class="order-card__button-delete-img"
           src="@/assets/images/delete.svg"
-          alt="button delete product from cart">
+          alt="button delete product from cart"
+        />
       </button>
     </td>
-
   </tr>
 </template>
 
 <script setup lang="ts">
-import type { CartItem } from '@/store/cart';
-import { useCart } from '@/store/cart';
-import ProductAvailability from './ProductAvailability.vue';
-import ProductPrice from './ProductPrice.vue';
-import QuantitySelectionForm from './QuantitySelectionForm.vue';
+import type { CartItem } from "@/store/cart";
+import { useCart } from "@/store/cart";
+import ProductAvailability from "./ProductAvailability.vue";
+import ProductPrice from "./ProductPrice.vue";
+import QuantitySelectionForm from "./QuantitySelectionFormComponent.vue";
 
 const props = defineProps<{
-    goods: CartItem,
-    index: number,
+  goods: CartItem;
+  index: number;
 }>();
 
 const store = useCart();
-const changeQuantityOfProduct = (value: number) => store.changeQuantity({ code: props.goods.product.id, quantity: value });
+const changeQuantityOfProduct = (value: number) =>
+  store.changeQuantity({ code: props.goods.product.id, quantity: value });
 </script>
 
 <style lang="scss">
@@ -77,7 +72,6 @@ const changeQuantityOfProduct = (value: number) => store.changeQuantity({ code: 
     &_fix-size {
       width: 450px;
     }
-
   }
 
   &__img {
@@ -87,7 +81,7 @@ const changeQuantityOfProduct = (value: number) => store.changeQuantity({ code: 
   &__button-delete {
     border: none;
     background: none;
-    opacity: .6;
+    opacity: 0.6;
 
     &:hover {
       cursor: pointer;

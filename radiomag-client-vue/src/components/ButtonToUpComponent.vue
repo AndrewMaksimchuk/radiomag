@@ -1,15 +1,23 @@
 <template>
   <button class="to-up-button" @click="toUp">
-    <svg class="to-up-button__image" width="67.733mm" height="41.853mm" version="1.1" viewBox="0 0 67.733 41.853"
-      xmlns="http://www.w3.org/2000/svg">
+    <svg
+      class="to-up-button__image"
+      width="67.733mm"
+      height="41.853mm"
+      version="1.1"
+      viewBox="0 0 67.733 41.853"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <g transform="translate(-.1263 -.060482)">
         <g transform="matrix(0 -.26458 .26458 0 1.6631 55.789)">
-          <polygon transform="translate(3.5355 -5.8084)"
-            points="48.907 30.187 146.72 128 48.907 225.81 79.093 256 207.09 128 79.093 0" />
+          <polygon
+            transform="translate(3.5355 -5.8084)"
+            points="48.907 30.187 146.72 128 48.907 225.81 79.093 256 207.09 128 79.093 0"
+          />
         </g>
       </g>
     </svg>
-    <span class="to-up-button__text">Догори</span>
+    <span class="to-up-button__text">{{ $t("buttonToUp") }}</span>
   </button>
 </template>
 
@@ -20,6 +28,7 @@ const toUp = () => window.scrollTo(0, 0);
 <style lang="scss">
 .to-up-button {
   --size: 60px;
+
   min-width: 100%;
   height: var(--size);
   padding: 0;
@@ -59,8 +68,14 @@ const toUp = () => window.scrollTo(0, 0);
     cursor: pointer;
   }
 
+  &:focus {
+    outline-offset: 15px;
+    text-decoration: none;
+  }
+
   &__image {
     --icon-size: calc(var(--size) / 3);
+
     max-width: var(--icon-size);
     max-height: var(--icon-size);
     position: absolute;

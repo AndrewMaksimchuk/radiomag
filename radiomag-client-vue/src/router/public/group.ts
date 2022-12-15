@@ -1,7 +1,7 @@
 export default {
   path: "/group/:id",
   name: "group",
-  component: () => import("@/views/Group.vue"),
+  component: () => import("@/views/GroupPage.vue"),
   props: true,
   meta: {
     title: "Група",
@@ -10,4 +10,3 @@ export default {
     },
   },
 };
-

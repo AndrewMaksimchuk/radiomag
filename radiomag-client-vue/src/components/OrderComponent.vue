@@ -1,15 +1,15 @@
 <template>
   <section class="order">
-    <h2 class="order__header-text">Замовлення: </h2>
+    <h2 class="order__header-text">{{ $t("order.header") }}:</h2>
 
     <table class="order__table">
       <thead>
         <tr class="order__table-row">
-          <th class="order__table-row-item">Фото</th>
-          <th class="order__table-row-item">Назва</th>
-          <th class="order__table-row-item">У наявності</th>
-          <th class="order__table-row-item">Вартість</th>
-          <th class="order__table-row-item">Кількість</th>
+          <th class="order__table-row-item">{{ $t("order.photo") }}</th>
+          <th class="order__table-row-item">{{ $t("order.name") }}</th>
+          <th class="order__table-row-item">{{ $t("order.inStock") }}</th>
+          <th class="order__table-row-item">{{ $t("order.cost") }}</th>
+          <th class="order__table-row-item">{{ $t("order.quantity") }}</th>
           <th class="order__table-row-item"></th>
         </tr>
       </thead>
@@ -22,17 +22,17 @@
         />
       </tbody>
     </table>
-    <OrderForm/>
+    <OrderForm />
   </section>
 </template>
 
 <script setup lang="ts">
-import type { Cart } from '@/store/cart';
-import OrderCard from './OrderCard.vue';
-import OrderForm from './OrderForm.vue';
+import type { Cart } from "@/store/cart";
+import OrderCard from "./OrderCardComponent.vue";
+import OrderForm from "./OrderFormComponent.vue";
 
 defineProps<{
-  cart: Cart,
+  cart: Cart;
 }>();
 </script>
 

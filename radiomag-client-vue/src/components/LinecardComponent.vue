@@ -2,16 +2,20 @@
   <article class="linecard borders">
     <h2 class="linecard__header-text">Linecard</h2>
     <form class="linecard__form" action="#">
-      <label class="linecard__form-label"
-        >Щоб побачити вироби, виберіть виробника або категорію.</label
-      >
+      <label class="linecard__form-label">{{ $t("linecard.label") }}</label>
       <select name="productions" class="linecard__form-select">
-        <option value="" class="linecard__form-option">Всі виробники</option>
+        <option value="" class="linecard__form-option">
+          {{ $t("linecard.productions") }}
+        </option>
       </select>
       <select name="categories" class="linecard__form-select">
-        <option value="" class="linecard__form-option">Всі категорії</option>
+        <option value="" class="linecard__form-option">
+          {{ $t("linecard.categories") }}
+        </option>
       </select>
-      <button class="linecard__form-submit cursor-pointer" type="submit">Показати</button>
+      <button class="linecard__form-submit cursor-pointer" type="submit">
+        {{ $t("linecard.submit") }}
+      </button>
     </form>
   </article>
 </template>
@@ -20,6 +24,7 @@
 .linecard {
   width: var(--width-card);
   background-color: var(--color-white);
+
   &__header-text {
     color: var(--color-white);
     background-color: var(--blue-light);
@@ -27,18 +32,21 @@
     padding: 11px;
     font-size: 1.6rem;
   }
+
   &__form {
     width: 100%;
     padding: 18px 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
     &-label {
       font-size: 1.4rem;
       letter-spacing: 1px;
       line-height: 1.6;
       padding-bottom: 34px;
     }
+
     &-select {
       width: 100%;
       border: none;
@@ -48,12 +56,12 @@
       border-bottom: 1px solid var(--color-gray-light);
       margin-bottom: 23px;
       letter-spacing: 1px;
+
       &:hover {
         cursor: pointer;
       }
     }
-    &-option {
-    }
+
     &-submit {
       width: 164px;
       height: 45px;
@@ -63,6 +71,7 @@
       font-size: 1.4rem;
       text-transform: uppercase;
       letter-spacing: 2px;
+
       &:hover {
         text-decoration: underline;
       }

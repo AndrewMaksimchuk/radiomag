@@ -1,15 +1,18 @@
 <template>
   <article class="news">
-    <h2 class="news__header-text">Новини</h2>
+    <h2 class="news__header-text">{{ $t("news.header") }}</h2>
     <div class="news__container">
       <article class="news__item">
         <time class="news__item-time">
           <img src="" alt="" />
           16/03/2017
         </time>
-        <h3 class="news__item-header-text">Макетні плати, зєднувачі та корпуса виробника E-CALL</h3>
+        <h3 class="news__item-header-text">
+          Макетні плати, зєднувачі та корпуса виробника E-CALL
+        </h3>
         <p class="news__item-text-description">
-          Розширення асортименту по макетним платам, зєднувачам до них та корпусах від виробника
+          Розширення асортименту по макетним платам, зєднувачам до них та
+          корпусах від виробника
           <a href="#" class="news__item-text-description-link">E-CALL</a>
         </p>
         <p class="news__item-links">
@@ -19,8 +22,9 @@
         </p>
         <p class="news__item-footer">
           Подивитися повний список поставок можна за
-          <a class="common-link news__item-footer-link" href="">посиланням</a> або на сторінках
-          нашого <a class="common-link news__item-footer-link" href="">сайта</a>.
+          <a class="common-link news__item-footer-link" href="">посиланням</a>
+          або на сторінках нашого
+          <a class="common-link news__item-footer-link" href="">сайта</a>.
         </p>
       </article>
       <article class="news__item">
@@ -28,9 +32,12 @@
           <img src="" alt="" />
           16/03/2017
         </time>
-        <h3 class="news__item-header-text">Макетні плати, зєднувачі та корпуса виробника E-CALL</h3>
+        <h3 class="news__item-header-text">
+          Макетні плати, зєднувачі та корпуса виробника E-CALL
+        </h3>
         <p class="news__item-text-description">
-          Розширення асортименту по макетним платам, зєднувачам до них та корпусах від виробника
+          Розширення асортименту по макетним платам, зєднувачам до них та
+          корпусах від виробника
           <a href="#" class="news__item-text-description-link">E-CALL</a>
         </p>
         <p class="news__item-links">
@@ -40,8 +47,9 @@
         </p>
         <p class="news__item-footer">
           Подивитися повний список поставок можна за
-          <a class="common-link news__item-footer-link" href="">посиланням</a> або на сторінках
-          нашого <a class="common-link news__item-footer-link" href="">сайта</a>.
+          <a class="common-link news__item-footer-link" href="">посиланням</a>
+          або на сторінках нашого
+          <a class="common-link news__item-footer-link" href="">сайта</a>.
         </p>
       </article>
       <article class="news__item">
@@ -49,9 +57,12 @@
           <img src="" alt="" />
           16/03/2017
         </time>
-        <h3 class="news__item-header-text">Макетні плати, зєднувачі та корпуса виробника E-CALL</h3>
+        <h3 class="news__item-header-text">
+          Макетні плати, зєднувачі та корпуса виробника E-CALL
+        </h3>
         <p class="news__item-text-description">
-          Розширення асортименту по макетним платам, зєднувачам до них та корпусах від виробника
+          Розширення асортименту по макетним платам, зєднувачам до них та
+          корпусах від виробника
           <a href="#" class="news__item-text-description-link">E-CALL</a>
         </p>
         <p class="news__item-links">
@@ -61,8 +72,9 @@
         </p>
         <p class="news__item-footer">
           Подивитися повний список поставок можна за
-          <a class="common-link news__item-footer-link" href="">посиланням</a> або на сторінках
-          нашого <a class="common-link news__item-footer-link" href="">сайта</a>.
+          <a class="common-link news__item-footer-link" href="">посиланням</a>
+          або на сторінках нашого
+          <a class="common-link news__item-footer-link" href="">сайта</a>.
         </p>
       </article>
       <article class="news__item">
@@ -70,9 +82,12 @@
           <img src="" alt="" />
           16/03/2017
         </time>
-        <h3 class="news__item-header-text">Макетні плати, зєднувачі та корпуса виробника E-CALL</h3>
+        <h3 class="news__item-header-text">
+          Макетні плати, зєднувачі та корпуса виробника E-CALL
+        </h3>
         <p class="news__item-text-description">
-          Розширення асортименту по макетним платам, зєднувачам до них та корпусах від виробника
+          Розширення асортименту по макетним платам, зєднувачам до них та
+          корпусах від виробника
           <a href="#" class="news__item-text-description-link">E-CALL</a>
         </p>
         <p class="news__item-links">
@@ -82,13 +97,14 @@
         </p>
         <p class="news__item-footer">
           Подивитися повний список поставок можна за
-          <a class="common-link news__item-footer-link" href="">посиланням</a> або на сторінках
-          нашого <a class="common-link news__item-footer-link" href="">сайта</a>.
+          <a class="common-link news__item-footer-link" href="">посиланням</a>
+          або на сторінках нашого
+          <a class="common-link news__item-footer-link" href="">сайта</a>.
         </p>
       </article>
     </div>
     <div class="news__footer">
-      <a class="news__footer-link" href="#">Читати всі новини</a>
+      <a class="news__footer-link" href="#">{{ $t("news.readAll") }}</a>
     </div>
   </article>
 </template>
@@ -126,37 +142,45 @@
       font-size: 1.6rem;
       padding-bottom: 10px;
     }
+
     &-text-description {
       font-size: 1.4rem;
       padding-bottom: 22px;
+
       &-link {
         text-decoration: none;
         text-transform: uppercase;
         color: var(--color-blue-dark);
         font-weight: 700;
+
         &:hover {
           cursor: pointer;
           text-decoration: underline;
         }
       }
     }
+
     &-links {
       display: flex;
       padding-bottom: 22px;
+
       &-item {
         padding-right: 36px;
         text-decoration: none;
         text-transform: uppercase;
         color: var(--color-blue-dark);
         font-weight: 700;
+
         &:hover {
           cursor: pointer;
           text-decoration: underline;
         }
       }
     }
+
     &-footer {
       font-size: 1.4rem;
+
       &-link {
         font-weight: inherit;
       }
