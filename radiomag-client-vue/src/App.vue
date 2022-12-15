@@ -17,9 +17,9 @@ import Header from "@/components/HeaderMain.vue";
 import Breadcrumbs from "@/components/Breadcrumbs.vue";
 import ModalWindow from "@/components/ModalWindow.vue";
 import ImageShowBig from "@/components/ImageShowBig.vue";
-import ShopInfo from "@/components/ShopInfo.vue";
-import Footer from "@/components/Footer.vue";
-import Copyright from "@/components/Copyright.vue";
+import ShopInfo from "@/components/ShopInfoComponent.vue";
+import Footer from "@/components/FooterComponent.vue";
+import Copyright from "@/components/CopyrightComponent.vue";
 import { useCart } from "@/store/cart";
 
 useCart().loadLocalStorage();

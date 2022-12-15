@@ -1,0 +1,84 @@
+{
+  "header": {
+    "info": {
+      "subscription": "Підписка",
+      "loginRegistration": "Вхід / Реєстрація",
+      "basket": "Корзина"
+    },
+    "search": {
+      "empty": "Введіть текст",
+      "emptyWhenClick": "Поле пусте, потрібно ввести текст"
+    },
+    "nav": {
+      "product": "Продукція",
+      "news": "Новини",
+      "shops": "Магазини",
+      "contacts": "Контакти",
+      "feedbackSuggestions": "Відгуки та пропозиції",
+      "howBuy": "Як купити?",
+      "delivery": "Доставка"
+    }
+  },
+  "catalogComponents": "Каталог компонентів",
+  "linecard": {
+    "label": "Щоб побачити вироби, виберіть виробника або категорію.",
+    "productions": "Всі виробники",
+    "categories": "Всі категорії",
+    "submit": "Показати"
+  },
+  "news": {
+    "header": "Новини",
+    "readAll": "Читати всі новини"
+  },
+  "manufacturers": "Компоненти виробників",
+  "bulletin": {
+    "header": "Бюлетень",
+    "label": "Інформація про події, акції та новий товар прямо у ваш кошик.",
+    "placeholder": "Напишіть ваший E-mail",
+    "submit": "Записатися"
+  },
+  "buttonToUp": "Догори",
+  "footer": {
+    "product": "Продукція",
+    "news": "Новини",
+    "shops": "Магазини",
+    "contacts": "Контакти",
+    "feedbackSuggestions": "Відгуки та пропозиції",
+    "howBuy": "Як купувати",
+    "delivery": "Доставка",
+    "personalInformation": "Персональна інформація",
+    "order": "Замовлення",
+    "basket": "Корзина"
+  },
+  "copyright": "Радіомаг",
+  "order": {
+    "header": "Замовлення",
+    "photo": "Фото",
+    "name": "Назва",
+    "inStock": "У наявності",
+    "cost": "Вартість",
+    "quantity": "Кількість",
+    "codeGoods": "Код товара",
+    "empty": "Корзина порожня...",
+    "form": {
+      "totalCost": "Загальна вартість",
+      "clearCart": "Очистити корзину",
+      "continueShopping": "Продовжити покупку",
+      "toOrder": "Оформити замовлення"
+    }
+  },
+  "popularProducts": "Популярні товари",
+  "pagination": {
+    "toStart": "На початок",
+    "toEnd": "У кінець"
+  },
+  "card": {
+    "codeGoods": "Код товара",
+    "production": "Виробник",
+    "technicalInformation": "Технічна інформація",
+    "availability": "Наявність",
+    "price": "Ціна",
+    "addedCart": "Додано до корзини",
+    "buy": "Купити"
+  }
+}

@@ -1,7 +1,7 @@
 <template>
   <article class="contacts">
     <ContactSection
-      v-for="(item, index) in contacts"
+      v-for="(item, index) in store.contacts"
       :key="index"
       :headerText="item.headerText"
     >
@@ -12,19 +12,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onBeforeMount } from "vue";
-import { GET } from "@/httpClient";
+import { onBeforeMount } from "vue";
+import { useContacts } from "@/store/contacts";
 import ContactSection from "@/components/ContactSection.vue";
 import Map from "@/components/Map.vue";
 import ContactShopList from "@/components/ContactShopList.vue";
 
-const contacts = ref();
-
-onBeforeMount(async () => {
-  const [error, data] = await GET.contacts();
-  if (error) console.debug(error);
-  contacts.value = data;
-});
+const store = useContacts();
+onBeforeMount(() => store.load());
 </script>
 
 <style lang="scss">

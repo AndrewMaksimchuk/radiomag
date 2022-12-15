@@ -1,8 +1,4 @@
 export const HTTPget = {
-  // PAGE
-  home: "/",
-
-  // API
   contacts: "/api/contacts",
   catalog: "/api/catalog",
   slider: "/api/slider",
