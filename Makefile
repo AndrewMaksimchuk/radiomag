@@ -63,3 +63,6 @@ tests: tests_server tests_client
 
 git_clear:
 	git branch | grep -v -e "dev" -e "main" | xargs git branch -d
+
+init_dev_env:
+	npm i

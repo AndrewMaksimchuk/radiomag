@@ -5,7 +5,12 @@
       :key="index"
       :headerText="item.headerText"
     >
-      <Map />
+      <Map
+        :id="index.toString()"
+        :view="item.map.view"
+        :zoom="item.map.zoom"
+        :markers="item.map.markers"
+      />
       <ContactShopList :datas="item.list" />
     </ContactSection>
   </article>
@@ -15,7 +20,7 @@
 import { onBeforeMount } from "vue";
 import { useContacts } from "@/store/contacts";
 import ContactSection from "@/components/ContactSection.vue";
-import Map from "@/components/Map.vue";
+import Map from "@/components/MapComponent.vue";
 import ContactShopList from "@/components/ContactShopList.vue";
 
 const store = useContacts();

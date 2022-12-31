@@ -1,3 +1,5 @@
+import type { Group } from "../../../dto/Group";
+import type { Contacts } from "../../../dto/Contacts";
 import { HTTPget } from "../../../endpoints";
 import GETdata from "./GET";
 
@@ -9,5 +11,5 @@ export const GET = {
   group: async (id: number | string) => GETdata<Group>(HTTPget.group(id)),
   groupName: async (id: number | string) =>
     GETdata<string>(HTTPget.groupName(id)),
-  contacts: async () => GETdata<string>(HTTPget.contacts),
+  contacts: async () => GETdata<Contacts>(HTTPget.contacts),
 };
