@@ -9,6 +9,7 @@ import {
 import { contacts } from "../database/contacts.ts";
 import { catalog } from "../database/catalog.ts";
 import { slider } from "../database/slider.ts";
+import { search } from "./search.ts";
 
 type Cache = Record<string, object>;
 
@@ -31,9 +32,10 @@ router.get(endpoints.group, async (req, res) => {
   return res.json(data);
 });
 
-router.get(endpoints.search, (req, res) => {
+router.get(endpoints.search, async (req, res) => {
   const url = `https://www.rcscomponents.kiev.ua/modules.php?name=Asers_Shop&s_op=search&query=${req.params.name}`;
-  return res.json({ url });
+  const finded = await search(url);
+  return res.json(finded);
 });
 
 router.get(endpoints.catalog, (req, res) => res.json(catalog));
