@@ -99,7 +99,7 @@ export const search = async (url: string) => {
 
   const browser = await puppeteer.launch({
     headless: isDevLocal,
-    devtools: true,
+    devtools: isDevLocal,
     args: ["--start-maximized"],
   });
   const page = await browser.newPage();

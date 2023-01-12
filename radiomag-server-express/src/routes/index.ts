@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { endpoints } from "../../../endpoints/nodeEndpoints.ts";
+import { endpoints } from "./endpoints.ts";
 import { getAllGroupInfo } from "../services/getAllGroupData.ts";
 import {
   type CatalogGroupsItem,

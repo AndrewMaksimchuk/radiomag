@@ -1,4 +1,4 @@
-const endpoints = {
+export const endpoints = {
   contacts: "/api/contacts",
   catalog: "/api/catalog",
   slider: "/api/slider",
@@ -8,5 +8,3 @@ const endpoints = {
   groupName: "/api/groupName/:id",
   search: "/api/search/:name",
 };
-
-module.exports = { endpoints };
