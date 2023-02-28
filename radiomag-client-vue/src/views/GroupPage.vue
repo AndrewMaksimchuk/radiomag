@@ -37,7 +37,7 @@ import { useRoute } from "vue-router";
 import { useGroup } from "@/store/group";
 import { usePagination } from "@/store/pagination";
 import SpinnerLoader from "@/components/SpinnerLoader.vue";
-import Filters from "@/components/Filters.vue";
+import Filters from "@/components/FiltersComponent.vue";
 import Pagination from "@/components/Pagination.vue";
 import CardLine from "@/components/CardLineComponent.vue";
 import ErrorMessageInGroup from "@/components/ErrorMessageInGroup.vue";
@@ -116,8 +116,8 @@ onBeforeUnmount(() => {
   min-height: calc(100vh - 244px);
 
   &__filters {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
   }
 
   &__products {

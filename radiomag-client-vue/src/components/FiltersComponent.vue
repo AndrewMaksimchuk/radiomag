@@ -1,34 +1,32 @@
 <template>
   <div class="filter">
-    <h2 class="filter__header-text"> {{ header }} </h2>
+    <h2 class="filter__header-text">{{ header }}</h2>
     <ul class="filter__container">
-
       <li class="filter__item" v-for="(item, index) in data" :key="index">
         <input
           class="filter__item-input"
           type="checkbox"
           :name="item.title"
-          :id="(id + index).toString()">
-        <label
-          class="filter__item-label"
-          :for="(id + index).toString()">{{ item.title }} ({{ item.qty}})</label>
+          :id="(id + index).toString()"
+        />
+        <label class="filter__item-label" :for="(id + index).toString()"
+          >{{ item.title }} ({{ item.qty }})</label
+        >
       </li>
-
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
 defineProps<{
-  header: string,
-  id: number,
-  data: { title: string, qty: number }[],
+  header: string;
+  id: number;
+  data: { title: string; qty: number }[];
 }>();
 </script>
 
 <style lang="scss">
 .filter {
-  width: 288px;
   height: 234px;
   padding: 14px 10px;
   color: var(--color-black-light);
