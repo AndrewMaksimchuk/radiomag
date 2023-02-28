@@ -80,5 +80,6 @@
     "price": "Price",
     "addedCart": "Added to cart",
     "buy": "Buy"
-  }
+  },
+  "search": "Search result for"
 }
