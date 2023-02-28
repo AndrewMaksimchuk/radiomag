@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ "$GIT_TESTS" = "false" ]
+then
+   exit 0
+fi
+
 SERVER=$(cd ./radiomag-server-express && npm run tests)
 SERVERCODE=$(echo "$?")
 

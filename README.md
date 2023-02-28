@@ -36,3 +36,10 @@ Git commit titles:
 - "Performance"
 - "Other"
 - "Release"
+
+If need skip tests run when push local branch to remote server,
+add `GIT_TESTS=false` before `git push`:
+
+```
+GIT_TESTS=false git push -u origin <branch-name>
+```
