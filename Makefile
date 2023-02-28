@@ -66,3 +66,6 @@ git_clear:
 
 git_config:
 	git config --add include.path '../gitconfig'
+
+init_dev_env:
+	npm i

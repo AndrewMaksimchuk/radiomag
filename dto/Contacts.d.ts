@@ -1,14 +1,21 @@
+import type { LatLngLiteral } from "../radiomag-client-vue/node_modules/@types/leaflet";
+
 type ContactItemList = {
-    name: string,
-    location: string,
-    email: string,
-    workTime: string,
-    telephons: string,
+  name: string;
+  location: string;
+  email: string;
+  workTime: string;
+  telephons: string;
 };
 
-interface ContactItem {
-    headerText: string,
-    list: ContactItemList[],
+export interface ContactItem {
+  headerText: string;
+  list: ContactItemList[];
+  map: {
+    zoom: number;
+    view: LatLngLiteral;
+    markers: LatLngLiteral[];
+  };
 }
 
-type Contacts = ContactItem[];
+export type Contacts = ContactItem[];

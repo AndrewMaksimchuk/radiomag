@@ -1,4 +1,6 @@
-export const contacts = [
+import type { Contacts } from "../../../dto/Contacts";
+
+export const contacts: Contacts = [
   {
     headerText: "Відділ продажів",
     list: [
@@ -10,6 +12,19 @@ export const contacts = [
         telephons: "+38-044-299-77-44",
       },
     ],
+    map: {
+      zoom: 15,
+      view: {
+        lat: 50.4356,
+        lng: 30.4529,
+      },
+      markers: [
+        {
+          lat: 50.4386,
+          lng: 30.45186,
+        },
+      ],
+    },
   },
   {
     headerText: 'Мережа магазинів "Радіомаг"',
@@ -53,5 +68,34 @@ export const contacts = [
         telephons: "+38-096-601-20-71",
       },
     ],
+    map: {
+      zoom: 6,
+      view: {
+        lat: 48.524,
+        lng: 31.179,
+      },
+      markers: [
+        {
+          lat: 50.43656,
+          lng: 30.45139,
+        },
+        {
+          lat: 49.990155,
+          lng: 36.284429,
+        },
+        {
+          lat: 46.477089,
+          lng: 30.736684,
+        },
+        {
+          lat: 48.474886,
+          lng: 35.025399,
+        },
+        {
+          lat: 49.861555,
+          lng: 24.051325,
+        },
+      ],
+    },
   },
 ];
