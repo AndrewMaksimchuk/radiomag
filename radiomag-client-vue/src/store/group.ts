@@ -1,9 +1,10 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { GET } from "../httpClient";
+import type { Group } from "../../../dto/Group";
 
 interface GroupStore {
-  [groupId: number | string]: Group,
+  [id: number | string]: Group;
 }
 
 const errorMessage =
