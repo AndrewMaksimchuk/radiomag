@@ -1,8 +1,8 @@
 
-# ────────────────────────────────────────── 100 chars ────────────────────────────────────────────┤
+# ───────────────────────── 72 chars ──────────────────────────────────┤
 
-# <Describe the motivation behind this change - explain WHY you are making this change. 
-# Wrap all lines at 100 characters.>
+# <Describe the motivation behind this change - explain WHY you are
+# making this change. Wrap all lines at 72 characters.>
 
 # Example:
 # Added: Stylelint (#32).
@@ -10,13 +10,14 @@
 # <type>: <summary>
 #    |        |
 #    |        -> With capitalized and period at the end.
-#    |           Can contain information about breaking changes and is also the place to reference
-#                GitHub issues.
+#    |           Can contain information about breaking changes and is
+#                also the place to reference. GitHub issues.
 #    |
-#    -> Commit Type: Added | Changed | Fixed | Removed | Deprecated | Security | Performance 
-#       | Other | Release
+#    -> Commit Type: Added | Changed | Fixed | Removed | Deprecated |
+#                    Security | Performance | Other | Release
 #
-# The following is an excerpt of the specification with the most commonly needed info.
+# The following is an excerpt of the specification with the most
+# commonly needed info.
 #
 # Each commit message consists of a *header*, a *body*, and a *footer*.
 #
