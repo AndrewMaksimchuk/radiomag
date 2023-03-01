@@ -30,6 +30,16 @@ function errorExit(msg) {
   process.exit(1);
 }
 
+function removeVebose(msg = "") {
+  const divider = "\n";
+  const startSymbols = "# ---";
+  const lines = msg.split(divider);
+  const startVerbose = lines.findIndex((line) => line.startsWith(startSymbols));
+  return startVerbose > 0
+    ? lines.slice(0, startVerbose).filter(Boolean).join(divider)
+    : msg;
+}
+
 function removeComments(msg) {
   const divider = "\n";
   return msg
@@ -46,7 +56,7 @@ function getMessage(pathToCommitMessage) {
       pathToCommitMessage
     );
     const fileContent = fs.readFileSync(pathToCommitMessageFile, "utf-8");
-    const msg = removeComments(fileContent);
+    const msg = removeComments(removeVebose(fileContent));
     return msg;
   } catch (error) {
     errorExit(error);
