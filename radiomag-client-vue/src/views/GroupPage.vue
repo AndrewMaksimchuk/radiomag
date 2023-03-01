@@ -82,6 +82,9 @@ onBeforeMount(async () => {
   window.scrollTo(0, 0);
   await store.load(id);
 
+  const queryActivePage = Number(route.query.page) || 1;
+  storePagination.setActive(queryActivePage);
+
   window.document.title = `${store.groupName}`;
   putFilters();
 

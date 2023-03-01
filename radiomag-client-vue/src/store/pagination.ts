@@ -29,9 +29,12 @@ export const usePagination = defineStore("pagination", () => {
     }
 
     if (activePage.value + buttonsOnSide > numberOfButtons.value) {
-      const startNumber = numberOfButtons.value - numberOfButtonsDisplayed.value + 1;
-      return Array(numberOfButtonsDisplayed.value).fill(0).map((_, index) => startNumber + index);
-    };
+      const startNumber =
+        numberOfButtons.value - numberOfButtonsDisplayed.value + 1;
+      return Array(numberOfButtonsDisplayed.value)
+        .fill(0)
+        .map((_, index) => startNumber + index);
+    }
 
     for (let index = 1; index <= numberOfButtonsDisplayed.value; index++) {
       numbersInButtons.push(startPosition);
@@ -49,7 +52,8 @@ export const usePagination = defineStore("pagination", () => {
   });
 
   const setLength = (number: number) => (length.value = number);
-  const setActive = (number: number) => (activePage.value = number);
+  const setActive = (number: number) =>
+    number > 0 ? (activePage.value = number) : (activePage.value = 1);
   const moveLeft = () => (activePage.value -= 1);
   const moveRight = () => (activePage.value += 1);
   const toFirst = () => (activePage.value = 1);
