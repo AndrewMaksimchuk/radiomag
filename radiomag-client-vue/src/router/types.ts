@@ -5,6 +5,10 @@ declare module "vue-router" {
   interface RouteMeta {
     title: string;
   }
+
+  interface RouteLocationNormalizedLoaded {
+    params: RouteParams & { id?: string };
+  }
 }
 
-export {}
+export {};

@@ -28,7 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import type { RouteParams } from "vue-router";
 import type { WorkerProduct, TransferObject } from "@/public/types.d.ts";
 import type { Group } from "@/../../dto/Group.d.ts";
 
@@ -46,9 +45,7 @@ const route = useRoute();
 const store = useGroup();
 const storePagination = usePagination();
 
-type RouteWithId = RouteParams & { id: string };
-
-const { id } = route.params as RouteWithId;
+const id = route.params.id ?? "";
 const allDataToShow = ref<WorkerProduct[]>([]);
 const filterHeaders = ref<string[]>([]);
 const allFilters = ref<{ title: string; qty: number }[][]>([]);
