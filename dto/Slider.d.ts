@@ -1,4 +1,4 @@
-interface SliderItem {
+export interface SliderItem {
   imgsrc: string;
   title: string;
   description: string;
