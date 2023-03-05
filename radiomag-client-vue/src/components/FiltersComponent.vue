@@ -1,84 +1,44 @@
-<template>
-  <div class="filter">
-    <h2 class="filter__header-text">{{ header }}</h2>
-    <ul class="filter__container">
-      <li class="filter__item" v-for="(item, index) in data" :key="index">
-        <input
-          class="filter__item-input"
-          type="checkbox"
-          :name="item.title"
-          :id="(id + index).toString()"
-        />
-        <label class="filter__item-label" :for="(id + index).toString()"
-          >{{ item.title }} ({{ item.qty }})</label
-        >
-      </li>
-    </ul>
-  </div>
-</template>
-
 <script setup lang="ts">
+import Filter from "./FilterComponent.vue";
+
 defineProps<{
-  header: string;
-  id: number;
-  data: { title: string; qty: number }[];
+  headers: string[];
+  data: { title: string; qty: number }[][];
 }>();
 </script>
 
+<template>
+  <section>
+    <div class="filters">
+      <Filter
+        v-for="(header, index) in headers"
+        :key="index"
+        :id="index"
+        :header="header"
+        :data="data[index]"
+      />
+    </div>
+    <div class="filters__control">
+      <button class="button">
+        {{ $t("filters.buttons.reset") }}
+      </button>
+      <button class="button">
+        {{ $t("filters.buttons.apply") }}
+      </button>
+    </div>
+  </section>
+</template>
+
 <style lang="scss">
-.filter {
-  height: 234px;
-  padding: 14px 10px;
-  color: var(--color-black-light);
-  border: 1px solid var(--color-gray-light);
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
 
-  &__header-text {
-    font-size: 1.4rem;
-    font-weight: 700;
-    padding-bottom: 14px;
-    height: 15%;
-
-    &::first-letter {
-      text-transform: uppercase;
-    }
-  }
-
-  &__container {
-    list-style: none;
-    padding: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 85%;
-
-    &::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: var(--color-gray-light);
-      border-radius: 5px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: var(--blue-medium);
-      border-radius: 5px;
-    }
-  }
-
-  &__item {
+  &__control {
     display: flex;
-    font-size: 1.2rem;
-    padding-bottom: 11px;
-
-    &-input {
-      margin-right: 6px;
-    }
-
-    &-label {
-      &::first-letter {
-        text-transform: uppercase;
-      }
-    }
+    column-gap: 4px;
+    padding: 14px 4px;
+    padding-bottom: 0;
   }
 }
 </style>

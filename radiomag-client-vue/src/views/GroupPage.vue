@@ -1,45 +1,15 @@
-<template>
-  <div class="group">
-    <SpinnerLoader v-if="store.isLoading" />
-    <div v-else-if="!store.isError">
-      <section class="group__filters">
-        <Filters
-          v-for="(item, index) in filterHeaders"
-          :key="index"
-          :header="item"
-          :id="index"
-          :data="allFilters[index]"
-        />
-      </section>
-
-      <Pagination :length="allDataToShowLength">
-        <section class="group__products">
-          <CardLine
-            v-for="(productItem, index) in toShow"
-            :key="index"
-            :product="productItem"
-            :filterHeaders="filterHeaders"
-          />
-        </section>
-      </Pagination>
-    </div>
-    <ErrorMessageInGroup v-if="store.isError" :errorMessage="store.isError" />
-  </div>
-</template>
-
 <script setup lang="ts">
-import type { WorkerProduct, TransferObject } from "@/public/types.d.ts";
-import type { Group } from "@/../../dto/Group.d.ts";
-
+import type { WorkerProduct, TransferObject } from "@/public/types";
+import type { FiltersItems, Group } from "@/../../dto/Group";
 import { ref, computed, onBeforeMount, onBeforeUnmount } from "vue";
 import { useRoute } from "vue-router";
 import { useGroup } from "@/store/group";
 import { usePagination } from "@/store/pagination";
 import SpinnerLoader from "@/components/SpinnerLoader.vue";
-import Filters from "@/components/FiltersComponent.vue";
 import Pagination from "@/components/Pagination.vue";
 import CardLine from "@/components/CardLineComponent.vue";
 import ErrorMessageInGroup from "@/components/ErrorMessageInGroup.vue";
+import Filters from "@/components/FiltersComponent.vue";
 
 const route = useRoute();
 const store = useGroup();
@@ -48,7 +18,7 @@ const storePagination = usePagination();
 const id = route.params.id ?? "";
 const allDataToShow = ref<WorkerProduct[]>([]);
 const filterHeaders = ref<string[]>([]);
-const allFilters = ref<{ title: string; qty: number }[][]>([]);
+const allFilters = ref<FiltersItems>([]);
 const groupWorker = ref<Worker>();
 
 const toShow = computed(() => {
@@ -60,22 +30,19 @@ const allDataToShowLength = computed(() => allDataToShow.value.length);
 
 const putFilters = () => {
   const descriptionsTitles = store.data[id].descriptions_titles;
+
+  const mapFilters = (data: FiltersItems[number][number]) => ({
+    qty: data.qty,
+    title: descriptionsTitles[data.title].value,
+  });
+
   filterHeaders.value = Object.values(
     store.data[id].column_headers.product_descriptions
   ).slice(1);
-  const { filters } = store.data[id];
 
-  allFilters.value = filters
+  allFilters.value = store.data[id].filters
     .filter((item) => item.length)
-    .map((filterData) =>
-      filterData.map((data) => {
-        const returnedData = {
-          qty: data.qty,
-          title: descriptionsTitles[data.title].value,
-        };
-        return returnedData;
-      })
-    );
+    .map((filterData) => filterData.map(mapFilters));
 };
 
 onBeforeMount(async () => {
@@ -111,14 +78,29 @@ onBeforeUnmount(() => {
 });
 </script>
 
+<template>
+  <div class="group">
+    <SpinnerLoader v-if="store.isLoading" />
+    <div v-else-if="!store.isError">
+      <Filters :headers="filterHeaders" :data="allFilters" />
+      <Pagination :length="allDataToShowLength">
+        <section class="group__products">
+          <CardLine
+            v-for="(productItem, index) in toShow"
+            :key="index"
+            :product="productItem"
+            :filterHeaders="filterHeaders"
+          />
+        </section>
+      </Pagination>
+    </div>
+    <ErrorMessageInGroup v-if="store.isError" :errorMessage="store.isError" />
+  </div>
+</template>
+
 <style lang="scss">
 .group {
-  min-height: calc(100vh - 244px);
-
-  &__filters {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
-  }
+  min-height: 100vh;
 
   &__products {
     min-height: 100vh;

@@ -81,5 +81,11 @@
     "addedCart": "Added to cart",
     "buy": "Buy"
   },
-  "search": "Search result for"
+  "search": "Search result for",
+  "filters": {
+    "buttons": {
+      "reset": "Cancel filters",
+      "apply": "Apply filters"
+    }
+  }
 }

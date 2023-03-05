@@ -23,7 +23,7 @@ type DescriptionsTitles = Record<
   { value: string; ordering_position: number }
 >;
 
-type FiltersItems = { title: number; qty: number }[][];
+export type FiltersItems = { title: string; qty: number }[][];
 
 type Filters = [] | FiltersItems;
 
