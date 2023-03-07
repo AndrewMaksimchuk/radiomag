@@ -1,14 +1,12 @@
+import type { Group } from "../../../dto/Group";
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { GET } from "../httpClient";
-import type { Group } from "../../../dto/Group";
+import { useI18nStore } from "./i18n";
 
 interface GroupStore {
   [id: number | string]: Group;
 }
-
-const errorMessage =
-  'Не вдалося отримати список товарів, спробуйте ще раз...\nОновіть сторінку "Ctrl + F5"';
 
 export const useGroup = defineStore("group", () => {
   const data = ref<GroupStore>({});
@@ -16,6 +14,9 @@ export const useGroup = defineStore("group", () => {
   const length = computed(() => Object.keys(data.value).length);
   const isLoading = ref(true);
   const isError = ref("");
+  const groupWorker = ref<Worker>();
+
+  const i18nStore = useI18nStore();
 
   const getData = (id: number) => data.value[id];
 
@@ -27,7 +28,7 @@ export const useGroup = defineStore("group", () => {
 
   const getGroupData = async (id: number | string) => {
     const [error, updatableValue] = await GET.group(id);
-    if (error) return (isError.value = errorMessage);
+    if (error) return (isError.value = i18nStore.t("group.error.load"));
     return (data.value[id] = updatableValue);
   };
 
@@ -38,6 +39,16 @@ export const useGroup = defineStore("group", () => {
     isLoading.value = false;
   };
 
+  const createWorker = () =>
+    (groupWorker.value = new Worker("/js/groupWorker.js"));
+
+  const terminateWorker = () => {
+    if (groupWorker.value) {
+      groupWorker.value.terminate();
+      groupWorker.value = undefined;
+    }
+  };
+
   return {
     data,
     groupName,
@@ -46,5 +57,8 @@ export const useGroup = defineStore("group", () => {
     isError,
     getData,
     load,
+    groupWorker,
+    createWorker,
+    terminateWorker,
   };
 });

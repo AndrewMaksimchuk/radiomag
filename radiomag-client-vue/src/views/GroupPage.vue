@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { WorkerProduct, TransferObject } from "@/public/types";
 import type { FiltersItems, Group } from "@/../../dto/Group";
+import type { AllSearchParams } from "@/store/filters";
 import { ref, computed, onBeforeMount, onBeforeUnmount } from "vue";
 import { useRoute } from "vue-router";
 import { useGroup } from "@/store/group";
@@ -15,11 +16,10 @@ const route = useRoute();
 const store = useGroup();
 const storePagination = usePagination();
 
-const id = route.params.id ?? "";
+const currentGroupId = route.params.id ?? "";
 const allDataToShow = ref<WorkerProduct[]>([]);
 const filterHeaders = ref<string[]>([]);
 const allFilters = ref<FiltersItems>([]);
-const groupWorker = ref<Worker>();
 
 const toShow = computed(() => {
   const { start, end } = storePagination.getRange;
@@ -28,8 +28,10 @@ const toShow = computed(() => {
 
 const allDataToShowLength = computed(() => allDataToShow.value.length);
 
+const isEmpty = computed(() => allDataToShowLength.value === 0);
+
 const putFilters = () => {
-  const descriptionsTitles = store.data[id].descriptions_titles;
+  const descriptionsTitles = store.data[currentGroupId].descriptions_titles;
 
   const mapFilters = (data: FiltersItems[number][number]) => ({
     qty: data.qty,
@@ -37,17 +39,30 @@ const putFilters = () => {
   });
 
   filterHeaders.value = Object.values(
-    store.data[id].column_headers.product_descriptions
+    store.data[currentGroupId].column_headers.product_descriptions
   ).slice(1);
 
-  allFilters.value = store.data[id].filters
+  allFilters.value = store.data[currentGroupId].filters
     .filter((item) => item.length)
     .map((filterData) => filterData.map(mapFilters));
 };
 
+const getFilteredGoods = (data: AllSearchParams) => {
+  if (Object.keys(data).length === 0) return;
+  store.groupWorker?.postMessage({
+    type: "apply_filters",
+    data: JSON.parse(JSON.stringify(data)),
+  });
+};
+
+const resetGoods = () =>
+  store.groupWorker?.postMessage({
+    type: "reset",
+  });
+
 onBeforeMount(async () => {
   window.scrollTo(0, 0);
-  await store.load(id);
+  await store.load(currentGroupId);
 
   const queryActivePage = Number(route.query.page) || 1;
   storePagination.setActive(queryActivePage);
@@ -55,36 +70,42 @@ onBeforeMount(async () => {
   window.document.title = `${store.groupName}`;
   putFilters();
 
-  const cloneData: Group = JSON.parse(JSON.stringify(store.data[id]));
+  const cloneData: Group = JSON.parse(
+    JSON.stringify(store.data[currentGroupId])
+  );
 
-  groupWorker.value = new Worker("/js/groupWorker.js");
-  groupWorker.value.onmessage = (event: MessageEvent<TransferObject>) => {
-    const { type, data } = event.data;
-    if (type === "return_sum_all_product_description") {
-      allDataToShow.value = data;
-    }
-  };
-  groupWorker.value.postMessage({
-    type: "sum_all_product_description",
-    data: cloneData,
-  });
-});
+  store.createWorker();
 
-onBeforeUnmount(() => {
-  if (groupWorker.value != undefined) {
-    groupWorker.value.terminate();
-    groupWorker.value = undefined;
+  if (store.groupWorker) {
+    store.groupWorker.onmessage = (event: MessageEvent<TransferObject>) => {
+      const { type, data } = event.data;
+      if (type === "return_sum_all_product_description") {
+        allDataToShow.value = data;
+      }
+    };
+
+    store.groupWorker.postMessage({
+      type: "sum_all_product_description",
+      data: cloneData,
+    });
   }
 });
+
+onBeforeUnmount(() => store.terminateWorker());
 </script>
 
 <template>
   <div class="group">
     <SpinnerLoader v-if="store.isLoading" />
     <div v-else-if="!store.isError">
-      <Filters :headers="filterHeaders" :data="allFilters" />
+      <Filters
+        :headers="filterHeaders"
+        :data="allFilters"
+        @filtersApply="getFilteredGoods"
+        @filtersReset="resetGoods"
+      />
       <Pagination :length="allDataToShowLength">
-        <section class="group__products">
+        <section v-if="!isEmpty" class="group__products">
           <CardLine
             v-for="(productItem, index) in toShow"
             :key="index"
@@ -94,7 +115,11 @@ onBeforeUnmount(() => {
         </section>
       </Pagination>
     </div>
-    <ErrorMessageInGroup v-if="store.isError" :errorMessage="store.isError" />
+    <ErrorMessageInGroup v-else :errorMessage="store.isError" />
+    <ErrorMessageInGroup
+      v-if="!store.isError && isEmpty"
+      :errorMessage="$t('group.error.empty')"
+    />
   </div>
 </template>
 

@@ -9,5 +9,9 @@ trim_trailing_whitespace = true
 indent_style = tab
 indent_size = 4
 
-[*.{js,ts}]
+[*.{js,ts,vue}]
 max_line_length = 80
+
+[*.html]
+indent_size = 8
+indent_style = tab

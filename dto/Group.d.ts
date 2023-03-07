@@ -1,3 +1,5 @@
+import type { Product } from "./Product";
+
 interface AnalogsTypesData {
   "1": { title: "Можливі заміни"; color: "#00ff40" };
   "2": { title: "Супутні товари"; color: "#80ffff" };

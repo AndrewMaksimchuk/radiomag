@@ -87,5 +87,11 @@
       "reset": "Cancel filters",
       "apply": "Apply filters"
     }
+  },
+  "group": {
+    "error": {
+      "load": "Unable to get product list, please try again...\nRefresh page \"Ctrl + F5\"",
+      "empty": "There is no matching product"
+    }
   }
 }
