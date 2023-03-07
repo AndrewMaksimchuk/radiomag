@@ -1,25 +1,34 @@
 <script setup lang="ts">
+import type { FiltersItems } from "../../../dto/Group";
+import { watch, ref } from "vue";
+import { useFilters } from "@/store/filtes";
+import FilterItemComponent from "./FilterItemComponent.vue";
+
 defineProps<{
   header: string;
-  id: number;
-  data: { title: string; qty: number }[];
+  filterIndex: number;
+  data: FiltersItems[number];
 }>();
+
+const store = useFilters();
+const list = ref<HTMLUListElement>();
+
+watch(
+  () => store.resetAll,
+  (value) => value === true && list.value && (list.value.scrollTop = 0)
+);
 </script>
 
 <template>
   <div class="filter">
     <h2 class="filter__header-text">{{ header }}</h2>
-    <ul class="filter__container">
+    <ul class="filter__container" ref="list">
       <li class="filter__item" v-for="(item, index) in data" :key="index">
-        <input
-          class="filter__item-input"
-          type="checkbox"
-          :name="item.title"
-          :id="`${header}_${index}`"
+        <FilterItemComponent
+          :header="header"
+          :filter-index="filterIndex"
+          :item="item"
         />
-        <label class="filter__item-label" :for="`${header}_${index}`"
-          >{{ item.title }} ({{ item.qty }})</label
-        >
       </li>
     </ul>
   </div>
@@ -64,22 +73,6 @@ defineProps<{
     &::-webkit-scrollbar-thumb {
       background: var(--blue-medium);
       border-radius: 5px;
-    }
-  }
-
-  &__item {
-    display: flex;
-    font-size: 1.2rem;
-    padding-bottom: 11px;
-
-    &-input {
-      margin-right: 6px;
-    }
-
-    &-label {
-      &::first-letter {
-        text-transform: uppercase;
-      }
     }
   }
 }
