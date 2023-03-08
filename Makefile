@@ -69,3 +69,6 @@ git_config:
 
 init_dev_env:
 	npm i
+
+diagram:
+	npm run diagram

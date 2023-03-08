@@ -4,14 +4,17 @@
   "scripts": {
     "formatting": "prettier --write .",
     "formatting-check": "prettier --check .",
-    "lint": "eslint '**/*.{js,ts.vue}'"
+    "lint": "eslint '**/*.{js,ts.vue}'",
+    "diagram": "./tools/diagramDependencies.mjs"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "eslint": "^8.29.0",
     "eslint-plugin-vue": "^9.8.0",
-    "prettier": "2.8.0"
+    "glob": "^9.2.1",
+    "prettier": "2.8.0",
+    "shelljs": "^0.8.5"
   },
   "engines": {
     "node": ">=18.9.1",
