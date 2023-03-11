@@ -72,3 +72,9 @@ init_dev_env:
 
 diagram:
 	npm run diagram
+
+comments:
+	egrep -e '^(\/\/|\/\*((.|\n|\r)*)\*\/)' -r -I -n \
+	--exclude-dir=node_modules \
+	--exclude=*.d.ts \
+	--exclude=*config* .
