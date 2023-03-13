@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 defineProps<{
-  headerText: string,
+  headerText: string;
 }>();
 </script>
 
@@ -25,6 +25,10 @@ defineProps<{
     width: 100%;
     display: flex;
     column-gap: 32px;
+
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+    }
   }
 }
 </style>

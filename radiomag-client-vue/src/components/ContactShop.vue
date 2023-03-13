@@ -1,70 +1,70 @@
 <template>
   <article class="contacts-shop">
+    <h2 class="contacts-shop__header-text" v-if="shopInfo.name">
+      {{ shopInfo.name }}
+    </h2>
 
-    <h2
-      class="contacts-shop__header-text"
-      v-if="shopInfo.name">
-      {{ shopInfo.name }}</h2>
+    <ul class="contacts-shop__list">
+      <li class="contacts-shop__list-item" v-if="shopInfo.location">
+        <img
+          src="@/assets/images/pin.svg"
+          alt="icon"
+          class="contacts-shop__list-item-icon"
+        />
+        {{ shopInfo.location }}
+      </li>
 
-      <ul class="contacts-shop__list">
-        <li
-          class="contacts-shop__list-item"
-          v-if="shopInfo.location">
+      <li class="contacts-shop__list-item" v-if="shopInfo.telephons">
+        <a
+          class="contacts-shop__list-item-link"
+          :href="'tel:' + formatPhoneNumber"
+        >
           <img
-            src="@/assets/images/pin.svg"
+            src="@/assets/images/phone-call.svg"
             alt="icon"
-            class="contacts-shop__list-item-icon" >
-          {{ shopInfo.location }}</li>
+            class="contacts-shop__list-item-icon"
+          />
+          {{ shopInfo.telephons }}
+        </a>
+      </li>
 
-        <li
-          class="contacts-shop__list-item"
-          v-if="shopInfo.telephons">
-          <a
-            class="contacts-shop__list-item-link"
-            :href="'tel:' + formatPhoneNumber">
-              <img
-              src="@/assets/images/phone-call.svg"
-              alt="icon"
-              class="contacts-shop__list-item-icon" >
-              {{ shopInfo.telephons }}
-          </a>
-        </li>
+      <li class="contacts-shop__list-item" v-if="shopInfo.workTime">
+        <img
+          src="@/assets/images/clock.svg"
+          alt="icon"
+          class="contacts-shop__list-item-icon"
+        />
+        {{ shopInfo.workTime }}
+      </li>
 
-        <li
-          class="contacts-shop__list-item"
-          v-if="shopInfo.workTime">
+      <li class="contacts-shop__list-item" v-if="shopInfo.email">
+        <a
+          class="contacts-shop__list-item-link"
+          :href="'mailto:' + shopInfo.email"
+        >
           <img
-            src="@/assets/images/clock.svg"
+            src="@/assets/images/email(2).svg"
             alt="icon"
-            class="contacts-shop__list-item-icon" >
-          {{ shopInfo.workTime }}</li>
-
-        <li
-          class="contacts-shop__list-item"
-          v-if="shopInfo.email">
-          <a
-            class="contacts-shop__list-item-link"
-            :href="'mailto:' + shopInfo.email">
-              <img
-              src="@/assets/images/email(2).svg"
-              alt="icon"
-              class="contacts-shop__list-item-icon" >
-              {{ shopInfo.email }}
-          </a>
-        </li>
-      </ul>
-
+            class="contacts-shop__list-item-icon"
+          />
+          {{ shopInfo.email }}
+        </a>
+      </li>
+    </ul>
   </article>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import type { ContactItemList } from "../../../dto/Contacts";
+import { computed } from "vue";
 
 const props = defineProps<{
-  shopInfo: ContactItemList,
+  shopInfo: ContactItemList;
 }>();
 
-const formatPhoneNumber = computed(() => props.shopInfo.telephons.replaceAll('-', ''));
+const formatPhoneNumber = computed(() =>
+  props.shopInfo.telephons.replaceAll("-", "")
+);
 </script>
 
 <style lang="scss">
@@ -102,9 +102,8 @@ const formatPhoneNumber = computed(() => props.shopInfo.telephons.replaceAll('-'
         &:hover {
           text-decoration: underline;
         }
-      };
+      }
     }
   }
-
 }
 </style>

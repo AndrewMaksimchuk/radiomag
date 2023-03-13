@@ -7,7 +7,7 @@ import { useRoute } from "vue-router";
 import { useGroup } from "@/store/group";
 import { usePagination } from "@/store/pagination";
 import SpinnerLoader from "@/components/SpinnerLoader.vue";
-import Pagination from "@/components/Pagination.vue";
+import Pagination from "@/components/PaginationComponent.vue";
 import CardLine from "@/components/CardLineComponent.vue";
 import ErrorMessageInGroup from "@/components/ErrorMessageInGroup.vue";
 import Filters from "@/components/FiltersComponent.vue";
@@ -104,8 +104,8 @@ onBeforeUnmount(() => store.terminateWorker());
         @filtersApply="getFilteredGoods"
         @filtersReset="resetGoods"
       />
-      <Pagination :length="allDataToShowLength">
-        <section v-if="!isEmpty" class="group__products">
+      <Pagination v-if="!isEmpty" :length="allDataToShowLength">
+        <section class="group__products">
           <CardLine
             v-for="(productItem, index) in toShow"
             :key="index"
@@ -117,7 +117,7 @@ onBeforeUnmount(() => store.terminateWorker());
     </div>
     <ErrorMessageInGroup v-else :errorMessage="store.isError" />
     <ErrorMessageInGroup
-      v-if="!store.isError && isEmpty"
+      v-if="!store.isLoading && !store.isError && isEmpty"
       :errorMessage="$t('group.error.empty')"
     />
   </div>

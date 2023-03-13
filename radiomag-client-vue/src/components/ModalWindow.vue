@@ -70,6 +70,10 @@ const store = useModalWindow();
   padding: var(--modal-padding);
   background-color: var(--color-black-light-alpha);
 
+  @media (max-width: $breakpoint-tablet) {
+    padding: 0;
+  }
+
   &__header {
     height: var(--header-size);
     padding: 18px;
@@ -80,9 +84,18 @@ const store = useModalWindow();
     justify-content: space-between;
     align-items: center;
 
+    @media (max-width: $breakpoint-tablet) {
+      padding: 12px;
+      height: auto;
+    }
+
     &-text {
       margin: 0;
       color: inherit;
+
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 1.8rem;
+      }
     }
   }
 
@@ -93,6 +106,10 @@ const store = useModalWindow();
     padding: 20px;
     background-color: #fff;
     overflow-y: auto;
+
+    @media (max-width: $breakpoint-tablet) {
+      grid-template-columns: repeat(2, minmax(110px, 1fr));
+    }
   }
 }
 </style>

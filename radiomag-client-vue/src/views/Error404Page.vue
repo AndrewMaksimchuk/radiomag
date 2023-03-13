@@ -13,11 +13,19 @@
   color: var(--blue-medium);
 
   &__header-text {
-  font-size: 15rem;
+    font-size: 15rem;
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 7rem;
+    }
   }
 
   &__description-text {
     font-size: 10rem;
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 5rem;
+    }
   }
 
   &__icon {
@@ -26,7 +34,7 @@
     left: 65%;
     font-size: 15rem;
     transform: rotate(20deg);
-    opacity: .1;
+    opacity: 0.1;
   }
 }
 </style>

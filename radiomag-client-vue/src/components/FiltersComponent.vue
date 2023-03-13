@@ -24,6 +24,7 @@ const reset = () => {
 
 <template>
   <section v-if="data.length">
+    <h2 class="filters__header">{{ $t("filters.header") }}</h2>
     <div class="filters">
       <Filter
         v-for="(header, index) in headers"
@@ -51,6 +52,16 @@ const reset = () => {
 .filters {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+
+  &__header {
+    padding: 12px;
+    background-color: var(--blue-medium);
+    color: var(--color-white);
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 14px;
+    }
+  }
 
   &__control {
     display: flex;

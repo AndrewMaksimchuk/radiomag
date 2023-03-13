@@ -1,16 +1,3 @@
-<template>
-  <nav class="container">
-    <ul class="header-nav">
-      <HeaderNavItem
-        v-for="(item, index) in nav"
-        :key="index"
-        :link="item.link"
-        :text="item.text"
-      />
-    </ul>
-  </nav>
-</template>
-
 <script setup lang="ts">
 import { ref, watchEffect } from "vue";
 import { useI18nStore } from "@/store/i18n";
@@ -31,3 +18,40 @@ watchEffect(() => {
   ];
 });
 </script>
+
+<template>
+  <nav class="container">
+    <ul class="header-nav">
+      <HeaderNavItem
+        v-for="(item, index) in nav"
+        :key="index"
+        :link="item.link"
+        :text="item.text"
+      />
+    </ul>
+  </nav>
+</template>
+
+<style lang="scss">
+.header {
+  &-nav {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: #fff;
+    font-size: 18px;
+    text-transform: uppercase;
+    background-color: var(--blue-medium);
+    list-style: none;
+    letter-spacing: 1px;
+    font-weight: 700;
+
+    @media (max-width: $breakpoint-mobile) {
+      justify-content: center;
+      display: none;
+    }
+  }
+}
+</style>

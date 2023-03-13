@@ -11,17 +11,19 @@ type Modal = ModalItem[];
 
 export const useModalWindow = defineStore("modalWindow", () => {
   const isVisible = ref(false);
-  const headerText = ref("Електронні компоненти та комплектуючі");
+  const headerText = ref("");
   const data = ref<Modal>([]);
 
-  const show = (someData: Modal) => {
+  const show = (someData: Modal, header: string) => {
     isVisible.value = true;
     data.value = someData;
+    headerText.value = header;
   };
 
   const hide = () => {
     isVisible.value = false;
     data.value = [];
+    headerText.value = "";
   };
 
   const scroll = (state: boolean) => {

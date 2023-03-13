@@ -111,6 +111,10 @@
 
 <style lang="scss">
 .news {
+  @media (max-width: $breakpoint-mobile) {
+    padding-top: 30px;
+  }
+
   &__header-text {
     padding-bottom: 26px;
     font-size: 1.8rem;
@@ -128,6 +132,11 @@
   &__item {
     max-width: 435px;
     min-height: 200px;
+
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 100%;
+      padding-bottom: 50px;
+    }
 
     &-time {
       display: block;
@@ -162,6 +171,7 @@
 
     &-links {
       display: flex;
+      flex-wrap: wrap;
       padding-bottom: 22px;
 
       &-item {
@@ -190,6 +200,10 @@
   &__footer {
     text-align: right;
     padding: 26px 0;
+
+    @media (max-width: $breakpoint-mobile) {
+      padding-top: 0;
+    }
 
     &-link {
       text-decoration: none;

@@ -24,6 +24,10 @@ store.useMenu();
   width: 253px;
   padding-bottom: 23px;
 
+  @media (max-width: $breakpoint-mobile) {
+    width: 100%;
+  }
+
   &__header {
     width: 100%;
     height: 41px;
@@ -79,6 +83,11 @@ store.useMenu();
     width: 162px;
     font-size: 16px;
     color: var(--color-black-light);
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 12px;
+      text-align: left;
+    }
   }
 }
 </style>

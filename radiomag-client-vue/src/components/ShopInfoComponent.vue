@@ -69,6 +69,11 @@ onBeforeMount(() => store.load());
     width: 268px;
     padding: 13px;
 
+    @media (max-width: $breakpoint-mobile) {
+      text-align: center;
+      width: 100%;
+    }
+
     &-header-text {
       font-size: 1.8rem;
       font-weight: 700;

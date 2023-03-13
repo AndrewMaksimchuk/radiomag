@@ -1,5 +1,5 @@
 <template>
-  <article class="linecard borders">
+  <article class="linecard borders m-hide">
     <h2 class="linecard__header-text">{{ $t("bulletin.header") }}</h2>
     <form class="linecard__form" action="#">
       <label class="linecard__form-label" for="email">{{
@@ -20,7 +20,7 @@
   </article>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .bulletin {
   &__input {
     font-size: 1.3rem;

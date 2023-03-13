@@ -1,6 +1,6 @@
 import type { LatLngLiteral } from "../radiomag-client-vue/node_modules/@types/leaflet";
 
-type ContactItemList = {
+export type ContactItemList = {
   name: string;
   location: string;
   email: string;

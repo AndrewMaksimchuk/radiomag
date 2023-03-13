@@ -1,5 +1,5 @@
 <template>
-  <article class="linecard borders">
+  <article class="linecard borders m-hide">
     <h2 class="linecard__header-text">Linecard</h2>
     <form class="linecard__form" action="#">
       <label class="linecard__form-label">{{ $t("linecard.label") }}</label>

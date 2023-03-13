@@ -1,55 +1,79 @@
+<script setup lang="ts">
+import type { StateMenu } from "./ButtonMenuComponent.vue";
+import { ref } from "vue";
+import HeaderInfoContacts from "./HeaderInfoContactsComponent.vue";
+import HeaderUserAction from "./HeaderUserActionComponent.vue";
+import HeaderCart from "./HeaderCartComponent.vue";
+import LangChoose from "./LangChooseComponent.vue";
+import ButtonMenu from "./ButtonMenuComponent.vue";
+
+const isMenuOpen = ref(false);
+const isOverflow = ref(false);
+
+const toggleMenu = (state: StateMenu) => {
+  state === "open" ? (isMenuOpen.value = true) : (isMenuOpen.value = false);
+};
+
+const toggleOverflow = (data: boolean) => {
+  isOverflow.value = data;
+  console.log("is overflow", data, isOverflow.value);
+};
+</script>
+
 <template>
   <div class="line" />
-  <section class="header__info container">
-    <div class="header__info-item">
-      <a class="link" href="tel:+380442200172"
-        ><img
-          src="@/assets/images/telephone.svg"
-          alt="telephone"
-          class="header__img-info"
-        />+38 (044) 220-01-72</a
-      >
-    </div>
-    <div class="header__info-item">
-      <a class="link" href="tel:+380442200173"
-        ><img
-          src="@/assets/images/fax.svg"
-          alt="fax"
-          class="header__img-info"
-        />+38 (044) 220-01-73</a
-      >
-    </div>
-    <div class="header__info-item">
-      <a class="link" href="mailto:sales@rcscomponents.kiev.ua"
-        ><img
-          src="@/assets/images/email.svg"
-          alt="email"
-          class="header__img-info"
-        />sales@rcscomponents.kiev.ua</a
-      >
-    </div>
-    <button class="header__info-item subscribe">
-      <img
-        src="@/assets/images/mail-send.svg"
-        alt="subscribe"
-        class="header__img-info"
-      />{{ $t("header.info.subscription") }}
-    </button>
-    <button class="header__info-item login-registration">
-      <img
-        src="@/assets/images/user.svg"
-        alt="login"
-        class="header__img-info"
-      />{{ $t("header.info.loginRegistration") }}
-    </button>
-
+  <section
+    class="header__info container"
+    :class="{
+      'header__info_h-auto': isMenuOpen,
+      'header__info_overflow-disable': isOverflow,
+    }"
+  >
+    <HeaderInfoContacts />
+    <HeaderUserAction />
     <HeaderCart />
-
-    <LangChoose />
+    <LangChoose @on-open="toggleOverflow" />
+    <ButtonMenu @change="toggleMenu" />
   </section>
 </template>
 
-<script setup lang="ts">
-import HeaderCart from "./HeaderCartComponent.vue";
-import LangChoose from "./LangChooseComponent.vue";
-</script>
+<style lang="scss">
+.header {
+  &__info {
+    height: $line-height;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    background-color: var(--blue-medium);
+    position: relative;
+    overflow: hidden;
+
+    &-item {
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 14px;
+      }
+    }
+
+    &_h-auto {
+      height: auto;
+    }
+
+    &_overflow-disable {
+      overflow: visible;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 14px;
+    }
+  }
+
+  &__img-info {
+    width: 16px;
+    height: 16px;
+    margin-right: 9px;
+  }
+}
+</style>
