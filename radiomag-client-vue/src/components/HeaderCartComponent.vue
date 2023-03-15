@@ -23,4 +23,15 @@ const cart = useCart();
   display: block;
   height: 100%;
 }
+
+.card {
+  @extend %button-style;
+
+  padding: 0 32px;
+  background-color: var(--color-red);
+
+  &__text {
+    font-weight: 700;
+  }
+}
 </style>

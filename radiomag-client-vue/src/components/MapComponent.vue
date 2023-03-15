@@ -50,5 +50,10 @@ onMounted(() => {
 .map {
   width: 825px;
   height: 585px;
+
+  @media (max-width: $breakpoint-tablet) {
+    max-width: 100%;
+    max-height: 336px;
+  }
 }
 </style>

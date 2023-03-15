@@ -30,5 +30,9 @@ onBeforeMount(() => store.load());
 <style lang="scss">
 .contacts {
   padding: 23px 0;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 0 15px;
+  }
 }
 </style>

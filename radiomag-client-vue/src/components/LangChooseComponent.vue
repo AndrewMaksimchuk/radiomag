@@ -1,3 +1,27 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import { useI18nStore } from "@/store/i18n";
+
+const emit = defineEmits<{
+  (e: "on-open", data: boolean): void;
+}>();
+
+const useI18n = useI18nStore();
+const isOpen = ref(false);
+
+const toggle = () => {
+  isOpen.value = !isOpen.value;
+  emit("on-open", isOpen.value);
+};
+
+const close = () => (isOpen.value = false);
+
+const choose = (value: string) => {
+  useI18n.setLocale(value);
+  close();
+};
+</script>
+
 <template>
   <div class="lang-choose">
     <button class="lang-choose__select hover" @click="toggle">
@@ -20,28 +44,12 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from "vue";
-import { useI18nStore } from "@/store/i18n";
-
-const useI18n = useI18nStore();
-const isOpen = ref(false);
-
-const toggle = () => (isOpen.value = !isOpen.value);
-const close = () => (isOpen.value = false);
-
-const choose = (value: string) => {
-  useI18n.setLocale(value);
-  close();
-};
-</script>
-
 <style lang="scss">
 .lang-choose {
   margin: 0;
   padding: 0;
   width: 44px;
-  height: 100%;
+  height: $line-height;
   text-align: center;
   line-height: $line-height;
   font-size: 18px;

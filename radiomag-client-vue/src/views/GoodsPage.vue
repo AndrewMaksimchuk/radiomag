@@ -69,7 +69,6 @@ const changeQuantityOfProduct = (newQuantity: number) =>
 const addToCart = () => {
   store.goods &&
     storeCart.add({ product: store.goods.product, quantity: quantity.value });
-  // Show notification that goods is added to cart
 };
 
 watch(quantity, (newValue) => {
@@ -84,9 +83,19 @@ watch(quantity, (newValue) => {
   color: var(--color-gray-dark);
   font-size: 1.2rem;
 
+  @media (max-width: $breakpoint-tablet) {
+    flex-direction: column;
+    row-gap: 28px;
+    padding-bottom: 31px;
+  }
+
   &__img {
     width: 300px;
     display: block;
+
+    @media (max-width: $breakpoint-tablet) {
+      width: 100%;
+    }
   }
 
   &__descriptions {

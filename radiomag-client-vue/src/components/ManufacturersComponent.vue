@@ -25,6 +25,10 @@
 .manufacturers {
   margin-bottom: 23px;
 
+  @media (max-width: $breakpoint-mobile) {
+    width: 100%;
+  }
+
   &__list {
     width: 100%;
     padding: 22px;

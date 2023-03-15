@@ -1,3 +1,4 @@
+import type { Catalog, CatalogGroups } from "../../../dto/Catalog";
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { GET } from "@/httpClient";

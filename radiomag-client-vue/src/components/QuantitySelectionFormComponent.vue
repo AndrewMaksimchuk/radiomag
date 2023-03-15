@@ -120,5 +120,10 @@ const selectText = (event: MouseEvent) => {
   background-color: var(--color-black-light);
   border-radius: 3px;
   color: var(--color-white);
+
+  @media (max-width: $breakpoint-tablet) {
+    top: 0;
+    width: calc(100% - 2 * 22px);
+  }
 }
 </style>

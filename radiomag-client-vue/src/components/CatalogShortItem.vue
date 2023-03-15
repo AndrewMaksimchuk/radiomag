@@ -14,18 +14,19 @@
 </template>
 
 <script setup lang="ts">
-import { useCatalog } from '@/store/catalog';
-import { useModalWindow } from '@/store/modalWindow';
+import type { CatalogItem } from "../../../dto/Catalog";
+import { useCatalog } from "@/store/catalog";
+import { useModalWindow } from "@/store/modalWindow";
 
-defineProps<{
-  data: CatalogItem
+const props = defineProps<{
+  data: CatalogItem;
 }>();
 
 const catalogStore = useCatalog();
 const modalStore = useModalWindow();
 
 const showModalWindow = async (id: number) => {
-  const data = await catalogStore.useMenuGroups(id);
-  if (Array.isArray(data)) modalStore.show(data);
-}
+  const dataCatalog = await catalogStore.useMenuGroups(id);
+  if (Array.isArray(dataCatalog)) modalStore.show(dataCatalog, props.data.name);
+};
 </script>

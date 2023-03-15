@@ -1,5 +1,5 @@
 <template>
-  <main class="container content">
+  <main class="content">
     <div>
       <CatalogShort />
       <Linecard />
@@ -31,5 +31,9 @@ import Bulletin from "@/components/BulletinComponent.vue";
   display: grid;
   grid-template-columns: 253px auto 253px;
   column-gap: 23px;
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: 100%;
+  }
 }
 </style>

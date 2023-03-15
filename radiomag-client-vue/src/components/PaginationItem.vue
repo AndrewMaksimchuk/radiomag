@@ -1,12 +1,12 @@
 <template>
-  <div class="pagination" v-if="store.length">
+  <section class="pagination" v-if="store.length">
     <PaginationButtonToStart />
     <PaginationButtonToLeft />
     <PaginationButton />
     <PaginationButtonToRight />
     <PaginationButtonToEnd />
     <!-- Maybe add select field for the number of products on the page -->
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">

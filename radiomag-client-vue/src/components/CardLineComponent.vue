@@ -161,9 +161,18 @@ const addGoodsToStorage = () =>
     background-color: var(--blue-white);
   }
 
+  @media (max-width: $breakpoint-tablet) {
+    min-height: auto;
+    flex-direction: column;
+  }
+
   &__left {
     width: 150px;
     padding: 18px 14px;
+
+    @media (max-width: $breakpoint-tablet) {
+      width: 100%;
+    }
 
     &-img {
       width: 120px;
@@ -173,6 +182,10 @@ const addGoodsToStorage = () =>
 
       &:hover {
         cursor: pointer;
+      }
+
+      @media (max-width: $breakpoint-tablet) {
+        width: 100%;
       }
     }
 
@@ -200,10 +213,22 @@ const addGoodsToStorage = () =>
     color: var(--color-black-light);
     font-size: 1.2rem;
 
+    @media (max-width: $breakpoint-tablet) {
+      width: 100%;
+      flex-wrap: wrap;
+      column-gap: 28px;
+    }
+
     &-description {
       flex: 5;
       color: var(--color-gray-dark);
       padding-right: 28px;
+
+      @media (max-width: $breakpoint-tablet) {
+        flex: auto;
+        padding: 0;
+        padding-bottom: 16px;
+      }
 
       &-header-text {
         display: block;
@@ -264,6 +289,10 @@ const addGoodsToStorage = () =>
       padding-right: 28px;
       flex: 1;
 
+      @media (max-width: $breakpoint-tablet) {
+        padding: 0;
+      }
+
       &-header-text {
         padding-bottom: 20px;
       }
@@ -286,14 +315,30 @@ const addGoodsToStorage = () =>
     justify-content: center;
     align-items: center;
 
+    @media (max-width: $breakpoint-tablet) {
+      width: 100%;
+    }
+
     &-form {
       width: 128px;
       position: relative;
+
+      @media (max-width: $breakpoint-tablet) {
+        width: 100%;
+        padding: 22px;
+        display: flex;
+        gap: 40px;
+      }
 
       &-line {
         width: 100%;
         padding: 11px 0;
         display: flex;
+
+        @media (max-width: $breakpoint-tablet) {
+          height: 42px;
+          align-items: center;
+        }
       }
     }
 
@@ -340,6 +385,10 @@ const addGoodsToStorage = () =>
       &:hover {
         cursor: pointer;
         text-decoration: underline;
+      }
+
+      @media (max-width: $breakpoint-tablet) {
+        height: 42px;
       }
     }
   }

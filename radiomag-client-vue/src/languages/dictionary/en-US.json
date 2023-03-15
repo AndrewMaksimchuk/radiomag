@@ -83,6 +83,7 @@
   },
   "search": "Search result for",
   "filters": {
+    "header": "Product filters",
     "buttons": {
       "reset": "Cancel filters",
       "apply": "Apply filters"

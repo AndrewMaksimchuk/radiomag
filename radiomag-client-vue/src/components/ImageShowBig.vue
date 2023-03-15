@@ -1,19 +1,15 @@
 <template>
-  <div
-    class="image-show-big"
-    v-if="store.isVisible"
-    @click="closeWindow"
-  >
+  <div class="image-show-big" v-if="store.isVisible" @click="closeWindow">
     <img
       class="image-show-big__image"
       :src="store.data.src"
       :alt="store.data.alt"
-    >
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { useImageShow } from '@/store/imageShow';
+import { useImageShow } from "@/store/imageShow";
 
 const store = useImageShow();
 const closeWindow = () => store.hide();
@@ -28,14 +24,18 @@ const closeWindow = () => store.hide();
   right: 0;
   bottom: 0;
   z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-top: 10vmin;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding-top: 50vmin;
+  }
 
   &__image {
-    max-width: 80vh;
     display: block;
-    margin: 0 auto;
+    margin: auto;
+    max-width: 80vmin;
+    height: auto;
+    object-fit: contain;
   }
 }
 </style>

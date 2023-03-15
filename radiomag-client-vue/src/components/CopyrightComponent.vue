@@ -12,6 +12,7 @@
   text-transform: uppercase;
   color: var(--color-white);
   position: relative;
+  font-weight: 700;
 
   &::after {
     content: "";

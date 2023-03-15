@@ -1,16 +1,16 @@
 <template>
-  <PaginationItem/>
+  <PaginationItem />
   <slot></slot>
-  <PaginationItem/>
+  <PaginationItem />
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue';
-import { usePagination } from '@/store/pagination';
-import PaginationItem from './PaginationItem.vue';
+import { watch } from "vue";
+import { usePagination } from "@/store/pagination";
+import PaginationItem from "./PaginationItem.vue";
 
 const props = defineProps<{
-  length: number,
+  length: number;
 }>();
 
 const store = usePagination();
@@ -25,6 +25,12 @@ watch(props, (newPropsValue) => store.setLength(newPropsValue.length));
   display: flex;
   align-items: center;
   column-gap: 4px;
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-tablet) {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
 
   &__button {
     min-width: 29px;
