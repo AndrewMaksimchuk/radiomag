@@ -2,7 +2,8 @@
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
     "composite": true,
-    "lib": [],
-    "types": ["node", "jsdom"]
+    "lib": ["ESNext"],
+    "types": ["node", "jsdom"],
+    "isolatedModules": false
   }
 }

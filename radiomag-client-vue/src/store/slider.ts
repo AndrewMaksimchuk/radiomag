@@ -1,3 +1,4 @@
+import type { Slider } from "../../../dto/Slider";
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { GET } from "../httpClient";
@@ -23,8 +24,8 @@ export const useSlider = defineStore("slider", () => {
 
   const load = async () => {
     const [error, updatableValue] = await GET.slider();
-    if (error) return '';
-    return data.value = updatableValue;
+    if (error) return "";
+    return (data.value = updatableValue);
   };
 
   return { data, length, activeButton, numberOfButtons, toShow, active, load };
