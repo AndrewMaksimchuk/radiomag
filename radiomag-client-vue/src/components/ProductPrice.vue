@@ -1,21 +1,22 @@
 <template>
   <ul class="product-price">
-
     <li
-       class="product-price__item"
-      v-for="(item, index) in productPriceArray" :key="index">
-        {{ item.q }}+
-        <PriceItem :price="item.p"/>
+      class="product-price__item"
+      v-for="(item, index) in productPriceArray"
+      :key="index"
+    >
+      {{ item.q }}+
+      <PriceItem :price="item.p" />
     </li>
-
   </ul>
 </template>
 
 <script setup lang="ts">
-import PriceItem from './PriceItem.vue';
+import type { Price } from "../../../dto/Product";
+import PriceItem from "./PriceItem.vue";
 
 defineProps<{
-  productPriceArray: Price,
+  productPriceArray: Price;
 }>();
 </script>
 
@@ -31,6 +32,5 @@ defineProps<{
     justify-content: space-between;
     column-gap: 12px;
   }
-
 }
 </style>

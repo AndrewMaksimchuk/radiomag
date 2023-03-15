@@ -4,7 +4,7 @@
   "scripts": {
     "formatting": "prettier --write .",
     "formatting-check": "prettier --check .",
-    "lint": "eslint '**/*.{js,ts.vue}'",
+    "lint": "eslint '**/*.{js,ts,vue}'",
     "diagram": "./tools/diagramDependencies.mjs"
   },
   "devDependencies": {
