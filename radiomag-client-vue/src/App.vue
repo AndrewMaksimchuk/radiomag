@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 import Header from "@/components/HeaderMain.vue";
-import Breadcrumbs from "@/components/Breadcrumbs.vue";
+import Breadcrumbs from "@/components/BreadcrumbsComponent.vue";
 import ModalWindow from "@/components/ModalWindow.vue";
 import ImageShowBig from "@/components/ImageShowBig.vue";
 import ShopInfo from "@/components/ShopInfoComponent.vue";

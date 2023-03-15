@@ -1,29 +1,28 @@
 <template>
   <article class="slider">
-
     <div class="slider__cards">
-        <CardSmall
-          v-for="(data, index) in store.toShow"
-          :key="index"
-          :data="data"/>
+      <CardSmall
+        v-for="(data, index) in store.toShow"
+        :key="index"
+        :data="data"
+      />
     </div>
 
     <div class="slider__controls">
-        <SliderButton
-          v-for="btnNumber in store.numberOfButtons"
-          :key="btnNumber"
-          :isActive="store.activeButton === btnNumber"
-          @click="store.active(btnNumber)"
-        />
+      <SliderButton
+        v-for="btnNumber in store.numberOfButtons"
+        :key="btnNumber"
+        :isActive="store.activeButton === btnNumber"
+        @click="store.active(btnNumber)"
+      />
     </div>
-
   </article>
 </template>
 
 <script setup lang="ts">
-import { useSlider } from '@/store/slider';
-import CardSmall from './CardSmall.vue';
-import SliderButton from './SliderButton.vue';
+import { useSlider } from "@/store/slider";
+import CardSmall from "./CardSmall.vue";
+import SliderButton from "./SliderButton.vue";
 
 const store = useSlider();
 </script>

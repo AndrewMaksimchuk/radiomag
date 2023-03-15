@@ -104,8 +104,8 @@ onBeforeUnmount(() => store.terminateWorker());
         @filtersApply="getFilteredGoods"
         @filtersReset="resetGoods"
       />
-      <Pagination v-if="!isEmpty" :length="allDataToShowLength">
-        <section class="group__products">
+      <Pagination :length="allDataToShowLength">
+        <section v-if="!isEmpty" class="group__products">
           <CardLine
             v-for="(productItem, index) in toShow"
             :key="index"
