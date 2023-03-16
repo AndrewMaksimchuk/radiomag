@@ -1,3 +1,5 @@
+import type { Slider } from "../../../dto/Slider";
+import type { Catalog } from "../../../dto/Catalog";
 import type { Group } from "../../../dto/Group";
 import type { Contacts } from "../../../dto/Contacts";
 import { HTTPget } from "../../../endpoints";

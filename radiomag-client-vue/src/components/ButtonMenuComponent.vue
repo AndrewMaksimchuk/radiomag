@@ -34,7 +34,7 @@ const toggle = () => {
   flex-direction: column;
   row-gap: 3px;
   position: absolute;
-  top: $line-height / 2;
+  top: calc($line-height / 2);
   right: 0;
   transform: translateY(-50%);
 
