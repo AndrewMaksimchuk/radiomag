@@ -24,13 +24,7 @@ start_ide:
 start_browser:
 	chromium --auto-open-devtools-for-tabs --start-fullscreen http://localhost:5173/ > /dev/null 2>&1 &
 
-install: install_server install_client hooks
-
-install_client:
-	$(to_client) && npm i
-
-install_server:
-	$(to_server) && npm i
+install: init_dev_env hooks init_database
 
 check_package_client:
 	cd $(client) && npm outdated
@@ -51,7 +45,10 @@ update_server_interactive:
 	$(to_server) && npx npm-check-updates && npx npm-check-updates -i
 
 hooks:
-	cp ./.hooks/* ./.git/hooks && chmod +x ./.git/hooks/commit-msg && chmod +x ./.git/hooks/pre-commit && chmod +x ./.git/hooks/pre-push
+	cp ./.hooks/* ./.git/hooks && \
+	chmod +x ./.git/hooks/commit-msg && \
+	chmod +x ./.git/hooks/pre-commit && \
+	chmod +x ./.git/hooks/pre-push
 
 tests_server:
 	cd $(server) && npm run tests
@@ -78,3 +75,9 @@ comments:
 	--exclude-dir=node_modules \
 	--exclude=*.d.ts \
 	--exclude=*config* .
+
+init_database:
+	cd $(server) && npm run migrate && npm run seeds
+
+clear:
+	rm db.sqlite
