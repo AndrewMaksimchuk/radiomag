@@ -7,7 +7,7 @@
     "compilerOptions": {}
   },
   "include": ["**/*.ts", "**/*.d.ts"],
-  "exclude": ["node_modules", "tests", "dist"],
+  "exclude": ["node_modules", "dist"],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
