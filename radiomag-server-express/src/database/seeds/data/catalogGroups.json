@@ -1,0 +1,91 @@
+[
+  {
+    "key": 1,
+    "id": 195,
+    "name": "Світлодіоди вивідні",
+    "img": "svetodiodi_vidimogo_vivodnie.gif"
+  },
+  {
+    "key": 1,
+    "id": 479,
+    "name": "Елементи розумного будинку",
+    "img": "smart_house-group.png"
+  },
+  { "key": 1, "id": 311, "name": "Реле", "img": "relay.gif" },
+  {
+    "key": 1,
+    "id": 65,
+    "name": "Перемикачі",
+    "img": "perekluchately_images.gif"
+  },
+  { "key": 1, "id": 410, "name": "Кнопки", "img": "knopki_klaviatury.gif" },
+  { "key": 1, "id": 356, "name": "Батарейки", "img": "batariiki-images.gif" },
+  {
+    "key": 1,
+    "id": 350,
+    "name": "Вентилятори",
+    "img": "ventiljatori_images.gif"
+  },
+  { "key": 1, "id": 348, "name": "Корпуса", "img": "492.gif" },
+  {
+    "key": 1,
+    "id": 359,
+    "name": "Ізоляційні матеріали",
+    "img": "izoliacionnie_materiali.gif"
+  },
+  { "key": 1, "id": 338, "name": "Магніти", "img": "magniti-neodimovie.gif" },
+  {
+    "key": 1,
+    "id": 400,
+    "name": "Блоки живлення пластикові корпуса",
+    "img": "446.gif"
+  },
+  {
+    "key": 1,
+    "id": 340,
+    "name": "Блоки живлення металеві корпуса",
+    "img": "GK-100.png"
+  },
+  {
+    "key": 1,
+    "id": 403,
+    "name": "Блоки живлення герметичні",
+    "img": "LPC-20.png"
+  },
+  {
+    "key": 1,
+    "id": 53,
+    "name": "Звукові випромінювачі",
+    "img": "dinamiki-images.gif"
+  },
+  { "key": 2, "id": 578, "name": "Вимірювальні прилади", "img": "473.jpg" },
+  { "key": 2, "id": 448, "name": "Паяльники", "img": "payalniki.jpg" },
+  { "key": 2, "id": 223, "name": "Паяльні станції", "img": "968.gif" },
+  { "key": 2, "id": 478, "name": "Флюси", "img": "prodimg-flux_pjal-cat.png" },
+  { "key": 2, "id": 302, "name": "Припої", "img": "lc60-0.50_0.1.gif" },
+  { "key": 2, "id": 377, "name": "Жала", "img": "gala_nabor20.png" },
+  {
+    "key": 2,
+    "id": 354,
+    "name": "Склотекстоліт",
+    "img": "steklo_tekstoliti.gif"
+  },
+  {
+    "key": 2,
+    "id": 394,
+    "name": "Ручні лупи, бінокуляри",
+    "img": "microscopi-images.gif"
+  },
+  { "key": 2, "id": 436, "name": "Обжимний інструмент", "img": "crimp.jpg" },
+  {
+    "key": 2,
+    "id": 434,
+    "name": "Зачисний, обрізний інструмент",
+    "img": "stripper.jpg"
+  },
+  { "key": 2, "id": 443, "name": "Пінцети", "img": "pincthet.jpg" },
+  { "key": 2, "id": 432, "name": "Кусачки, бокорізи", "img": "bokoriz.jpg" },
+  { "key": 2, "id": 437, "name": "Викрутки", "img": "vukrutku.jpg" },
+  { "key": 3, "id": 426, "name": "Arduino", "img": "arduino-images.png" },
+  { "key": 3, "id": 341, "name": "Коснтруктори набори", "img": "masterkit.gif" }
+]

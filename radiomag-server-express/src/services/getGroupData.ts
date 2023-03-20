@@ -1,9 +1,10 @@
+import type { Group } from "../../../dto/Group";
 import https from "https";
 
-export const getAllGroupInfo = (id: string | number) => {
+export const getGroupInfo = (id: string | number) => {
   const urlRcs = `https://www.rcscomponents.kiev.ua/modules.php?name=Asers_Shop&s_op=productlist_json&group_id=${id}&lang=ukrainian`;
 
-  return new Promise((resolve, reject) => {
+  return new Promise<Group>((resolve, reject) => {
     https
       .get(urlRcs, (res) => {
         let rawData = "";
