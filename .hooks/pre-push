@@ -13,7 +13,7 @@ then
    exit 1
 fi
 
-CLIENT=$(cd ./radiomag-client-vue && npm run test:unit)
+CLIENT=$(cd ./radiomag-client-vue && npm run test:run)
 CLIENTCODE=$(echo "$?")
 
 if [ ! "$CLIENTCODE" -eq "0" ]
