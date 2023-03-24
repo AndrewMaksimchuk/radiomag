@@ -54,7 +54,7 @@ tests_server:
 	cd $(server) && npm run tests
 
 tests_client:
-	cd $(client) && npm run test:unit
+	cd $(client) && npm run test:run
 
 tests: tests_server tests_client
 

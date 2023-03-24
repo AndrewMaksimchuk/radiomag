@@ -2,6 +2,7 @@ node_modules/
 dist/
 temp/
 dist/
+coverage/
 
 .env
 .notes

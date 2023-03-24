@@ -12,7 +12,7 @@ const pages = readdirSync(toPages).map((page) => join(toPages, page));
 
 describe("Corect import component", () => {
   components.forEach(async (element) => {
-    it("normal with dependencies", async () => {
+    it(`normal with dependencies in ${element}`, async () => {
       const cmp = await import(element);
       expect(cmp).toBeDefined();
     });
