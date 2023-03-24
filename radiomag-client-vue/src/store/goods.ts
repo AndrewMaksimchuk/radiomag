@@ -2,7 +2,7 @@ import type { WorkerProduct } from "@/public/types";
 import { ref } from "vue";
 import { defineStore } from "pinia";
 
-interface Goods {
+export interface Goods {
   product: WorkerProduct;
   filterHeaders: string[];
 }
