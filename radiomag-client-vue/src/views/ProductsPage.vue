@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { useCatalog } from "../store/catalog";
+import { useCatalog } from "@/store/catalog";
 
 const store = useCatalog();
 store.useAllMenuGroups();
