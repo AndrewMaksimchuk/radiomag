@@ -16,7 +16,7 @@ const route = useRoute();
 const store = useGroup();
 const storePagination = usePagination();
 
-const currentGroupId = route.params.id ?? "";
+const currentGroupId = route.params.id;
 const allDataToShow = ref<WorkerProduct[]>([]);
 const filterHeaders = ref<string[]>([]);
 const allFilters = ref<FiltersItems>([]);
@@ -31,7 +31,11 @@ const allDataToShowLength = computed(() => allDataToShow.value.length);
 const isEmpty = computed(() => allDataToShowLength.value === 0);
 
 const putFilters = () => {
-  const descriptionsTitles = store.data[currentGroupId].descriptions_titles;
+  if (currentGroupId === undefined) return;
+
+  const descriptionsTitles = store.data[currentGroupId]?.descriptions_titles;
+
+  if (Boolean(descriptionsTitles) === false) return;
 
   const mapFilters = (data: FiltersItems[number][number]) => ({
     qty: data.qty,
@@ -62,6 +66,9 @@ const resetGoods = () =>
 
 onBeforeMount(async () => {
   window.scrollTo(0, 0);
+
+  if (currentGroupId === undefined) return;
+
   await store.load(currentGroupId);
 
   const queryActivePage = Number(route.query.page) || 1;
@@ -70,13 +77,13 @@ onBeforeMount(async () => {
   window.document.title = `${store.groupName}`;
   putFilters();
 
-  const cloneData: Group = JSON.parse(
-    JSON.stringify(store.data[currentGroupId])
-  );
-
   store.createWorker();
 
   if (store.groupWorker) {
+    const cloneData: Group = JSON.parse(
+      JSON.stringify(store.data[currentGroupId])
+    );
+
     store.groupWorker.onmessage = (event: MessageEvent<TransferObject>) => {
       const { type, data } = event.data;
       if (type === "return_sum_all_product_description") {
@@ -97,7 +104,7 @@ onBeforeUnmount(() => store.terminateWorker());
 <template>
   <div class="group">
     <SpinnerLoader v-if="store.isLoading" />
-    <div v-else-if="!store.isError">
+    <div v-if="!store.isLoading && !store.isError">
       <Filters
         :headers="filterHeaders"
         :data="allFilters"
@@ -115,7 +122,10 @@ onBeforeUnmount(() => store.terminateWorker());
         </section>
       </Pagination>
     </div>
-    <ErrorMessageInGroup v-else :errorMessage="store.isError" />
+    <ErrorMessageInGroup
+      v-if="!store.isLoading && store.isError"
+      :errorMessage="store.isError"
+    />
     <ErrorMessageInGroup
       v-if="!store.isLoading && !store.isError && isEmpty"
       :errorMessage="$t('group.error.empty')"
