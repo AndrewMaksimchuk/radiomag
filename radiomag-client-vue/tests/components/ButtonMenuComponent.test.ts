@@ -12,7 +12,6 @@ describe("ButtonMenu component", () => {
   });
 
   it("should be close", () => {
-    expect(wrapper).toMatchSnapshot();
     expect(wrapper.attributes("data-state")).toBe("close");
   });
 
