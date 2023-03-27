@@ -22,14 +22,14 @@ const buildWrapper = (
 
 const store = useCatalog();
 
-beforeEach(() => {
-  buildWrapper();
-});
-
 const getHeader = () => wrapper.find("h2");
 const getItems = () => wrapper.findAllComponents(CatalogShortItem);
 
 const catalogLength = 5;
+
+beforeEach(() => {
+  buildWrapper();
+});
 
 describe("CatalogShort component", () => {
   it("should be hidden", () => {
@@ -47,7 +47,7 @@ describe("CatalogShort component", () => {
     });
 
     it("should have list of items", () => {
-      expect(getItems().length).toEqual(catalogLength);
+      expect(getItems()).toHaveLength(catalogLength);
     });
   });
 });

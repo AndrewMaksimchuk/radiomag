@@ -1,7 +1,9 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { shallowMount, VueWrapper } from "@vue/test-utils";
+import { shallowMount, VueWrapper, config } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import CardLineImage from "@/components/CardLineImageComponent.vue";
+
+config.global.config.warnHandler = () => null;
 
 let wrapper: VueWrapper;
 

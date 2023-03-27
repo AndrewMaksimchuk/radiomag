@@ -84,7 +84,6 @@ const buildWrapper = () => {
 describe("CardLine component", () => {
   beforeEach(() => {
     buildWrapper();
-    console.log(wrapper.html());
   });
 
   it("should be visible", () => {
