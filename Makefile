@@ -58,6 +58,9 @@ tests_client:
 
 tests: tests_server tests_client
 
+test_client_create:
+	node ./tools/test_client_create.mjs
+
 git_clear:
 	git branch | grep -v -e "dev" -e "main" | xargs git branch -d
 
