@@ -3,7 +3,7 @@ import { shallowMount, MountingOptions, VueWrapper } from "@vue/test-utils";
 import CatalogShortComponent from "@/components/CatalogShortComponent.vue";
 import { createTestingPinia } from "@pinia/testing";
 import { useCatalog } from "@/store/catalog";
-import CatalogShortItem from "@/components/CatalogShortItem.vue";
+import CatalogShortItem from "@/components/CatalogShortItemComponent.vue";
 
 let wrapper: VueWrapper;
 
