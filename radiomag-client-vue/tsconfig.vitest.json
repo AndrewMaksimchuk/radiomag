@@ -1,9 +1,11 @@
 {
   "extends": "./tsconfig.app.json",
+  "include": ["src/**/*", "tests/**/*"],
   "compilerOptions": {
     "composite": true,
     "lib": ["ESNext"],
-    "types": ["node", "jsdom"],
-    "isolatedModules": false
+    "types": ["node", "jsdom", "vitest/globals"],
+    "isolatedModules": false,
+    "resolveJsonModule": true
   }
 }

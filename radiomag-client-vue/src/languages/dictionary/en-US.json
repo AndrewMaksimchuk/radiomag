@@ -94,5 +94,13 @@
       "load": "Unable to get product list, please try again...\nRefresh page \"Ctrl + F5\"",
       "empty": "There is no matching product"
     }
+  },
+  "errors": {
+    "page": {
+      "404": {
+        "header": "Oops...",
+        "description": "Page not found 404"
+      }
+    }
   }
 }

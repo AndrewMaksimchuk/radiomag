@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { useSlider } from "@/store/slider";
-import CardSmall from "./CardSmall.vue";
+import CardSmall from "./CardSmallComponent.vue";
 import SliderButton from "./SliderButton.vue";
 
 const store = useSlider();

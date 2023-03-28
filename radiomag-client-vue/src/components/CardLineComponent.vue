@@ -1,73 +1,11 @@
 <template>
   <article class="card-line">
     <div class="card-line__left">
-      <img
-        class="card-line__left-img"
-        :src="'https://www.rcscomponents.kiev.ua' + product.image"
-        :alt="String(product.description[0])"
-        loading="lazy"
-        @click="showBigImage"
-      />
+      <CardLineImage :img="product.image" :alt="product.description[0]" />
     </div>
 
     <div class="card-line__center">
-      <div class="card-line__center-description">
-        <RouterLink
-          class="card-line__center-description-header-text"
-          :to="{ name: 'goods', params: { code: product.id } }"
-          @click="addGoodsToStorage"
-        >
-          <h3>{{ product.description[0] }}</h3>
-        </RouterLink>
-
-        <div class="card-line__center-description-small">
-          <RouterLink
-            class="common-link"
-            :to="{ name: 'goods', params: { code: product.id } }"
-            @click="addGoodsToStorage"
-          >
-            <p class="card-line__center-description-small-paragraph">
-              {{ $t("card.codeGoods") }}:
-              <span
-                class="card-line__center-description-small-paragraph_light-color"
-              >
-                {{ product.id }}
-              </span>
-            </p>
-          </RouterLink>
-
-          <p
-            v-if="product.description[1]"
-            class="card-line__center-description-small-paragraph"
-          >
-            {{ $t("card.production") }}:
-            <span
-              class="card-line__center-description-small-paragraph_light-color"
-            >
-              {{ product.description[1] }}</span
-            >
-          </p>
-        </div>
-
-        <p class="card-line__center-description-main-text">
-          {{ sumOfAllDescription }}
-        </p>
-
-        <p class="card-line__center-description-tech-info">
-          <img
-            class="card-line__center-description-tech-info-icon"
-            src="/images/pdf.svg"
-            alt="file specification"
-          />
-          <a
-            class="card-line__center-description-tech-info-link"
-            href="#"
-            @click.prevent="showSpecification"
-          >
-            {{ $t("card.technicalInformation") }}
-          </a>
-        </p>
-      </div>
+      <CardLineDescription :product="product" :filter-headers="filterHeaders" />
 
       <div class="card-line__center-availability">
         <h3 class="card-line__center-availability-header-text">
@@ -97,11 +35,10 @@
 
 <script setup lang="ts">
 import type { WorkerProduct } from "@/public/types";
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { useCart } from "@/store/cart";
-import { useGoods } from "@/store/goods";
-import { useImageShow } from "@/store/imageShow";
-
+import CardLineImage from "@/components/CardLineImageComponent.vue";
+import CardLineDescription from "@/components/CardLineDescriptionComponent.vue";
 import ProductAvailability from "./ProductAvailability.vue";
 import ProductPrice from "./ProductPrice.vue";
 import QuantitySelectionForm from "./QuantitySelectionFormComponent.vue";
@@ -112,40 +49,14 @@ const props = defineProps<{
 }>();
 
 const storeCart = useCart();
-const storeImageShow = useImageShow();
-const storeGoods = useGoods();
 
 const quantityOfProduct = ref(1);
-
-const sumOfAllDescription = computed(() =>
-  props.product.description.reduce((total, currentValue, index) => {
-    if (index === 0 || currentValue === undefined) return total;
-    return `${total + currentValue} `;
-  }, "")
-);
 
 const changeQuantityOfProduct = (quantity: number) =>
   (quantityOfProduct.value = quantity);
 
 const addToCart = () =>
   storeCart.add({ product: props.product, quantity: quantityOfProduct.value });
-
-const showBigImage = () => {
-  const src = `https://www.rcscomponents.kiev.ua${props.product.image}`;
-  const alt = props.product.description[0];
-  storeImageShow.show({ src, alt });
-};
-
-const showSpecification = () =>
-  console.log(
-    "Показати специфікацію на прилад у модальному вікні(відкрити, відобразити .pdf файл)"
-  );
-
-const addGoodsToStorage = () =>
-  storeGoods.add({
-    product: props.product,
-    filterHeaders: props.filterHeaders,
-  });
 </script>
 
 <style lang="scss">
@@ -172,21 +83,6 @@ const addGoodsToStorage = () =>
 
     @media (max-width: $breakpoint-tablet) {
       width: 100%;
-    }
-
-    &-img {
-      width: 120px;
-      height: 100%;
-      padding-bottom: 10px;
-      object-fit: contain;
-
-      &:hover {
-        cursor: pointer;
-      }
-
-      @media (max-width: $breakpoint-tablet) {
-        width: 100%;
-      }
     }
 
     &-button {
@@ -217,72 +113,6 @@ const addGoodsToStorage = () =>
       width: 100%;
       flex-wrap: wrap;
       column-gap: 28px;
-    }
-
-    &-description {
-      flex: 5;
-      color: var(--color-gray-dark);
-      padding-right: 28px;
-
-      @media (max-width: $breakpoint-tablet) {
-        flex: auto;
-        padding: 0;
-        padding-bottom: 16px;
-      }
-
-      &-header-text {
-        display: block;
-        text-decoration: none;
-        color: var(--color-black-light);
-        font-size: 1.4rem;
-        padding-bottom: 20px;
-
-        &:hover {
-          cursor: pointer;
-          text-decoration: underline;
-        }
-      }
-
-      &-small {
-        padding-bottom: 6px;
-
-        &-paragraph {
-          color: var(--color-black-light);
-          font-weight: 700;
-          padding-bottom: 10px;
-
-          &_light-color {
-            color: var(--color-gray-dark);
-            font-weight: 400;
-          }
-        }
-      }
-
-      &-main-text {
-        line-height: 1.8rem;
-        padding-bottom: 12px;
-      }
-
-      &-tech-info {
-        display: flex;
-        align-items: center;
-
-        &:hover {
-          cursor: pointer;
-          text-decoration: underline;
-        }
-
-        &-icon {
-          width: 18px;
-          height: 18px;
-          padding-right: 5px;
-        }
-
-        &-link {
-          text-decoration: none;
-          color: inherit;
-        }
-      }
     }
 
     &-availability {

@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { useCatalog } from "@/store/catalog";
-import CatalogShortItem from "./CatalogShortItem.vue";
+import CatalogShortItem from "./CatalogShortItemComponent.vue";
 
 const store = useCatalog();
 store.useMenu();

@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import { onBeforeMount } from "vue";
 import { useContacts } from "@/store/contacts";
-import ContactSection from "@/components/ContactSection.vue";
+import ContactSection from "@/components/ContactSectionComponent.vue";
 import Map from "@/components/MapComponent.vue";
 import ContactShopList from "@/components/ContactShopList.vue";
 

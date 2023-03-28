@@ -54,9 +54,12 @@ tests_server:
 	cd $(server) && npm run tests
 
 tests_client:
-	cd $(client) && npm run test:unit
+	cd $(client) && npm run test:run
 
 tests: tests_server tests_client
+
+test_client_create:
+	node ./tools/test_client_create.mjs
 
 git_clear:
 	git branch | grep -v -e "dev" -e "main" | xargs git branch -d
