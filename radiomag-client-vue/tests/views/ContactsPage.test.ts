@@ -4,7 +4,7 @@ import { createTestingPinia } from "@pinia/testing";
 import { isComponentRender } from "tests/isComponentRender";
 import { useContacts } from "@/store/contacts";
 import Contacts from "@/views/ContactsPage.vue";
-import ContactSection from "@/components/ContactSection.vue";
+import ContactSection from "@/components/ContactSectionComponent.vue";
 import contacts from "../../../radiomag-server-express/src/database/seeds/data/contacts.json";
 
 const buildWrapper = (options: MountingOptions<Record<string, unknown>> = {}) =>
