@@ -1,6 +1,7 @@
 import type { WorkerProduct } from "@/public/types";
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
+import { useLocalStorage } from "@vueuse/core";
 
 export interface CartItem {
   product: WorkerProduct;
@@ -14,6 +15,8 @@ interface Change {
   quantity: number;
 }
 
+const localStorage = useLocalStorage<Cart>("cart", []);
+
 export const useCart = defineStore("cart", () => {
   const cart = ref<Cart>([]);
 
@@ -21,12 +24,12 @@ export const useCart = defineStore("cart", () => {
 
   const add = (data: CartItem) => {
     cart.value.push(data);
-    localStorage.setItem("cart", JSON.stringify(cart.value));
+    localStorage.value = cart.value;
   };
 
   const remove = (index: number) => {
     cart.value.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart.value));
+    localStorage.value = cart.value;
   };
 
   const changeQuantity = (obj: Change) => {
@@ -39,20 +42,17 @@ export const useCart = defineStore("cart", () => {
       }
       return item;
     });
-    localStorage.setItem("cart", JSON.stringify(cart.value));
+    localStorage.value = cart.value;
   };
 
   const loadLocalStorage = () => {
-    const storage = localStorage.getItem("cart");
-    if (storage) {
-      const data = JSON.parse(storage);
-      data.length && (cart.value = data);
-    }
+    const storage = localStorage.value;
+    cart.value = storage;
   };
 
   const clear = () => {
     cart.value = [];
-    localStorage.removeItem("cart");
+    localStorage.value = [];
   };
 
   return { cart, length, add, remove, changeQuantity, loadLocalStorage, clear };
