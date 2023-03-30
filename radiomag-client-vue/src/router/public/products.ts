@@ -3,7 +3,7 @@ export default {
   name: "products",
   component: () => import("@/views/ProductsPage.vue"),
   meta: {
-    title: "Каталог продукції",
+    title: "products",
     breadcrumbsName: "Каталог продукції",
   },
 };

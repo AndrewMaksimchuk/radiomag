@@ -4,6 +4,6 @@ export default {
   component: () => import("@/views/GoodsPage.vue"),
   props: true,
   meta: {
-    title: "Товар",
+    title: "product",
   },
 };

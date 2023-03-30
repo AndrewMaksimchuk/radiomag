@@ -64,7 +64,6 @@ describe("OrderCard component", () => {
   });
 
   it("should be visible", () => {
-    console.log(wrapper.html());
     expect(wrapper.isVisible()).toBe(true);
   });
 

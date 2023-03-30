@@ -3,6 +3,6 @@ export default {
   name: "404",
   component: () => import("@/views/Error404Page.vue"),
   meta: {
-    title: "Сталася помилка",
+    title: "error_404",
   },
 };

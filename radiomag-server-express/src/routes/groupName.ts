@@ -7,7 +7,12 @@ export const routerGroupName = Router();
 routerGroupName.get(endpoints.groupName, (req, res) => {
   const CatalogGroupsModel = new catalogGroups(req.dbConnection);
 
-  CatalogGroupsModel.getName(req.params.id).then((name) =>
-    name ? res.json(name) : res.json({ error: "Group with that id not exist!" })
-  );
+  CatalogGroupsModel.getName(req.params.id).then((name) => {
+    if (!name.length) {
+      return res.json({ error: "Group with that id not exist!" });
+    }
+
+    const [row] = name;
+    return res.json(row.name);
+  });
 });

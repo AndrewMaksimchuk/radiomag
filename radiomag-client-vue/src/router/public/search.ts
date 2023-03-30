@@ -3,6 +3,6 @@ export default {
   name: "search",
   component: () => import("@/views/SearchPage.vue"),
   meta: {
-    title: "Пошук",
+    title: "search",
   },
 };

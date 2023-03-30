@@ -17,9 +17,6 @@ const buildWrapper = (
 
 const groupId = 311;
 
-router.push({ path: `/group/${groupId}`, query: { page: 1 } });
-await router.isReady();
-
 vi.stubGlobal("scrollTo", () => true);
 vi.stubGlobal("$t", (message: string) => message);
 
@@ -28,7 +25,7 @@ let wrapper: VueWrapper;
 
 describe("Group page", () => {
   describe("should be data in loading", () => {
-    beforeEach(() => {
+    beforeEach(async () => {
       testPinia = createTestingPinia({
         initialState: {
           group: {
@@ -48,6 +45,9 @@ describe("Group page", () => {
           },
         },
       });
+
+      router.push({ path: `/group/${groupId}`, query: { page: 1 } });
+      await router.isReady();
     });
 
     it("should loader displayed", () => {
