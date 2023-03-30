@@ -1,7 +1,10 @@
 <template>
   <article class="card-line">
     <div class="card-line__left">
-      <CardLineImage :img="product.image" :alt="product.description[0]" />
+      <CardLineImage
+        :img="product?.image ?? ''"
+        :alt="product.description[0]"
+      />
     </div>
 
     <div class="card-line__center">
