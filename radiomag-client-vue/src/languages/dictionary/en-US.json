@@ -102,5 +102,15 @@
         "description": "Page not found 404"
       }
     }
+  },
+  "title": {
+    "cart": "Cart",
+    "contacts": "Contacts",
+    "error_404": "An error occurred - not found",
+    "group": "Group",
+    "home": "Radiomag - Store of electronic components",
+    "product": "Product",
+    "products": "Product catalog",
+    "search": "Search"
   }
 }

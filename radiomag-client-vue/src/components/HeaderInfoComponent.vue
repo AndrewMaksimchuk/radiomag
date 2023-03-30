@@ -16,7 +16,6 @@ const toggleMenu = (state: StateMenu) => {
 
 const toggleOverflow = (data: boolean) => {
   isOverflow.value = data;
-  console.log("is overflow", data, isOverflow.value);
 };
 </script>
 

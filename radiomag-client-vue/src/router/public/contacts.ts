@@ -3,6 +3,6 @@ export default {
   name: "contacts",
   component: () => import("@/views/ContactsPage.vue"),
   meta: {
-    title: "Контакти",
+    title: "contacts",
   },
 };

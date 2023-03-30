@@ -4,7 +4,7 @@ export default {
   component: () => import("@/views/GroupPage.vue"),
   props: true,
   meta: {
-    title: "Група",
+    title: "group",
     breadcrumbs: {
       name: "Група",
     },

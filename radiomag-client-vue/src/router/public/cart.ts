@@ -3,6 +3,6 @@ export default {
   name: "cart",
   component: () => import("@/views/CartPage.vue"),
   meta: {
-    title: "Корзина",
+    title: "cart",
   },
 };
