@@ -2,9 +2,18 @@
   <tr class="order-card">
     <td class="order-card__row">
       <img
+        v-if="goods.product.image"
         class="order-card__img"
+        loading="lazy"
         :src="'https://www.rcscomponents.kiev.ua' + goods.product.image"
         :alt="goods.product.description[0]"
+      />
+      <img
+        v-else
+        class="order-card__img"
+        loading="lazy"
+        src="@/assets/images/empty.jpg"
+        alt="empty image"
       />
     </td>
 
@@ -27,7 +36,7 @@
     <td class="order-card__row">
       <QuantitySelectionForm
         :isBayButtonVisible="false"
-        :quantityOfProduct="goods.quantity"
+        :quantityOfProduct="goods.quantity ?? 1"
         v-on:changeQuantityOfProduct="changeQuantityOfProduct"
       />
     </td>
