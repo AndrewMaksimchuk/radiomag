@@ -5,7 +5,7 @@
     <PaginationButton />
     <PaginationButtonToRight />
     <PaginationButtonToEnd />
-    <!-- Maybe add select field for the number of products on the page -->
+    <PaginationQuantity />
   </section>
 </template>
 
@@ -16,6 +16,7 @@ import PaginationButtonToLeft from "./PaginationButtonToLeft.vue";
 import PaginationButton from "./PaginationButton.vue";
 import PaginationButtonToRight from "./PaginationButtonToRight.vue";
 import PaginationButtonToEnd from "./PaginationButtonToEndComponent.vue";
+import PaginationQuantity from "./PaginationQuantityComponent.vue";
 
 const store = usePagination();
 </script>

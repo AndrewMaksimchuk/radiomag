@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { watch } from "vue";
 import { usePagination } from "@/store/pagination";
-import PaginationItem from "./PaginationItem.vue";
+import PaginationItem from "./PaginationItemComponent.vue";
 
 const props = defineProps<{
   length: number;
