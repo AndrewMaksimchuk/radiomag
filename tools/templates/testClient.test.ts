@@ -17,6 +17,10 @@ const global = {
 
 const props = {};
 
+const slots = {
+  default: "Main Content",
+};
+
 const buildWrapper = (options = {}) => {
   wrapper = shallowMount(ComponentName, { global, ...options });
 };
