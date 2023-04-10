@@ -1,28 +1,24 @@
-import type { RouteLocationNormalized } from 'vue-router';
-// import { useBreadcrumbs } from '@/store/breadcrumbs';
+import type { RouteLocationNormalized } from "vue-router";
+import { useI18nStore } from "@/store/i18n";
+import { useBreadcrumbs } from "@/store/breadcrumbs";
 
 export default <T extends RouteLocationNormalized>(to: T, from: T) => {
-  console.log({to, from})
+  const store = useBreadcrumbs();
 
-  // const findSamePath = (currentValue) => currentValue.path === to.path;
-  // const store = useBreadcrumbs();
+  if (from.fullPath === to.fullPath) return;
+  if (to.meta.breadcrumbs === undefined) return store.reset();
 
-  // const targetRoute = {
-  //   name: to.meta?.breadcrumbs?.name,
-  //   path: to.path,
-  // };
+  const isPathExist = store.breadcrumbs
+    .map((value) => value.path)
+    .findIndex((value) => value === to.fullPath);
+  if (isPathExist > -1) {
+    return store.breadcrumbs.splice(isPathExist + 1);
+  }
 
-  // if (to.path === '/') return store.reset();
-  // if (from.path === '/') return;
-  // if (store.length === 0) return store.add(from);
+  const i18nStore = useI18nStore();
 
-  // const pathToExistInBreadcrumbs = breadcrumbs.findIndex(findSamePath);
-  // if (pathToExistInBreadcrumbs > -1) {
-  //   const newBreadcrumbs = breadcrumbs.slice(0, pathToExistInBreadcrumbs);
-  //   store.commit('clearBreadcrumbs');
-  //   store.commit('rewriteBreadcrumbs', newBreadcrumbs);
-  //   return;
-  // }
-
-  // store.add(targetRoute);
-}
+  store.add({
+    name: i18nStore.t(to.meta?.breadcrumbs.name),
+    path: to.path,
+  });
+};

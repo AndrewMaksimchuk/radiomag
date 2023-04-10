@@ -35,6 +35,7 @@ defineProps<{
     text-decoration: none;
     color: var(--color-white);
     letter-spacing: 1px;
+    outline-offset: 3px;
 
     &:hover {
       text-decoration: underline;

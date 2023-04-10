@@ -16,8 +16,10 @@
 
 <script setup lang="ts">
 import { ref, onBeforeMount, watch } from "vue";
+import { useRoute } from "vue-router";
 import { useGoods } from "@/store/goods";
 import { useCart } from "@/store/cart";
+import { useBreadcrumbs } from "@/store/breadcrumbs";
 import GoodsImage from "@/components/GoodsImageComponent.vue";
 import GoodsDescriptions from "@/components/GoodsDescriptionsComponent.vue";
 import GoodsAvailability from "@/components/GoodsAvailabilityComponent.vue";
@@ -27,8 +29,20 @@ import QuantitySelectionForm from "@/components/QuantitySelectionFormComponent.v
 const quantity = ref(1);
 const store = useGoods();
 const storeCart = useCart();
+const route = useRoute();
+const storeBreadcrumbs = useBreadcrumbs();
 
-onBeforeMount(() => window.scrollTo(0, 0));
+onBeforeMount(() => {
+  window.scrollTo(0, 0);
+  if (store.goods?.product.articul) {
+    const breadcrumbsUpdate = {
+      name: store.goods?.product.articul,
+      path: route.fullPath,
+    };
+    route.meta.breadcrumbs?.set(breadcrumbsUpdate);
+    storeBreadcrumbs.updateOne(route.fullPath, breadcrumbsUpdate);
+  }
+});
 
 const changeQuantityOfProduct = (newQuantity: number) =>
   (quantity.value = newQuantity);

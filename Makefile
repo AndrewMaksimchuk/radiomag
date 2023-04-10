@@ -8,9 +8,9 @@ session_name="radiomag_app"
 panel_client=0
 panel_server=1
 
-start: start_ide start_browser start_tmux
+start: start_ide start_browser start_dev
 
-start_tmux:
+start_dev:
 	tmux new-session -d -s $(session_name)
 	tmux split-window -h
 	tmux send-keys -t $(panel_client) "cd ./radiomag-client-vue && npm run dev" Enter

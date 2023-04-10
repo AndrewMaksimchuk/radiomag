@@ -21,10 +21,21 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from "vue";
 import { useCatalog } from "@/store/catalog";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
 const store = useCatalog();
 store.useAllMenuGroups();
+
+onMounted(() => {
+  const breadcrumbsUpdate = {
+    name: document.title,
+    path: route.fullPath,
+  };
+  route.meta.breadcrumbs?.set(breadcrumbsUpdate);
+});
 </script>
 
 <style lang="scss">
@@ -63,9 +74,6 @@ store.useAllMenuGroups();
     &-group-img {
       width: 80px;
       height: 80px;
-    }
-
-    &-group-name {
     }
   }
 }
