@@ -6,6 +6,7 @@ import { ref, computed, onBeforeMount, onBeforeUnmount } from "vue";
 import { useRoute } from "vue-router";
 import { useGroup } from "@/store/group";
 import { usePagination } from "@/store/pagination";
+import { useBreadcrumbs } from "@/store/breadcrumbs";
 import SpinnerLoader from "@/components/SpinnerLoader.vue";
 import Pagination from "@/components/PaginationComponent.vue";
 import CardLine from "@/components/CardLineComponent.vue";
@@ -15,6 +16,7 @@ import Filters from "@/components/FiltersComponent.vue";
 const route = useRoute();
 const store = useGroup();
 const storePagination = usePagination();
+const storeBreadcrumbs = useBreadcrumbs();
 
 const currentGroupId = route.params.id;
 const allDataToShow = ref<WorkerProduct[]>([]);
@@ -75,6 +77,14 @@ onBeforeMount(async () => {
   storePagination.setActive(queryActivePage);
 
   window.document.title = `${store.groupName}`;
+
+  const breadcrumbsUpdate = {
+    name: store.groupName,
+    path: route.fullPath,
+  };
+  route.meta.breadcrumbs?.set(breadcrumbsUpdate);
+  storeBreadcrumbs.updateOne(route.fullPath, breadcrumbsUpdate);
+
   putFilters();
 
   store.createWorker();

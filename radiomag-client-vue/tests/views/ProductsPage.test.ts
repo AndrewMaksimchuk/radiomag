@@ -1,8 +1,9 @@
 import { describe, it, expect, beforeAll } from "vitest";
 import { mount, RouterLinkStub } from "@vue/test-utils";
-import ProductsPage from "@/views/ProductsPage.vue";
 import { createTestingPinia } from "@pinia/testing";
 import { useCatalog } from "@/store/catalog";
+import router from "@/router";
+import ProductsPage from "@/views/ProductsPage.vue";
 
 const testPinia = createTestingPinia({
   initialState: {
@@ -14,7 +15,7 @@ const testPinia = createTestingPinia({
 
 const wrapper = mount(ProductsPage, {
   global: {
-    plugins: [testPinia],
+    plugins: [testPinia, router],
     stubs: {
       RouterLink: RouterLinkStub,
     },
