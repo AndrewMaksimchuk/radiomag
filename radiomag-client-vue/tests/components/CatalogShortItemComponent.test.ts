@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { shallowMount, MountingOptions, VueWrapper } from "@vue/test-utils";
+import { shallowMount, VueWrapper } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import CatalogShortItem from "@/components/CatalogShortItemComponent.vue";
 import { useCatalog } from "@/store/catalog";
@@ -18,10 +18,13 @@ const props = {
   },
 };
 
-const buildWrapper = (
-  options: MountingOptions<Record<string, unknown>> = {}
-) => {
-  wrapper = shallowMount(CatalogShortItem, { global, props, ...options });
+const options = {
+  global,
+  props,
+};
+
+const buildWrapper = () => {
+  wrapper = shallowMount(CatalogShortItem, options);
 };
 
 const findButton = () => wrapper.find("button");

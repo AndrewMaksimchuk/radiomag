@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { mount, MountingOptions } from "@vue/test-utils";
+import { shallowMount, MountingOptions } from "@vue/test-utils";
 import { i18n } from "@/languages";
 import { pinia } from "@/main";
 import { isComponentRender } from "tests/isComponentRender";
@@ -7,10 +7,10 @@ import { useCart } from "@/store/cart";
 import CartPage from "@/views/CartPage.vue";
 import Order from "@/components/OrderComponent.vue";
 import OrderContactForm from "@/components/OrderContactForm.vue";
-import testGroup from "../mock/capacitor_group.json";
+import product from "../mock/workerProduct.json";
 
 const buildWrapper = (options: MountingOptions<Record<string, unknown>> = {}) =>
-  mount(CartPage, options);
+  shallowMount(CartPage, options);
 
 let wrapper = buildWrapper({
   global: {
@@ -47,7 +47,7 @@ describe("Cart page", () => {
           stubs: { Order: true, OrderContactForm: true },
         },
       });
-      store.add({ quantity: 5, product: testGroup.items[0] });
+      store.add({ quantity: 5, product });
     });
 
     it("hidden empty cart text", () => {

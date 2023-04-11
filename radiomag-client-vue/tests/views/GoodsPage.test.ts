@@ -3,6 +3,7 @@ import { MountingOptions, shallowMount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import { useGoods } from "@/store/goods";
 import GoodsPage from "@/views/GoodsPage.vue";
+import product from "../mock/workerProduct.json";
 
 vi.stubGlobal("scrollTo", () => true);
 
@@ -24,7 +25,10 @@ describe("Goods page", () => {
 
   describe("should be displayed", () => {
     beforeEach(() => {
-      store.goods = {};
+      store.goods = {
+        product,
+        filterHeaders: [],
+      };
     });
 
     it("should contain goods", () => {

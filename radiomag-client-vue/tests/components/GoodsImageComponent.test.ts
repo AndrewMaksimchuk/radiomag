@@ -1,15 +1,14 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { shallowMount, VueWrapper } from "@vue/test-utils";
 import GoodsImage from "@/components/GoodsImageComponent.vue";
+import product from "../mock/workerProduct.json";
 
 let wrapper: VueWrapper;
 
 const props = {
   goods: {
-    product: {
-      image: "",
-      description: ["Test goods description"],
-    },
+    product,
+    filterHeaders: [],
   },
 };
 
@@ -29,6 +28,15 @@ describe("GoodsImage component", () => {
   });
 
   it("should have default image", () => {
+    const props = {
+      goods: {
+        product: {
+          ...product,
+          image: "",
+        },
+      },
+    };
+    buildWrapper({ props });
     const img = findImage();
     expect(img.attributes("src")).toContain("empty.jpg");
     expect(img.attributes("alt")).toEqual("empty image");
