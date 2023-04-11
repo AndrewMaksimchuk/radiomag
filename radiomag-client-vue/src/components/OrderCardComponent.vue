@@ -18,7 +18,12 @@
     </td>
 
     <td class="order-card__row order-card__row_fix-size">
-      <h3>{{ goods.product.description[0] }}</h3>
+      <RouterLink
+        class="common-link"
+        :to="{ name: 'goods', params: { code: goods.product.id } }"
+      >
+        <h3>{{ goods.product.description[0] }}</h3>
+      </RouterLink>
       <p>{{ $t("order.codeGoods") }}: {{ goods.product.id }}</p>
     </td>
 
