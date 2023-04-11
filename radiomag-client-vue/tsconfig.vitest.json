@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.app.json",
-  "include": ["src/**/*", "tests/**/*"],
+  "include": ["src/**/*", "tests/**/*", "tests/**/*.json"],
   "compilerOptions": {
     "composite": true,
     "lib": ["ESNext"],

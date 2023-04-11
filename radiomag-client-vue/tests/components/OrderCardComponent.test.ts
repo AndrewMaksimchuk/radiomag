@@ -1,21 +1,29 @@
 import type { CartItem } from "@/store/cart";
 import { describe, it, expect, beforeEach } from "vitest";
-import { shallowMount, VueWrapper } from "@vue/test-utils";
+import { shallowMount, VueWrapper, RouterLinkStub } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import OrderCard from "@/components/OrderCardComponent.vue";
 import ProductAvailability from "@/components/ProductAvailability.vue";
 import ProductPrice from "@/components/ProductPrice.vue";
 import QuantitySelectionForm from "@/components/QuantitySelectionFormComponent.vue";
+import product from "../mock/workerProduct.json";
 
 const components = [ProductAvailability, ProductPrice, QuantitySelectionForm];
 
 let wrapper: VueWrapper;
 
+const mocks = {
+  $t: (text: string) => text,
+};
+
+const stubs = {
+  RouterLink: RouterLinkStub,
+};
+
 const global = {
   plugins: [createTestingPinia()],
-  mocks: {
-    $t: (text: string) => text,
-  },
+  mocks,
+  stubs,
 };
 
 interface OrderCard {
@@ -25,25 +33,7 @@ interface OrderCard {
 
 const props: OrderCard = {
   goods: {
-    product: {
-      image: "",
-      description: ["stm32f103c8t6 microchip from STM"],
-      id: 32103,
-      stock_data: [
-        {
-          stock: "",
-          stockName: "",
-        },
-      ],
-      pcs: "",
-      prices: [
-        {
-          disabled: false,
-          p: 10,
-          q: 32,
-        },
-      ],
-    },
+    product,
     quantity: 3,
   },
   index: 0,
@@ -91,5 +81,11 @@ describe("OrderCard component", () => {
 
   it("should have delete button", () => {
     expect(findDeleteButton().isVisible()).toBe(true);
+  });
+
+  it("should have link to goods page", () => {
+    expect(wrapper.findComponent(RouterLinkStub).props().to.params).toEqual({
+      code: product.id,
+    });
   });
 });
