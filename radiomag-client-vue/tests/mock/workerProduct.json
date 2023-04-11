@@ -1,0 +1,41 @@
+{
+  "id": 113038,
+  "articul": "PE03-UA01",
+  "url": "/product/konstruktor-3-napivprovidniki-bez-multimetra-praktichna-elektronika_113038.html",
+  "description": [
+    "\u041a\u043e\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u043e\u0440 \u2116 3 \"\u041d\u0430\u043f\u0456\u0432\u043f\u0440\u043e\u0432\u0456\u0434\u043d\u0438\u043a\u0438\" (\u0431\u0435\u0437 \u043c\u0443\u043b\u044c\u0442\u0438\u043c\u0435\u0442\u0440\u0430) (\"\u041f\u0440\u0430\u043a\u0442\u0438\u0447\u043d\u0430 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u0456\u043a\u0430\")",
+    "86428",
+    "98741",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ],
+  "image": "/modules/Asers_Shop/images/productimages/praktychna_elektronika_3_3.jpg",
+  "remaining_images_qty": 0,
+  "datasheet_link_data": "datasheets/praktychna_elektronika_3.pdf",
+  "extended_description": false,
+  "pcs": "\u0448\u0442",
+  "total_stock": "16",
+  "prices": [{ "q": 1, "p": 650, "disabled": false }],
+  "show_price": true,
+  "moq": null,
+  "google_category_id": "1254",
+  "initialPosition": 0,
+  "product_analogs_types": null,
+  "total": 16,
+  "stock_data": [
+    { "stock": "1", "stockName": "1" },
+    { "stock": "2", "stockName": "2" },
+    { "stock": "3", "stockName": "3" },
+    { "stock": "5", "stockName": "4" },
+    { "stock": "1", "stockName": "5" },
+    { "stock": "4", "stockName": "8" }
+  ],
+  "waiting_date_items": null,
+  "waiting_total": 0
+}

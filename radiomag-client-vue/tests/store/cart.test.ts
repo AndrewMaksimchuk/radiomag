@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { setActivePinia, createPinia } from "pinia";
 import { CartItem, useCart } from "@/store/cart";
+import workerProduct from "../mock/workerProduct.json";
 
 let store: ReturnType<typeof useCart>;
 
@@ -88,5 +89,14 @@ describe("Cart store", () => {
       expect(store.length).toBeGreaterThan(0);
       expect(store.cart.at(0)).toEqual(cartData);
     });
+  });
+
+  it("shoud have total cost 0.00", () => {
+    expect(store.totalCost).toBe("0.00");
+  });
+
+  it("should have total cost 3250.00", () => {
+    store.add({ quantity: 5, product: workerProduct });
+    expect(store.totalCost).toBe("3250.00");
   });
 });

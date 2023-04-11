@@ -1,7 +1,7 @@
 <template>
   <section class="order-form">
     <p class="order-form__total-cost">
-      {{ $t("order.form.totalCost") }}: <span>{{ totalCost }}</span>
+      {{ $t("order.form.totalCost") }}: <span>{{ store.totalCost }}</span>
     </p>
 
     <div class="order-form__buttons-group">
@@ -26,29 +26,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import { useCart, type CartItem } from "@/store/cart";
+import { useCart } from "@/store/cart";
+
 const store = useCart();
-
-const totalCost = computed(() => {
-  function getTotalPriceOfProduct(prod: CartItem) {
-    const { quantity } = prod;
-    const { prices } = prod.product;
-    const clonePrices = [...prices];
-
-    const priceObject = clonePrices
-      .reverse()
-      .filter((value) => quantity >= value.q);
-    const priceForCalculation = priceObject[0].p;
-    return quantity * priceForCalculation;
-  }
-
-  const totalCostValue = store.cart.reduce(
-    (acc, curr) => acc + getTotalPriceOfProduct(curr),
-    0
-  );
-  return totalCostValue.toFixed(2);
-});
 
 const clearCart = () => {
   store.clear();

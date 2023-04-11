@@ -39,6 +39,7 @@ defineProps<{
 <style lang="scss">
 .order {
   width: 100%;
+  padding-bottom: 26px;
 
   &__header-text {
     width: 100%;
