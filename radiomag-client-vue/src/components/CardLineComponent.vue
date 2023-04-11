@@ -147,6 +147,7 @@ const addToCart = () =>
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 11px;
 
     @media (max-width: $breakpoint-tablet) {
       width: 100%;

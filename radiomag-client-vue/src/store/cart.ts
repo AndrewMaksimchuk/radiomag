@@ -55,5 +55,32 @@ export const useCart = defineStore("cart", () => {
     localStorage.value = [];
   };
 
-  return { cart, length, add, remove, changeQuantity, loadLocalStorage, clear };
+  function getTotalPriceOfProduct(prod: CartItem) {
+    const { quantity, product } = prod;
+    if (product.prices.length === 0) return 0;
+
+    const priceObject = [...product.prices]
+      .reverse()
+      .filter((value) => quantity >= value.q)[0];
+    return quantity * priceObject.p;
+  }
+
+  const totalCost = computed(() => {
+    const totalCostValue = cart.value.reduce(
+      (acc, curr) => acc + getTotalPriceOfProduct(curr),
+      0
+    );
+    return totalCostValue.toFixed(2);
+  });
+
+  return {
+    cart,
+    length,
+    add,
+    remove,
+    changeQuantity,
+    loadLocalStorage,
+    clear,
+    totalCost,
+  };
 });

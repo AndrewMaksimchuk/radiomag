@@ -1,5 +1,5 @@
 <template>
-  <section class="cart">
+  <section class="cart cart-min-height">
     <div v-if="store.length">
       <Order :cart="store.cart" />
       <OrderContactForm />
@@ -19,7 +19,7 @@ const store = useCart();
 </script>
 
 <style lang="scss">
-.cart {
+.cart-min-height {
   min-height: 600px;
 }
 </style>
