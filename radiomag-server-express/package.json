@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon ./src/app.ts -e ts",
-    "tests": "jest --silent",
+    "tests": "(ts-node ./src/app.ts &); jest --silent",
+    "posttests": "killall node",
     "build": "tsc -p .",
     "migrate": "knex migrate:latest",
     "migrate-make": "../node_modules/.bin/knex migrate:make $1",
