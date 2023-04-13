@@ -1,6 +1,7 @@
 import type { Knex } from "knex";
 import type { CatalogItem } from "../../../dto/Catalog";
 import type { SliderItem } from "../../../dto/Slider";
+import type { IOriginGroups } from "./tables/originGroups/type";
 
 export interface CatalogGroups extends CatalogItem {
   key: number;
@@ -23,5 +24,8 @@ declare module "knex/types/tables" {
 
     slider: SliderItem;
     slider_composite: Knex.CompositeTableType<SliderItem>;
+
+    originGroups: IOriginGroups;
+    originGroups_composite: Knex.CompositeTableType<IOriginGroups>;
   }
 }
