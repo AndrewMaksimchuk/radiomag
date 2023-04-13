@@ -2,5 +2,6 @@
   "catalog": "catalog",
   "catalogGroups": "catalogGroups",
   "contacts": "contacts",
-  "slider": "slider"
+  "slider": "slider",
+  "originGroups": "originGroups"
 }
