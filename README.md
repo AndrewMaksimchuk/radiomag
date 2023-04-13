@@ -43,3 +43,10 @@ add `GIT_TESTS=false` before `git push`:
 ```sh
 GIT_TESTS=false git push -u origin <branch-name>
 ```
+
+### Require
+
+Server:
+
+- SQLite3
+- Redis(need install before)
