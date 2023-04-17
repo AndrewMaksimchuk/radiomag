@@ -1,0 +1,13 @@
+name: default
+description: Default common template
+body:
+  - type: textarea
+    attributes:
+      label: "TODO:"
+  - type: checkboxes
+    attributes:
+      label: "Definition of done:"
+      options:
+        - label: checked manual testing
+        - label: covered with unit/intagration tests
+        - label: has acceptable lighthouse score
