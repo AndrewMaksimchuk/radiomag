@@ -49,7 +49,7 @@ watch(
     height: 45px;
     display: flex;
 
-    @media (max-width: $breakpoint-mobile) {
+    @media (max-width: $breakpoint-tablet) {
       width: 100%;
     }
 
@@ -62,7 +62,7 @@ watch(
       display: block;
 
       @media (max-width: $breakpoint-mobile) {
-        width: auto;
+        width: 100%;
       }
     }
 
