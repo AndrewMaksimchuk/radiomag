@@ -127,6 +127,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    @media (max-width: $breakpoint-tablet) {
+      justify-content: center;
+    }
   }
 
   &__item {

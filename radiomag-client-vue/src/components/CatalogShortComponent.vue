@@ -21,12 +21,8 @@ store.useMenu();
 
 <style lang="scss">
 .catalog-of-products {
-  width: 253px;
+  width: 100%;
   padding-bottom: 23px;
-
-  @media (max-width: $breakpoint-mobile) {
-    width: 100%;
-  }
 
   &__header {
     width: 100%;
@@ -47,6 +43,10 @@ store.useMenu();
     text-decoration: none;
     border: none;
     background: transparent;
+
+    @media (max-width: $breakpoint-tablet) {
+      justify-content: center;
+    }
 
     &:hover {
       cursor: pointer;

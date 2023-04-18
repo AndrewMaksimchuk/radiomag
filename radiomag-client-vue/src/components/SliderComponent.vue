@@ -20,17 +20,37 @@
 </template>
 
 <script setup lang="ts">
+import { onBeforeMount, onBeforeUnmount } from "vue";
 import { useSlider } from "@/store/slider";
+import { getScreenCurrentWidth } from "@/utils/screenCurrentWidth";
+import { getScreenBreakpoint } from "@/utils/screenBreakpoint";
 import CardSmall from "./CardSmallComponent.vue";
 import SliderButton from "./SliderButton.vue";
 
 const store = useSlider();
+
+const onResize = () => {
+  const width = getScreenCurrentWidth();
+  const breakpoint = parseInt(getScreenBreakpoint("--breakpoint-tablet"));
+  if (width <= breakpoint && store.numberOfShowedCards !== 2)
+    store.setNumberShowedCards(2);
+  if (width > breakpoint && store.numberOfShowedCards === 2)
+    store.setNumberShowedCards();
+};
+
+onBeforeMount(() => {
+  onResize();
+  window.addEventListener("resize", onResize);
+});
+
+onBeforeUnmount(() => window.removeEventListener("resize", onResize));
 </script>
 
 <style lang="scss">
 .slider {
   width: 100%;
   padding-bottom: 26px;
+
   &__cards {
     width: 100%;
     display: flex;
@@ -39,6 +59,7 @@ const store = useSlider();
     row-gap: 11px;
     padding-bottom: 23px;
   }
+
   &__controls {
     display: flex;
     justify-content: center;
@@ -46,6 +67,7 @@ const store = useSlider();
 
     &-button {
       --size: 12px;
+
       width: var(--size);
       height: var(--size);
       border-radius: 50%;
