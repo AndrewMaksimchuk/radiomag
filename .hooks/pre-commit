@@ -22,7 +22,7 @@ fi
 STLINTFILES=$(echo "$FILES" | grep -E '(.css|.scss|.vue)$')
 if [ ! -z "$STLINTFILES" ]; then
 	echo "[ RUNNING: Stylelint ]"
-    STYLELINT=$(echo "$STLINTFILES" | xargs ./radiomag-client-vue/node_modules/.bin/stylelint)
+    STYLELINT=$(echo "$STLINTFILES" | xargs ./node_modules/.bin/stylelint)
     if [ ! -z "$STYLELINT" ]; then
         echo "$STYLELINT"
         exit 1
