@@ -47,7 +47,10 @@ export const useCart = defineStore("cart", () => {
 
   const loadLocalStorage = () => {
     const storage = localStorage.value;
-    cart.value = storage;
+    cart.value = storage.map((cartItem) => {
+      cartItem.quantity = Number(cartItem.quantity);
+      return cartItem;
+    });
   };
 
   const clear = () => {
@@ -59,10 +62,15 @@ export const useCart = defineStore("cart", () => {
     const { quantity, product } = prod;
     if (product.prices.length === 0) return 0;
 
-    const priceObject = [...product.prices]
+    const prices = [...product.prices]
       .reverse()
-      .filter((value) => quantity >= value.q)[0];
-    return quantity * priceObject.p;
+      .filter((value) => quantity >= value.q);
+
+    if (prices.length) {
+      return quantity * prices[0].p;
+    }
+
+    return quantity * product.prices[0].p;
   }
 
   const totalCost = computed(() => {

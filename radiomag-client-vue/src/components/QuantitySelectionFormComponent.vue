@@ -16,7 +16,7 @@
         <input
           class="card-line__right-input"
           type="text"
-          v-model="inputValue"
+          v-model.number="inputValue"
           @input="changeInputValue()"
           @click="selectText"
         />
