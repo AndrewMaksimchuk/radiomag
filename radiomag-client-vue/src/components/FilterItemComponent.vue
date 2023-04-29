@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { FiltersItems } from "../../../dto/Group";
+import type { FiltersItemsMod } from "../../../dto/Group";
 import { ref, watch } from "vue";
 import { useFilters } from "@/store/filtes";
 
 defineProps<{
   filterIndex: number;
   header: string;
-  item: FiltersItems[number][number];
+  item: FiltersItemsMod[number][number];
 }>();
 
 const isChecked = ref(false);

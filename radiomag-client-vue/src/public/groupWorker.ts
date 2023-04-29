@@ -7,13 +7,17 @@ let dataFromGroup: Group;
 
 const getDescription = (descriptionArray: Description) => {
   return descriptionArray.map((element, index) => {
-    if (index === 0) return element;
-    return dataFromGroup.descriptions_titles[element].value;
+    if (index === 0) return "";
+    const description = dataFromGroup.descriptions_titles[element];
+    return Array.isArray(description) ? "" : description.value;
   });
 };
 
 const getStock = (inStock: StockItems) => {
-  return inStock.map((stockData) => {
+  type T = Required<StockItems[number]>;
+  const predicate = (value: StockItems[number]): value is T =>
+    value.stock !== undefined;
+  return inStock.filter<T>(predicate).map((stockData) => {
     const stockNameId = stockData.stock_id;
     const allStockNames = dataFromGroup.stock_names;
     const stockName = stockNameId ? allStockNames[stockNameId] : "";
@@ -23,7 +27,9 @@ const getStock = (inStock: StockItems) => {
 
 const sumAllProductParameters = (product: Product): WorkerProduct => {
   const description = getDescription(product.description);
-  const stock_data = getStock(product.stock_data.items);
+  const stock_data = getStock(product.stock_data.items).filter(
+    (value) => value !== undefined
+  );
   return { ...product, description, stock_data };
 };
 

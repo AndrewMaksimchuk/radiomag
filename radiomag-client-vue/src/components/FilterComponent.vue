@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FiltersItems } from "../../../dto/Group";
+import type { FiltersItemsMod } from "../../../dto/Group";
 import { watch, ref } from "vue";
 import { useFilters } from "@/store/filtes";
 import FilterItemComponent from "./FilterItemComponent.vue";
@@ -7,7 +7,7 @@ import FilterItemComponent from "./FilterItemComponent.vue";
 defineProps<{
   header: string;
   filterIndex: number;
-  data: FiltersItems[number];
+  data: FiltersItemsMod[number];
 }>();
 
 const store = useFilters();

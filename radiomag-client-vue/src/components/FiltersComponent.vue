@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { FiltersItems } from "../../../dto/Group";
+import type { FiltersItemsMod } from "../../../dto/Group";
 import type { AllSearchParams } from "@/store/filters";
 import { useFilters } from "@/store/filtes";
 import Filter from "./FilterComponent.vue";
 
 defineProps<{
   headers: string[];
-  data: FiltersItems;
+  data: FiltersItemsMod;
 }>();
 
 const emit = defineEmits<{
