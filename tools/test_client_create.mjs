@@ -22,6 +22,6 @@ const templateContent = readFileSync(pathToTemplate, { encoding: "utf-8" });
 writeFileSync(file, templateContent, { encoding: "utf-8" });
 
 console.log("File has been created:");
-console.log(file);
+console.log("file://" + file);
 
 rl.close();
