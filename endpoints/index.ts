@@ -8,3 +8,7 @@ export const HTTPget = {
   groupName: (id: number | string) => `/api/groupName/${id}`,
   search: (name: string) => `/api/search/${name}`,
 };
+
+export const HTTPpost = {
+  order: "/api/order",
+};
