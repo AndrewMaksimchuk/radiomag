@@ -1,4 +1,4 @@
-export type Description = string[];
+export type Description = Array<string | number>;
 
 interface PriceItem {
   q: number;
@@ -9,9 +9,9 @@ interface PriceItem {
 type Price = PriceItem[];
 
 export type StockItems = {
-  stock: string;
-  stock_wait: string | undefined;
-  stock_id: string | undefined;
+  stock?: string;
+  stock_wait?: string;
+  stock_id?: string | number;
 }[];
 
 interface Stock {
@@ -39,9 +39,9 @@ export interface Product {
   datasheet_link_data: string;
   extended_description: boolean;
   pcs: string;
-  total_stock: string;
+  total_stock: number | string;
   prices: Price;
-  moq: null;
+  moq?: null | number;
   google_category_id: string;
   initialPosition: number;
   product_analogs_types: string[] | null;

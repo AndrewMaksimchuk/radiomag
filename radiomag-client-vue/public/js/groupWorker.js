@@ -1,45 +1,51 @@
 let products, dataFromGroup;
-const getDescription = (r) =>
-    r.map((t, e) => (e === 0 ? t : dataFromGroup.descriptions_titles[t].value)),
-  getStock = (r) =>
-    r.map((t) => {
-      const e = t.stock_id,
-        o = dataFromGroup.stock_names,
-        c = e ? o[e] : "";
-      return { stock: t.stock, stockName: c };
+const getDescription = (e) =>
+    e.map((r, t) => {
+      if (t === 0) return "";
+      const s = dataFromGroup.descriptions_titles[r];
+      return Array.isArray(s) ? "" : s.value;
     }),
-  sumAllProductParameters = (r) => {
-    const t = getDescription(r.description),
-      e = getStock(r.stock_data.items);
-    return { ...r, description: t, stock_data: e };
+  getStock = (e) => {
+    const r = (t) => t.stock !== void 0;
+    return e.filter(r).map((t) => {
+      const s = t.stock_id,
+        c = dataFromGroup.stock_names,
+        n = s ? c[s] : "";
+      return { stock: t.stock, stockName: n };
+    });
   },
-  main = (r) => {
-    const { type: t, data: e } = r.data;
-    if (t === "sum_all_product_description")
+  sumAllProductParameters = (e) => {
+    const r = getDescription(e.description),
+      t = getStock(e.stock_data.items).filter((s) => s !== void 0);
+    return { ...e, description: r, stock_data: t };
+  },
+  main = (e) => {
+    const { type: r, data: t } = e.data;
+    if (r === "sum_all_product_description")
       return (
-        (dataFromGroup = e),
-        (products = e.items.map(sumAllProductParameters)),
+        (dataFromGroup = t),
+        (products = t.items.map(sumAllProductParameters)),
         postMessage({
           type: "return_sum_all_product_description",
           data: products,
         })
       );
-    if (t === "apply_filters") {
-      const o = Object.keys(e),
-        c = products.filter((i) =>
-          o
-            .map((s) => {
-              const n = i.description.at(Number(s));
-              return n === void 0 ? !1 : e[s].includes(n);
+    if (r === "apply_filters") {
+      const s = Object.keys(t),
+        c = products.filter((n) =>
+          s
+            .map((o) => {
+              const i = n.description.at(Number(o));
+              return i === void 0 ? !1 : t[o].includes(i);
             })
-            .every((s) => s === !0)
+            .every((o) => o === !0)
         );
       return postMessage({
         type: "return_sum_all_product_description",
         data: c,
       });
     }
-    if (t === "reset")
+    if (r === "reset")
       return postMessage({
         type: "return_sum_all_product_description",
         data: products,

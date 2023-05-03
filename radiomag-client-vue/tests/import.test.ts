@@ -1,6 +1,9 @@
 import { readdirSync } from "node:fs";
 import { join } from "node:path";
 import { describe, it, expect } from "vitest";
+import { i18nValidators } from "./mock/i18n-validators";
+
+i18nValidators();
 
 const toComponents = join(process.cwd(), "src", "components");
 const components = readdirSync(toComponents).map((cmp) =>

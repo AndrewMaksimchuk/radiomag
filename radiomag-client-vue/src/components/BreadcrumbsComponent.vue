@@ -78,6 +78,10 @@ const store = useBreadcrumbs();
     flex-wrap: wrap;
     column-gap: 18px;
     align-items: center;
+
+    @media (max-width: $breakpoint-tablet) {
+      padding: 12px;
+    }
   }
 
   &__icon {

@@ -1,10 +1,8 @@
+import type { Locale } from "./locales";
 import { createI18n } from "vue-i18n";
-import ua from "./dictionary/ua-UK.json";
-import en from "./dictionary/en-US.json";
+import messages from "./dictionary";
 
-type MessageSchema = typeof ua;
-
-const messages = { ua, en };
+type MessageSchema = typeof messages.ua;
 
 const options = {
   legacy: false,
@@ -17,7 +15,7 @@ export const setLang = (locale: string) =>
   document.querySelector("html")?.setAttribute("lang", locale);
 
 const setupI18n = () => {
-  const i18n = createI18n<[MessageSchema], "ua" | "en">(options);
+  const i18n = createI18n<[MessageSchema], Locale>(options);
   setLang(options.locale);
   return i18n;
 };

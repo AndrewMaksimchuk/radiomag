@@ -29,6 +29,11 @@ defineProps<{
   align-items: center;
   background-color: var(--color-white);
   border: 1px solid var(--color-gray-light);
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-tablet) {
+    width: calc(50% - 6px);
+  }
 
   &__image {
     width: 100px;
@@ -57,6 +62,7 @@ defineProps<{
     color: var(--color-gray-dark);
     line-height: 18px;
     text-align: center;
+    overflow: hidden;
   }
 }
 </style>

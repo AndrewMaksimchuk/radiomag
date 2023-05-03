@@ -3,8 +3,9 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { GET } from "../httpClient";
 import { useI18nStore } from "./i18n";
+import { setCurrency } from "@/utils/currency";
 
-interface GroupStore {
+export interface GroupStore {
   [id: number | string]: Group;
 }
 
@@ -27,9 +28,10 @@ export const useGroup = defineStore("group", () => {
   };
 
   const getGroupData = async (id: number | string) => {
-    const [error, updatableValue] = await GET.group(id);
+    const [error, value] = await GET.group(id);
     if (error) return (isError.value = i18nStore.t("group.error.load"));
-    return (data.value[id] = updatableValue);
+    setCurrency(value);
+    return (data.value[id] = value);
   };
 
   const load = async (id: number | string) => {

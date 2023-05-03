@@ -4,19 +4,20 @@ import { defineStore } from "pinia";
 import { GET } from "../httpClient";
 
 export const useSlider = defineStore("slider", () => {
-  const numberOfShowedCards = 5;
+  const defaultQuantity = 5;
+  const numberOfShowedCards = ref(defaultQuantity);
   const data = ref<Slider>([]);
   const activeButton = ref(1);
 
   const length = computed(() => data.value.length);
 
   const numberOfButtons = computed(() =>
-    Math.ceil(data.value.length / numberOfShowedCards)
+    Math.ceil(data.value.length / numberOfShowedCards.value)
   );
 
   const toShow = computed(() => {
-    const start = (activeButton.value - 1) * numberOfShowedCards;
-    const end = start + numberOfShowedCards;
+    const start = (activeButton.value - 1) * numberOfShowedCards.value;
+    const end = start + numberOfShowedCards.value;
     return data.value.slice(start, end);
   });
 
@@ -28,5 +29,18 @@ export const useSlider = defineStore("slider", () => {
     return (data.value = updatableValue);
   };
 
-  return { data, length, activeButton, numberOfButtons, toShow, active, load };
+  const setNumberShowedCards = (num: number = defaultQuantity) =>
+    (numberOfShowedCards.value = num);
+
+  return {
+    data,
+    length,
+    activeButton,
+    numberOfButtons,
+    toShow,
+    active,
+    load,
+    numberOfShowedCards,
+    setNumberShowedCards,
+  };
 });

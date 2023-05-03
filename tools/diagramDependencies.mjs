@@ -84,6 +84,7 @@ const client = async () => {
     join(cwd, DIAGRAMSFILE),
     toMarkdown(clientDiagram, "## Client")
   );
+  process.stdout.write(`file://${join(cwd, DIAGRAMSFILE)}\n`);
 };
 
 client();

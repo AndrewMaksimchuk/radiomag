@@ -31,13 +31,13 @@ import HeaderSearchField from "./HeaderSearchFieldComponent.vue";
   height: 84px;
 
   &_first-child {
-    @media (max-width: $breakpoint-mobile) {
+    @media (max-width: $breakpoint-tablet) {
       max-width: 109px;
     }
   }
 
   &_last-child {
-    @media (max-width: $breakpoint-mobile) {
+    @media (max-width: $breakpoint-tablet) {
       max-width: 165px;
     }
   }

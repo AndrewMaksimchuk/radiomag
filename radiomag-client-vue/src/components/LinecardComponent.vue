@@ -25,6 +25,10 @@
   width: var(--width-card);
   background-color: var(--color-white);
 
+  @media (max-width: $breakpoint-tablet) {
+    display: none;
+  }
+
   &__header-text {
     color: var(--color-white);
     background-color: var(--blue-light);

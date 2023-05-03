@@ -16,7 +16,7 @@
         <input
           class="card-line__right-input"
           type="text"
-          v-model="inputValue"
+          v-model.number="inputValue"
           @input="changeInputValue()"
           @click="selectText"
         />
@@ -29,7 +29,7 @@
       </section>
 
       <button class="card-line__right-button-buy" @click.prevent="addToCart">
-        {{ $t("card.buy") }}
+        <slot name="button">{{ $t("card.buy") }}</slot>
       </button>
     </form>
   </div>
@@ -53,9 +53,8 @@ const isAddedToCart = ref(false);
 const isZero = (quantity: number) => quantity === 0;
 const isGreaterThatZero = (quantity: number) => quantity > 0;
 
-watch(props, (value, oldValue) => {
+watch(props, (value) => {
   inputValue.value = value.quantityOfProduct;
-  console.log({ value, oldValue });
 });
 
 watch(inputValue, (value) =>

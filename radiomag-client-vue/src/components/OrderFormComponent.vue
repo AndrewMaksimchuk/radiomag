@@ -1,7 +1,8 @@
 <template>
   <section class="order-form">
     <p class="order-form__total-cost">
-      {{ $t("order.form.totalCost") }}: <span>{{ store.totalCost }}</span>
+      {{ $t("order.form.totalCost") }}:
+      <span>{{ store.totalCost }} {{ currency }}</span>
     </p>
 
     <div class="order-form__buttons-group">
@@ -12,11 +13,14 @@
         {{ $t("order.form.clearCart") }}
       </button>
 
-      <RouterLink :to="{ name: 'products' }">
-        <button class="order-form__button order-form__button_color-gray">
+      <button class="order-form__button order-form__button_color-gray">
+        <RouterLink
+          class="order-form__button-link reset-text-decor"
+          :to="{ name: 'products' }"
+        >
           {{ $t("order.form.continueShopping") }}
-        </button>
-      </RouterLink>
+        </RouterLink>
+      </button>
 
       <button class="order-form__button order-form__button_color-red">
         {{ $t("order.form.toOrder") }}
@@ -27,8 +31,11 @@
 
 <script setup lang="ts">
 import { useCart } from "@/store/cart";
+import { getCurrency } from "@/utils/currency";
 
 const store = useCart();
+
+const currency = getCurrency();
 
 const clearCart = () => {
   store.clear();
@@ -47,13 +54,24 @@ const clearCart = () => {
   justify-content: space-between;
   align-items: flex-end;
 
+  @media (max-width: $breakpoint-tablet) {
+    padding: 18px 15px;
+  }
+
   &__total-cost {
+    padding-bottom: 24px;
     font-size: 1.6rem;
   }
 
   &__buttons-group {
     display: flex;
-    column-gap: 13px;
+    flex-wrap: wrap;
+    gap: 13px;
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 100%;
+      flex-flow: column nowrap;
+    }
   }
 
   &__button {
@@ -72,6 +90,10 @@ const clearCart = () => {
 
     &_color-red {
       background-color: var(--color-red);
+    }
+
+    &-link {
+      color: inherit;
     }
   }
 }

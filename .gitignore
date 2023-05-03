@@ -5,6 +5,7 @@ dist/
 coverage/
 
 .env
+.env_dev
 .notes
 *db*
 *sqlite*

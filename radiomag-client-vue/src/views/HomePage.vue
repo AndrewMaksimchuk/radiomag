@@ -32,7 +32,7 @@ import Bulletin from "@/components/BulletinComponent.vue";
   grid-template-columns: 253px auto 253px;
   column-gap: 23px;
 
-  @media (max-width: $breakpoint-mobile) {
+  @media (max-width: $breakpoint-tablet) {
     grid-template-columns: 100%;
   }
 }

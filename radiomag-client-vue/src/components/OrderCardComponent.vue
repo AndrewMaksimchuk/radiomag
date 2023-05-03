@@ -43,7 +43,11 @@
         :isBayButtonVisible="false"
         :quantityOfProduct="goods.quantity ?? 1"
         v-on:changeQuantityOfProduct="changeQuantityOfProduct"
-      />
+      >
+        <template #button>
+          {{ $t("order.recount") }}
+        </template>
+      </QuantitySelectionForm>
     </td>
 
     <td class="order-card__row">
@@ -77,19 +81,68 @@ const changeQuantityOfProduct = (value: number) =>
 
 <style lang="scss">
 .order-card {
-  width: 100%;
+  @media (max-width: $breakpoint-tablet) {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   &__row {
     padding: 20px 16px;
     vertical-align: top;
 
+    @media (max-width: $breakpoint-tablet) {
+      width: 100%;
+      padding: 0;
+      padding-bottom: 20px;
+    }
+
+    &:nth-child(1) {
+      @media (max-width: $breakpoint-tablet) {
+        width: 27%;
+      }
+    }
+
+    &:nth-child(2) {
+      @media (max-width: $breakpoint-tablet) {
+        width: calc(100% - 27% - 15px);
+        padding-left: 15px;
+      }
+    }
+
+    &:nth-child(4) {
+      @media (max-width: $breakpoint-tablet) {
+        display: none;
+      }
+    }
+
+    &:nth-child(5) {
+      @media (max-width: $breakpoint-tablet) {
+        padding: 0;
+      }
+    }
+
+    &:nth-child(6) {
+      @media (max-width: $breakpoint-tablet) {
+        display: grid;
+      }
+    }
+
     &_fix-size {
       width: 450px;
+
+      @media (max-width: $breakpoint-tablet) {
+        width: auto;
+      }
     }
   }
 
   &__img {
     width: 164px;
+    object-fit: contain;
+
+    @media (max-width: $breakpoint-tablet) {
+      width: 100%;
+    }
   }
 
   &__button-delete {

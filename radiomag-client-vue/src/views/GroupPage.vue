@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { WorkerProduct, TransferObject } from "@/public/types";
-import type { FiltersItems, Group } from "@/../../dto/Group";
+import type { FiltersItems, FiltersItemsMod, Group } from "@/../../dto/Group";
 import type { AllSearchParams } from "@/store/filters";
 import { ref, computed, onBeforeMount, onBeforeUnmount } from "vue";
 import { useRoute } from "vue-router";
@@ -21,7 +21,7 @@ const storeBreadcrumbs = useBreadcrumbs();
 const currentGroupId = route.params.id;
 const allDataToShow = ref<WorkerProduct[]>([]);
 const filterHeaders = ref<string[]>([]);
-const allFilters = ref<FiltersItems>([]);
+const allFilters = ref<FiltersItemsMod>([]);
 
 const toShow = computed(() => {
   const { start, end } = storePagination.getRange;
@@ -39,10 +39,12 @@ const putFilters = () => {
 
   if (Boolean(descriptionsTitles) === false) return;
 
-  const mapFilters = (data: FiltersItems[number][number]) => ({
-    qty: data.qty,
-    title: descriptionsTitles[data.title].value,
-  });
+  const mapFilters = (data: FiltersItems[number][number]) => {
+    const obj = descriptionsTitles[data.title];
+    return Array.isArray(obj)
+      ? { qty: 0, title: "" }
+      : { qty: data.qty, title: obj.value };
+  };
 
   filterHeaders.value = Object.values(
     store.data[currentGroupId].column_headers.product_descriptions
