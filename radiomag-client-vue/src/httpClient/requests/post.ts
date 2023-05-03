@@ -1,9 +1,9 @@
+import type { FormData, OrderResponse } from "../../../../dto/Order";
 import { HTTPpost } from "../../../../endpoints";
-import POSTdata from "../methods/POST";
+import POSTRequest from "../methods/POST";
 
 export const POST = {
-  order: async (data: unknown): Promise<unknown> => {
-    const response = await POSTdata(HTTPpost.order, data);
-    return await response.json();
+  order: async (data: FormData) => {
+    return await POSTRequest<OrderResponse>(HTTPpost.order, data);
   },
 };
