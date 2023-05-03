@@ -21,6 +21,10 @@ import title from "./components/title";
 import validations from "./components/validations";
 import orderContactFormSubscriptions from "./components/orderContactFormSubscriptions";
 import orderContactFormSendingTypeOfDelivery from "./components/orderContactFormSendingTypeOfDelivery";
+import orderContactFormSendingContactPerson from "./components/orderContactFormSendingContactPerson";
+import orderContactFormSendingRecipient from "./components/orderContactFormSendingRecipient";
+import orderContactFormSendingAddress from "./components/orderContactFormSendingAddress";
+import orderContactFormSendingCity from "./components/orderContactFormSendingCity";
 
 export type Collection = Record<Locale, Record<string, unknown>>[];
 
@@ -47,4 +51,8 @@ export const collection = [
   validations,
   orderContactFormSubscriptions,
   orderContactFormSendingTypeOfDelivery,
+  orderContactFormSendingContactPerson,
+  orderContactFormSendingRecipient,
+  orderContactFormSendingAddress,
+  orderContactFormSendingCity,
 ];
