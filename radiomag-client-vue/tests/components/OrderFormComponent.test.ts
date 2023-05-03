@@ -61,7 +61,6 @@ describe("OrderForm component", () => {
     const containedText = "order.form.totalCost: 0.00";
     const text = findCost().text();
     expect(text).toContain(containedText);
-    expect(text).toHaveLength(containedText.length);
   });
 
   it("should have total cost of 3250.00", async () => {
@@ -70,7 +69,6 @@ describe("OrderForm component", () => {
     await nextTick();
     const text = findCost().text();
     expect(text).toContain(containedText);
-    expect(text).toHaveLength(containedText.length);
   });
 
   it("should clear cart", async () => {

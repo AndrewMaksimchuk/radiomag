@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import { useCart } from "@/store/cart";
 import Order from "@/components/OrderComponent.vue";
-import OrderContactForm from "@/components/OrderContactForm.vue";
+import OrderContactForm from "@/components/OrderContactFormComponent.vue";
 
 const store = useCart();
 </script>

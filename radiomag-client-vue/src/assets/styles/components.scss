@@ -49,3 +49,18 @@
     background: none;
   }
 }
+
+.form {
+  &__input-error {
+    display: block;
+    margin-top: 3px;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    visibility: hidden;
+    color: var(--color-red);
+
+    &_show {
+      visibility: visible;
+    }
+  }
+}

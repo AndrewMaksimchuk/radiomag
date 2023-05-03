@@ -22,6 +22,11 @@ const cart = useCart();
 .cart {
   display: block;
   height: 100%;
+  padding: 0 15px;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 0;
+  }
 }
 
 .card {
