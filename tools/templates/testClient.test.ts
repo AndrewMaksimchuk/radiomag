@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from "vitest";
+import { describe, it, expect, beforeEach } from "vitest";
 import {
   shallowMount,
   VueWrapper,
@@ -9,14 +9,6 @@ import { createTestingPinia } from "@pinia/testing";
 
 /* eslint-disable */
 config.global.config.warnHandler = () => null;
-
-const i18nValidatorsImportModuleMock = () => {
-  vi.mock("@/utils/i18n-validators", () => {
-    return {
-      required: () => vi.fn(),
-    };
-  });
-};
 
 let wrapper: VueWrapper;
 
