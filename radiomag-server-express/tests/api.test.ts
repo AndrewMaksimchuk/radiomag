@@ -1,3 +1,4 @@
+import type { FormData } from "../../dto/Order";
 import dotenv from "dotenv";
 import request from "supertest";
 import { endpoints } from "../../endpoints/nodeEndpoints";
@@ -71,4 +72,66 @@ describe("GET /search", () => {
 describe("GET /slider", () => {
   tobe200(endpoints.slider);
   tobejson(endpoints.slider);
+});
+
+describe("/order", () => {
+  const initFormData: FormData = {
+    email: "",
+    unit: "shop",
+    subscriptions: "creditCard",
+    typeOfDelivery: "selfPickup",
+    city: "",
+    address: "",
+    recipient: "",
+    contactPerson: "",
+    telFax: "",
+    comment: "",
+  };
+
+  it("POST return false, invalida default form data", async () => {
+    const response = await request(baseURL)
+      .post(endpoints.order)
+      .send(initFormData)
+      .set("Accept", "application/json");
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toMatchObject({ ok: false });
+  });
+
+  it("POST return true, valide default form data", async () => {
+    const data = {
+      ...initFormData,
+      email: "google@gmail.com",
+      contactPerson: "Isaac Newton",
+      telFax: "+Infinity",
+    };
+    const response = await request(baseURL)
+      .post(endpoints.order)
+      .send(data)
+      .set("Accept", "application/json");
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toMatchObject({ ok: true });
+  });
+
+  it("POST return true, valide ship form data", async () => {
+    const data = {
+      ...initFormData,
+      email: "google@gmail.com",
+      contactPerson: "Isaac Newton",
+      telFax: "+Infinity",
+      unit: "shop",
+      subscriptions: "creditCard",
+      typeOfDelivery: "urkPost",
+      city: "Lviv",
+      address: "#13",
+      recipient: "Mick Mouse",
+      comment: "",
+    };
+
+    const response = await request(baseURL)
+      .post(endpoints.order)
+      .send(data)
+      .set("Accept", "application/json");
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toMatchObject({ ok: true });
+  });
 });
