@@ -6,6 +6,7 @@ import { routerCatalogGroups } from "./catalogGroups.js";
 import { routerGroupName } from "./groupName.js";
 import { routerSlider } from "./slider.js";
 import { routerContacts } from "./contacts.js";
+import { routerOrder } from "./order.js";
 
 export const router = Router();
 
@@ -16,3 +17,4 @@ router.use(routerCatalogGroups);
 router.use(routerGroupName);
 router.use(routerSlider);
 router.use(routerContacts);
+router.use(routerOrder);
