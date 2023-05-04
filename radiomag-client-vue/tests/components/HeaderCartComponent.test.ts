@@ -35,13 +35,11 @@ describe("HeaderCart component", () => {
   });
 
   it("should be visible", () => {
-    console.log(wrapper.html());
     expect(wrapper.isVisible()).toBe(true);
   });
 
   it("should have image with corect attributes", () => {
     const attr = findImg().attributes();
-    console.log();
     expect(attr["src"]).toBeTruthy();
     expect(attr["alt"]).toBeTruthy();
   });
