@@ -4,6 +4,7 @@
   "type": "module",
   "main": "src/app.ts",
   "scripts": {
+    "predev": "clear && node ../tools/compileEndpoints.js && node ../tools/printRoutes.js",
     "dev": "nodemon ./src/app.ts -e ts",
     "tests": "(ts-node ./src/app.ts &); jest --silent",
     "posttests": "killall node",
