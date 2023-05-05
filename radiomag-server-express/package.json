@@ -6,6 +6,7 @@
   "scripts": {
     "predev": "clear && node ../tools/compileEndpoints.js && node ../tools/printRoutes.js",
     "dev": "nodemon ./src/app.ts -e ts",
+    "pretests": "rm -rf ../endpoints/nodeEndpoints.js",
     "tests": "(ts-node ./src/app.ts &); jest --silent",
     "posttests": "killall node",
     "clean": "rimraf ./dist",
