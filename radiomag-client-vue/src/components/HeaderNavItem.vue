@@ -21,11 +21,13 @@ defineProps<{
 .header {
   &-nav {
     &__item {
+      text-align: center;
       padding: 0 39px;
+      flex-grow: 1;
 
-      @media (max-width: $breakpoint-mobile) {
-        width: 100%;
+      @media (max-width: $breakpoint-tablet) {
         text-align: center;
+        flex-grow: 0;
       }
     }
 

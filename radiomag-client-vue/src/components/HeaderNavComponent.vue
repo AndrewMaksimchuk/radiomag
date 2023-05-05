@@ -39,9 +39,8 @@ watchEffect(() => {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     color: #fff;
-    font-size: 18px;
+    font-size: 1.6rem;
     text-transform: uppercase;
     background-color: var(--blue-medium);
     list-style: none;
