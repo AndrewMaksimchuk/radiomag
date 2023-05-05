@@ -20,11 +20,19 @@
   @extend %button-style;
 
   padding: 0 32px;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 0;
+  }
 }
 
 .login-registration {
   @extend %button-style;
 
   padding: 0 32px;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 0;
+  }
 }
 </style>

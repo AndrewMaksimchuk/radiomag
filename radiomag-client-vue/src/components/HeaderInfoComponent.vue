@@ -49,8 +49,21 @@ const toggleOverflow = (data: boolean) => {
     overflow: hidden;
 
     &-item {
+      flex-grow: 1;
+      height: $line-height;
+      text-align: center;
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--blue-light);
+        line-height: $line-height;
+      }
+
       @media (max-width: $breakpoint-tablet) {
-        font-size: 14px;
+        width: 250px;
+        text-align: left;
+        font-size: 1.4rem;
+        padding: 0 1.5rem;
       }
     }
 
@@ -65,14 +78,14 @@ const toggleOverflow = (data: boolean) => {
     @media (max-width: $breakpoint-tablet) {
       flex-direction: column;
       align-items: flex-start;
-      font-size: 14px;
+      font-size: 1.4rem;
     }
   }
 
   &__img-info {
-    width: 16px;
-    height: 16px;
-    margin-right: 9px;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-right: 0.9rem;
   }
 }
 </style>

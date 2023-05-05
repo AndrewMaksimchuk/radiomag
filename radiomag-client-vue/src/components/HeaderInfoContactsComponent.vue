@@ -23,20 +23,3 @@ import ContactPhone from "./ContactPhoneComponent.vue";
     >
   </div>
 </template>
-
-<style lang="scss">
-.header {
-  &__info {
-    &-item {
-      height: 100%;
-      padding: 0 32px;
-    }
-
-    &-item:hover {
-      cursor: pointer;
-      background-color: var(--blue-light);
-      line-height: $line-height;
-    }
-  }
-}
-</style>

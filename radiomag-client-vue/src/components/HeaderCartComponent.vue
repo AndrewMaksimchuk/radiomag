@@ -1,5 +1,9 @@
 <template>
-  <RouterLink :to="{ name: 'cart' }" class="cart" tabindex="-1">
+  <RouterLink
+    :to="{ name: 'cart' }"
+    class="header__info-item cart"
+    tabindex="-1"
+  >
     <button class="header__info-item card">
       <img
         src="@/assets/images/shopping-cart.svg"
@@ -22,17 +26,17 @@ const cart = useCart();
 .cart {
   display: block;
   height: 100%;
-  padding: 0 15px;
+  padding: 0;
+}
 
-  @media (max-width: $breakpoint-tablet) {
-    padding: 0;
-  }
+a.cart {
+  padding: 0;
 }
 
 .card {
   @extend %button-style;
 
-  padding: 0 32px;
+  width: 100%;
   background-color: var(--color-red);
 
   &__text {
