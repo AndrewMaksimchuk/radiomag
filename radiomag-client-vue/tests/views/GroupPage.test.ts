@@ -4,10 +4,10 @@ import { createTestingPinia, TestingPinia } from "@pinia/testing";
 import { i18n } from "@/languages";
 import router from "@/router";
 import GroupPage from "@/views/GroupPage.vue";
-import SpinnerLoader from "@/components/SpinnerLoader.vue";
 import Pagination from "@/components/PaginationComponent.vue";
 import Filters from "@/components/FiltersComponent.vue";
 import ErrorMessageInGroup from "@/components/ErrorMessageInGroup.vue";
+import { ElSkeleton } from "element-plus";
 
 const buildWrapper = (
   options: MountingOptions<Record<string, unknown>> = {}
@@ -51,7 +51,7 @@ describe("Group page", () => {
     });
 
     it("should loader displayed", () => {
-      expect(wrapper.findComponent(SpinnerLoader).exists()).toBe(true);
+      expect(wrapper.findComponent(ElSkeleton).exists()).toBe(true);
     });
 
     it("should component Pagination hidden", () => {
@@ -91,7 +91,7 @@ describe("Group page", () => {
     });
 
     it("should loader hidden", () => {
-      expect(wrapper.findComponent(SpinnerLoader).exists()).toBe(false);
+      expect(wrapper.findComponent(ElSkeleton).exists()).toBe(false);
     });
 
     it("should component Pagination visible", () => {

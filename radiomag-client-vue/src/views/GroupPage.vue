@@ -7,11 +7,12 @@ import { useRoute } from "vue-router";
 import { useGroup } from "@/store/group";
 import { usePagination } from "@/store/pagination";
 import { useBreadcrumbs } from "@/store/breadcrumbs";
-import SpinnerLoader from "@/components/SpinnerLoader.vue";
+import { ElSkeleton, ElSkeletonItem } from "element-plus";
 import Pagination from "@/components/PaginationComponent.vue";
 import CardLine from "@/components/CardLineComponent.vue";
 import ErrorMessageInGroup from "@/components/ErrorMessageInGroup.vue";
 import Filters from "@/components/FiltersComponent.vue";
+import "element-plus/es/components/skeleton/style/css";
 
 const route = useRoute();
 const store = useGroup();
@@ -115,7 +116,17 @@ onBeforeUnmount(() => store.terminateWorker());
 
 <template>
   <div class="group">
-    <SpinnerLoader v-if="store.isLoading" />
+    <div v-if="store.isLoading">
+      <ElSkeleton class="skeleton__filter">
+        <template #template>
+          <el-skeleton-item class="skeleton__filter-item" variant="rect" />
+          <el-skeleton-item class="skeleton__filter-item" variant="rect" />
+          <el-skeleton-item class="skeleton__filter-item" variant="rect" />
+          <el-skeleton-item class="skeleton__filter-item" variant="rect" />
+        </template>
+      </ElSkeleton>
+      <ElSkeleton class="skeleton__goods" :count="10"> </ElSkeleton>
+    </div>
     <div v-if="!store.isLoading && !store.isError">
       <Filters
         :headers="filterHeaders"
@@ -154,6 +165,23 @@ onBeforeUnmount(() => store.terminateWorker());
     display: flex;
     flex-direction: column;
     row-gap: 4px;
+  }
+}
+
+.skeleton {
+  &__filter {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 3px;
+    padding-bottom: 38px;
+
+    &-item {
+      height: 234px;
+    }
+  }
+
+  &__goods {
+    padding-bottom: 52px;
   }
 }
 </style>

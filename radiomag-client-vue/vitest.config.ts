@@ -15,5 +15,8 @@ export default defineConfig({
     coverage: {
       reportsDirectory: "./tests/coverage",
     },
+    deps: {
+      inline: ["element-plus"],
+    },
   },
 });
