@@ -1,10 +1,14 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { shallowMount, VueWrapper } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
+import { i18n } from "tests/mock/i18n";
 import { i18nValidators } from "tests/mock/i18n-validators";
+import { vueToastification } from "tests/mock/vue-toastification";
 import OrderContactForm from "@/components/OrderContactFormComponent.vue";
 
+i18n();
 i18nValidators();
+vueToastification();
 
 let wrapper: VueWrapper;
 

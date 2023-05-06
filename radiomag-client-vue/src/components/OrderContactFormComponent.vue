@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useToast } from "vue-toastification";
 import { POST } from "@/httpClient";
+import { useI18nStore } from "@/store/i18n";
 import { initFormData } from "@/store/orderContactForm";
 import { validateComponents } from "@/utils/validateComponents";
 import OrderContactFormContact from "./OrderContactFormContactComponent.vue";
@@ -10,6 +12,9 @@ import OrderContactFormSending from "./OrderContactFormSendingComponent.vue";
 import OrderContactFormFieldsetComment from "./OrderContactFormFieldsetCommentComponent.vue";
 import OrderContactFormButtonsGroup from "./OrderContactFormButtonsGroupComponent.vue";
 import OrderContactFormNotify from "./OrderContactFormNotifyComponent.vue";
+
+const useI18n = useI18nStore();
+const toast = useToast();
 
 const contact = ref<InstanceType<typeof OrderContactFormContact> | null>(null);
 const unit = ref<InstanceType<typeof OrderContactFormUnit> | null>(null);
@@ -32,19 +37,31 @@ const getFormData = () => {
   }, data);
 };
 
+const notifyOptions = {
+  timeout: 2000,
+};
+
+const notifySuccess = () =>
+  toast.success(useI18n.t("orderContactForm.notify.success"), notifyOptions);
+
+const notifyError = () =>
+  toast.error(useI18n.t("orderContactForm.notify.error"), notifyOptions);
+
+const notifyWarning = () =>
+  toast.warning(useI18n.t("orderContactForm.notify.warning"), notifyOptions);
+
 const sendFormData = async (event: Event) => {
   event.preventDefault();
-  if (validateComponents(componentsRefs)) return "Form invalide";
+  if (validateComponents(componentsRefs)) return notifyWarning();
 
   const data = getFormData();
   if (data === undefined) return "Form not found";
 
   const responseData = await POST.order(data);
-  // Show error notofication
-  if (responseData === undefined) return "Unable to create an order";
+  if (responseData === undefined) return notifyError();
 
-  // Show successse notification, redirect to user orders list
-  console.log("responseData: ", responseData);
+  notifySuccess();
+  // TODO: redirect to user orders list
 };
 </script>
 
