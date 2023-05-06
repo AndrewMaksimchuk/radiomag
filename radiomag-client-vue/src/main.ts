@@ -1,4 +1,3 @@
-// import type { PluginOptions } from "vue-toastification";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { i18n } from "@/languages";
