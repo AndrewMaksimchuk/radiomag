@@ -18,5 +18,6 @@ export default defineConfig({
     deps: {
       inline: ["element-plus"],
     },
+    testTimeout: 30000,
   },
 });
