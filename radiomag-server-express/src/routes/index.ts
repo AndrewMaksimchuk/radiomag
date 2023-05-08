@@ -7,6 +7,7 @@ import { routerGroupName } from "./groupName.js";
 import { routerSlider } from "./slider.js";
 import { routerContacts } from "./contacts.js";
 import { routerOrder } from "./order.js";
+import { routerError } from "./error.js";
 
 export const router = Router();
 
@@ -18,3 +19,4 @@ router.use(routerGroupName);
 router.use(routerSlider);
 router.use(routerContacts);
 router.use(routerOrder);
+router.use(routerError);
