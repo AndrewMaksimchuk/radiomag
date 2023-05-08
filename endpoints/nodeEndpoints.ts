@@ -3,6 +3,7 @@ export const endpoints = {
   catalog: "/api/catalog",
   slider: "/api/slider",
   order: "/api/order",
+  error: "/api/error",
 
   catalogGroups: "/api/catalog/:id",
   group: "/api/group/:id",

@@ -35,6 +35,7 @@ defineProps<{
       @extend %button-style;
 
       text-decoration: underline;
+      text-underline-offset: 5px;
     }
   }
 }

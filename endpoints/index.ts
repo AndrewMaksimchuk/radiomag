@@ -11,4 +11,5 @@ export const HTTPget = {
 
 export const HTTPpost = {
   order: "/api/order",
+  error: "/api/error",
 };
