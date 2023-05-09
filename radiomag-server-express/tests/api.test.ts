@@ -134,4 +134,13 @@ describe("/order", () => {
     expect(response.statusCode).toBe(200);
     expect(response.body).toMatchObject({ ok: true });
   });
+
+  it("POST error handler", async () => {
+    const response = await request(baseURL)
+      .post(endpoints.error)
+      .send({})
+      .set("Accept", "application/json");
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toMatchObject({ ok: true });
+  });
 });
