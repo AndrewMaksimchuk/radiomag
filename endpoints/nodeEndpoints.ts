@@ -4,6 +4,7 @@ export const endpoints = {
   slider: "/api/slider",
   order: "/api/order",
   error: "/api/error",
+  ping: "/api/ping",
 
   catalogGroups: "/api/catalog/:id",
   group: "/api/group/:id",
