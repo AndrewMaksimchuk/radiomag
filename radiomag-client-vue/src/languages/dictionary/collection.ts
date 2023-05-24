@@ -26,6 +26,7 @@ import orderContactFormSendingRecipient from "./components/orderContactFormSendi
 import orderContactFormSendingAddress from "./components/orderContactFormSendingAddress";
 import orderContactFormSendingCity from "./components/orderContactFormSendingCity";
 import OrderContactFormComponent from "./components/OrderContactFormComponent";
+import modelUser from "./components/modelUser";
 
 export type Collection = Record<Locale, Record<string, unknown>>[];
 
@@ -57,4 +58,5 @@ export const collection = [
   orderContactFormSendingAddress,
   orderContactFormSendingCity,
   OrderContactFormComponent,
+  modelUser,
 ];
