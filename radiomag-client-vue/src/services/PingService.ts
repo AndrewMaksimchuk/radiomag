@@ -11,7 +11,7 @@ type PingData = Remove<PingPayload>;
 export class PingService {
   public static async ping(data: PingData) {
     const time = Date.now();
-    const user = useUser().id;
+    const user = useUser().value.id;
 
     if (data.action === "go to page") {
       const from = document.location.pathname;
