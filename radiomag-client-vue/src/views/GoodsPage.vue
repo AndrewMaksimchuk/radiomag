@@ -20,6 +20,7 @@ import { useRoute } from "vue-router";
 import { useGoods } from "@/store/goods";
 import { useCart } from "@/store/cart";
 import { useBreadcrumbs } from "@/store/breadcrumbs";
+import { PingService } from "@/services/PingService";
 import GoodsImage from "@/components/GoodsImageComponent.vue";
 import GoodsDescriptions from "@/components/GoodsDescriptionsComponent.vue";
 import GoodsAvailability from "@/components/GoodsAvailabilityComponent.vue";
@@ -48,8 +49,11 @@ const changeQuantityOfProduct = (newQuantity: number) =>
   (quantity.value = newQuantity);
 
 const addToCart = () => {
-  store.goods &&
-    storeCart.add({ product: store.goods.product, quantity: quantity.value });
+  if (store.goods) {
+    const payload = { product: store.goods.product, quantity: quantity.value };
+    PingService.ping({ action: "action", todo: "cart add", payload });
+    storeCart.add(payload);
+  }
 };
 
 watch(quantity, (newValue) => {

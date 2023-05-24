@@ -51,7 +51,7 @@
     </td>
 
     <td class="order-card__row">
-      <button class="order-card__button-delete" @click="store.remove(index)">
+      <button class="order-card__button-delete" @click="remove">
         <img
           class="order-card__button-delete-img"
           src="@/assets/images/delete.svg"
@@ -65,6 +65,7 @@
 <script setup lang="ts">
 import type { CartItem } from "@/store/cart";
 import { useCart } from "@/store/cart";
+import { PingService } from "@/services/PingService";
 import ProductAvailability from "./ProductAvailability.vue";
 import ProductPrice from "./ProductPrice.vue";
 import QuantitySelectionForm from "./QuantitySelectionFormComponent.vue";
@@ -77,6 +78,15 @@ const props = defineProps<{
 const store = useCart();
 const changeQuantityOfProduct = (value: number) =>
   store.changeQuantity({ code: props.goods.product.id, quantity: value });
+
+const remove = () => {
+  PingService.ping({
+    action: "action",
+    todo: "cart remove",
+    payload: props.goods,
+  });
+  store.remove(props.index);
+};
 </script>
 
 <style lang="scss">

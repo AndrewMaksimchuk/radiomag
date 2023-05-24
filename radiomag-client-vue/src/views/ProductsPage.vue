@@ -8,6 +8,13 @@
       <RouterLink
         class="products__item-link"
         :to="{ name: 'group', params: { id: item.id } }"
+        @click="
+          PingService.ping({
+            action: 'go to page',
+            to: router.resolve({ name: 'name', params: { id: item.id } })
+              .fullPath,
+          })
+        "
       >
         <img
           class="products__item-group-img"
@@ -23,8 +30,10 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import { useCatalog } from "@/store/catalog";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import { PingService } from "@/services/PingService";
 
+const router = useRouter();
 const route = useRoute();
 const store = useCatalog();
 store.useAllMenuGroups();
