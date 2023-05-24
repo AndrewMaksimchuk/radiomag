@@ -8,15 +8,21 @@ import { routerSlider } from "./slider.js";
 import { routerContacts } from "./contacts.js";
 import { routerOrder } from "./order.js";
 import { routerError } from "./error.js";
+import { routerPing } from "./ping.js";
 
 export const router = Router();
 
-router.use(routerGroup);
-router.use(routerSearch);
-router.use(routerCatalog);
-router.use(routerCatalogGroups);
-router.use(routerGroupName);
-router.use(routerSlider);
-router.use(routerContacts);
-router.use(routerOrder);
-router.use(routerError);
+const routes = [
+  routerGroup,
+  routerSearch,
+  routerCatalog,
+  routerCatalogGroups,
+  routerGroupName,
+  routerSlider,
+  routerContacts,
+  routerOrder,
+  routerError,
+  routerPing,
+];
+
+routes.forEach((route) => router.use(route));

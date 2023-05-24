@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import type { WorkerProduct } from "@/public/types";
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 import { useGoods } from "@/store/goods";
+import { PingService } from "@/services/PingService";
 
 const props = defineProps<{
   product: WorkerProduct;
   filterHeaders: string[];
 }>();
 
+const router = useRouter();
 const storeGoods = useGoods();
 
 const sumOfAllDescription = computed(() =>
@@ -17,11 +20,17 @@ const sumOfAllDescription = computed(() =>
   }, "")
 );
 
-const addGoodsToStorage = () =>
+const addGoodsToStorage = () => {
   storeGoods.add({
     product: props.product,
     filterHeaders: props.filterHeaders,
   });
+  PingService.ping({
+    action: "go to page",
+    to: router.resolve({ name: "goods", params: { code: props.product.id } })
+      .fullPath,
+  });
+};
 </script>
 
 <template>

@@ -40,6 +40,7 @@
 import type { WorkerProduct } from "@/public/types";
 import { ref } from "vue";
 import { useCart } from "@/store/cart";
+import { PingService } from "@/services/PingService";
 import CardLineImage from "@/components/CardLineImageComponent.vue";
 import CardLineDescription from "@/components/CardLineDescriptionComponent.vue";
 import ProductAvailability from "./ProductAvailability.vue";
@@ -58,8 +59,11 @@ const quantityOfProduct = ref(1);
 const changeQuantityOfProduct = (quantity: number) =>
   (quantityOfProduct.value = quantity);
 
-const addToCart = () =>
-  storeCart.add({ product: props.product, quantity: quantityOfProduct.value });
+const addToCart = () => {
+  const payload = { product: props.product, quantity: quantityOfProduct.value };
+  PingService.ping({ action: "action", todo: "cart add", payload });
+  storeCart.add(payload);
+};
 </script>
 
 <!-- <style lang="scss"> -->

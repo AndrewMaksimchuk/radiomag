@@ -3,5 +3,7 @@
   "catalogGroups": "catalogGroups",
   "contacts": "contacts",
   "slider": "slider",
-  "originGroups": "originGroups"
+  "originGroups": "originGroups",
+  "user": "user",
+  "ping": "ping"
 }

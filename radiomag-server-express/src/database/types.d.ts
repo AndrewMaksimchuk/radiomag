@@ -2,6 +2,8 @@ import type { Knex } from "knex";
 import type { CatalogItem } from "../../../dto/Catalog";
 import type { SliderItem } from "../../../dto/Slider";
 import type { IOriginGroups } from "./tables/originGroups/type";
+import type { User } from "../../../dto/User";
+import type { PingModel } from "./tables/ping/type";
 
 export interface CatalogGroups extends CatalogItem {
   key: number;
@@ -27,5 +29,11 @@ declare module "knex/types/tables" {
 
     originGroups: IOriginGroups;
     originGroups_composite: Knex.CompositeTableType<IOriginGroups>;
+
+    user: User;
+    user_composite: Knex.CompositeTableType<User>;
+
+    ping: PingModel;
+    ping_composite: Knex.CompositeTableType<PingModel>;
   }
 }

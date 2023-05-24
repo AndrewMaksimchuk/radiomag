@@ -2,7 +2,7 @@
   <RouterLink
     class="modal-window-item"
     :to="{ name: 'group', params: { id: data.id } }"
-    @click="store.hide"
+    @click="goto"
     ref="link"
   >
     <img
@@ -16,8 +16,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import { useModalWindow, type ModalItem } from "@/store/modalWindow";
+import { PingService } from "@/services/PingService";
 
 interface RouterLinkExtends extends InstanceType<typeof RouterLink> {
   $el: HTMLElement;
@@ -29,7 +30,17 @@ const props = defineProps<{
 }>();
 
 const store = useModalWindow();
+const router = useRouter();
 const link = ref<RouterLinkExtends | null>(null);
+
+const goto = () => {
+  store.hide();
+  PingService.ping({
+    action: "go to page",
+    to: router.resolve({ name: "group", params: { id: props.data.id } })
+      .fullPath,
+  });
+};
 
 onMounted(() => {
   if (link.value && link.value.$el && props.index === 0) link.value.$el.focus();
@@ -51,10 +62,6 @@ onMounted(() => {
     text-decoration: underline;
     border: 1px solid var(--color-gray-light);
     border-radius: 5px;
-
-    & .modal-window-item__img {
-      transform: scale(1.1);
-    }
   }
 
   &__img {
@@ -62,6 +69,10 @@ onMounted(() => {
     max-height: 120px;
     padding-bottom: 5px;
     object-fit: contain;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__text {

@@ -2,6 +2,7 @@
 import { ref, watchEffect } from "vue";
 import { useI18nStore } from "@/store/i18n";
 import HeaderNavItem from "./HeaderNavItem.vue";
+import { PingService } from "@/services/PingService";
 
 const useI18n = useI18nStore();
 const nav = ref();
@@ -27,6 +28,7 @@ watchEffect(() => {
         :key="index"
         :link="item.link"
         :text="item.text"
+        @click="PingService.ping({ action: 'go to page', to: item.link })"
       />
     </ul>
   </nav>

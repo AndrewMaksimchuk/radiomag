@@ -3,6 +3,7 @@ import catalog from "./data/catalog.json" assert { type: "json" };
 import contacts from "./data/contacts.json" assert { type: "json" };
 import slider from "./data/slider.json" assert { type: "json" };
 import catalogGroups from "./data/catalogGroups.json" assert { type: "json" };
+import user from "./data/user.json" assert { type: "json" };
 
 const contactsData = contacts.map((obj) => {
   return { data: JSON.stringify(obj.data) };
@@ -24,4 +25,7 @@ export const seed = async function (knex) {
 
   await knex(names.slider).del();
   await knex(names.slider).insert(slider);
+
+  await knex(names.user).del();
+  await knex(names.user).insert(user);
 };

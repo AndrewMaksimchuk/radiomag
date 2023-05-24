@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useI18nStore } from "@/store/i18n";
+import { PingService } from "@/services/PingService";
 
 const emit = defineEmits<{
   (e: "on-open", data: boolean): void;
@@ -17,6 +18,11 @@ const toggle = () => {
 const close = () => (isOpen.value = false);
 
 const choose = (value: string) => {
+  PingService.ping({
+    action: "open window",
+    window: "LangChooseComponent",
+    payload: value,
+  });
   useI18n.setLocale(value);
   close();
 };
