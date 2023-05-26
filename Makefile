@@ -8,9 +8,9 @@ session_name="radiomag_app"
 panel_client=0
 panel_server=1
 
-start: start_ide start_browser start_tmux
+start: start_ide start_browser start_dev
 
-start_tmux:
+start_dev:
 	tmux new-session -d -s $(session_name)
 	tmux split-window -h
 	tmux send-keys -t $(panel_client) "cd ./radiomag-client-vue && npm run dev" Enter
@@ -22,15 +22,9 @@ start_ide:
 	code
 
 start_browser:
-	chromium http://localhost:5173/ > /dev/null 2>&1 &
+	chromium --auto-open-devtools-for-tabs --start-fullscreen http://localhost:5173/ > /dev/null 2>&1 &
 
-install: install_server install_client
-
-install_client:
-	$(to_client) && npm i
-
-install_server:
-	$(to_server) && npm i
+install: init_dev_env hooks init_database
 
 check_package_client:
 	cd $(client) && npm outdated
@@ -50,3 +44,43 @@ update_clien_interactive:
 update_server_interactive:
 	$(to_server) && npx npm-check-updates && npx npm-check-updates -i
 
+hooks:
+	cp ./.hooks/* ./.git/hooks && \
+	chmod +x ./.git/hooks/commit-msg && \
+	chmod +x ./.git/hooks/pre-commit && \
+	chmod +x ./.git/hooks/pre-push
+
+tests_server:
+	cd $(server) && npm run tests
+
+tests_client:
+	cd $(client) && npm run test:run
+
+tests: tests_server tests_client
+
+test_client_create:
+	node ./tools/test_client_create.mjs
+
+git_clear:
+	git branch | grep -v -e "dev" -e "main" | xargs git branch -d
+
+git_config:
+	git config --add include.path '../gitconfig'
+
+init_dev_env:
+	npm i
+
+diagram:
+	npm run diagram
+
+comments:
+	egrep -e '^(\/\/|\/\*((.|\n|\r)*)\*\/)' -r -I -n \
+	--exclude-dir=node_modules \
+	--exclude=*.d.ts \
+	--exclude=*config* .
+
+init_database:
+	cd $(server) && npm run migrate && npm run seeds
+
+clear:
+	rm db.sqlite

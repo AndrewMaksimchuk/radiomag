@@ -1,12 +1,9 @@
-interface CatalogItem {
+export interface CatalogItem {
   id: number;
   img: string;
   name: string;
 }
 
-type Catalog = CatalogItem[];
+export type Catalog = CatalogItem[];
 
-type CatalogGroups = Record<
-  string,
-  CatalogItem[],
->;
+export type CatalogGroups = Record<string, CatalogItem[]>;

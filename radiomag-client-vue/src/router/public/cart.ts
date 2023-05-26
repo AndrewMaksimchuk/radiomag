@@ -1,8 +1,8 @@
 export default {
   path: "/cart",
   name: "cart",
-  component: () => import("@/views/Cart.vue"),
+  component: () => import("@/views/CartPage.vue"),
   meta: {
-    title: "Корзина",
+    title: "cart",
   },
 };

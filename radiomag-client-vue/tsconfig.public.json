@@ -1,10 +1,12 @@
 {
-  "include": [ "src/public/*.ts" ],
-  "exclude": [],
+  "include": ["src/public/*.ts", "src/public/*.d.ts", "../dto/*"],
+  "exclude": ["*"],
   "compilerOptions": {
     "baseUrl": ".",
     "lib": ["ESNext", "DOM"],
-    "outDir": "public/js",
+    "outDir": "./public/js",
     "declaration": false,
+    "typeRoots": ["./node_modules/@types/**/*"],
+    "isolatedModules": false
   }
 }

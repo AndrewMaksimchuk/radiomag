@@ -1,17 +1,21 @@
+import type { WorkerProduct } from "@/public/types";
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
+import { useLocalStorage } from "@vueuse/core";
 
 export interface CartItem {
-  product: WorkerProduct,
-  quantity: number,
+  product: WorkerProduct;
+  quantity: number;
 }
 
 export type Cart = CartItem[];
 
 interface Change {
-  code: number,
-  quantity: number,
+  code: number;
+  quantity: number;
 }
+
+const localStorage = useLocalStorage<Cart>("cart", []);
 
 export const useCart = defineStore("cart", () => {
   const cart = ref<Cart>([]);
@@ -20,13 +24,13 @@ export const useCart = defineStore("cart", () => {
 
   const add = (data: CartItem) => {
     cart.value.push(data);
-    localStorage.setItem("cart", JSON.stringify(cart.value));
-  }
+    localStorage.value = cart.value;
+  };
 
   const remove = (index: number) => {
     cart.value.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart.value));
-  }
+    localStorage.value = cart.value;
+  };
 
   const changeQuantity = (obj: Change) => {
     const { code, quantity } = obj;
@@ -38,21 +42,53 @@ export const useCart = defineStore("cart", () => {
       }
       return item;
     });
-    localStorage.setItem("cart", JSON.stringify(cart.value));
-  }
+    localStorage.value = cart.value;
+  };
 
   const loadLocalStorage = () => {
-    const storage = localStorage.getItem("cart");
-    if (storage) {
-      const data = JSON.parse(storage);
-      data.length && (cart.value = data);
-    }
-  }
+    const storage = localStorage.value;
+    cart.value = storage.map((cartItem) => {
+      cartItem.quantity = Number(cartItem.quantity);
+      return cartItem;
+    });
+  };
 
   const clear = () => {
     cart.value = [];
-    localStorage.removeItem("cart");
+    localStorage.value = [];
+  };
+
+  function getTotalPriceOfProduct(prod: CartItem) {
+    const { quantity, product } = prod;
+    if (product.prices.length === 0) return 0;
+
+    const prices = [...product.prices]
+      .reverse()
+      .filter((value) => quantity >= value.q);
+
+    if (prices.length) {
+      return quantity * prices[0].p;
+    }
+
+    return quantity * product.prices[0].p;
   }
 
-  return { cart, length, add, remove, changeQuantity, loadLocalStorage, clear };
+  const totalCost = computed(() => {
+    const totalCostValue = cart.value.reduce(
+      (acc, curr) => acc + getTotalPriceOfProduct(curr),
+      0
+    );
+    return totalCostValue.toFixed(2);
+  });
+
+  return {
+    cart,
+    length,
+    add,
+    remove,
+    changeQuantity,
+    loadLocalStorage,
+    clear,
+    totalCost,
+  };
 });

@@ -1,14 +1,21 @@
-type ContactItemList = {
-    name: string,
-    location: string,
-    email: string,
-    workTime: string,
-    telephons: string,
+import type { LatLngLiteral } from "../node_modules/@types/leaflet";
+
+export type ContactItemList = {
+  name: string;
+  location: string;
+  email: string;
+  workTime: string;
+  telephons: string;
 };
 
-interface ContactItem {
-    headerText: string,
-    list: ContactItemList[],
+export interface ContactItem {
+  headerText: string;
+  list: ContactItemList[];
+  map: {
+    zoom: number;
+    view: LatLngLiteral;
+    markers: LatLngLiteral[];
+  };
 }
 
-type Contacts = ContactItem[];
+export type Contacts = ContactItem[];

@@ -1,42 +1,54 @@
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var products;
-var dataFromGroupComponent;
-var getDescription = function (descriptionArray) {
-    return descriptionArray.map(function (element, index) {
-        if (index === 0)
-            return element;
-        return dataFromGroupComponent.descriptions_titles[element].value;
+let products, dataFromGroup;
+const getDescription = (e) =>
+    e.map((r, t) => {
+      if (t === 0) return "";
+      const s = dataFromGroup.descriptions_titles[r];
+      return Array.isArray(s) ? "" : s.value;
+    }),
+  getStock = (e) => {
+    const r = (t) => t.stock !== void 0;
+    return e.filter(r).map((t) => {
+      const s = t.stock_id,
+        c = dataFromGroup.stock_names,
+        n = s ? c[s] : "";
+      return { stock: t.stock, stockName: n };
     });
-};
-var getStock = function (inStock) {
-    return inStock.map(function (stockData) {
-        var stockNameId = stockData.stock_id;
-        var allStockNames = dataFromGroupComponent.stock_names;
-        var stockName = stockNameId ? allStockNames[stockNameId] : "";
-        return { stock: stockData.stock, stockName: stockName };
-    });
-};
-var sumAllProductParameters = function (product) {
-    var description = getDescription(product.description);
-    var stock_data = getStock(product.stock_data.items);
-    return __assign(__assign({}, product), { description: description, stock_data: stock_data });
-};
-var sumProductDescription = function (event) {
-    var _a = event.data, type = _a.type, data = _a.data;
-    if (type === 'sum_all_product_description') {
-        dataFromGroupComponent = data;
-        products = data.items.map(sumAllProductParameters);
-        postMessage({ type: 'return_sum_all_product_description', data: products });
+  },
+  sumAllProductParameters = (e) => {
+    const r = getDescription(e.description),
+      t = getStock(e.stock_data.items).filter((s) => s !== void 0);
+    return { ...e, description: r, stock_data: t };
+  },
+  main = (e) => {
+    const { type: r, data: t } = e.data;
+    if (r === "sum_all_product_description")
+      return (
+        (dataFromGroup = t),
+        (products = t.items.map(sumAllProductParameters)),
+        postMessage({
+          type: "return_sum_all_product_description",
+          data: products,
+        })
+      );
+    if (r === "apply_filters") {
+      const s = Object.keys(t),
+        c = products.filter((n) =>
+          s
+            .map((o) => {
+              const i = n.description.at(Number(o));
+              return i === void 0 ? !1 : t[o].includes(i);
+            })
+            .every((o) => o === !0)
+        );
+      return postMessage({
+        type: "return_sum_all_product_description",
+        data: c,
+      });
     }
-};
-onmessage = sumProductDescription;
+    if (r === "reset")
+      return postMessage({
+        type: "return_sum_all_product_description",
+        data: products,
+      });
+  };
+onmessage = main;

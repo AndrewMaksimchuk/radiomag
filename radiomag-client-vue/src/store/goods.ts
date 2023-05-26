@@ -1,15 +1,16 @@
+import type { WorkerProduct } from "@/public/types";
 import { ref } from "vue";
 import { defineStore } from "pinia";
 
-interface Goods {
-    product: WorkerProduct,
-    filterHeaders: string[],
+export interface Goods {
+  product: WorkerProduct;
+  filterHeaders: string[];
 }
 
-export const useGoods = defineStore('goods', () => {
-    const goods = ref<Goods>();
+export const useGoods = defineStore("goods", () => {
+  const goods = ref<Goods>();
 
-    const add = (value: Goods) => goods.value = value;
+  const add = (value: Goods) => (goods.value = value);
 
-    return { goods, add };
+  return { goods, add };
 });

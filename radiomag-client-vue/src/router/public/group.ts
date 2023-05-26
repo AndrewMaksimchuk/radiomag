@@ -1,13 +1,21 @@
-export default {
+import type { RouteRecordRaw } from "vue-router";
+
+const group: RouteRecordRaw = {
   path: "/group/:id",
   name: "group",
-  component: () => import("@/views/Group.vue"),
+  component: () => import("@/views/GroupPage.vue"),
   props: true,
   meta: {
-    title: "Група",
+    title: "group",
     breadcrumbs: {
-      name: "Група",
+      name: "title.group",
+      path: "",
+      set({ name, path }) {
+        this.name = name ?? "title.group";
+        this.path = path ?? "";
+      },
     },
   },
 };
 
+export default group;

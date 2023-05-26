@@ -1,8 +1,8 @@
 export default {
   path: "/search/:name",
   name: "search",
-  component: () => import("@/views/Search.vue"),
+  component: () => import("@/views/SearchPage.vue"),
   meta: {
-    title: "Пошук",
+    title: "search",
   },
 };

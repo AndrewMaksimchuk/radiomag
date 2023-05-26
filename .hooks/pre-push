@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [ "$GIT_TESTS" = "false" ]
+then
+   exit 0
+fi
+
+SERVER=$(cd ./radiomag-server-express && npm run tests)
+SERVERCODE=$(echo "$?")
+
+if [ ! "$SERVERCODE" -eq "0" ]
+then
+   exit 1
+fi
+
+CLIENT=$(cd ./radiomag-client-vue && npm run test:run)
+CLIENTCODE=$(echo "$?")
+
+if [ ! "$CLIENTCODE" -eq "0" ]
+then
+   echo "$CLIENT"
+   exit 1
+fi
+
+exit 0

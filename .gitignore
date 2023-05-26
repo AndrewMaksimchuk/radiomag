@@ -1,2 +1,12 @@
 node_modules/
 dist/
+temp/
+dist/
+coverage/
+endpoints/*.js
+
+.env
+.env_dev
+.notes
+*db*
+*sqlite*

@@ -1,17 +1,15 @@
 <template>
   <div class="contact-list">
-    <ContactShop
-      v-for="(item, index) in datas"
-      :key="index"
-      :shopInfo="item" />
+    <ContactShop v-for="(item, index) in datas" :key="index" :shopInfo="item" />
   </div>
 </template>
 
 <script setup lang="ts">
-import ContactShop from './ContactShop.vue';
+import type { ContactItemList } from "../../../dto/Contacts";
+import ContactShop from "./ContactShop.vue";
 
 defineProps<{
-  datas: ContactItemList[],
+  datas: ContactItemList[];
 }>();
 </script>
 

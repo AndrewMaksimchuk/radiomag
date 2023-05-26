@@ -1,20 +1,22 @@
 {
   "name": "radiomag-server-express",
-  "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "main": "src/app.ts",
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "nodemon -e js"
-  },
-  "dependencies": {
-    "cookie-parser": "~1.4.6",
-    "debug": "~4.3.4",
-    "express": "~4.18.2",
-    "http-errors": "~2.0.0",
-    "morgan": "~1.10.0",
-    "object-sizeof": "^1.6.3"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.20"
+    "predev": "clear && node ../tools/compileEndpoints.js && node ../tools/printRoutes.js",
+    "dev": "nodemon ./src/app.ts -e ts",
+    "pretests": "rm -rf ../endpoints/nodeEndpoints.js",
+    "tests": "(ts-node ./src/app.ts &); jest --silent",
+    "posttests": "killall node",
+    "clean": "rimraf ./dist",
+    "prebuild": "npm run clean",
+    "build": "tsc -p .",
+    "start": "node ./dist/radiomag-server-express/src/app.js",
+    "migrate": "knex migrate:latest",
+    "migrate-make": "../node_modules/.bin/knex migrate:make $1",
+    "migrate-rollback": "knex migrate:rollback",
+    "seeds": "knex seed:run",
+    "seeds-make": "knex seed:make $1"
   }
 }

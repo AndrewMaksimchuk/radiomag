@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "../dto/*", "../endpoints/*.ts"],
+  "include": ["src/**/*", "src/**/*.vue", "../dto/*", "../endpoints/*.ts"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
@@ -10,6 +10,7 @@
     },
     "lib": ["ESNext", "DOM"],
     "strict": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "types": ["element-plus/global"]
   }
 }

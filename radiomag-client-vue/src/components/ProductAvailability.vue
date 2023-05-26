@@ -3,22 +3,25 @@
     <li
       class="product-availability__item"
       v-for="(item, index) in inStock"
-      :key="index">
-        <span class="product-availability__item_dark-color">{{ item.stockName }}</span>
-        - {{ item.stock }}&nbsp;{{ unit }}</li>
+      :key="index"
+    >
+      <span class="product-availability__item_dark-color">{{
+        item.stockName
+      }}</span>
+      - {{ item.stock }}&nbsp;{{ unit }}
+    </li>
   </ul>
 </template>
 
 <script setup lang="ts">
-
 type InStock = {
-    stock: string,
-    stockName: string,
-}[]
+  stock: string;
+  stockName: string;
+}[];
 
 defineProps<{
-    inStock: InStock,
-    unit: string,
+  inStock: InStock;
+  unit: string;
 }>();
 </script>
 
@@ -29,15 +32,11 @@ defineProps<{
   color: var(--color-gray-dark);
 
   &__item {
-    // padding-bottom: 6px;
     line-height: 1.8rem;
 
     &_dark-color {
-      // font-weight: 700;
       text-transform: capitalize;
     }
-
   }
-
 }
 </style>
