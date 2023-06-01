@@ -61,6 +61,11 @@ tests: tests_server tests_client
 test_client_create:
 	node ./tools/test_client_create.mjs
 
+build_client:
+	cd $(client) && npm run build
+
+build: build_client
+
 git_clear:
 	git branch | grep -v -e "dev" -e "main" | xargs git branch -d
 
@@ -73,11 +78,14 @@ init_dev_env:
 diagram:
 	npm run diagram
 
-comments:
+find_comments:
 	egrep -e '^(\/\/|\/\*((.|\n|\r)*)\*\/)' -r -I -n \
 	--exclude-dir=node_modules \
 	--exclude=*.d.ts \
 	--exclude=*config* .
+
+find_console:
+	grep -e "console\." -r -n --exclude-dir=node_modules --exclude-dir=dist .
 
 init_database:
 	cd $(server) && npm run migrate && npm run seeds
