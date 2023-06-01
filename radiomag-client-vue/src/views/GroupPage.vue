@@ -2,8 +2,8 @@
 import type { WorkerProduct, TransferObject } from "@/public/types";
 import type { FiltersItems, FiltersItemsMod, Group } from "@/../../dto/Group";
 import type { AllSearchParams } from "@/store/filters";
-import { ref, computed, onBeforeMount, onBeforeUnmount } from "vue";
-import { useRoute } from "vue-router";
+import { ref, computed, watch, onBeforeMount, onBeforeUnmount } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { useGroup } from "@/store/group";
 import { usePagination } from "@/store/pagination";
 import { useBreadcrumbs } from "@/store/breadcrumbs";
@@ -15,6 +15,7 @@ import Filters from "@/components/FiltersComponent.vue";
 import "element-plus/es/components/skeleton/style/css";
 
 const route = useRoute();
+const router = useRouter();
 const store = useGroup();
 const storePagination = usePagination();
 const storeBreadcrumbs = useBreadcrumbs();
@@ -69,15 +70,26 @@ const resetGoods = () =>
     type: "reset",
   });
 
-onBeforeMount(async () => {
-  window.scrollTo(0, 0);
+watch(
+  () => storePagination.activePage,
+  (value) => {
+    const name = route.name;
+    const id = route.params.id;
+    if (name && id) {
+      router.replace({ name, params: { id }, query: { page: value } });
+    }
+  }
+);
 
+onBeforeMount(async () => {
   if (currentGroupId === undefined) return;
 
   await store.load(currentGroupId);
 
-  const queryActivePage = Number(route.query.page) || 1;
-  storePagination.setActive(queryActivePage);
+  const queryActivePage = Number(route.query.page);
+  if (queryActivePage > 1) {
+    storePagination.setActive(queryActivePage);
+  }
 
   window.document.title = `${store.groupName}`;
 
@@ -111,7 +123,10 @@ onBeforeMount(async () => {
   }
 });
 
-onBeforeUnmount(() => store.terminateWorker());
+onBeforeUnmount(() => {
+  storePagination.setDefault();
+  store.terminateWorker();
+});
 </script>
 
 <template>

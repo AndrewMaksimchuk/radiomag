@@ -1,15 +1,15 @@
 {
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
-    "preview": "vite preview",
-    "test:run": "vitest run",
+    "dev:public": "tsc -p tsconfig.public.json --watch",
+    "prebuild": "npm run build:public",
+    "build": "vite build",
+    "build:public": "tsc -p tsconfig.public.json --noEmit && node ./buildPublic.js",
+    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "test:run": "run-p test:all",
+    "test:all": "vitest run",
     "test:watch": "vitest",
     "test:one": "vitest --reporter verbose",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "dev:public": "tsc -p tsconfig.public.json --watch",
-    "build:public": "tsc -p tsconfig.public.json --noEmit && node ./buildPublic.js",
     "style-lint": "stylelint \"**/*.{css,scss,vue}\""
   },
   "name": "radiomag-client-vue",
