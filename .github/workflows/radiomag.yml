@@ -1,0 +1,25 @@
+name: Radiomag
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 18
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Test client
+        run: make tests_client
