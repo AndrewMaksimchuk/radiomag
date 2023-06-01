@@ -5,12 +5,13 @@ import { useBreadcrumbs } from "@/store/breadcrumbs";
 export default <T extends RouteLocationNormalized>(to: T, from: T) => {
   const store = useBreadcrumbs();
 
-  if (from.fullPath === to.fullPath) return;
+  if (from.path === to.path) return;
   if (to.meta.breadcrumbs === undefined) return store.reset();
 
   const isPathExist = store.breadcrumbs
     .map((value) => value.path)
-    .findIndex((value) => value === to.fullPath);
+    .findIndex((value) => value === to.path);
+
   if (isPathExist > -1) {
     return store.breadcrumbs.splice(isPathExist + 1);
   }

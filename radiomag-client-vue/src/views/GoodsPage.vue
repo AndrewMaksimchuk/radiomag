@@ -34,7 +34,6 @@ const route = useRoute();
 const storeBreadcrumbs = useBreadcrumbs();
 
 onBeforeMount(() => {
-  window.scrollTo(0, 0);
   if (store.goods?.product.articul) {
     const breadcrumbsUpdate = {
       name: store.goods?.product.articul,

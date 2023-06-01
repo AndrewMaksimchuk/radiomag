@@ -33,6 +33,8 @@ export const usePagination = defineStore("pagination", () => {
   const setActive = (number: number) =>
     number > 0 ? (activePage.value = number) : (activePage.value = 1);
 
+  const setDefault = () => (activePage.value = 1);
+
   const whichButtonsDisplayed = computed(() => {
     let startPosition = 1;
     const numbersInButtons = [];
@@ -94,6 +96,7 @@ export const usePagination = defineStore("pagination", () => {
     setOnPage,
     setLength,
     setActive,
+    setDefault,
     moveLeft,
     moveRight,
     toFirst,
