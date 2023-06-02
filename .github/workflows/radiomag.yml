@@ -17,9 +17,18 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: "npm"
 
       - name: Install packages
         run: npm ci
 
       - name: Test client
         run: make tests_client
+
+      - name: Build client
+        run: make build_client
+
+      - name: Deploy client to github page
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: radiomag-client-vue/dist

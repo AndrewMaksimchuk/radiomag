@@ -7,7 +7,7 @@
     "build:public": "tsc -p tsconfig.public.json --noEmit && node ./buildPublic.js",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "test:run": "run-p test:all",
-    "test:all": "vitest run",
+    "test:all": "vitest run 2>/dev/null",
     "test:watch": "vitest",
     "test:one": "vitest --reporter verbose",
     "style-lint": "stylelint \"**/*.{css,scss,vue}\""
