@@ -1,0 +1,1 @@
+.button-style{height:40px;border:none;background-color:var(--blue-medium);color:#fff;font-size:16px}.button-hover{cursor:pointer;background-color:var(--blue-light)}.search-box{min-height:100vh;padding-bottom:23px;display:flex;flex-direction:column;row-gap:7px}.search-box__header-text{padding-bottom:23px}
