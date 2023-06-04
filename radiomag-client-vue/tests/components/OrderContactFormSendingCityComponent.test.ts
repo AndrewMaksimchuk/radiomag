@@ -1,7 +1,9 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
-import { mount, VueWrapper } from "@vue/test-utils";
+import { mount, VueWrapper, config } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import OrderContactFormSendingCity from "@/components/OrderContactFormSendingCityComponent.vue";
+
+config.global.config.warnHandler = () => null;
 
 const requeredIfMock = () => {
   vi.mock("@/utils/i18n-validators", () => {

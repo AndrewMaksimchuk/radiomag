@@ -1,7 +1,14 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { shallowMount, VueWrapper, RouterLinkStub } from "@vue/test-utils";
+import {
+  shallowMount,
+  VueWrapper,
+  RouterLinkStub,
+  config,
+} from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import CardLineDescription from "@/components/CardLineDescriptionComponent.vue";
+
+config.global.config.warnHandler = () => null;
 
 let wrapper: VueWrapper;
 
