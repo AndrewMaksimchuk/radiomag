@@ -1,11 +1,13 @@
 import { describe, it, expect } from "vitest";
-import { mount, MountingOptions } from "@vue/test-utils";
+import { mount, MountingOptions, config } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import { isComponentRender } from "tests/isComponentRender";
 import { useContacts } from "@/store/contacts";
 import Contacts from "@/views/ContactsPage.vue";
 import ContactSection from "@/components/ContactSectionComponent.vue";
 import contacts from "../../../radiomag-server-express/src/database/seeds/data/contacts.json";
+
+config.global.config.warnHandler = () => null;
 
 const buildWrapper = (options: MountingOptions<Record<string, unknown>> = {}) =>
   mount(Contacts, options);

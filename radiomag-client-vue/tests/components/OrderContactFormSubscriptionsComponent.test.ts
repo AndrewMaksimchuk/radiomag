@@ -1,8 +1,10 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { mount, VueWrapper } from "@vue/test-utils";
+import { mount, VueWrapper, config } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import { i18nValidators } from "tests/mock/i18n-validators";
 import OrderContactFormSubscriptions from "@/components/OrderContactFormSubscriptionsComponent.vue";
+
+config.global.config.warnHandler = () => null;
 
 i18nValidators();
 
