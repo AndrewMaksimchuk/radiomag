@@ -1,0 +1,6 @@
+#!/bin/bash
+
+clear
+echo "Project: Radiomag online shop"
+make help
+make -s start

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+PS3="Enter a number of command: "
+
+commands=$(grep -e "^\w*:" Makefile | \
+	sort | \
+	cut -d ":" -f 1)
+
+select command in $commands;
+do
+	make -s $command; break;
+done
