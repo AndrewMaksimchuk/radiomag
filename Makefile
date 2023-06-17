@@ -114,3 +114,6 @@ help: ## Show available commands
 	sort | \
 	awk 'BEGIN {FS = ":.*?## "}; \
 	{printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+update_changelog: ## Append commits to CHANGELOG.md file
+	@./tools/changelog.mjs
