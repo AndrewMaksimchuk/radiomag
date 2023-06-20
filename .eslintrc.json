@@ -18,5 +18,21 @@
     "sourceType": "module"
   },
   "plugins": ["vue", "@typescript-eslint"],
-  "rules": {}
+  "rules": {
+    "eqeqeq": "error",
+    "default-param-last": "error",
+    "capitalized-comments": "error",
+    "spaced-comment": "error",
+    "curly": "error",
+    "arrow-body-style": "error",
+    "no-use-before-define": "error",
+    "max-depth": ["error", 2],
+    "max-lines": ["warn", 60],
+    "max-params": "error",
+    "max-len": "error",
+    "no-console": "error",
+    "no-implicit-coercion": "error",
+    "yoda": "error",
+    "semi": "error"
+  }
 }
