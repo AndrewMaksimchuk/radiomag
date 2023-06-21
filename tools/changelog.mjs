@@ -20,7 +20,9 @@ const getDate = () => {
 };
 
 const commitToMd = (stdout) => {
-  if (stdout.length === 0) process.exit(0);
+  if (stdout.length === 0) {
+    process.exit(0);
+  }
   return stdout
     .trim()
     .split("\n")
@@ -32,7 +34,7 @@ const commitToMd = (stdout) => {
 };
 
 const getCommits = () => {
-  return execSync("git log --oneline origin/main..HEAD").toString();
+  return execSync("git log --oneline origin/dev..HEAD").toString();
 };
 
 const putEmptyLine = () => {

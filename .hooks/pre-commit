@@ -33,10 +33,6 @@ fi
 echo "[ RUNNING: Prettier ]"
 echo "$FILES" | xargs ./node_modules/.bin/prettier --ignore-unknown --write
 
-echo "[ RUNNING: Update CHANGELOG.md ]"
-./tools/changelog.mjs
-git add CHANGELOG.md
-
 # Add back the modified/prettified files to staging
 echo "$FILES" | xargs git add
 

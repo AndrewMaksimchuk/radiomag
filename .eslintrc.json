@@ -9,7 +9,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:vue/vue3-essential",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -24,7 +25,8 @@
     "capitalized-comments": "error",
     "spaced-comment": "error",
     "curly": "error",
-    "arrow-body-style": "error",
+    "arrow-parens": "error",
+    "arrow-body-style": ["error", "always"],
     "no-use-before-define": "error",
     "max-depth": ["error", 2],
     "max-lines": ["warn", 60],

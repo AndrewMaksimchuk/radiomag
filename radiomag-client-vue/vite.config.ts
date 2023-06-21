@@ -4,6 +4,7 @@ import vue from "@vitejs/plugin-vue";
 import vitePluginVueRoutes from "./plugins/vite-plugin-vue-routes";
 
 export default defineConfig({
+  base: "/radiomag/",
   plugins: [vue(), vitePluginVueRoutes()],
   resolve: {
     alias: {
