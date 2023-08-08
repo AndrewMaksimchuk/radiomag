@@ -15,3 +15,6 @@ max_line_length = 80
 [*.html]
 indent_size = 8
 indent_style = tab
+
+[*.md]
+trim_trailing_whitespace = false
