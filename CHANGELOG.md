@@ -8,3 +8,8 @@
 [#5bacc0c](https://github.com/AndrewMaksimchuk/radiomag/commit/5bacc0c) Added: Merge branch 'iss57' into dev.  
 [#04e4c6a](https://github.com/AndrewMaksimchuk/radiomag/commit/04e4c6a) Added: Documentation - create and add page images(#57).  
 [#61a1114](https://github.com/AndrewMaksimchuk/radiomag/commit/61a1114) Added: Changes from git commit.
+
+### 2023-08-04
+
+[#7d4fb66](https://github.com/AndrewMaksimchuk/radiomag/commit/7d4fb66) Added: New make commands for developer about packages.  
+[#5409334](https://github.com/AndrewMaksimchuk/radiomag/commit/5409334) Added: Changes from git commit.
