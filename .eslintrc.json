@@ -34,7 +34,7 @@
     "max-len": "error",
     "no-console": "error",
     "no-implicit-coercion": "error",
-    "yoda": "error",
+    "yoda": ["error", "always"],
     "semi": "error"
   }
 }
