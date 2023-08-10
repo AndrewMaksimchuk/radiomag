@@ -10,6 +10,8 @@ session_name="radiomag_app"
 panel_client=0
 panel_server=1
 
+.PHONY: screenshots
+
 start: start_ide start_dev ## Run editor and developer dashboard
 
 start_dev: ## Run developer dashboard with start project
@@ -117,3 +119,7 @@ help: ## Show available commands
 
 update_changelog: ## Append commits to CHANGELOG.md file
 	@./tools/changelog.mjs
+
+screenshots: ## Make screenshots of pages
+	@rm -f ./screenshots/*
+	@node ./tools/screenshotsUpdate.mjs

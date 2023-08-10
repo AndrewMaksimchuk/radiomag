@@ -21,8 +21,8 @@ The following functionality is implemented:
 - Save data in localStorage of products in cart when user close page
   and not make the order and restore data when user open shop page again
   ![](index.png)
-  ![](cart.png)
-  ![](group.png)
+
+### [Screenshots](screenshots.md)
 
 ## Developer
 
