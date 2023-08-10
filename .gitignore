@@ -12,3 +12,6 @@ endpoints/*.js
 .data
 *db*
 *sqlite*
+outdated.txt
+outdated-all.txt
+list_installed_packages.txt

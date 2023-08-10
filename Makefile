@@ -36,8 +36,16 @@ start_browser: ## Run chromium (fullscreen + devtools)
 
 install: init_dev_env hooks init_database ## Init project first time
 
-check_package: ## Check version of npm packages
-	npm outdated
+check_package: ## Check version of npm packages, only the direct dependencies of the root project
+	npm outdated | cat > outdated.txt
+
+check_packages_all: ## Check version of all npm packages, find all outdated meta-dependencies
+	npm outdated --all --long | sort -u -k1,1 -k2,2 | nl > outdated-all.txt
+
+list_installed_packages: ## List installed packages
+	npm list --all > list_installed_packages.txt
+
+explore_packages: check_package check_packages_all list_installed_packages ## Get info about installed packages
 
 start_client: ## Run developer client
 	$(to_client) && npm run dev
