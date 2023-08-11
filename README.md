@@ -1,4 +1,4 @@
-# radiomag - online-shop of electronics components
+# radiomag - online-shop of electronics components [![radiomag](https://github.com/AndrewMaksimchuk/radiomag/actions/workflows/radiomag.yml/badge.svg)](https://github.com/AndrewMaksimchuk/radiomag/actions/workflows/radiomag.yml)
 
 Online shop build on Vue.js  
 This repositories contain two folder, one is client app  
