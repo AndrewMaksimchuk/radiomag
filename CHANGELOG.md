@@ -13,3 +13,8 @@
 
 [#7d4fb66](https://github.com/AndrewMaksimchuk/radiomag/commit/7d4fb66) Added: New make commands for developer about packages.  
 [#5409334](https://github.com/AndrewMaksimchuk/radiomag/commit/5409334) Added: Changes from git commit.
+
+### 2023-08-06
+
+[#cf41589](https://github.com/AndrewMaksimchuk/radiomag/commit/cf41589) Added: Github action workflow badge.  
+[#2b02daf](https://github.com/AndrewMaksimchuk/radiomag/commit/2b02daf) Added: Changes from git commit.
