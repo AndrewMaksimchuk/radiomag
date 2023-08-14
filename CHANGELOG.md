@@ -18,3 +18,8 @@
 
 [#cf41589](https://github.com/AndrewMaksimchuk/radiomag/commit/cf41589) Added: Github action workflow badge.  
 [#2b02daf](https://github.com/AndrewMaksimchuk/radiomag/commit/2b02daf) Added: Changes from git commit.
+
+### 2023-08-01
+
+[#a925391](https://github.com/AndrewMaksimchuk/radiomag/commit/a925391) Added: Build server(#62).  
+[#be2098e](https://github.com/AndrewMaksimchuk/radiomag/commit/be2098e) Added: Changes from git commit.
