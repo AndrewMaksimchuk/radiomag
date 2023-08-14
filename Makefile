@@ -10,6 +10,8 @@ session_name="radiomag_app"
 panel_client=0
 panel_server=1
 
+.PHONY: screenshots
+
 start: start_ide start_dev ## Run editor and developer dashboard
 
 start_dev: ## Run developer dashboard with start project
@@ -34,8 +36,16 @@ start_browser: ## Run chromium (fullscreen + devtools)
 
 install: init_dev_env hooks init_database ## Init project first time
 
-check_package: ## Check version of npm packages
-	npm outdated
+check_package: ## Check version of npm packages, only the direct dependencies of the root project
+	npm outdated | cat > outdated.txt
+
+check_packages_all: ## Check version of all npm packages, find all outdated meta-dependencies
+	npm outdated --all --long | sort -u -k1,1 -k2,2 | nl > outdated-all.txt
+
+list_installed_packages: ## List installed packages
+	npm list --all > list_installed_packages.txt
+
+explore_packages: check_package check_packages_all list_installed_packages ## Get info about installed packages
 
 start_client: ## Run developer client
 	$(to_client) && npm run dev
@@ -63,10 +73,13 @@ tests: tests_server tests_client ## Run all tests
 test_client_create: ## Create new client test file
 	node ./tools/test_client_create.mjs
 
+build_server: ## Build server
+	cd $(server) && npm run build
+
 build_client: ## Build client
 	cd $(client) && npm run build
 
-build: build_client ## Build project
+build: build_client build_server ## Build project
 
 git_clear: ## Delete unmerged branches
 	git branch | grep -v -e "dev" -e "main" | xargs git branch -d
@@ -117,3 +130,7 @@ help: ## Show available commands
 
 update_changelog: ## Append commits to CHANGELOG.md file
 	@./tools/changelog.mjs
+
+screenshots: ## Make screenshots of pages
+	@rm -f ./screenshots/*
+	@node ./tools/screenshotsUpdate.mjs

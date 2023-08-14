@@ -25,6 +25,4 @@ fi
 echo "[ RUNNING: Update CHANGELOG.md ]"
 ./tools/changelog.mjs
 git add CHANGELOG.md
-git commit -m "Added: Changes from git commit."
-
-exit 0
+git commit -m "Added: Changes from git commit to CHANGELOG.md."

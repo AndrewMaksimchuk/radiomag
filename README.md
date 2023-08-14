@@ -1,4 +1,4 @@
-# radiomag - online-shop of electronics components
+# radiomag - online-shop of electronics components [![radiomag](https://github.com/AndrewMaksimchuk/radiomag/actions/workflows/radiomag.yml/badge.svg)](https://github.com/AndrewMaksimchuk/radiomag/actions/workflows/radiomag.yml)
 
 Online shop build on Vue.js  
 This repositories contain two folder, one is client app  
@@ -21,8 +21,8 @@ The following functionality is implemented:
 - Save data in localStorage of products in cart when user close page
   and not make the order and restore data when user open shop page again
   ![](index.png)
-  ![](cart.png)
-  ![](group.png)
+
+### [Screenshots](screenshots.md)
 
 ## Developer
 

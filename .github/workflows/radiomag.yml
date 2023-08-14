@@ -32,3 +32,9 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: radiomag-client-vue/dist
+
+      - name: Build server
+        run: make build_server
+
+      - name: Test server
+        run: make tests_server
