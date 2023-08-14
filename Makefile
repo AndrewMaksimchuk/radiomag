@@ -73,10 +73,13 @@ tests: tests_server tests_client ## Run all tests
 test_client_create: ## Create new client test file
 	node ./tools/test_client_create.mjs
 
+build_server: ## Build server
+	cd $(server) && npm run build
+
 build_client: ## Build client
 	cd $(client) && npm run build
 
-build: build_client ## Build project
+build: build_client build_server ## Build project
 
 git_clear: ## Delete unmerged branches
 	git branch | grep -v -e "dev" -e "main" | xargs git branch -d
