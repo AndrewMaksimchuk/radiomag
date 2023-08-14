@@ -23,3 +23,12 @@
 
 [#a925391](https://github.com/AndrewMaksimchuk/radiomag/commit/a925391) Added: Build server(#62).  
 [#be2098e](https://github.com/AndrewMaksimchuk/radiomag/commit/be2098e) Added: Changes from git commit.
+
+### 2023-08-01
+
+[#7495693](https://github.com/AndrewMaksimchuk/radiomag/commit/7495693) Added: Server build and test(#62).  
+[#3b008ce](https://github.com/AndrewMaksimchuk/radiomag/commit/3b008ce) Changed: Commit message in pre-push.  
+[#f27fd4e](https://github.com/AndrewMaksimchuk/radiomag/commit/f27fd4e) Added: Makefile commands, build and test server(#62).  
+[#85c75c1](https://github.com/AndrewMaksimchuk/radiomag/commit/85c75c1) Changed: Show server routes faster.  
+[#7e56c90](https://github.com/AndrewMaksimchuk/radiomag/commit/7e56c90) Changed: How test run.  
+[#9fe039f](https://github.com/AndrewMaksimchuk/radiomag/commit/9fe039f) Added: Changes from git commit.
