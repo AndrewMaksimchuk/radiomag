@@ -10,7 +10,9 @@
     "test:all": "vitest run 2>/dev/null",
     "test:watch": "vitest",
     "test:one": "vitest --reporter verbose",
-    "style-lint": "stylelint \"**/*.{css,scss,vue}\""
+    "style-lint": "stylelint \"**/*.{css,scss,vue}\"",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "name": "radiomag-client-vue",
   "private": true,

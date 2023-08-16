@@ -134,3 +134,9 @@ update_changelog: ## Append commits to CHANGELOG.md file
 screenshots: ## Make screenshots of pages
 	@rm -f ./screenshots/*
 	@node ./tools/screenshotsUpdate.mjs
+
+story: ## Run storybook server
+	cd $(client) && npm run storybook
+
+story_check: ## Show list of components without own directory and stories(storybook)
+	@chmod +x ./tools/stories.sh && ./tools/stories.sh

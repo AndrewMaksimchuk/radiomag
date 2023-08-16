@@ -1,20 +1,32 @@
 import { describe, it, expect } from "vitest";
 import { shallowMount } from "@vue/test-utils";
-import Bulletin from "@/components/BulletinComponent.vue";
+import Bulletin from "./BulletinComponent.vue";
 
 const wrapper = shallowMount(Bulletin, {
   global: {
     mocks: {
-      $t: (text: string) => text,
+      $t: (text: string) => {
+        return text;
+      },
     },
   },
 });
 
-const findHeader = () => wrapper.find("h2");
-const findForm = () => wrapper.find("form");
-const findLable = () => wrapper.find("label");
-const findInput = () => wrapper.find("input");
-const findButton = () => wrapper.find("button");
+const findHeader = () => {
+  return wrapper.find("h2");
+};
+const findForm = () => {
+  return wrapper.find("form");
+};
+const findLable = () => {
+  return wrapper.find("label");
+};
+const findInput = () => {
+  return wrapper.find("input");
+};
+const findButton = () => {
+  return wrapper.find("button");
+};
 
 describe("Bulletin component", () => {
   it("should be displayed", () => {
