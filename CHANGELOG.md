@@ -32,3 +32,9 @@
 [#85c75c1](https://github.com/AndrewMaksimchuk/radiomag/commit/85c75c1) Changed: Show server routes faster.  
 [#7e56c90](https://github.com/AndrewMaksimchuk/radiomag/commit/7e56c90) Changed: How test run.  
 [#9fe039f](https://github.com/AndrewMaksimchuk/radiomag/commit/9fe039f) Added: Changes from git commit.
+
+### 2023-08-05
+
+[#54eeb08](https://github.com/AndrewMaksimchuk/radiomag/commit/54eeb08) Added: Merge branch 'iss53' into dev.  
+[#d15d0a6](https://github.com/AndrewMaksimchuk/radiomag/commit/d15d0a6) Added: Storybook and use with components(#53).  
+[#49a3b0e](https://github.com/AndrewMaksimchuk/radiomag/commit/49a3b0e) Added: Changes from git commit to CHANGELOG.md.
