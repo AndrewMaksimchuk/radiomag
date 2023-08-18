@@ -38,3 +38,10 @@
 [#54eeb08](https://github.com/AndrewMaksimchuk/radiomag/commit/54eeb08) Added: Merge branch 'iss53' into dev.  
 [#d15d0a6](https://github.com/AndrewMaksimchuk/radiomag/commit/d15d0a6) Added: Storybook and use with components(#53).  
 [#49a3b0e](https://github.com/AndrewMaksimchuk/radiomag/commit/49a3b0e) Added: Changes from git commit to CHANGELOG.md.
+
+### 2023-08-05
+
+[#f72fbda](https://github.com/AndrewMaksimchuk/radiomag/commit/f72fbda) Added: Changes from git commit to CHANGELOG.md.  
+[#54eeb08](https://github.com/AndrewMaksimchuk/radiomag/commit/54eeb08) Added: Merge branch 'iss53' into dev.  
+[#d15d0a6](https://github.com/AndrewMaksimchuk/radiomag/commit/d15d0a6) Added: Storybook and use with components(#53).  
+[#49a3b0e](https://github.com/AndrewMaksimchuk/radiomag/commit/49a3b0e) Added: Changes from git commit to CHANGELOG.md.
