@@ -8,7 +8,7 @@ endpoints/*.js
 
 .env
 .env_dev
-.notes
+.notes.md
 .data
 *db*
 *sqlite*

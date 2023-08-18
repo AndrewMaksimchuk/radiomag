@@ -1,0 +1,22 @@
+<article class="linecard borders m-hide">
+	<h2 class="linecard__header-text">{{ $t("bulletin.header") }}</h2>
+	<form class="linecard__form" action="#">
+		<label class="linecard__form-label" for="email"
+			>{{ $t("bulletin.label") }}</label
+		>
+		<input
+			type="email"
+			required
+			name="email"
+			id="email"
+			class="linecard__form-select bulletin__input"
+			:placeholder="$t('bulletin.placeholder')"
+		/>
+		<button
+			class="linecard__form-submit cursor-pointer"
+			type="submit"
+		>
+			{{ $t("bulletin.submit") }}
+		</button>
+	</form>
+</article>

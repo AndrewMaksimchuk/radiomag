@@ -1,0 +1,12 @@
+@import "../LinecardComponent/style";
+
+.bulletin {
+  &__input {
+    font-size: 1.3rem;
+    padding: 5px;
+
+    &:hover {
+      cursor: text;
+    }
+  }
+}

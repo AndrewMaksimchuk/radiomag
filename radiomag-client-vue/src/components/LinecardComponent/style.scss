@@ -1,26 +1,3 @@
-<template>
-  <article class="linecard borders m-hide">
-    <h2 class="linecard__header-text">Linecard</h2>
-    <form class="linecard__form" action="#">
-      <label class="linecard__form-label">{{ $t("linecard.label") }}</label>
-      <select name="productions" class="linecard__form-select">
-        <option value="" class="linecard__form-option">
-          {{ $t("linecard.productions") }}
-        </option>
-      </select>
-      <select name="categories" class="linecard__form-select">
-        <option value="" class="linecard__form-option">
-          {{ $t("linecard.categories") }}
-        </option>
-      </select>
-      <button class="linecard__form-submit cursor-pointer" type="submit">
-        {{ $t("linecard.submit") }}
-      </button>
-    </form>
-  </article>
-</template>
-
-<style lang="scss">
 .linecard {
   width: var(--width-card);
   background-color: var(--color-white);
@@ -82,4 +59,3 @@
     }
   }
 }
-</style>
