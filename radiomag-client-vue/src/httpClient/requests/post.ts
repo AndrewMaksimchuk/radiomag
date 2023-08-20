@@ -1,5 +1,6 @@
 import type { FormData, OrderResponse } from "../../../../dto/Order";
 import type { PingPayload } from "../../../../dto/Ping";
+import type { Bulletin } from "../../../../dto/Bulletin";
 import { HTTPpost } from "../../../../endpoints";
 import POSTRequest from "../methods/POST";
 
@@ -16,5 +17,8 @@ export const POST = {
   },
   ping: (data: PingPayload) => {
     POSTRequest(HTTPpost.ping, data);
+  },
+  bulletin: async (data: Bulletin) => {
+    return POSTRequest<DefaultResponse>(HTTPpost.bulletin, data);
   },
 };
