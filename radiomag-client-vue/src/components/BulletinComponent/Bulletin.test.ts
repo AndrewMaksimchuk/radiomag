@@ -1,15 +1,24 @@
 import { describe, it, expect } from "vitest";
 import { shallowMount } from "@vue/test-utils";
+import { createTestingPinia } from "@pinia/testing";
+import { i18n } from "tests/mock/i18n";
+import { vueToastification } from "tests/mock/vue-toastification";
 import Bulletin from "./BulletinComponent.vue";
 
-const wrapper = shallowMount(Bulletin, {
-  global: {
-    mocks: {
-      $t: (text: string) => {
-        return text;
-      },
-    },
+i18n();
+vueToastification();
+const plugins = [createTestingPinia()];
+const mocks = {
+  $t: (text: string) => {
+    return text;
   },
+};
+const global = {
+  plugins,
+  mocks,
+};
+const wrapper = shallowMount(Bulletin, {
+  global,
 });
 
 const findHeader = () => {
@@ -32,23 +41,18 @@ describe("Bulletin component", () => {
   it("should be displayed", () => {
     expect(wrapper.isVisible()).toBe(true);
   });
-
   it("should have header element", () => {
     expect(findHeader().isVisible()).toBe(true);
   });
-
   it("should have form element", () => {
     expect(findForm().isVisible()).toBe(true);
   });
-
   it("should have label element", () => {
     expect(findLable().isVisible()).toBe(true);
   });
-
   it("should have input element", () => {
     expect(findInput().isVisible()).toBe(true);
   });
-
   it("should have button element", () => {
     expect(findButton().isVisible()).toBe(true);
   });
