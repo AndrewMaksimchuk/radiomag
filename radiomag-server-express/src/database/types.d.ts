@@ -4,6 +4,7 @@ import type { SliderItem } from "../../../dto/Slider";
 import type { IOriginGroups } from "./tables/originGroups/type";
 import type { User } from "../../../dto/User";
 import type { PingModel } from "./tables/ping/type";
+import type { IBulletin } from "./tables/bulletin/types";
 
 export interface CatalogGroups extends CatalogItem {
   key: number;
@@ -35,5 +36,8 @@ declare module "knex/types/tables" {
 
     ping: PingModel;
     ping_composite: Knex.CompositeTableType<PingModel>;
+
+    bulletin: IBulletin;
+    bulletin_composite: Knex.CompositeTableType<IBulletin>;
   }
 }

@@ -9,6 +9,7 @@ import { routerContacts } from "./contacts.js";
 import { routerOrder } from "./order.js";
 import { routerError } from "./error.js";
 import { routerPing } from "./ping.js";
+import { routerBulletin } from "./bulletin.js";
 
 export const router = Router();
 
@@ -23,6 +24,9 @@ const routes = [
   routerOrder,
   routerError,
   routerPing,
+  routerBulletin,
 ];
 
-routes.forEach((route) => router.use(route));
+routes.forEach((route) => {
+  return router.use(route);
+});
