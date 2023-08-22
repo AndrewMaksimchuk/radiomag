@@ -17,7 +17,7 @@ import Header from "@/components/HeaderMain.vue";
 import Breadcrumbs from "@/components/BreadcrumbsComponent.vue";
 import ModalWindow from "@/components/ModalWindow.vue";
 import ImageShowBig from "@/components/ImageShowBig.vue";
-import ShopInfo from "@/components/ShopInfoComponent.vue";
+import { ShopInfo } from "@/components/ShopInfoComponent";
 import Footer from "@/components/FooterComponent.vue";
 import Copyright from "@/components/CopyrightComponent.vue";
 import { useCart } from "@/store/cart";

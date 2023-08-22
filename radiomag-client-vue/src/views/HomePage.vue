@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import CatalogShort from "@/components/CatalogShortComponent.vue";
+import { CatalogShort } from "@/components/CatalogShortComponent";
 import { Linecard } from "@/components/LinecardComponent";
 import PopularProducts from "@/components/PopularProductsComponent.vue";
 import NewsShort from "@/components/NewsShortComponent.vue";

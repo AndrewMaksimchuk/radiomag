@@ -1,17 +1,17 @@
 import { describe, it, expect } from "vitest";
-import { mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import { i18n } from "@/languages";
 import { pinia } from "@/main";
 import { isComponentRender } from "tests/isComponentRender";
 import HomePage from "@/views/HomePage.vue";
-import CatalogShort from "@/components/CatalogShortComponent.vue";
+import { CatalogShort } from "@/components/CatalogShortComponent";
 import { Linecard } from "@/components/LinecardComponent";
 import PopularProducts from "@/components/PopularProductsComponent.vue";
 import NewsShort from "@/components/NewsShortComponent.vue";
 import Manufacturers from "@/components/ManufacturersComponent.vue";
 import { Bulletin } from "@/components/BulletinComponent";
 
-const wrapper = mount(HomePage, {
+const wrapper = shallowMount(HomePage, {
   global: {
     plugins: [i18n, pinia],
   },

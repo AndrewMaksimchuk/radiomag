@@ -1,0 +1,13 @@
+<nav class="catalog-of-products" v-if="store.length">
+	<h2 class="catalog-of-products__header">
+		{{ $t("catalogComponents") }}
+	</h2>
+	<ul class="catalog-of-products__list">
+		<CatalogShortItem
+			v-for="(item, index) in store.catalog"
+			:key="index"
+			:data="item"
+		/>
+	</ul>
+</nav>
+<ServerNotAvailable v-else />

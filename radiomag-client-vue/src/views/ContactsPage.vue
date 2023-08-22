@@ -13,6 +13,7 @@
       />
       <ContactShopList :datas="item.list" />
     </ContactSection>
+    <ServerNotAvailable v-if="undefined === store.contacts" />
   </article>
 </template>
 
@@ -22,9 +23,12 @@ import { useContacts } from "@/store/contacts";
 import ContactSection from "@/components/ContactSectionComponent.vue";
 import Map from "@/components/MapComponent.vue";
 import ContactShopList from "@/components/ContactShopList.vue";
+import { ServerNotAvailable } from "@/components/ServerNotAvailableComponent";
 
 const store = useContacts();
-onBeforeMount(() => store.load());
+onBeforeMount(() => {
+  return store.load();
+});
 </script>
 
 <style lang="scss">

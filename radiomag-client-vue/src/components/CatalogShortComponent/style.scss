@@ -1,0 +1,10 @@
+.catalog-of-products {
+  width: 100%;
+  padding-bottom: 23px;
+
+  @import "./style/header";
+  @import "./style/link";
+  @import "./style/list";
+  @import "./style/image";
+  @import "./style/item-header";
+}

@@ -1,0 +1,17 @@
+&__link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+
+  @media (max-width: $breakpoint-tablet) {
+    justify-content: center;
+  }
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import FooterCatalog from "./FooterCatalogComponent.vue";
+import { FooterCatalog } from "./FooterCatalogComponent";
 import FooterDescription from "./FooterDescriptionComponent.vue";
 </script>
 

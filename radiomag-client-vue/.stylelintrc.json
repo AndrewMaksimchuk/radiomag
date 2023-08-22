@@ -5,6 +5,7 @@
     "stylelint-config-recommended-vue"
   ],
   "rules": {
-    "at-rule-no-unknown": null
+    "at-rule-no-unknown": null,
+    "no-invalid-position-at-import-rule": null
   }
 }
