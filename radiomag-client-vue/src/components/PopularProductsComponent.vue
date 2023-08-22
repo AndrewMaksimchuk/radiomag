@@ -3,11 +3,13 @@
     <h2 class="popular-products__heaer-text">{{ $t("popularProducts") }}</h2>
     <Slider />
   </div>
+  <ServerNotAvailable v-else />
 </template>
 
 <script setup lang="ts">
 import { useSlider } from "@/store/slider";
 import Slider from "./SliderComponent.vue";
+import { ServerNotAvailable } from "./ServerNotAvailableComponent";
 
 const store = useSlider();
 store.load();

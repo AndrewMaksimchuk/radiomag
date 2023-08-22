@@ -1,0 +1,16 @@
+<section class="footer-catalog">
+	<a
+		href="#"
+		class="footer-catalog__item"
+		v-for="item in store.catalog"
+		:key="item.id"
+	>
+		<img
+			class="footer-catalog__item-image"
+			:src="'/images/catalog/' + item.img"
+			alt=""
+		/>
+		<h2 class="footer-catalog__item-text">{{ item.name }}</h2>
+	</a>
+</section>
+<ServerNotAvailable v-if="0 === store.catalog.length" />

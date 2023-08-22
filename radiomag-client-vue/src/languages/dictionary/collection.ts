@@ -2,7 +2,7 @@ import type { Locale } from "../locales";
 import bulletin from "./components/bulletin";
 import buttonUp from "./components/buttonUp";
 import card from "./components/card";
-import catalog from "./components/catalog";
+import catalog from "@/components/CatalogShortComponent/languages";
 import copyright from "./components/copyright";
 import errors from "./components/errors";
 import filters from "./components/filters";
@@ -27,6 +27,7 @@ import orderContactFormSendingAddress from "./components/orderContactFormSending
 import orderContactFormSendingCity from "./components/orderContactFormSendingCity";
 import OrderContactFormComponent from "./components/OrderContactFormComponent";
 import modelUser from "./components/modelUser";
+import ServerNotAvailableComponent from "@/components/ServerNotAvailableComponent/languages";
 
 export type Collection = Record<Locale, Record<string, unknown>>[];
 
@@ -59,4 +60,5 @@ export const collection = [
   orderContactFormSendingCity,
   OrderContactFormComponent,
   modelUser,
+  ServerNotAvailableComponent,
 ];

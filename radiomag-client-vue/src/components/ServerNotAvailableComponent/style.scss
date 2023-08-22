@@ -1,0 +1,12 @@
+.server-not-available {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-light);
+
+  &__header {
+    padding-bottom: 10px;
+  }
+}
