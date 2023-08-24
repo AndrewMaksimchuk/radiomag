@@ -3,7 +3,9 @@ import type { RouteRecordRaw } from "vue-router";
 const group: RouteRecordRaw = {
   path: "/group/:id",
   name: "group",
-  component: () => import("@/views/GroupPage.vue"),
+  component: () => {
+    return import("@/views/GroupPage/GroupPage.vue");
+  },
   props: true,
   meta: {
     title: "group",

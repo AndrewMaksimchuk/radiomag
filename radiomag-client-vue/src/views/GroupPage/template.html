@@ -1,0 +1,29 @@
+<div class="group">
+	<SkeletonGroup v-if="store.isLoading" />
+	<div v-if="!store.isLoading && !store.isError">
+		<Filters
+			:headers="filterHeaders"
+			:data="allFilters"
+			@filtersApply="getFilteredGoods"
+			@filtersReset="resetGoods"
+		/>
+		<Pagination :length="allDataToShowLength">
+			<section v-if="!isEmpty" class="group__products">
+				<CardLine
+					v-for="(productItem, index) in toShow"
+					:key="index"
+					:product="productItem"
+					:filterHeaders="filterHeaders"
+				/>
+			</section>
+		</Pagination>
+	</div>
+	<ErrorMessageInGroup
+		v-if="!store.isLoading && store.isError"
+		:errorMessage="store.isError"
+	/>
+	<ErrorMessageInGroup
+		v-if="!store.isLoading && !store.isError && isEmpty"
+		:errorMessage="$t('group.error.empty')"
+	/>
+</div>

@@ -1,0 +1,16 @@
+.skeleton {
+  &__filter {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 3px;
+    padding-bottom: 38px;
+
+    &-item {
+      height: 234px;
+    }
+  }
+
+  &__goods {
+    padding-bottom: 52px;
+  }
+}
