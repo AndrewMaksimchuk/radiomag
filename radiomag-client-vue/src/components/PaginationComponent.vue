@@ -14,13 +14,15 @@ const props = defineProps<{
 }>();
 
 const store = usePagination();
-watch(props, (newPropsValue) => store.setLength(newPropsValue.length));
+watch(props, (newPropsValue) => {
+  return store.setLength(newPropsValue.length);
+});
 </script>
 
 <style lang="scss">
 .pagination {
   width: 100%;
-  padding: 14px 4px;
+  padding: 14px 0;
   color: var(--color-black-light);
   display: flex;
   align-items: center;

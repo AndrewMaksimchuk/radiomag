@@ -1,35 +1,19 @@
 import { describe, it, expect, beforeAll } from "vitest";
-import { shallowMount, RouterLinkStub } from "@vue/test-utils";
-import { createTestingPinia } from "@pinia/testing";
+import { RouterLinkStub } from "@vue/test-utils";
 import { useCatalog } from "@/store/catalog";
-import router from "@/router";
-import ProductsPage from "@/views/ProductsPage/ProductsPage.vue";
+import { buildWrapper } from "./testFunctions/buildWrapper";
 
-const testPinia = createTestingPinia({
-  initialState: {
-    catalog: {
-      allMenuGroups: [{ id: 1, img: "", name: "" }],
-    },
-  },
-});
-
-const wrapper = shallowMount(ProductsPage, {
-  global: {
-    plugins: [testPinia, router],
-    stubs: {
-      RouterLink: RouterLinkStub,
-    },
-  },
-});
-
+const wrapper = buildWrapper();
 const store = useCatalog();
 
 const getLink = () => {
   return wrapper.findComponent(RouterLinkStub);
 };
+
 const getLinkImage = () => {
   return wrapper.find(".products__item-group-img");
 };
+
 const getLinkHeaderText = () => {
   return wrapper.find(".products__item-group-name");
 };
@@ -38,6 +22,7 @@ describe("Products page", () => {
   it("should be displayed", () => {
     expect(wrapper.isVisible()).toBeTruthy();
   });
+
   it("should be without links", () => {
     expect(getLink().exists()).toBe(false);
   });
@@ -48,12 +33,15 @@ describe("Products page", () => {
         "1": [{ id: 13, img: "photo.png", name: "relay" }],
       };
     });
+
     it("should be visible", () => {
       expect(getLink().exists()).toBe(true);
     });
+
     it("should have image", () => {
       expect(getLinkImage().attributes("src")).toBe("/images/groups/photo.png");
     });
+
     it("should have header text", () => {
       expect(getLinkHeaderText().text()).toBe("relay");
     });

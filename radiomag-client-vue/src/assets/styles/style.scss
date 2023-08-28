@@ -11,7 +11,7 @@
 *:focus-visible {
   text-decoration: underline;
   border-radius: 5px;
-  outline: black solid 3px;
+  outline: var(--color-black-light) solid 3px;
 }
 
 html {
