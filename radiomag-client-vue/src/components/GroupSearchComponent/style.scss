@@ -1,0 +1,22 @@
+.group-search {
+  --el-input-focus-border: var(--color-black-light);
+  --el-input-focus-border-color: var(--color-black-light);
+
+  .el-input {
+    &__wrapper:hover {
+      box-shadow: 0 0 0 3px var(--el-input-hover-border-color) inset;
+    }
+
+    &__wrapper.is-focus {
+      box-shadow: 0 0 0 3px var(--el-input-focus-border-color) inset;
+    }
+  }
+
+  .el-button:focus-visible {
+    outline: 3px solid var(--color-black-light);
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    width: 100%;
+  }
+}

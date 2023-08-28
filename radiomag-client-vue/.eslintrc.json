@@ -10,7 +10,14 @@
     "plugin:vue/vue3-essential",
     "plugin:@typescript-eslint/recommended"
   ],
-  "overrides": [],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.vue"],
+      "rules": {
+        "vue/no-reserved-component-names": "off"
+      }
+    }
+  ],
   "parser": "vue-eslint-parser",
   "parserOptions": {
     "ecmaVersion": "latest",

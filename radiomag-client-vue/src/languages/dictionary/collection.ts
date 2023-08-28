@@ -1,3 +1,4 @@
+/* eslint-disable */
 import type { Locale } from "../locales";
 import bulletin from "./components/bulletin";
 import buttonUp from "./components/buttonUp";
@@ -28,6 +29,7 @@ import orderContactFormSendingCity from "./components/orderContactFormSendingCit
 import OrderContactFormComponent from "./components/OrderContactFormComponent";
 import modelUser from "./components/modelUser";
 import ServerNotAvailableComponent from "@/components/ServerNotAvailableComponent/languages";
+import groupSearch from "@/components/GroupSearchComponent/languages";
 
 export type Collection = Record<Locale, Record<string, unknown>>[];
 
@@ -61,4 +63,5 @@ export const collection = [
   OrderContactFormComponent,
   modelUser,
   ServerNotAvailableComponent,
+  groupSearch,
 ];

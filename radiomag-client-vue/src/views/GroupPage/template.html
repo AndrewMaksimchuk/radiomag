@@ -6,7 +6,15 @@
 			:data="allFilters"
 			@filtersApply="getFilteredGoods"
 			@filtersReset="resetGoods"
-		/>
+		>
+			<template #default>
+				<GroupSearch
+					:data="allDataToShow"
+					@search="searchShow"
+					@reset="searchReset"
+				/>
+			</template>
+		</Filters>
 		<Pagination :length="allDataToShowLength">
 			<section v-if="!isEmpty" class="group__products">
 				<CardLine
