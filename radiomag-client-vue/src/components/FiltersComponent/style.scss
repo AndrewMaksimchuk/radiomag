@@ -16,7 +16,6 @@
     display: flex;
     column-gap: 4px;
     padding: 14px 0;
-    padding-bottom: 0;
 
     @media (max-width: $breakpoint-tablet) {
       flex-wrap: wrap;

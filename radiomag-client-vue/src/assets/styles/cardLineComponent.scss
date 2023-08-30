@@ -5,6 +5,7 @@
   background-color: var(--color-white);
   display: flex;
   justify-content: space-between;
+  visibility: hidden;
 
   &:hover {
     background-color: var(--blue-white);
