@@ -1,7 +1,7 @@
 <template>
-  <PaginationItem />
+  <PaginationItem v-if="hide" />
   <slot></slot>
-  <PaginationItem />
+  <PaginationItem v-if="hide" />
 </template>
 
 <script setup lang="ts">
@@ -11,6 +11,7 @@ import PaginationItem from "./PaginationItemComponent.vue";
 
 const props = defineProps<{
   length: number;
+  hide: boolean;
 }>();
 
 const store = usePagination();

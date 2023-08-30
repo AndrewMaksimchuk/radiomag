@@ -9,22 +9,12 @@ import { useDataLength } from "./scripts/useDataLength";
 import { useOnBeforeMount } from "./scripts/useOnBeforeMount";
 import { useOnBeforeUnmount } from "./scripts/useOnBeforeUnmount";
 import { useEmpty } from "./scripts/useEmpty";
-import { SkeletonGroup } from "@/components/SkeletonGroupComponent";
-import { GroupSearch } from "@/components/GroupSearchComponent";
-import { Filters } from "@/components/FiltersComponent";
-import Pagination from "@/components/PaginationComponent.vue";
-import CardLine from "@/components/CardLineComponent.vue";
-import ErrorMessageInGroup from "@/components/ErrorMessageInGroup.vue";
+import { useToggleView } from "./scripts/useToggleView";
+import { useIntersectionObserver } from "./scripts/useIntersectionObserver";
+import { components } from "./scripts/components";
 
 export default defineComponent({
-  components: {
-    SkeletonGroup,
-    Pagination,
-    CardLine,
-    ErrorMessageInGroup,
-    Filters,
-    GroupSearch,
-  },
+  components,
   setup() {
     const store = useGroup();
     const { allDataToShow, allFilters, filterHeaders } = useOnBeforeMount();
@@ -32,7 +22,9 @@ export default defineComponent({
     const { allDataToShowLength } = useDataLength(allDataToShow);
     const { searchShow, searchReset } = useSearch(allDataToShow);
     const { isEmpty } = useEmpty(allDataToShowLength);
-    useWatch();
+    const { view, toggleView } = useToggleView(["CardLine", "CardTable"]);
+    useWatch(view);
+    useIntersectionObserver();
     useOnBeforeUnmount();
 
     return {
@@ -47,6 +39,8 @@ export default defineComponent({
       toShow,
       searchShow,
       searchReset,
+      view,
+      toggleView,
     };
   },
 });

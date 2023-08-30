@@ -13,11 +13,16 @@
 					@search="searchShow"
 					@reset="searchReset"
 				/>
+				<ToggleGroupView @change="toggleView" />
 			</template>
 		</Filters>
-		<Pagination :length="allDataToShowLength">
+		<Pagination
+			:length="allDataToShowLength"
+			:hide="'CardLine' === view ? true : false"
+		>
 			<section v-if="!isEmpty" class="group__products">
-				<CardLine
+				<component
+					:is="view"
 					v-for="(productItem, index) in toShow"
 					:key="index"
 					:product="productItem"

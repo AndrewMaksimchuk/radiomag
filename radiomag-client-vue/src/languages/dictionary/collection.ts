@@ -30,6 +30,7 @@ import OrderContactFormComponent from "./components/OrderContactFormComponent";
 import modelUser from "./components/modelUser";
 import ServerNotAvailableComponent from "@/components/ServerNotAvailableComponent/languages";
 import groupSearch from "@/components/GroupSearchComponent/languages";
+import toggleGroupView from "@/components/ToggleGroupViewComponent/languages";
 
 export type Collection = Record<Locale, Record<string, unknown>>[];
 
@@ -64,4 +65,5 @@ export const collection = [
   modelUser,
   ServerNotAvailableComponent,
   groupSearch,
+  toggleGroupView,
 ];
