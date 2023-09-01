@@ -140,3 +140,6 @@ story: ## Run storybook server
 
 story_check: ## Show list of components without own directory and stories(storybook)
 	@chmod +x ./tools/stories.sh && ./tools/stories.sh
+
+metrics: ## Show and save to '.metrics' file data about page(puppeteer metrics)
+	node ./tools/metrics.mjs | tee .metrics
