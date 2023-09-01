@@ -10,6 +10,7 @@ endpoints/*.js
 .env_dev
 .notes.md
 .data
+.metrics
 *db*
 *sqlite*
 outdated.txt
