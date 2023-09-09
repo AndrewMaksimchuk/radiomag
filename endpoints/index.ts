@@ -22,4 +22,5 @@ export const HTTPpost = {
   error: "/api/error",
   ping: "/api/ping",
   bulletin: "/api/bulletin",
+  login: "/api/login",
 };
