@@ -1,3 +1,4 @@
+import type { RouteNames } from "./public";
 import "vue-router";
 
 // Extends vue router interface/s
@@ -13,6 +14,12 @@ declare module "vue-router" {
 
   interface RouteLocationNormalizedLoaded {
     params: RouteParams & { id?: string };
+  }
+
+  interface Router {
+    push(
+      to: RouteNames | RouteLocationPathRaw | RouteLocationNamedRaw
+    ): Promise<NavigationFailure | void | undefined>;
   }
 }
 

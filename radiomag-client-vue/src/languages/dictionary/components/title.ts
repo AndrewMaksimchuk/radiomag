@@ -8,6 +8,8 @@ export const ua = {
     product: "Товар",
     products: "Каталог продукції",
     search: "Пошук",
+    login: "Увійти",
+    user: "Сторінка користувача",
   },
 };
 
@@ -21,6 +23,8 @@ export const en = {
     product: "Product",
     products: "Product catalog",
     search: "Search",
+    login: "Log in",
+    user: "User page",
   },
 };
 
