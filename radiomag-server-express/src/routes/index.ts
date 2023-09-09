@@ -10,6 +10,7 @@ import { routerOrder } from "./order.js";
 import { routerError } from "./error.js";
 import { routerPing } from "./ping.js";
 import { routerBulletin } from "./bulletin.js";
+import { routerLogin } from "./login.js";
 
 export const router = Router();
 
@@ -25,6 +26,7 @@ const routes = [
   routerError,
   routerPing,
   routerBulletin,
+  routerLogin,
 ];
 
 routes.forEach((route) => {
