@@ -1,7 +1,8 @@
-import type { User as IUser } from "../../../../../dto/User";
-import { randomUUID, scryptSync } from "node:crypto";
+import type { User as IUser, UserRegistration } from "../../../../../dto/User";
 import { Knex } from "knex";
 import names from "../names.json" assert { type: "json" };
+import { returningUserColumns } from "./constants.js";
+import { createProperties } from "./functions/createProperties.js";
 
 export class User {
   #table;
@@ -14,28 +15,42 @@ export class User {
     return this.#table.select();
   }
 
-  async set(user: Omit<IUser, "id">) {
+  async create(user: UserRegistration): Promise<IUser | undefined> {
     try {
-      const id = randomUUID();
-      const password = scryptSync(user.password, "salt", 32).toString("hex");
-      return await this.#table.insert({ ...user, id, password });
+      const { id, password, role, token, tokenRefresh } =
+        await createProperties(user);
+      const newUser = await this.#table.insert(
+        { ...user, id, password, role, token, tokenRefresh },
+        returningUserColumns
+      );
+
+      if (newUser[0]) {
+        return newUser[0];
+      }
+
+      return undefined;
     } catch (error) {
-      console.error(error);
-      return [];
+      return undefined;
     }
   }
 
-  async get(phoneNumber: number) {
-    const columns = [
-      "id",
-      "role",
-      "name",
-      "secondName",
-      "phoneNumber",
-      "email",
-    ] as const;
+  async set(user: IUser): Promise<IUser | undefined> {
+    try {
+      const newUser = await this.#table.insert(user, returningUserColumns);
+
+      if (newUser[0]) {
+        return newUser[0];
+      }
+
+      return undefined;
+    } catch (error) {
+      return undefined;
+    }
+  }
+
+  async get(phone: string) {
     return await this.#table
-      .first<Omit<IUser, "password">>(columns)
-      .where("phoneNumber", phoneNumber);
+      .first<IUser | undefined>(returningUserColumns)
+      .where("phone", phone);
   }
 }
