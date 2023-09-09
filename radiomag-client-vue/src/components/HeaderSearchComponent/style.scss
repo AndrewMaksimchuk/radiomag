@@ -1,0 +1,40 @@
+.logo {
+  object-fit: contain;
+  height: 84px;
+
+  &_first-child {
+    @media (max-width: $breakpoint-tablet) {
+      max-width: 109px;
+    }
+  }
+
+  &_last-child {
+    @media (max-width: $breakpoint-tablet) {
+      max-width: 165px;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.header {
+  &-search {
+    padding: 23px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: $breakpoint-pre-tablet) {
+      &_order2 {
+        order: 3;
+      }
+
+      &_order3 {
+        order: 2;
+      }
+    }
+  }
+}
