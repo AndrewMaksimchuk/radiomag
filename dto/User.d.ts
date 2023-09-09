@@ -1,4 +1,3 @@
-import type { RoleName } from "./Role";
 import { Role } from "./Role";
 
 export type UserUniqueId = string;
@@ -6,18 +5,19 @@ export type UserUniqueId = string;
 export interface User {
   id: UserUniqueId;
   role: Role;
-  status: RoleName;
   name: string;
   password: string;
-  phoneNumber: number;
-  email?: string;
-  secondName?: string;
+  phone: string;
+  token: string;
+  tokenRefresh: string;
+  email?: string | null;
+  secondName?: string | null;
 }
 
-export type UserRegistration = Pick<User, "phoneNumber" | "password" | "name">;
+export type UserRegistration = Pick<User, "phone" | "password" | "name">;
 
-export type UserAuthorization = Pick<User, "phoneNumber" | "password">;
+export type UserAuthorization = Pick<User, "phone" | "password">;
 
-export type UserUnauthorized = Pick<User, "id" | "role" | "status">;
+export type UserUnauthorized = Pick<User, "role">;
 
 export type UserClientData = Omit<User, "password">;
