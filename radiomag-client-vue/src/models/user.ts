@@ -19,10 +19,11 @@ const createDefaultUser = () => {
     id: v4(),
     role: Role.guest,
     name: "",
-    phoneNumber: 0,
+    phone: "",
     email: "",
     secondName: "",
-    status: "guest",
+    token: "",
+    tokenRefresh: "",
   };
   userCookies.set(userCookiesName, user, userCookiesSetOptions);
   return user;
