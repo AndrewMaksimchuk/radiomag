@@ -1,0 +1,17 @@
+<section class="user">
+	<ElRow>
+		<ElCol>
+			<h2>{{ 'Доброго дня' }}, {{ userStore.user.name }}</h2>
+		</ElCol>
+		<ElCol>
+			<ElButton
+				plain
+				type="primary"
+				color="#2d7dbc"
+				@click="onLogout"
+			>
+				{{ 'Log out' }}
+			</ElButton>
+		</ElCol>
+	</ElRow>
+</section>
