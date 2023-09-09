@@ -1,0 +1,8 @@
+<RouterLink class="header__info-item login-registration" :to="link">
+	<img
+		src="@/assets/images/user.svg"
+		alt="login"
+		class="header__img-info"
+	/>
+	{{ storeUser.user.name || $t("header.info.loginRegistration") }}
+</RouterLink>
