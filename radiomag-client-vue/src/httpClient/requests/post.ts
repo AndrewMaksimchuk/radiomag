@@ -1,12 +1,10 @@
-import type { FormData, OrderResponse } from "../../../../dto/Order";
-import type { PingPayload } from "../../../../dto/Ping";
-import type { Bulletin } from "../../../../dto/Bulletin";
+import type { DefaultResponse } from "$/endpoints/types";
+import type { FormData, OrderResponse } from "$/dto/Order";
+import type { PingPayload } from "$/dto/Ping";
+import type { Bulletin } from "$/dto/Bulletin";
+import type { UserRegistration, UserClientData } from "$/dto/User";
 import { HTTPpost } from "../../../../endpoints";
 import POSTRequest from "../methods/POST";
-
-export interface DefaultResponse {
-  ok: boolean;
-}
 
 export const POST = {
   order: async (data: FormData) => {
@@ -20,5 +18,8 @@ export const POST = {
   },
   bulletin: async (data: Bulletin) => {
     return POSTRequest<DefaultResponse>(HTTPpost.bulletin, data);
+  },
+  login: async (data: UserRegistration) => {
+    return POSTRequest<UserClientData | DefaultResponse>(HTTPpost.login, data);
   },
 };

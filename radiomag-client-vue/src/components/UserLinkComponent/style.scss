@@ -1,0 +1,10 @@
+.login-registration {
+  @extend %button-style;
+
+  padding: 0 32px;
+  line-height: $line-height;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 0;
+  }
+}

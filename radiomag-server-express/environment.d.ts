@@ -3,5 +3,6 @@ declare namespace NodeJS {
     readonly PORT: string;
     readonly DB_NAME: string;
     readonly NODE_ENV: string;
+    readonly KEY_SECRET: string;
   }
 }

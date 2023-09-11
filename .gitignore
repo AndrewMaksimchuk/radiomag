@@ -11,6 +11,7 @@ endpoints/*.js
 .notes.md
 .data
 .metrics
+.lintresult
 *db*
 *sqlite*
 outdated.txt
