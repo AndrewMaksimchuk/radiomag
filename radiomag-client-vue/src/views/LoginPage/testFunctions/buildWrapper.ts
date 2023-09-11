@@ -1,5 +1,12 @@
-import { mount } from "@vue/test-utils";
+import { mount, config } from "@vue/test-utils";
+import { createTestingPinia } from "@pinia/testing";
 import LoginPage from "../LoginPage.vue";
+
+config.global.config.warnHandler = () => {
+  return null;
+};
+
+const plugins = [createTestingPinia()];
 
 const mocks = {
   $t: (text: string) => {
@@ -8,6 +15,7 @@ const mocks = {
 };
 
 const global = {
+  plugins,
   mocks,
 };
 

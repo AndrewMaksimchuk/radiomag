@@ -7,7 +7,7 @@ import LangChoose from "@/components/LangChooseComponent.vue";
 import ButtonMenu from "@/components/ButtonMenuComponent.vue";
 
 export default defineComponent({
-  compoents: {
+  components: {
     HeaderUserAction,
     HeaderInfoContacts,
     HeaderCart,
