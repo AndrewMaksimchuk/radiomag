@@ -7,13 +7,7 @@
 		<RouterLink
 			class="products__item-link"
 			:to="{ name: 'group', params: { id: item.id } }"
-			@click="
-	      PingService.ping({
-		action: 'go to page',
-		to: router.resolve({ name: 'name', params: { id: item.id } })
-		  .fullPath,
-	      })
-	    "
+			@click="pingClick(item.id)"
 		>
 			<img
 				class="products__item-group-img"

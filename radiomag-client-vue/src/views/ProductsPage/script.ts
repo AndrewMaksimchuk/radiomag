@@ -14,6 +14,13 @@ export default defineComponent({
     const store = useCatalog();
     store.useAllMenuGroups();
 
+    const pingClick = (id: number) => {
+      PingService.ping({
+        action: "go to page",
+        to: router.resolve({ name: "group", params: { id } }).fullPath,
+      });
+    };
+
     onMounted(() => {
       const breadcrumbsUpdate = {
         name: document.title,
@@ -22,6 +29,6 @@ export default defineComponent({
       route.meta.breadcrumbs?.set(breadcrumbsUpdate);
     });
 
-    return { router, store, PingService };
+    return { router, store, pingClick };
   },
 });
