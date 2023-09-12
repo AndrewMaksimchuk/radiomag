@@ -32,6 +32,7 @@ import ServerNotAvailableComponent from "@/components/ServerNotAvailableComponen
 import groupSearch from "@/components/GroupSearchComponent/languages";
 import toggleGroupView from "@/components/ToggleGroupViewComponent/languages";
 import loginPage from "@/views/LoginPage/languages";
+import userPage from "@/views/UserPage/languages";
 
 export type Collection = Record<Locale, Record<string, unknown>>[];
 
@@ -68,4 +69,5 @@ export const collection = [
   groupSearch,
   toggleGroupView,
   loginPage,
+  userPage,
 ];
