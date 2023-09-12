@@ -23,7 +23,7 @@ export const publicRoutes = [
 ];
 
 export type RouteNames =
-  | "Home"
+  | "home"
   | "group"
   | "goods"
   | "products"

@@ -1,7 +1,6 @@
 import type { RouteNames } from "./public";
 import "vue-router";
 
-// Extends vue router interface/s
 declare module "vue-router" {
   export interface RouteMeta {
     title: string;
@@ -18,7 +17,10 @@ declare module "vue-router" {
 
   interface Router {
     push(
-      to: RouteNames | RouteLocationPathRaw | RouteLocationNamedRaw
+      to:
+        | RouteNames
+        | (RouteLocationPathRaw & { name?: RouteNames })
+        | RouteLocationNamedRaw
     ): Promise<NavigationFailure | void | undefined>;
   }
 }
