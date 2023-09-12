@@ -25,11 +25,16 @@ export const useUser = defineStore("user", () => {
     return (user.value[prop] = data);
   };
 
+  const clear = () => {
+    return (user.value = {});
+  };
+
   return {
     user,
     set,
     get,
     updateProperty,
     localStorage,
+    clear,
   };
 });
