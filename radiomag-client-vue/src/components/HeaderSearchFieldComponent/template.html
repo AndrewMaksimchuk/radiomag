@@ -1,0 +1,19 @@
+<form action="/" class="search__form">
+	<input
+		type="text"
+		:placeholder="searchPlaceholder"
+		class="search__form-input"
+		v-model="productName"
+	/>
+	<button
+		type="submit"
+		class="search__form-submit"
+		@click.prevent="searchProduct"
+	>
+		<img
+			src="@/assets/images/magnifying-glass.svg"
+			alt="search button"
+			class="search__form-button hover"
+		/>
+	</button>
+</form>

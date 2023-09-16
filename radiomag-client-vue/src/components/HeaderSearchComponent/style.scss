@@ -28,6 +28,8 @@
     align-items: center;
 
     @media (max-width: $breakpoint-pre-tablet) {
+      padding-bottom: 12px !important;
+
       &_order2 {
         order: 3;
       }
