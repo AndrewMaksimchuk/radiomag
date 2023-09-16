@@ -10,6 +10,7 @@ export const ua = {
     search: "Пошук",
     login: "Увійти",
     user: "Сторінка користувача",
+    http_403: "Заборонено 403",
   },
 };
 
@@ -25,6 +26,7 @@ export const en = {
     search: "Search",
     login: "Log in",
     user: "User page",
+    http_403: "Forbidden 403",
   },
 };
 

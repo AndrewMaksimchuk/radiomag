@@ -1,26 +1,44 @@
-import { defineComponent } from "vue";
-import { ElRow, ElCol, ElButton } from "element-plus";
+import type { TabsPaneContext } from "element-plus";
+import { defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 import { useUser } from "@/store/user";
-import "element-plus/es/components/button/style/css";
-import "element-plus/es/components/row/style/css";
-import "element-plus/es/components/col/style/css";
+import { components } from "./scripts/components";
+import { tabs } from "./scripts/tabs";
+import { PingService } from "@/services/PingService";
 
 export default defineComponent({
-  components: {
-    ElRow,
-    ElCol,
-    ElButton,
-  },
+  components,
   setup() {
     const userStore = useUser();
+    const router = useRouter();
+    const activeTab = ref("orders");
+
+    const handleTabClick = (tab: TabsPaneContext) => {
+      const { index } = tab;
+      if (undefined === index) {
+        return;
+      }
+
+      PingService.ping({
+        userRole: userStore.user.role,
+        action: "open window",
+        window: tabs[Number(index)]["component"],
+      });
+    };
 
     const onLogout = () => {
-      return "User logout";
+      userStore.clear();
+      router.push({
+        name: "home",
+      });
     };
 
     return {
       userStore,
       onLogout,
+      tabs,
+      activeTab,
+      handleTabClick,
     };
   },
 });

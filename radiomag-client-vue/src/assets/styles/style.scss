@@ -2,6 +2,7 @@
 @import "components";
 @import "global";
 @import "cardLineComponent";
+@import "error";
 
 * {
   margin: 0;
@@ -30,7 +31,7 @@ body {
   margin: 0 auto;
   max-width: 1440px;
 
-  @media (max-width: $breakpoint-tablet) {
+  @media (max-width: $breakpoint-desktop) {
     padding: 0 15px;
   }
 }

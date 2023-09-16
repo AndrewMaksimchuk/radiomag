@@ -1,7 +1,10 @@
 <section class="user">
 	<ElRow>
 		<ElCol>
-			<h2>{{ 'Доброго дня' }}, {{ userStore.user.name }}</h2>
+			<h2>
+				{{ $t("userPage.greet") }}, {{
+				userStore.user.name }}
+			</h2>
 		</ElCol>
 		<ElCol>
 			<ElButton
@@ -10,8 +13,26 @@
 				color="#2d7dbc"
 				@click="onLogout"
 			>
-				{{ 'Log out' }}
+				{{ $t("userPage.button.logout") }}
 			</ElButton>
 		</ElCol>
 	</ElRow>
+	<ElTabs
+		type="border-card"
+		v-model="activeTab"
+		@tab-click="handleTabClick"
+	>
+		<ElTabPane
+			v-for="item in tabs"
+			:key="item.label"
+			:label="$t(item.label)"
+			:name="item.name"
+		>
+			<component
+				v-if="activeTab === item.name"
+				:is="item.component"
+			>
+			</component>
+		</ElTabPane>
+	</ElTabs>
 </section>
