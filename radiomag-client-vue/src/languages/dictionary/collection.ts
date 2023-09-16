@@ -33,6 +33,7 @@ import groupSearch from "@/components/GroupSearchComponent/languages";
 import toggleGroupView from "@/components/ToggleGroupViewComponent/languages";
 import loginPage from "@/views/LoginPage/languages";
 import userPage from "@/views/UserPage/languages";
+import HTTP403Page from "@/views/HTTP403Page/languages";
 
 export type Collection = Record<Locale, Record<string, unknown>>[];
 
@@ -70,4 +71,5 @@ export const collection = [
   toggleGroupView,
   loginPage,
   userPage,
+  HTTP403Page,
 ];
