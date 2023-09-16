@@ -1,3 +1,5 @@
+import type { Cart } from "$/radiomag-client-vue/src/store/cart";
+
 export interface FormData {
   /* Require */ email: string;
   unit: "shop" | "manager";
@@ -13,4 +15,8 @@ export interface FormData {
 
 export interface OrderResponse {
   ok: boolean;
+}
+
+export interface Order extends FormData {
+  cart: Cart;
 }
