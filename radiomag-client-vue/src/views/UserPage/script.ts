@@ -20,6 +20,7 @@ export default defineComponent({
       }
 
       PingService.ping({
+        userRole: userStore.user.role,
         action: "open window",
         window: tabs[Number(index)]["component"],
       });

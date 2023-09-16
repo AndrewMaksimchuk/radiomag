@@ -1,7 +1,9 @@
 import type { UserUniqueId } from "./User";
+import type { RoleValues } from "./Role";
 
 export interface Base {
   user: UserUniqueId;
+  userRole: RoleValues;
   time: number;
   action: "open window" | "go to page" | "action";
   payload?: string | number | object | unknown[];

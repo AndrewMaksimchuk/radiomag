@@ -2,8 +2,10 @@ import type { RouteRecordRaw } from "vue-router";
 
 const product: RouteRecordRaw = {
   path: "/product/:code",
-  name: "goods",
-  component: () => import("@/views/GoodsPage.vue"),
+  name: "goods" as const,
+  component: () => {
+    return import("@/views/GoodsPage.vue");
+  },
   props: true,
   meta: {
     title: "product",

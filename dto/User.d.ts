@@ -1,10 +1,10 @@
-import { Role } from "./Role";
+import type { RoleValues } from "./Role";
 
 export type UserUniqueId = string;
 
 export interface User {
   id: UserUniqueId;
-  role: Role;
+  role: RoleValues;
   name: string;
   password: string;
   phone: string;

@@ -7,7 +7,7 @@ import contacts from "./contacts";
 import cart from "./cart";
 import error404 from "./error404";
 import login from "./login";
-import user from "./user";
+import HTTP403 from "./HTTP403";
 
 export const publicRoutes = [
   home,
@@ -19,10 +19,10 @@ export const publicRoutes = [
   cart,
   error404,
   login,
-  user,
+  HTTP403,
 ];
 
-export type RouteNames =
+export type RouteNamesPublic =
   | "home"
   | "group"
   | "goods"
@@ -32,4 +32,4 @@ export type RouteNames =
   | "cart"
   | "404"
   | "login"
-  | "user";
+  | "403";

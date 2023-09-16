@@ -1,6 +1,6 @@
 export default {
   path: "/",
-  name: "home",
+  name: "home" as const,
   component: () => {
     return import("@/views/HomePage.vue");
   },

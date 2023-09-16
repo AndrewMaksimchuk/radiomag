@@ -2,13 +2,27 @@ import type { UserClientData } from "$/dto/User";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { useLocalStorage } from "@vueuse/core";
+import { v4 } from "uuid";
+import { Role } from "../../../dto/Role";
+
+const createDefaultUser = () => {
+  const user: UserClientData = {
+    id: v4(),
+    role: Role.guest,
+    name: "",
+    phone: "",
+    email: "",
+    secondName: "",
+    token: "",
+    tokenRefresh: "",
+  };
+  return user;
+};
 
 export const useUser = defineStore("user", () => {
-  const user = ref<UserClientData | Record<string, unknown>>({});
+  const user = ref<UserClientData>(createDefaultUser());
 
-  const localStorage = useLocalStorage<
-    UserClientData | Record<string, unknown>
-  >("user", user);
+  const localStorage = useLocalStorage<UserClientData>("user", user);
 
   const set = (data: UserClientData) => {
     return (user.value = data);
@@ -22,11 +36,15 @@ export const useUser = defineStore("user", () => {
     prop: T,
     data: UserClientData[T]
   ) => {
+    if (undefined === user.value) {
+      return undefined;
+    }
+
     return (user.value[prop] = data);
   };
 
   const clear = () => {
-    return (user.value = {});
+    return (user.value = createDefaultUser());
   };
 
   return {
