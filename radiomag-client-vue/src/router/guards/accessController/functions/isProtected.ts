@@ -1,6 +1,6 @@
 import type { RouteLocationNormalized } from "vue-router";
-import { routerProtectedNames } from "@/router/protected";
+import { getRouterProtectedNames } from "@/router/protected";
 
 export const isProtected = (name: RouteLocationNormalized["name"]) => {
-  return routerProtectedNames.includes(name);
+  return getRouterProtectedNames().includes(name);
 };

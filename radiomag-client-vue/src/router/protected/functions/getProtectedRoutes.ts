@@ -1,6 +1,6 @@
-import { protectedRoutes } from "@/router/protected";
+import type { RouteRecordRaw } from "vue-router";
 
-export const getProtectedRoutes = () => {
+export const getProtectedRoutes = (protectedRoutes: RouteRecordRaw[]) => {
   return protectedRoutes.map((route) => {
     return route.name;
   });
