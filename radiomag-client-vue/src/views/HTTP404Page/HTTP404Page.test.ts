@@ -1,10 +1,13 @@
 import { describe, it, expect } from "vitest";
 import { mount, MountingOptions } from "@vue/test-utils";
 import { i18n } from "@/languages";
-import Error404 from "@/views/Error404Page.vue";
+import { HTTP404 } from "@/views/HTTP404Page";
 
-const buildWrapper = (options: MountingOptions<Record<string, unknown>> = {}) =>
-  mount(Error404, options);
+const buildWrapper = (
+  options: MountingOptions<Record<string, unknown>> = {}
+) => {
+  return mount(HTTP404, options);
+};
 
 const wrapper = buildWrapper({
   global: {
@@ -12,9 +15,15 @@ const wrapper = buildWrapper({
   },
 });
 
-const findHeader = () => wrapper.find(".error__header-text");
-const findDescription = () => wrapper.find(".error__description-text");
-const findIcon = () => wrapper.find(".error__icon");
+const findHeader = () => {
+  return wrapper.find(".error__header-text");
+};
+const findDescription = () => {
+  return wrapper.find(".error__description-text");
+};
+const findIcon = () => {
+  return wrapper.find(".error__icon");
+};
 
 describe("Error 404 page", () => {
   it("should be displayed", () => {
