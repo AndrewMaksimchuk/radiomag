@@ -10,7 +10,7 @@ import { createPassword } from "../../../../services/password/index.js";
 export const createProperties = async (user: UserRegistration) => {
   const id = randomUUID();
   const password = createPassword(user.password);
-  const role = Role.guest;
+  const role = Role.client;
   const token = await createAccessToken({
     phone: user.phone,
     name: user.name,
