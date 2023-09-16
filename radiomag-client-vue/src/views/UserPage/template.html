@@ -17,7 +17,11 @@
 			</ElButton>
 		</ElCol>
 	</ElRow>
-	<ElTabs type="border-card" v-model="activeTab" @tab-click="handleClick">
+	<ElTabs
+		type="border-card"
+		v-model="activeTab"
+		@tab-click="handleTabClick"
+	>
 		<ElTabPane
 			v-for="item in tabs"
 			:key="item.label"

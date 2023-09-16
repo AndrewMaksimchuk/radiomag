@@ -13,7 +13,7 @@ export default defineComponent({
     const router = useRouter();
     const activeTab = ref("orders");
 
-    const handleClick = (tab: TabsPaneContext) => {
+    const handleTabClick = (tab: TabsPaneContext) => {
       const { index } = tab;
       if (undefined === index) {
         return;
@@ -38,7 +38,7 @@ export default defineComponent({
       onLogout,
       tabs,
       activeTab,
-      handleClick,
+      handleTabClick,
     };
   },
 });
