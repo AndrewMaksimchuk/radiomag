@@ -10,7 +10,7 @@
     "tests": "chmod +x ./tests.sh && ./tests.sh",
     "build": "chmod +x ./build.sh && ./build.sh",
     "migrate": "knex migrate:latest",
-    "migrate-make": "../node_modules/.bin/knex migrate:make $1",
+    "migrate-make": "knex migrate:make $1",
     "migrate-rollback": "knex migrate:rollback",
     "seeds": "knex seed:run",
     "seeds-make": "knex seed:make $1"
