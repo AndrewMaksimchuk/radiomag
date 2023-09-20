@@ -1,16 +1,18 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { shallowMount, VueWrapper } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
-import OrderComponent from "@/components/OrderComponent.vue";
+import { Order } from "@/components/OrderComponent";
+import { OrderForm } from "@/components/OrderFormComponent";
 import OrderTable from "@/components/OrderTableComponent.vue";
-import OrderForm from "@/components/OrderFormComponent.vue";
 
 let wrapper: VueWrapper;
 
 const global = {
   plugins: [createTestingPinia()],
   mocks: {
-    $t: (text: string) => text,
+    $t: (text: string) => {
+      return text;
+    },
   },
 };
 
@@ -19,10 +21,12 @@ const props = {
 };
 
 const buildWrapper = (options = {}) => {
-  wrapper = shallowMount(OrderComponent, { global, props, ...options });
+  wrapper = shallowMount(Order, { global, props, ...options });
 };
 
-const findHeader = () => wrapper.find(".order__header-text");
+const findHeader = () => {
+  return wrapper.find(".order__header-text");
+};
 
 describe("Order component", () => {
   beforeEach(() => {

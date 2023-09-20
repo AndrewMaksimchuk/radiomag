@@ -1,16 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { shallowMount, MountingOptions } from "@vue/test-utils";
 import { i18n } from "@/languages";
 import { pinia } from "@/main";
 import { isComponentRender } from "tests/isComponentRender";
 import { useCart } from "@/store/cart";
-import CartPage from "@/views/CartPage.vue";
-import Order from "@/components/OrderComponent.vue";
-import OrderContactForm from "@/components/OrderContactFormComponent.vue";
-import product from "../mock/workerProduct.json";
-
-const buildWrapper = (options: MountingOptions<Record<string, unknown>> = {}) =>
-  shallowMount(CartPage, options);
+import { Order } from "@/components/OrderComponent";
+import { OrderContactForm } from "@/components/OrderContactFormComponent";
+import { buildWrapper } from "./testFunctions/buildWrapper";
+import product from "tests/mock/workerProduct.json";
 
 let wrapper = buildWrapper({
   global: {

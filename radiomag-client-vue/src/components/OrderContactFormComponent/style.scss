@@ -1,0 +1,74 @@
+.contact-form-order {
+  $line-height: 40px;
+
+  width: 50%;
+  counter-reset: order-contact-form;
+
+  @media (max-width: $breakpoint-tablet) {
+    width: 100%;
+
+    $line-height: 33px;
+  }
+
+  &__fieldset {
+    border: none;
+    padding: 0;
+    padding-bottom: 27px;
+
+    &::before {
+      counter-increment: order-contact-form;
+      content: counter(order-contact-form) ". ";
+      font-size: 1.8rem;
+
+      @media (max-width: $breakpoint-tablet) {
+        font-size: 1.2rem;
+      }
+    }
+
+    &-header {
+      display: inline-block;
+      padding-bottom: 20px;
+      font-size: 1.8rem;
+
+      @media (max-width: $breakpoint-tablet) {
+        padding-bottom: 10px;
+        font-size: 1.2rem;
+      }
+    }
+
+    &-label {
+      width: 250px;
+      display: inline-block;
+      font-size: 1.6rem;
+      line-height: $line-height;
+      color: var(--color-black-light);
+
+      @media (max-width: $breakpoint-tablet) {
+        width: 100%;
+        font-size: 1.2rem;
+      }
+    }
+
+    &-input {
+      width: calc(100% - 250px);
+      padding-left: 5px;
+      font-size: 1.6rem;
+      line-height: $line-height;
+      color: var(--color-black-light);
+      border: solid 1px var(--color-gray-light);
+
+      @media (max-width: $breakpoint-tablet) {
+        width: 100%;
+      }
+
+      &_w-full {
+        width: 100%;
+      }
+    }
+
+    &-select {
+      padding: calc(($line-height - 1.6rem) / 2);
+      background-color: var(--color-white);
+    }
+  }
+}

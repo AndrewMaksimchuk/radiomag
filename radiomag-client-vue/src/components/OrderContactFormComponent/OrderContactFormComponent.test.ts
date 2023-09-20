@@ -4,7 +4,7 @@ import { createTestingPinia } from "@pinia/testing";
 import { i18n } from "tests/mock/i18n";
 import { i18nValidators } from "tests/mock/i18n-validators";
 import { vueToastification } from "tests/mock/vue-toastification";
-import OrderContactForm from "@/components/OrderContactFormComponent.vue";
+import { OrderContactForm } from "@/components";
 
 i18n();
 i18nValidators();
@@ -15,7 +15,9 @@ let wrapper: VueWrapper;
 const plugins = [createTestingPinia()];
 
 const mocks = {
-  $t: (text: string) => text,
+  $t: (text: string) => {
+    return text;
+  },
 };
 
 const global = {
@@ -23,7 +25,9 @@ const global = {
   mocks,
 };
 
-const findForm = () => wrapper.find("form");
+const findForm = () => {
+  return wrapper.find("form");
+};
 
 const buildWrapper = (options = {}) => {
   wrapper = shallowMount(OrderContactForm, { global, ...options });

@@ -1,5 +1,5 @@
 import type { DefaultResponse } from "$/endpoints/types";
-import type { FormData, OrderResponse } from "$/dto/Order";
+import type { Order, OrderResponse } from "$/dto/Order";
 import type { PingPayload } from "$/dto/Ping";
 import type { Bulletin } from "$/dto/Bulletin";
 import type { UserRegistration, UserClientData } from "$/dto/User";
@@ -7,7 +7,7 @@ import { HTTPpost } from "../../../../endpoints";
 import POSTRequest from "../methods/POST";
 
 export const POST = {
-  order: async (data: FormData) => {
+  order: async (data: Order) => {
     return await POSTRequest<OrderResponse>(HTTPpost.order, data);
   },
   error: async (data: Record<string, unknown>) => {
