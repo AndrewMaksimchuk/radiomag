@@ -1,0 +1,9 @@
+<section class="cart cart-min-height">
+	<div v-if="store.length">
+		<Order :cart="store.cart" />
+		<OrderContactForm />
+	</div>
+	<div v-else>
+		<h2>{{ $t("order.empty") }}</h2>
+	</div>
+</section>

@@ -1,0 +1,15 @@
+.order {
+  width: 100%;
+  padding-bottom: 26px;
+
+  &__header-text {
+    width: 100%;
+    padding-bottom: 20px;
+    font-size: 2.4rem;
+    font-weight: 700;
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 1.6rem;
+    }
+  }
+}

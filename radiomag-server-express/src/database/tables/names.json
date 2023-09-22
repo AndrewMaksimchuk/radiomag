@@ -6,5 +6,8 @@
   "originGroups": "originGroups",
   "user": "user",
   "ping": "ping",
-  "bulletin": "bulletin"
+  "bulletin": "bulletin",
+  "order": "order",
+  "orderForm": "orderForm",
+  "cart": "cart"
 }

@@ -4,13 +4,15 @@
   "type": "module",
   "main": "src/app.ts",
   "scripts": {
-    "dev": "chmod +x ./predev.sh && ./predev.sh && nodemon ./src/app.ts -e ts",
+    "dev:node": "chmod +x ./predev.sh && ./predev.sh && nodemon ./src/app.ts -e ts",
+    "predev": "chmod +x ./predev.sh && ./predev.sh",
+    "dev": "bun ./src/app.ts",
     "ts-node-config": "ts-node --showConfig",
     "start": "node ./dist/radiomag-server.cjs",
     "tests": "chmod +x ./tests.sh && ./tests.sh",
     "build": "chmod +x ./build.sh && ./build.sh",
     "migrate": "knex migrate:latest",
-    "migrate-make": "../node_modules/.bin/knex migrate:make $1",
+    "migrate-make": "knex migrate:make $1",
     "migrate-rollback": "knex migrate:rollback",
     "seeds": "knex seed:run",
     "seeds-make": "knex seed:make $1"

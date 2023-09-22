@@ -2,6 +2,14 @@ import type { Product } from "../../../dto/Product";
 import type { Group } from "../../../dto/Group";
 import type { AllSearchParams } from "../store/filters";
 
+export interface WorkerProduct extends Omit<Product, "stock_data"> {
+  description: string[];
+  stock_data: {
+    stock: string;
+    stockName: string;
+  }[];
+}
+
 export type TransferObject =
   | {
       type: "sum_all_product_description";
@@ -19,11 +27,3 @@ export type TransferObject =
       type: "reset";
       data: undefined;
     };
-
-export interface WorkerProduct extends Omit<Product, "stock_data"> {
-  description: string[];
-  stock_data: {
-    stock: string;
-    stockName: string;
-  }[];
-}
