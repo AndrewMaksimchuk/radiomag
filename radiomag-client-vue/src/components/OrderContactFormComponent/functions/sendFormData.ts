@@ -40,6 +40,11 @@ export const useSendFormData = () => {
 
     notifySuccess();
     storeCart.clear();
+
+    if (responseData.newUser) {
+      storeUser.set(responseData.newUser);
+    }
+
     router.push("user");
   };
 

@@ -6,7 +6,7 @@ import { routerCatalogGroups } from "./catalogGroups.js";
 import { routerGroupName } from "./groupName.js";
 import { routerSlider } from "./slider.js";
 import { routerContacts } from "./contacts.js";
-import { routerOrder } from "./order.js";
+import { routerOrder } from "./order/index.js";
 import { routerError } from "./error.js";
 import { routerPing } from "./ping.js";
 import { routerBulletin } from "./bulletin.js";

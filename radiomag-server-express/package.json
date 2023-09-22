@@ -4,7 +4,9 @@
   "type": "module",
   "main": "src/app.ts",
   "scripts": {
-    "dev": "chmod +x ./predev.sh && ./predev.sh && nodemon ./src/app.ts -e ts",
+    "dev:node": "chmod +x ./predev.sh && ./predev.sh && nodemon ./src/app.ts -e ts",
+    "predev": "chmod +x ./predev.sh && ./predev.sh",
+    "dev": "bun ./src/app.ts",
     "ts-node-config": "ts-node --showConfig",
     "start": "node ./dist/radiomag-server.cjs",
     "tests": "chmod +x ./tests.sh && ./tests.sh",

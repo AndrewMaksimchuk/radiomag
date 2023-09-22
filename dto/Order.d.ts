@@ -1,3 +1,4 @@
+import type { DefaultResponse } from "../endpoints/types";
 import type { Cart } from "$/dto/Cart";
 import type { UserClientData } from "./User";
 
@@ -14,11 +15,13 @@ export interface FormData {
   comment: string;
 }
 
-export interface OrderResponse {
-  ok: boolean;
-}
+type DateTime = string;
+type JSONString = string;
 
-type DateTime = string; // 2023-05-10 09:31:04
+export interface OrderResponse extends DefaultResponse {
+  orderId?: string;
+  newUser?: UserClientData;
+}
 
 export interface Order {
   created: DateTime;

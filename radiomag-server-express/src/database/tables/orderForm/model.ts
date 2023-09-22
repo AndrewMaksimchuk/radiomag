@@ -12,7 +12,9 @@ export class OrderForm {
 
   async add(formData: FormData) {
     const returningColumns = ["id"];
-    return await this.#table.returning(returningColumns).insert(formData);
+    return await this.#table
+      .returning(returningColumns)
+      .insert<[{ id: number }]>(formData);
   }
 
   async get(id: number) {
