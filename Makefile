@@ -87,6 +87,9 @@ git_clear: ## Delete unmerged branches
 git_config: ## Add git config for this project
 	git config --add include.path '../gitconfig'
 
+git_lint: ## Lint all files that has been add after last commit
+	@./tools/git_lint.sh
+
 init_dev_env: ## Install npm packages
 	npm i
 
