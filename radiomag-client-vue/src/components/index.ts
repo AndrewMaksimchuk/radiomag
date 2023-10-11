@@ -21,3 +21,4 @@ export { UserSettings } from "./UserSettingsComponent";
 export { UserTracking } from "./UserTrackingComponent";
 export { NewsShort } from "./NewsShortComponent";
 export { Slider } from "./SliderComponent";
+export { HeaderCart } from "./HeaderCartComponent";

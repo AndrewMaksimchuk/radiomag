@@ -5,7 +5,8 @@
         src="@/assets/images/telephone.svg"
         alt="telephone"
         class="header__img-info"
-      />+38 (044) 220-01-72</a
-    >
+      />
+      <span class="contacts"> +38 (044) 220-01-72 </span>
+    </a>
   </div>
 </template>

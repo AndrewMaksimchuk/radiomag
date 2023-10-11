@@ -2,7 +2,7 @@ import type { StateMenu } from "@/components/ButtonMenuComponent.vue";
 import { defineComponent, ref } from "vue";
 import { HeaderUserAction } from "@/components/HeaderUserActionComponent";
 import HeaderInfoContacts from "@/components/HeaderInfoContactsComponent.vue";
-import HeaderCart from "@/components/HeaderCartComponent.vue";
+import { HeaderCart } from "@/components";
 import LangChoose from "@/components/LangChooseComponent.vue";
 import ButtonMenu from "@/components/ButtonMenuComponent.vue";
 
