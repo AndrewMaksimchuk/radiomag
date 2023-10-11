@@ -20,3 +20,4 @@ export { UserOrders } from "./UserOrdersComponent";
 export { UserSettings } from "./UserSettingsComponent";
 export { UserTracking } from "./UserTrackingComponent";
 export { NewsShort } from "./NewsShortComponent";
+export { Slider } from "./SliderComponent";

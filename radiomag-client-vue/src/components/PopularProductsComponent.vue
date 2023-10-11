@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { useSlider } from "@/store/slider";
-import Slider from "./SliderComponent.vue";
+import { Slider } from "@/components";
 import { ServerNotAvailable } from "./ServerNotAvailableComponent";
 
 const store = useSlider();
