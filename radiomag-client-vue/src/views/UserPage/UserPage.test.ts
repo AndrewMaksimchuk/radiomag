@@ -1,6 +1,8 @@
 import type { VueWrapper } from "@vue/test-utils";
+import { config } from "@vue/test-utils";
 import { describe, it, beforeEach } from "vitest";
-import { i18nValidators } from "tests/mock/i18n-validators";
+import { mockOrdersStore } from "tests/mock/mockStoreOrders";
+import { i18nValidators } from "@/../tests/mock/i18n-validators";
 import { mockUserStore, user } from "@/../tests/mock/mockStoreUser";
 import { mockRouter } from "@/../tests/mock/mockRouter";
 import { buildWrapper } from "./testFunctions/buildWrapper";
@@ -12,6 +14,11 @@ import {
 } from "./testFunctions/find";
 import { tabs } from "./scripts/tabs";
 
+config.global.config.warnHandler = () => {
+  return null;
+};
+
+mockOrdersStore();
 i18nValidators();
 mockUserStore();
 mockRouter();

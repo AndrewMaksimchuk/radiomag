@@ -2,7 +2,12 @@
 
 import type { Knex } from "knex";
 import type { Endpoints } from "../endpoints/nodeEndpoints";
-import type { Order, OrderResponse } from "../dto/Order";
+import type {
+  OrderRequestBody,
+  OrderResponse,
+  OrdersRequestBody,
+  OrdersResponse,
+} from "../dto/Order";
 import type { PingPayload } from "../dto/Ping";
 import type { Bulletin } from "../dto/Bulletin";
 import type { UserRegistration, UserClientData } from "../dto/User";
@@ -23,7 +28,21 @@ declare module "express-serve-static-core" {
       Route extends Endpoints["order"],
       P = RouteParameters<Route>,
       ResBody = OrderResponse,
-      ReqBody = Order,
+      ReqBody = OrderRequestBody,
+      ReqQuery = ParsedQs,
+      LocalsObj extends Record<string, unknown> = Record<string, unknown>
+    >(
+      path: Route,
+      ...handlers: Array<
+        RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>
+      >
+    ): T;
+
+    <
+      Route extends Endpoints["order"],
+      P = RouteParameters<Route>,
+      ResBody = OrdersResponse,
+      ReqBody = OrdersRequestBody,
       ReqQuery = ParsedQs,
       LocalsObj extends Record<string, unknown> = Record<string, unknown>
     >(

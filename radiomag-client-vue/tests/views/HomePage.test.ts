@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { shallowMount } from "@vue/test-utils";
+import { mockStoreI18n } from "tests/mock/mockStoreI18n";
 import { i18n } from "@/languages";
 import { pinia } from "@/main";
 import { isComponentRender } from "tests/isComponentRender";
@@ -10,6 +11,8 @@ import PopularProducts from "@/components/PopularProductsComponent.vue";
 import NewsShort from "@/components/NewsShortComponent.vue";
 import Manufacturers from "@/components/ManufacturersComponent.vue";
 import { Bulletin } from "@/components/BulletinComponent";
+
+mockStoreI18n();
 
 const wrapper = shallowMount(HomePage, {
   global: {

@@ -3,7 +3,7 @@ import type { Cart } from "$/dto/Cart";
 import { computed } from "vue";
 import { getTotalPriceOfProduct } from "./getTotalPriceOfProduct";
 
-export const useTotalCost = (cart: Ref<Cart>) => {
+export const useTotalCost = (cart: Ref<Cart["items"]>) => {
   const totalCost = computed(() => {
     const totalCostValue = cart.value.reduce((acc, curr) => {
       return acc + getTotalPriceOfProduct(curr);

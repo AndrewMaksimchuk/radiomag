@@ -1,6 +1,5 @@
 /**
  * @param { import("knex").Knex.CreateTableBuilder } table
- * @returns { Promise<void> }
  */
 export const createPing = (table) => {
   table.integer("id").notNullable().unique().primary();
@@ -12,5 +11,6 @@ export const createPing = (table) => {
   table.string("to");
   table.string("window");
   table.string("todo");
+  table.integer("userRole");
   table.timestamps(true, true);
 };

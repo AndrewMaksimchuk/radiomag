@@ -1,11 +1,11 @@
 import { describe, it, expect } from "vitest";
 import { shallowMount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
-import { i18n } from "tests/mock/i18n";
-import { vueToastification } from "tests/mock/vue-toastification";
+import { mockStoreI18n } from "@/../tests/mock/mockStoreI18n";
+import { vueToastification } from "@/../tests/mock/vue-toastification";
 import Bulletin from "./BulletinComponent.vue";
 
-i18n();
+mockStoreI18n();
 vueToastification();
 const plugins = [createTestingPinia()];
 const mocks = {

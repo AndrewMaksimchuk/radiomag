@@ -1,0 +1,36 @@
+<ElTableColumn
+	:label="$t('orders.window.orders.dialog.tableHeaderLabels.image')"
+	prop="product.image"
+>
+	<template #default="scope">
+		<CardLineImage
+			:img="scope.row.product?.image ?? ''"
+			:alt="scope.row.product.description[0]"
+		/>
+	</template>
+</ElTableColumn>
+
+<ElTableColumn
+	v-for="(item, index) in dialogColumns"
+	:key="index"
+	:property="item.property"
+	:label="$t(item.label)"
+/>
+
+<ElTableColumn
+	:label="$t('orders.window.orders.dialog.tableHeaderLabels.description')"
+	prop="product"
+>
+	<template #default="scope">
+		{{ scope.row.product.description.filter(Boolean).join("\n") }}
+	</template>
+</ElTableColumn>
+
+<ElTableColumn
+	:label="$t('orders.window.orders.dialog.tableHeaderLabels.quantity')"
+	prop="quantity"
+>
+	<template #default="scope">
+		{{ scope.row.quantity }} {{ scope.row.product.pcs }}
+	</template>
+</ElTableColumn>

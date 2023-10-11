@@ -1,12 +1,11 @@
 import { useRouter } from "vue-router";
-import { POST } from "@/httpClient";
 import { useCart } from "@/store/cart";
 import { useUser } from "@/store/user";
 import { validateComponents } from "@/utils/validateComponents";
 import { useComponentsRefs } from "./componentsRefs";
 import { useNotify } from "./notify";
-import { getFormData } from "./getFormData";
-import { createdDateTime } from "./createdDateTime";
+import { isOrderResponse } from "./isOrderResponse";
+import { useFormResponse } from "./formResponse";
 
 export const useSendFormData = () => {
   const { componentsRefs } = useComponentsRefs();
@@ -22,16 +21,9 @@ export const useSendFormData = () => {
       return notifyWarning();
     }
 
-    const form = getFormData();
-    if (form === undefined) {
-      return "Form not found";
-    }
-
-    const responseData = await POST.order({
-      created: createdDateTime(),
-      form,
-      cart: storeCart.cart,
-      user: storeUser.user,
+    const responseData = await useFormResponse({
+      storeCart,
+      storeUser,
     });
 
     if (responseData === undefined) {
@@ -41,7 +33,7 @@ export const useSendFormData = () => {
     notifySuccess();
     storeCart.clear();
 
-    if (responseData.newUser) {
+    if (isOrderResponse(responseData) && responseData.newUser) {
       storeUser.set(responseData.newUser);
     }
 

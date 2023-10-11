@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { mockStoreI18n } from "tests/mock/mockStoreI18n";
 import { i18n } from "@/languages";
 import { pinia } from "@/main";
 import { isComponentRender } from "tests/isComponentRender";
@@ -7,6 +8,8 @@ import { Order } from "@/components/OrderComponent";
 import { OrderContactForm } from "@/components/OrderContactFormComponent";
 import { buildWrapper } from "./testFunctions/buildWrapper";
 import product from "tests/mock/workerProduct.json";
+
+mockStoreI18n();
 
 let wrapper = buildWrapper({
   global: {

@@ -34,6 +34,10 @@ body {
   @media (max-width: $breakpoint-desktop) {
     padding: 0 15px;
   }
+
+  &_min-height {
+    min-height: 600px;
+  }
 }
 
 .hover:hover {

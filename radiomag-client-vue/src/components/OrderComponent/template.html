@@ -2,7 +2,7 @@
 	<h2 class="order__header-text">{{ $t("order.header") }}:</h2>
 	<OrderTable>
 		<OrderCard
-			v-for="(product, index) in cart"
+			v-for="(product, index) in cartItems"
 			:key="index"
 			:index="index"
 			:goods="product"

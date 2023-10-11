@@ -1,14 +1,18 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { shallowMount, VueWrapper } from "@vue/test-utils";
+import { shallowMount, VueWrapper, config } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
-import { i18n } from "tests/mock/i18n";
+import { mockStoreI18n } from "tests/mock/mockStoreI18n";
 import { i18nValidators } from "tests/mock/i18n-validators";
 import { vueToastification } from "tests/mock/vue-toastification";
 import { OrderContactForm } from "@/components";
 
-i18n();
+mockStoreI18n();
 i18nValidators();
 vueToastification();
+
+config.global.config.warnHandler = () => {
+  return null;
+};
 
 let wrapper: VueWrapper;
 

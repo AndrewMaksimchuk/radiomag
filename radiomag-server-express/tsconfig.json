@@ -10,7 +10,8 @@
     "types": ["bun-types"],
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
+      "$/*": ["../../*"]
     },
     "outDir": "./dist/",
     "target": "ESNext",

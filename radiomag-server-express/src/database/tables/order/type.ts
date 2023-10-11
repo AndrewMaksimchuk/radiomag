@@ -1,4 +1,5 @@
 import type { CartTableRow } from "../cart/type";
+import type { OrderFormTableRow } from "../orderForm/type";
 
 export interface OrderTableRow {
   id: number;
@@ -6,8 +7,13 @@ export interface OrderTableRow {
   cartId: number;
   formId: number;
   userId: string;
+  status: null | string;
+  manager: null | string;
+  closed: null | string; // Datetime
 }
 
-export interface OrdersUser extends Omit<OrderTableRow, "userId"> {
-  data: CartTableRow["data"];
+export interface Order extends Omit<OrderTableRow, "userId"> {
+  items: CartTableRow["items"];
+  totalCost: CartTableRow["totalCost"];
+  form: OrderFormTableRow;
 }

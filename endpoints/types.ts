@@ -1,5 +1,10 @@
 import type { UserRegistration, UserClientData } from "$/dto/User";
-import type { Order } from "$/dto/Order";
+import type {
+  OrderRequestBody,
+  OrderResponse,
+  OrdersRequestBody,
+  OrdersResponse,
+} from "$/dto/Order";
 
 export interface DefaultResponse {
   ok: boolean;
@@ -16,6 +21,6 @@ export interface APILogin {
 export interface APIOrder {
   url: "/api/order";
   method: "post";
-  request: Order;
-  response: DefaultResponse;
+  request: OrderRequestBody | OrdersRequestBody;
+  response: OrderResponse | OrdersResponse;
 }

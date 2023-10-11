@@ -4,7 +4,9 @@
     <Breadcrumbs />
     <ModalWindow />
     <ImageShowBig />
-    <RouterView class="container" />
+    <div class="container container_min-height">
+      <RouterView />
+    </div>
     <ShopInfo />
     <Footer />
     <Copyright />
@@ -16,7 +18,7 @@ import { RouterView } from "vue-router";
 import { Header } from "@/components/HeaderMainComponent";
 import { Breadcrumbs } from "@/components/BreadcrumbsComponent";
 import ModalWindow from "@/components/ModalWindow.vue";
-import ImageShowBig from "@/components/ImageShowBig.vue";
+import { ImageShowBig } from "@/components";
 import { ShopInfo } from "@/components/ShopInfoComponent";
 import Footer from "@/components/FooterComponent.vue";
 import Copyright from "@/components/CopyrightComponent.vue";

@@ -12,9 +12,9 @@ export default defineComponent({
     OrderTable,
   },
   props: {
-    cart: {
+    cartItems: {
       require: true,
-      type: Object as PropType<Cart>,
+      type: Object as PropType<Cart["items"]>,
     },
   },
 });

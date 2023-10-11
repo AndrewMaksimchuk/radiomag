@@ -2,5 +2,6 @@ type JSONString = string;
 
 export interface CartTableRow {
   id: number;
-  data: JSONString;
+  items: JSONString;
+  totalCost: string | null;
 }

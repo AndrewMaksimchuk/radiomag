@@ -7,8 +7,8 @@ import { useQuantity } from "./functions/changeQuantity";
 import { useLoadLocalStorage } from "./functions/loadLocalStorage";
 
 export const useCart = defineStore("cart", () => {
-  const localStorage = useLocalStorage<Cart>("cart", []);
-  const cart = ref<Cart>([]);
+  const localStorage = useLocalStorage<Cart["items"]>("cart", []);
+  const cart = ref<Cart["items"]>([]);
 
   const length = computed(() => {
     return cart.value.length;
