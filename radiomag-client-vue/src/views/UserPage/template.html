@@ -27,6 +27,7 @@
 			:key="item.label"
 			:label="$t(item.label)"
 			:name="item.name"
+			:disabled="item.disabled"
 		>
 			<component
 				v-if="activeTab === item.name"

@@ -4,8 +4,8 @@ import type { Change } from "../type";
 import type { RemovableRef } from "@vueuse/core";
 
 export const useQuantity = (
-  cart: Ref<Cart>,
-  localStorage: RemovableRef<Cart>
+  cart: Ref<Cart["items"]>,
+  localStorage: RemovableRef<Cart["items"]>
 ) => {
   const changeQuantity = (obj: Change) => {
     const { code, quantity } = obj;

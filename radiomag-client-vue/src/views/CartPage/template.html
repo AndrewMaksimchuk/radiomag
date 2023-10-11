@@ -1,6 +1,6 @@
 <section class="cart cart-min-height">
 	<div v-if="store.length">
-		<Order :cart="store.cart" />
+		<Order :cartItems="store.cart" />
 		<OrderContactForm />
 	</div>
 	<div v-else>

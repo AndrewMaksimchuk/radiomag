@@ -1,5 +1,8 @@
 import type { Order, FormData } from "../../../../dto/Order";
+import type { Cart } from "$/dto/Cart";
+import type { UserClientData } from "$/dto/User";
 import { Role } from "../../../../dto/Role";
+import { product } from "../../mock/product";
 
 export const initFormData: FormData = {
   email: "",
@@ -14,9 +17,17 @@ export const initFormData: FormData = {
   comment: "",
 };
 
-const cart = [{}];
+const cart: Cart = {
+  items: [
+    {
+      product,
+      quantity: 10,
+    },
+  ],
+  totalCost: "635.50",
+};
 
-export const user = {
+export const user: UserClientData = {
   id: "",
   role: Role.guest,
   name: "",
@@ -29,7 +40,10 @@ export const user = {
 
 export const order: Order = {
   created: "",
-  form: initFormData,
   cart,
+  form: initFormData,
   user,
+  status: "orders.window.orders.tableBody.status.waitingForPayment",
+  manager: "",
+  closed: "",
 };

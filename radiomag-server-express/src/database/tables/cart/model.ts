@@ -14,11 +14,16 @@ export class Cart {
     const returningColumns = ["id"];
     return await this.#table
       .returning(returningColumns)
-      .insert<[{ id: number }]>({ data: JSON.stringify(cart) });
+      .insert<[{ id: number }]>({
+        items: JSON.stringify(cart.items),
+        totalCost: cart.totalCost,
+      });
   }
 
   async get(id: number): Promise<ICart | undefined> {
     const cart = await this.#table.where("id", id).first();
-    return cart ? JSON.parse(cart.data) : undefined;
+    return cart
+      ? { items: JSON.parse(cart.items), totalCost: cart.totalCost }
+      : undefined;
   }
 }

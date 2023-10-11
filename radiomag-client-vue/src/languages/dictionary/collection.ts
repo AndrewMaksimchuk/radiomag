@@ -34,6 +34,8 @@ import toggleGroupView from "@/components/ToggleGroupViewComponent/languages";
 import loginPage from "@/views/LoginPage/languages";
 import userPage from "@/views/UserPage/languages";
 import HTTP403Page from "@/views/HTTP403Page/languages";
+import ordersStore from "@/store/orders/languages";
+import userOrdersComponent from "@/components/UserOrdersComponent/languages";
 
 export type Collection = Record<Locale, Record<string, unknown>>[];
 
@@ -72,4 +74,6 @@ export const collection = [
   loginPage,
   userPage,
   HTTP403Page,
+  ordersStore,
+  userOrdersComponent,
 ];

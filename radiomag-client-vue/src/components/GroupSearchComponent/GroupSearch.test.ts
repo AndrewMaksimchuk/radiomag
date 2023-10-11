@@ -1,5 +1,5 @@
 import { describe, it, afterEach } from "vitest";
-import { i18n } from "tests/mock/i18n";
+import { mockStoreI18n } from "tests/mock/mockStoreI18n";
 import { vueToastification } from "tests/mock/vue-toastification";
 import { testButton } from "./testFunctions/button";
 import { testCounter } from "./testFunctions/counter";
@@ -8,7 +8,7 @@ import { testIcon } from "./testFunctions/icon";
 import { useAfterEach } from "./testFunctions/afterEach";
 import { testWrapper } from "./testFunctions/wrapper";
 
-i18n();
+mockStoreI18n();
 vueToastification();
 afterEach(useAfterEach);
 

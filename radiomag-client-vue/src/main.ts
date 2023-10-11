@@ -6,8 +6,10 @@ import App from "@/App.vue";
 import AppCrushed from "@/AppCrushed.vue";
 import router from "@/router";
 import Toast from "vue-toastification";
+import { ElLoading } from "element-plus";
 import "vue-toastification/dist/index.css";
 import "@/assets/styles/style.scss";
+import "element-plus/es/components/loading/style/css";
 
 export const app = createApp(App);
 export const pinia = createPinia();
@@ -23,5 +25,7 @@ app.config.errorHandler = (err, instance, info) => {
 app.config.warnHandler = (msg, instance, trace) => {
   logService.globalWarn({ msg, instance, trace });
 };
+
+ElLoading.install(app);
 
 app.use(i18n).use(pinia).use(router).use(Toast).mount("#app");

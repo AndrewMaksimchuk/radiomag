@@ -4,5 +4,6 @@
 export const createCart = (table) => {
   table.integer("id").primary();
   table.timestamps(true, true);
-  table.json("data").notNullable();
+  table.json("items").notNullable();
+  table.text("totalCost").notNullable();
 };

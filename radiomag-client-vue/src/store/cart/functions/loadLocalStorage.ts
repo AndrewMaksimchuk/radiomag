@@ -3,8 +3,8 @@ import type { Cart } from "$/dto/Cart";
 import type { RemovableRef } from "@vueuse/core";
 
 export const useLoadLocalStorage = (
-  cart: Ref<Cart>,
-  localStorage: RemovableRef<Cart>
+  cart: Ref<Cart["items"]>,
+  localStorage: RemovableRef<Cart["items"]>
 ) => {
   const loadLocalStorage = () => {
     const storage = localStorage.value;

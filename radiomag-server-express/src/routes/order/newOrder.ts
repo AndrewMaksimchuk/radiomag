@@ -1,48 +1,44 @@
-import type { MethodHandler } from "./type.js";
-import { Cart } from "../../database/tables/cart/model.js";
-import { OrderForm } from "../../database/tables/orderForm/model.js";
-import { Order } from "../../database/tables/order/model.js";
+import type { MethodHandlerCreateOrder } from "./type.js";
 import { defaultValidation } from "./defaultValidation.js";
 import { Role } from "../../../../dto/Role.js";
 import { createNewUnregistrationUser } from "./createNewUnregistrationUser.js";
+import { addOrderToDatabase } from "./addOrderToDatabase.js";
+import { RESPONSE } from "./constants.js";
 
-export const newOrder: MethodHandler = async (req, res) => {
+export const newOrder: MethodHandlerCreateOrder = async (req, res) => {
   try {
-    const cartTable = new Cart(req.dbConnection);
-    const orderFormTable = new OrderForm(req.dbConnection);
-    const orderTable = new Order(req.dbConnection);
-
-    if (false === defaultValidation(req.body.form)) {
-      return res.json({ ok: false, message: "Bad form data" });
+    if (undefined === req.body.form) {
+      return res.json(RESPONSE.FORM_NOT_PROVIDED);
     }
 
-    const newUser = await createNewUnregistrationUser(
-      Role.guest === req.body.user.role,
-      req
-    );
+    if (false === defaultValidation(req.body.form)) {
+      return res.json(RESPONSE.BAD_FORM);
+    }
 
-    const [{ id: cartId }] = await cartTable.add(req.body.cart);
-    const [{ id: formId }] = await orderFormTable.add(req.body.form);
+    if (undefined === req.body.cart) {
+      return res.json(RESPONSE.CART_NOT_PROVIDED);
+    }
 
-    const mixin = {
-      created: req.body.created,
-      cartId,
-      formId,
-    };
+    if (undefined === req.body.user) {
+      return res.json(RESPONSE.USER_NOT_PROVIDED);
+    }
 
-    const newOrder = newUser
-      ? { userId: newUser.id }
-      : { userId: req.body.user.id };
+    const user = await createNewUnregistrationUser({
+      databaseConnection: req.dbConnection,
+      condition: Role.guest === req.body.user.role,
+      form: req.body.form,
+    });
 
-    const [{ id: orderId }] = await orderTable.add({ ...newOrder, ...mixin });
+    const orderId = await addOrderToDatabase({
+      databaseConnection: req.dbConnection,
+      body: req.body,
+      user: user,
+    });
 
-    return newUser
-      ? res.json({ ok: true, orderId, newUser })
+    return user
+      ? res.json({ ok: true, orderId, newUser: user })
       : res.json({ ok: true, orderId });
   } catch (error) {
-    return res.json({
-      ok: false,
-      message: "Error - can`t save order",
-    });
+    return res.json(RESPONSE.ERROR);
   }
 };

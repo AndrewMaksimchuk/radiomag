@@ -1,18 +1,26 @@
-import type { MethodHandler } from "./type";
+import type { FormData } from "$/dto/Order";
 import { User } from "../../database/tables/user/model.js";
+import { Knex } from "knex";
 
-export const createNewUnregistrationUser = async (
-  condition: boolean,
-  req: Parameters<MethodHandler>[0]
-) => {
+interface CreateNewUnregistrationUserParams {
+  databaseConnection: Knex;
+  condition: boolean;
+  form: FormData;
+}
+
+export const createNewUnregistrationUser = async ({
+  databaseConnection,
+  condition,
+  form,
+}: CreateNewUnregistrationUserParams) => {
   if (false === condition) {
     return;
   }
 
-  const userTable = new User(req.dbConnection);
+  const userTable = new User(databaseConnection);
   return await userTable.create({
-    name: req.body.form.contactPerson,
-    phone: req.body.form.telFax,
+    name: form.contactPerson,
+    phone: form.telFax,
     password: "",
   });
 };

@@ -20,7 +20,6 @@ export class Ping {
       }
       return await this.#table.insert(data);
     } catch (error) {
-      console.error(error);
       return [];
     }
   }
