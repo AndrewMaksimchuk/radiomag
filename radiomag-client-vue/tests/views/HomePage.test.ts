@@ -8,7 +8,7 @@ import HomePage from "@/views/HomePage.vue";
 import { CatalogShort } from "@/components/CatalogShortComponent";
 import { Linecard } from "@/components/LinecardComponent";
 import PopularProducts from "@/components/PopularProductsComponent.vue";
-import NewsShort from "@/components/NewsShortComponent.vue";
+import { NewsShort } from "@/components";
 import Manufacturers from "@/components/ManufacturersComponent.vue";
 import { Bulletin } from "@/components/BulletinComponent";
 
