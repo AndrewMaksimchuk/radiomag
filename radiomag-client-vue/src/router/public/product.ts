@@ -4,7 +4,7 @@ const product: RouteRecordRaw = {
   path: "/product/:code",
   name: "goods" as const,
   component: () => {
-    return import("@/views/GoodsPage.vue");
+    return import("@/views/GoodsPage/GoodsPage.vue");
   },
   props: true,
   meta: {

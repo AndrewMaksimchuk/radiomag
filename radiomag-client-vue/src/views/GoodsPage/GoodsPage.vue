@@ -13,39 +13,27 @@
     </QuantitySelectionForm>
   </article>
 </template>
-
+<style lang="scss" src="./style.scss"></style>
 <script setup lang="ts">
-import { ref, onBeforeMount, watch } from "vue";
-import { useRoute } from "vue-router";
+import { ref, watch } from "vue";
 import { useGoods } from "@/store/goods";
 import { useCart } from "@/store/cart";
-import { useBreadcrumbs } from "@/store/breadcrumbs";
 import { PingService } from "@/services/PingService";
+import { useHooks } from "./functions/hooks";
+import { QuantitySelectionForm } from "@/components";
 import GoodsImage from "@/components/GoodsImageComponent.vue";
 import GoodsDescriptions from "@/components/GoodsDescriptionsComponent.vue";
 import GoodsAvailability from "@/components/GoodsAvailabilityComponent.vue";
 import GoodsPrice from "@/components/GoodsPriceComponent.vue";
-import QuantitySelectionForm from "@/components/QuantitySelectionFormComponent.vue";
 
 const quantity = ref(1);
 const store = useGoods();
 const storeCart = useCart();
-const route = useRoute();
-const storeBreadcrumbs = useBreadcrumbs();
+useHooks(store);
 
-onBeforeMount(() => {
-  if (store.goods?.product.articul) {
-    const breadcrumbsUpdate = {
-      name: store.goods?.product.articul,
-      path: route.fullPath,
-    };
-    route.meta.breadcrumbs?.set(breadcrumbsUpdate);
-    storeBreadcrumbs.updateOne(route.fullPath, breadcrumbsUpdate);
-  }
-});
-
-const changeQuantityOfProduct = (newQuantity: number) =>
-  (quantity.value = newQuantity);
+const changeQuantityOfProduct = (newQuantity: number) => {
+  return (quantity.value = newQuantity);
+};
 
 const addToCart = () => {
   if (store.goods) {
@@ -56,21 +44,8 @@ const addToCart = () => {
 };
 
 watch(quantity, (newValue) => {
-  if (newValue <= 0) quantity.value = 1;
+  if (0 >= newValue) {
+    quantity.value = 1;
+  }
 });
 </script>
-
-<style lang="scss">
-.goods {
-  display: flex;
-  column-gap: 48px;
-  color: var(--color-gray-dark);
-  font-size: 1.2rem;
-
-  @media (max-width: $breakpoint-tablet) {
-    flex-direction: column;
-    row-gap: 28px;
-    padding-bottom: 31px;
-  }
-}
-</style>

@@ -5,15 +5,23 @@
 			{{ $t("bulletin.label") }}
 		</label>
 		<input
-			type="email"
+			autocomplete="email"
 			required
+			aria-required="true"
+			aria-label="Write an email to receive a messages"
+			type="email"
 			name="email"
+			inputmode="email"
+			enterkeyhint="send"
 			id="email"
 			class="linecard__form-select bulletin__input"
 			v-model="email"
 			:placeholder="$t('bulletin.placeholder')"
 		/>
-		<button class="linecard__form-submit cursor-pointer">
+		<button
+			type="submit"
+			class="linecard__form-submit cursor-pointer"
+		>
 			{{ $t("bulletin.submit") }}
 		</button>
 	</form>

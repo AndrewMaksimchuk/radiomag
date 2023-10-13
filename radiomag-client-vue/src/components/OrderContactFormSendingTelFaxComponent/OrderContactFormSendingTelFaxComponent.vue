@@ -35,9 +35,12 @@ defineExpose({ useValidation });
         {{ $t("order.form.telFax") }}
       </label>
       <input
+        autocomplete="tel"
         class="contact-form-order__fieldset-input"
         type="text"
         name="telFax"
+        enterkeyhint="done"
+        inputmode="tel"
         id="telFax"
         placeholder="0935853445"
         v-model="store.formData.telFax"

@@ -6,7 +6,8 @@ export default defineComponent({
   components: {
     RouterLink,
   },
-  setup() {
+  emits: ["click"],
+  setup(_props, { emit }) {
     const storeUser = useUser();
 
     const link = computed(() => {
@@ -16,9 +17,14 @@ export default defineComponent({
       };
     });
 
+    const click = () => {
+      emit("click");
+    };
+
     return {
       storeUser,
       link,
+      click,
     };
   },
 });

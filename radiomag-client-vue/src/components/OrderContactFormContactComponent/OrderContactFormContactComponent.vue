@@ -34,9 +34,15 @@ defineExpose({ useValidation });
     </h3>
     <FormValidationError :isShow="showErrorMessage" :errors="errors">
       <input
+        autocomplite="email"
+        required
+        aria-required="true"
+        aria-label="Email"
         class="contact-form-order__fieldset-input contact-form-order__fieldset-input_w-full"
         type="email"
         name="email"
+        inputmode="email"
+        enterkeyhint="done"
         id="email"
         v-model.trim="store.formData.email"
         @blur="useValidation"

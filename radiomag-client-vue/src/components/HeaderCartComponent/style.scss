@@ -27,7 +27,7 @@ a.cart {
   }
 
   &__text {
-    @media (max-width: $breakpoint-pre-tablet) {
+    @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-pre-tablet) {
       display: none;
     }
   }
@@ -35,7 +35,7 @@ a.cart {
   &__items {
     font-weight: 700;
 
-    @media (max-width: $breakpoint-pre-tablet) {
+    @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-pre-tablet) {
       display: none;
     }
   }

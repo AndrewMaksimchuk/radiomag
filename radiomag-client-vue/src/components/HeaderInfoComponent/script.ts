@@ -1,10 +1,10 @@
-import type { StateMenu } from "@/components/ButtonMenuComponent.vue";
+import type { StateMenu } from "@/components/ButtonMenuComponent/ButtonMenuComponent.vue";
 import { defineComponent, ref } from "vue";
 import { HeaderUserAction } from "@/components/HeaderUserActionComponent";
 import HeaderInfoContacts from "@/components/HeaderInfoContactsComponent.vue";
 import { HeaderCart } from "@/components";
-import LangChoose from "@/components/LangChooseComponent.vue";
-import ButtonMenu from "@/components/ButtonMenuComponent.vue";
+import { LangChoose } from "@/components";
+import { ButtonMenu } from "@/components";
 
 export default defineComponent({
   components: {
@@ -18,6 +18,11 @@ export default defineComponent({
     const isMenuOpen = ref(false);
     const isOverflow = ref(false);
 
+    const closeMenu = () => {
+      isMenuOpen.value = false;
+      isOverflow.value = false;
+    };
+
     const toggleMenu = (state: StateMenu) => {
       "open" === state ? (isMenuOpen.value = true) : (isMenuOpen.value = false);
     };
@@ -29,6 +34,7 @@ export default defineComponent({
     return {
       isMenuOpen,
       isOverflow,
+      closeMenu,
       toggleMenu,
       toggleOverflow,
     };

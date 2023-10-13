@@ -11,7 +11,7 @@
   }
 
   &__text {
-    @media (max-width: $breakpoint-pre-tablet) {
+    @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-pre-tablet) {
       display: none;
     }
   }

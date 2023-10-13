@@ -1,4 +1,8 @@
-<RouterLink class="header__info-item login-registration" :to="link">
+<RouterLink
+	class="header__info-item login-registration"
+	:to="link"
+	@click="click"
+>
 	<img
 		src="@/assets/images/user.svg"
 		alt="login"

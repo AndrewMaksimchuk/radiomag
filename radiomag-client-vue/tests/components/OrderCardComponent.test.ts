@@ -1,11 +1,12 @@
-import type { CartItem } from "@/store/cart";
+/* eslint-disable max-lines */
+import type { CartItem } from "$/dto/Cart";
 import { describe, it, expect, beforeEach } from "vitest";
 import { shallowMount, VueWrapper, RouterLinkStub } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
-import OrderCard from "@/components/OrderCardComponent.vue";
+import { OrderCard } from "@/components";
 import ProductAvailability from "@/components/ProductAvailability.vue";
 import ProductPrice from "@/components/ProductPrice.vue";
-import QuantitySelectionForm from "@/components/QuantitySelectionFormComponent.vue";
+import { QuantitySelectionForm } from "@/components";
 import product from "../mock/workerProduct.json";
 
 const components = [ProductAvailability, ProductPrice, QuantitySelectionForm];
@@ -13,7 +14,9 @@ const components = [ProductAvailability, ProductPrice, QuantitySelectionForm];
 let wrapper: VueWrapper;
 
 const mocks = {
-  $t: (text: string) => text,
+  $t: (text: string) => {
+    return text;
+  },
 };
 
 const stubs = {
@@ -43,10 +46,18 @@ const buildWrapper = (options = {}) => {
   wrapper = shallowMount(OrderCard, { global, props, ...options });
 };
 
-const findImage = () => wrapper.find("img");
-const findHeader = () => wrapper.find("h3");
-const findCode = () => wrapper.find("p");
-const findDeleteButton = () => wrapper.find("button");
+const findImage = () => {
+  return wrapper.find("img");
+};
+const findHeader = () => {
+  return wrapper.find("h3");
+};
+const findCode = () => {
+  return wrapper.find("p");
+};
+const findDeleteButton = () => {
+  return wrapper.find("button");
+};
 
 describe("OrderCard component", () => {
   beforeEach(() => {

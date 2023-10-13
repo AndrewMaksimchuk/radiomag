@@ -1,9 +1,14 @@
 <form action="/" class="search__form">
 	<input
+		required
+		aria-required="true"
+		aria-label="Write product name or code"
 		type="text"
-		:placeholder="searchPlaceholder"
+		inputmode="text"
+		enterkeyhint="search"
 		class="search__form-input"
 		v-model="productName"
+		:placeholder="searchPlaceholder"
 	/>
 	<button
 		type="submit"

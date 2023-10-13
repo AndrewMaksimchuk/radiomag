@@ -1,0 +1,43 @@
+<div class="card-line__right">
+	<slot></slot>
+	<form class="card-line__right-form">
+		<span class="notification-added-to-cart" v-if="isAddedToCart">
+			{{ $t("card.addedCart") }}
+		</span>
+
+		<section class="card-line__right-form-line">
+			<button
+				aria-label="Subtract one unit of quantity"
+				class="card-line__right-button"
+				@click.prevent="changeQuantityOfProduct('-')"
+			>
+				-
+			</button>
+			<input
+				aria-label="Write quantity of product you want to add in cart"
+				type="text"
+				inputmode="numeric"
+				enterkeyhint="done"
+				class="card-line__right-input"
+				v-model.number="inputValue"
+				@input="changeInputValue()"
+				@click="selectText"
+			/>
+			<button
+				aria-label="Add one quantity unit"
+				class="card-line__right-button"
+				@click.prevent="changeQuantityOfProduct('+')"
+			>
+				+
+			</button>
+		</section>
+
+		<button
+			aria-label="Add to cart"
+			class="card-line__right-button-buy"
+			@click.prevent="addToCart"
+		>
+			<slot name="button"> {{ $t("card.buy") }} </slot>
+		</button>
+	</form>
+</div>

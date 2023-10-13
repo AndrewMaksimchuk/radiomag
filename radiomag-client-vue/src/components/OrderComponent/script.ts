@@ -3,7 +3,7 @@ import type { Cart } from "$/dto/Cart";
 import { defineComponent } from "vue";
 import { OrderForm } from "@/components/OrderFormComponent";
 import OrderTable from "@/components/OrderTableComponent.vue";
-import OrderCard from "@/components/OrderCardComponent.vue";
+import { OrderCard } from "@/components";
 
 export default defineComponent({
   components: {

@@ -11,8 +11,11 @@ const store = useOrderContactForm();
     </h3>
     <div>
       <textarea
+        aria-label="Questions, clarifications or anything that interests you"
         class="contact-form-order__fieldset-textarea"
         name="comment"
+        inputmode="text"
+        enterkeyhint="done"
         v-model.trim="store.formData.comment"
       >
       </textarea>

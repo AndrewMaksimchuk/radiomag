@@ -1,4 +1,4 @@
-<button class="header__info-item subscribe">
+<button class="header__info-item subscribe" @click="click">
 	<img
 		src="@/assets/images/mail-send.svg"
 		alt="subscribe"
@@ -8,4 +8,4 @@
 		{{ $t("header.info.subscription") }}
 	</span>
 </button>
-<UserLink />
+<UserLink @click="click" />
