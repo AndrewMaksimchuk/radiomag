@@ -9,6 +9,8 @@
 >
 	<ElFormItem required prop="phone" :label="$t('login.label.phone')">
 		<ElInput
+			enterkeyhint="next"
+			autocomplete="tel"
 			autofocus
 			clearable
 			show-word-limit
@@ -30,6 +32,8 @@
 		:label="$t('login.label.password')"
 	>
 		<ElInput
+			autocomplete="current-password"
+			enterkeyhint="next"
 			clearable
 			show-password
 			v-model="formData.password"
@@ -43,6 +47,7 @@
 
 	<ElFormItem :label="$t('login.label.name')">
 		<ElInput
+			autocomplete="username"
 			clearable
 			v-model="formData.name"
 			placeholder="Andrew"
