@@ -39,32 +39,21 @@
 <script setup lang="ts">
 import type { WorkerProduct } from "@/public/types";
 import { ref } from "vue";
-import { useCart } from "@/store/cart";
-import { PingService } from "@/services/PingService";
+import { QuantitySelectionForm } from "@/components";
+import { useAddToCart } from "./functions/useAddToCart";
 import CardLineImage from "@/components/CardLineImageComponent.vue";
 import CardLineDescription from "@/components/CardLineDescriptionComponent.vue";
-import ProductAvailability from "./ProductAvailability.vue";
-import ProductPrice from "./ProductPrice.vue";
-import QuantitySelectionForm from "./QuantitySelectionFormComponent.vue";
+import ProductAvailability from "@/components/ProductAvailability.vue";
+import ProductPrice from "@/components/ProductPrice.vue";
 
 const props = defineProps<{
   product: WorkerProduct;
   filterHeaders: string[];
 }>();
 
-const storeCart = useCart();
-
 const quantityOfProduct = ref(1);
-
-const changeQuantityOfProduct = (quantity: number) =>
-  (quantityOfProduct.value = quantity);
-
-const addToCart = () => {
-  const payload = { product: props.product, quantity: quantityOfProduct.value };
-  PingService.ping({ action: "action", todo: "cart add", payload });
-  storeCart.add(payload);
+const addToCart = useAddToCart(props, quantityOfProduct);
+const changeQuantityOfProduct = (quantity: number) => {
+  return (quantityOfProduct.value = quantity);
 };
 </script>
-
-<!-- <style lang="scss"> -->
-<!-- Import as .scss module in assets/styles/cardLineComponent.scss -->

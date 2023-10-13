@@ -37,6 +37,9 @@ defineExpose({ useValidation });
     <div>
       <FormValidationError :is-show="showErrorMessage" :errors="errors">
         <select
+          required
+          aria-required="true"
+          aria-label="Payment method"
           class="contact-form-order__fieldset-input contact-form-order__fieldset-input_w-full contact-form-order__fieldset-select"
           name="subscriptions"
           id="subscriptions"

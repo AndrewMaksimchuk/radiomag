@@ -1,0 +1,42 @@
+.cart {
+  display: block;
+  height: 100%;
+  padding: 0;
+}
+
+a.cart {
+  padding: 0;
+}
+
+.card {
+  @extend %button-style;
+
+  width: 100%;
+  text-align: center;
+  background-color: var(--color-red);
+
+  @media (max-width: $breakpoint-pre-tablet) {
+    padding: 0 15px;
+  }
+
+  &__img {
+    @media (max-width: $breakpoint-pre-tablet) {
+      margin: 0;
+      margin-right: 0.1rem;
+    }
+  }
+
+  &__text {
+    @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-pre-tablet) {
+      display: none;
+    }
+  }
+
+  &__items {
+    font-weight: 700;
+
+    @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-pre-tablet) {
+      display: none;
+    }
+  }
+}

@@ -41,6 +41,8 @@ defineExpose({ useValidation });
         class="contact-form-order__fieldset-input"
         type="text"
         name="contactPerson"
+        enterkeyhint="done"
+        inputmode="text"
         id="contactPerson"
         :placeholder="$t('orderContactFormSendingContactPerson.placeholder')"
         v-model.trim="store.formData.contactPerson"

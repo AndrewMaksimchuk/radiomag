@@ -48,6 +48,8 @@ defineExpose({ useValidation });
         class="contact-form-order__fieldset-input"
         type="text"
         name="recipient"
+        enterkeyhint="done"
+        inputmode="text"
         id="recipient"
         :placeholder="$t('orderContactFormSendingRecipient.placeholder')"
         v-model="store.formData.recipient"

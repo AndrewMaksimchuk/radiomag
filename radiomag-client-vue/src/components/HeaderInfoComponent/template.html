@@ -6,9 +6,9 @@
 		'header__info_overflow-disable': isOverflow,
 	}"
 >
-	<HeaderInfoContacts />
-	<HeaderUserAction />
-	<HeaderCart />
-	<LangChoose @on-open="toggleOverflow" />
-	<ButtonMenu @change="toggleMenu" />
+	<HeaderInfoContacts @click="closeMenu" />
+	<HeaderUserAction @click="closeMenu" />
+	<HeaderCart @click="closeMenu" />
+	<LangChoose @on-open="toggleOverflow" @on-close="closeMenu" />
+	<ButtonMenu :menuState="isMenuOpen" @change="toggleMenu" />
 </section>

@@ -4,7 +4,7 @@ import { Filters } from "@/components/FiltersComponent";
 import { CardTable } from "@/components/CardTableComponent";
 import { ToggleGroupView } from "@/components/ToggleGroupViewComponent";
 import Pagination from "@/components/PaginationComponent.vue";
-import CardLine from "@/components/CardLineComponent.vue";
+import { CardLine } from "@/components";
 import ErrorMessageInGroup from "@/components/ErrorMessageInGroup.vue";
 
 export const components = {

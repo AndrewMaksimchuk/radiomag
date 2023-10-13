@@ -16,6 +16,19 @@ defineProps<{
   text-decoration: none;
   color: #fff;
   line-height: $line-height;
+
+  &:focus {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
 }
 
 .header {
@@ -29,13 +42,6 @@ defineProps<{
         text-align: center;
         flex-grow: 0;
       }
-    }
-
-    &__item:hover {
-      @extend %button-style;
-
-      text-decoration: underline;
-      text-underline-offset: 5px;
     }
   }
 }

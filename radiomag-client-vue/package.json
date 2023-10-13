@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "dev:public": "tsc -p tsconfig.public.json --watch",
     "prebuild": "npm run build:public",
     "build": "vite build",

@@ -42,6 +42,9 @@ defineExpose({ useValidation });
     <div>
       <FormValidationError :is-show="showErrorMessage" :errors="errors">
         <select
+          required
+          aria-required="true"
+          aria-label="Who will receive the order"
           class="contact-form-order__fieldset-input contact-form-order__fieldset-input_w-full contact-form-order__fieldset-select"
           name="unit"
           id="unit"

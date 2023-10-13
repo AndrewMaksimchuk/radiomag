@@ -2,13 +2,18 @@ import { describe, it, expect, vi } from "vitest";
 import { MountingOptions, shallowMount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import { useGoods } from "@/store/goods";
-import GoodsPage from "@/views/GoodsPage.vue";
+import { GoodsPage } from "@/views";
 import product from "../mock/workerProduct.json";
 
-vi.stubGlobal("scrollTo", () => true);
+vi.stubGlobal("scrollTo", () => {
+  return true;
+});
 
-const buildWrapper = (options: MountingOptions<Record<string, unknown>> = {}) =>
-  shallowMount(GoodsPage, options);
+const buildWrapper = (
+  options: MountingOptions<Record<string, unknown>> = {}
+) => {
+  return shallowMount(GoodsPage, options);
+};
 
 const wrapper = buildWrapper({
   global: {

@@ -2,8 +2,15 @@
   @extend %button-style;
 
   padding: 0 32px;
+  text-align: center;
 
   @media (max-width: $breakpoint-tablet) {
     padding: 0;
+  }
+
+  &__text {
+    @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-pre-tablet) {
+      display: none;
+    }
   }
 }

@@ -1,18 +1,21 @@
+/* eslint-disable max-lines */
 import { describe, it, expect, beforeEach } from "vitest";
 import { shallowMount, VueWrapper } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
-import CardLine from "@/components/CardLineComponent.vue";
+import { CardLine } from "@/components";
 import CardLineImage from "@/components/CardLineImageComponent.vue";
 import CardLineDescription from "@/components/CardLineDescriptionComponent.vue";
 import ProductAvailability from "@/components/ProductAvailability.vue";
 import ProductPrice from "@/components/ProductPrice.vue";
-import QuantitySelectionForm from "@/components/QuantitySelectionFormComponent.vue";
-import product from "../mock/workerProduct.json";
+import { QuantitySelectionForm } from "@/components";
+import product from "tests/mock/workerProduct.json";
 
 let wrapper: VueWrapper;
 
 const mocks = {
-  $t: (text: string) => text,
+  $t: (text: string) => {
+    return text;
+  },
 };
 
 const props = {

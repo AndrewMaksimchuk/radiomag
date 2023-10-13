@@ -1,10 +1,12 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { shallowMount, VueWrapper } from "@vue/test-utils";
-import ButtonMenu from "@/components/ButtonMenuComponent.vue";
+import ButtonMenu from "./ButtonMenuComponent.vue";
 
 let wrapper: VueWrapper;
 
-const buildWrapper = () => (wrapper = shallowMount(ButtonMenu));
+const buildWrapper = () => {
+  return (wrapper = shallowMount(ButtonMenu));
+};
 
 describe("ButtonMenu component", () => {
   beforeEach(() => {

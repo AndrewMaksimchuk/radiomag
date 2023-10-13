@@ -25,10 +25,10 @@ const useValidation = () => {
       return value.$message;
     })
     .toString();
-  if (errors.value.length) {
-    return (showErrorMessage.value = true);
-  }
-  return (showErrorMessage.value = false);
+
+  return errors.value.length
+    ? (showErrorMessage.value = true)
+    : (showErrorMessage.value = false);
 };
 
 watch(store, () => {
@@ -45,9 +45,12 @@ defineExpose({ useValidation });
         {{ $t("order.form.address") }}
       </label>
       <input
+        autocomplete="street-address"
         class="contact-form-order__fieldset-input"
         type="text"
         name="address"
+        enterkeyhint="done"
+        inputmode="text"
         id="address"
         :placeholder="$t('orderContactFormSendingAddress.placeholder')"
         v-model="store.formData.address"

@@ -3,7 +3,7 @@ import { POST } from "@/httpClient";
 import { useUser } from "@/store/user";
 
 type Remove<T> = T extends PingPayload
-  ? Omit<T, "time" | "user" | "from">
+  ? Omit<T, "time" | "user" | "from" | "userRole">
   : never;
 
 type PingData = Remove<PingPayload>;
@@ -20,6 +20,6 @@ export class PingService {
       return POST.ping({ ...data, time, user, userRole, from });
     }
 
-    POST.ping({ ...data, time, user });
+    POST.ping({ ...data, time, user, userRole });
   }
 }
