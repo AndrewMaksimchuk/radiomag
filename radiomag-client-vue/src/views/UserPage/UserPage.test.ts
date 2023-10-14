@@ -1,10 +1,10 @@
 import type { VueWrapper } from "@vue/test-utils";
 import { config } from "@vue/test-utils";
 import { describe, it, beforeEach } from "vitest";
+import "./testFunctions/mockRouter";
 import { mockOrdersStore } from "tests/mock/mockStoreOrders";
 import { i18nValidators } from "@/../tests/mock/i18n-validators";
 import { mockUserStore, user } from "@/../tests/mock/mockStoreUser";
-import { mockRouter } from "@/../tests/mock/mockRouter";
 import { buildWrapper } from "./testFunctions/buildWrapper";
 import {
   findButtonLogout,
@@ -21,7 +21,6 @@ config.global.config.warnHandler = () => {
 mockOrdersStore();
 i18nValidators();
 mockUserStore();
-mockRouter();
 
 let wrapper: VueWrapper;
 

@@ -1,13 +1,20 @@
 type i18nString = string;
 
+export type TabName =
+  | "orders"
+  | "history"
+  | "notification"
+  | "tracking"
+  | "settings";
+
 export interface Tab {
   label: i18nString;
-  name: string;
+  name: TabName;
   component: string;
   disabled: boolean;
 }
 
-export const tabs: Tab[] = [
+export const tabs: Readonly<Tab[]> = [
   {
     label: "userPage.tabs.orders",
     name: "orders",

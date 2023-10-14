@@ -44,6 +44,7 @@ export const useUser = defineStore("user", () => {
   };
 
   const clear = () => {
+    // TODO: logout from server to
     return (user.value = createDefaultUser());
   };
 
