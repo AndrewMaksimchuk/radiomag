@@ -37,12 +37,12 @@
 </template>
 
 <script setup lang="ts">
-import type { WorkerProduct } from "@/public/types";
+import type { WorkerProduct } from "$/dto/Product";
 import { ref } from "vue";
 import { QuantitySelectionForm } from "@/components";
 import { useAddToCart } from "./functions/useAddToCart";
 import CardLineImage from "@/components/CardLineImageComponent.vue";
-import CardLineDescription from "@/components/CardLineDescriptionComponent.vue";
+import { CardLineDescription } from "@/components";
 import ProductAvailability from "@/components/ProductAvailability.vue";
 import ProductPrice from "@/components/ProductPrice.vue";
 

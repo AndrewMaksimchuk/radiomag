@@ -1,4 +1,4 @@
-import type { WorkerProduct } from "$/radiomag-client-vue/src/public/types";
+import type { WorkerProduct } from "./Product";
 
 export interface CartItem {
   product: WorkerProduct;
@@ -7,5 +7,5 @@ export interface CartItem {
 
 export type Cart = {
   items: CartItem[];
-  totalCost: string;
+  totalCost: string | null;
 };

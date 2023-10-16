@@ -50,3 +50,11 @@ export interface Product {
   waiting_date_items: WaitingDataItems;
   waiting_total: number;
 }
+
+export interface WorkerProduct extends Omit<Product, "stock_data"> {
+  description: string[];
+  stock_data: {
+    stock: string;
+    stockName: string;
+  }[];
+}

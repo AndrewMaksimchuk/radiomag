@@ -1,5 +1,5 @@
 import type { PropType } from "vue";
-import type { WorkerProduct } from "@/public/types";
+import type { WorkerProduct } from "$/dto/Product";
 
 export const props = {
   product: {

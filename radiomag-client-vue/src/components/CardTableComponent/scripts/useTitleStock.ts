@@ -1,4 +1,4 @@
-import type { WorkerProduct } from "@/public/types";
+import type { WorkerProduct } from "$/dto/Product";
 
 export const setTitleStock = (
   stockData: WorkerProduct["stock_data"],

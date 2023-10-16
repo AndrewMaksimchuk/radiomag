@@ -1,5 +1,5 @@
 import type { Ref } from "vue";
-import type { WorkerProduct } from "@/public/types";
+import type { WorkerProduct } from "$/dto/Product";
 import { useCart } from "@/store/cart";
 import { PingService } from "@/services/PingService";
 
