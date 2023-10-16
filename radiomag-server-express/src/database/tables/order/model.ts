@@ -3,7 +3,7 @@ import type { OrderTableRow } from "./type";
 import type { OrderFormTableRow } from "../orderForm/type";
 import { Knex } from "knex";
 import names from "../names.json" assert { type: "json" };
-import { GETALLBYUSERSELECTPARAMS } from "./constants";
+import { GETALLBYUSERSELECTPARAMS, EMPTY_ORDER_FORM } from "./constants";
 
 export class Order {
   #table;
@@ -31,9 +31,10 @@ export class Order {
     });
     const formData = await this.#tableOrderForm.select().whereIn("id", ids);
     const ordersData = orders.map((orderRow) => {
-      const form = formData.find((formRow) => {
-        return formRow.id === orderRow.formId;
-      });
+      const form =
+        formData.find((formRow) => {
+          return formRow.id === orderRow.formId;
+        }) ?? EMPTY_ORDER_FORM;
       return {
         ...orderRow,
         form,

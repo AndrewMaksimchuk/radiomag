@@ -6,6 +6,7 @@ temp/
 dist/
 coverage/
 endpoints/*.js
+public/js/
 
 .env
 .env_dev

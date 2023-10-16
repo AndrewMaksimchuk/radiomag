@@ -1,10 +1,10 @@
-import type { UserRegistration, UserClientData } from "$/dto/User";
+import type { UserRegistration, UserClientData } from "../dto/User";
 import type {
   OrderRequestBody,
   OrderResponse,
   OrdersRequestBody,
   OrdersResponse,
-} from "$/dto/Order";
+} from "../dto/Order";
 
 export interface DefaultResponse {
   ok: boolean;

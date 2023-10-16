@@ -4,7 +4,7 @@ import { shallowMount, VueWrapper } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import { CardLine } from "@/components";
 import CardLineImage from "@/components/CardLineImageComponent.vue";
-import CardLineDescription from "@/components/CardLineDescriptionComponent.vue";
+import { CardLineDescription } from "@/components";
 import ProductAvailability from "@/components/ProductAvailability.vue";
 import ProductPrice from "@/components/ProductPrice.vue";
 import { QuantitySelectionForm } from "@/components";

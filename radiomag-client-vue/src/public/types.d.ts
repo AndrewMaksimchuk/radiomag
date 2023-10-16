@@ -1,14 +1,6 @@
-import type { Product } from "../../../dto/Product";
+import type { WorkerProduct } from "../../../dto/Product";
 import type { Group } from "../../../dto/Group";
 import type { AllSearchParams } from "../store/filters";
-
-export interface WorkerProduct extends Omit<Product, "stock_data"> {
-  description: string[];
-  stock_data: {
-    stock: string;
-    stockName: string;
-  }[];
-}
 
 export type TransferObject =
   | {

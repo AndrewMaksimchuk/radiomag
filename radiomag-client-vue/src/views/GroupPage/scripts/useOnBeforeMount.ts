@@ -1,5 +1,5 @@
 import type { FiltersItemsMod } from "$/dto/Group";
-import type { WorkerProduct } from "@/public/types";
+import type { WorkerProduct } from "$/dto/Product";
 import { ref, onBeforeMount } from "vue";
 import { useRoute } from "vue-router";
 import { useGroup } from "@/store/group";

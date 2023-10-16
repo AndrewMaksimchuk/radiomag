@@ -1,4 +1,4 @@
-import type { WorkerProduct } from "@/public/types";
+import type { WorkerProduct } from "$/dto/Product";
 import { useRouter } from "vue-router";
 import { useGoods } from "@/store/goods";
 import { PingService } from "@/services/PingService";

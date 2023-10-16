@@ -91,7 +91,7 @@ git_lint: ## Lint all files that has been add after last commit
 	@./tools/git_lint.sh
 
 init_dev_env: ## Install npm packages
-	npm i
+	rm -rf node_modules && npm i
 
 diagram: ## Create diagram of files dependencies
 	npm run diagram

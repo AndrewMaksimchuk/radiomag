@@ -1,5 +1,5 @@
 import type { DefaultResponse } from "../endpoints/types";
-import type { Cart } from "$/dto/Cart";
+import type { Cart } from "./Cart";
 import type { UserClientData } from "./User";
 import type { Order as OrdersTable } from "../radiomag-server-express/src/database/tables/order/type";
 

@@ -1,5 +1,5 @@
 import type { PropType } from "vue";
-import type { WorkerProduct } from "@/public/types";
+import type { WorkerProduct } from "$/dto/Product";
 import { defineComponent, ref } from "vue";
 import { ElInput, ElIcon, ElButton } from "element-plus";
 import { Search } from "@element-plus/icons-vue";

@@ -1,0 +1,64 @@
+<div class="card-line__center-description">
+	<RouterLink
+		class="card-line__center-description-header-text"
+		:to="{ name: 'goods', params: { code: product.id } }"
+		@click="addGoodsToStorage"
+	>
+		<h3>{{ product.description[0] }}</h3>
+	</RouterLink>
+
+	<div class="card-line__center-description-small">
+		<RouterLink
+			class="common-link"
+			:to="{ name: 'goods', params: { code: product.id } }"
+			@click="addGoodsToStorage"
+		>
+			<p
+				class="card-line__center-description-small-paragraph"
+			>
+				{{ $t("card.codeGoods") }}:
+				<span
+					class="card-line__center-description-small-paragraph_light-color"
+				>
+					{{ product.id }}
+				</span>
+			</p>
+		</RouterLink>
+
+		<p
+			v-if="product.description[1]"
+			class="card-line__center-description-small-paragraph"
+		>
+			{{ $t("card.production") }}:
+			<span
+				class="card-line__center-description-small-paragraph_light-color"
+			>
+				{{ product.description[1] }}</span
+			>
+		</p>
+	</div>
+
+	<p class="card-line__center-description-main-text">
+		{{ sumOfAllDescription }}
+	</p>
+
+	<p
+		v-if="product.datasheet_link_data"
+		class="card-line__center-description-tech-info"
+	>
+		<img
+			class="card-line__center-description-tech-info-icon"
+			src="/images/pdf.svg"
+			alt="file specification"
+		/>
+		<a
+			class="card-line__center-description-tech-info-link"
+			target="_blank"
+			:href="
+	      'https://www.rcscomponents.kiev.ua/' + product.datasheet_link_data
+	    "
+		>
+			{{ $t("card.technicalInformation") }}
+		</a>
+	</p>
+</div>

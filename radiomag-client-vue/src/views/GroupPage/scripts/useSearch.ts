@@ -1,5 +1,5 @@
 import type { Ref } from "vue";
-import type { WorkerProduct } from "@/public/types";
+import type { WorkerProduct } from "$/dto/Product";
 import { useToast } from "vue-toastification";
 import { usePagination } from "@/store/pagination";
 import { useI18nStore } from "@/store/i18n";
