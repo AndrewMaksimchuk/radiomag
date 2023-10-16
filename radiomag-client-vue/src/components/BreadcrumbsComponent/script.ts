@@ -1,6 +1,6 @@
 import { defineComponent } from "vue";
 import { useBreadcrumbs } from "@/store/breadcrumbs";
-import BreadcrumbsItem from "@/components/BreadcrumbsItemComponent.vue";
+import { BreadcrumbsItem } from "@/components";
 
 export default defineComponent({
   components: {

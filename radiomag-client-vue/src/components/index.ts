@@ -28,3 +28,4 @@ export { Order } from "./OrderComponent";
 export { ButtonMenu } from "./ButtonMenuComponent";
 export { LangChoose } from "./LangChooseComponent";
 export { CardLineDescription } from "./CardLineDescriptionComponent";
+export { BreadcrumbsItem } from "./BreadcrumbsItemComponent";
