@@ -1,3 +1,4 @@
+export { BreadcrumbsItem } from "./BreadcrumbsItemComponent";
 export { Breadcrumbs } from "./BreadcrumbsComponent";
 export { HeaderSearchField } from "./HeaderSearchFieldComponent";
 export { ImageShowBig } from "./ImageShowBigComponent";
@@ -28,4 +29,3 @@ export { Order } from "./OrderComponent";
 export { ButtonMenu } from "./ButtonMenuComponent";
 export { LangChoose } from "./LangChooseComponent";
 export { CardLineDescription } from "./CardLineDescriptionComponent";
-export { BreadcrumbsItem } from "./BreadcrumbsItemComponent";
