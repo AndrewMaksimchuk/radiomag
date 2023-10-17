@@ -29,3 +29,5 @@ export { Order } from "./OrderComponent";
 export { ButtonMenu } from "./ButtonMenuComponent";
 export { LangChoose } from "./LangChooseComponent";
 export { CardLineDescription } from "./CardLineDescriptionComponent";
+export { FilterItem } from "./FilterItemComponent";
+export { Filter } from "./FilterComponent";
