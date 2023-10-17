@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FiltersItemsMod } from "../../../dto/Group";
+import type { FiltersItemsMod } from "$/dto/Group";
 import { ref, watch } from "vue";
 import { useFilters } from "@/store/filtes";
 
@@ -13,8 +13,12 @@ const isChecked = ref(false);
 const store = useFilters();
 
 watch(
-  () => store.resetAll,
-  (value) => value === true && (isChecked.value = false)
+  () => {
+    return store.resetAll;
+  },
+  (value) => {
+    return true === value && (isChecked.value = false);
+  }
 );
 </script>
 
@@ -36,30 +40,4 @@ watch(
     {{ item.title }} ({{ item.qty }})
   </label>
 </template>
-
-<style lang="scss">
-.filter {
-  &__item {
-    display: flex;
-    font-size: 1.2rem;
-    padding-bottom: 11px;
-    gap: 6px;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    &-input {
-      outline-offset: 1px;
-    }
-
-    &-label {
-      flex-grow: 1;
-
-      &::first-letter {
-        text-transform: uppercase;
-      }
-    }
-  }
-}
-</style>
+<style lang="scss" src="./style.scss"></style>

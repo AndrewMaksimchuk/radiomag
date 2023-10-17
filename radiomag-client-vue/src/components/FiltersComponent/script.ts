@@ -3,7 +3,7 @@ import type { FiltersItemsMod } from "$/dto/Group";
 import type { AllSearchParams } from "@/store/filters";
 import { defineComponent } from "vue";
 import { useFilters } from "@/store/filtes";
-import Filter from "@/components/FilterComponent.vue";
+import { Filter } from "@/components";
 
 export default defineComponent({
   components: {
