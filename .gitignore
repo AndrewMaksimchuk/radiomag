@@ -1,5 +1,6 @@
 .vscode/
 .idea/
+.metrics_lighthouse/
 node_modules/
 dist/
 temp/

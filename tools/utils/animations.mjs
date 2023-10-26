@@ -1,5 +1,5 @@
 export const animationStart = () => {
-  process.stdout.write("Working.");
+  process.stdout.write("Working\n");
   return setInterval(() => {
     process.stdout.write(".");
   }, 1000);
