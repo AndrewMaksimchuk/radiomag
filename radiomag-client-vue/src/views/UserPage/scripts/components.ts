@@ -5,6 +5,7 @@ import {
   UserOrders,
   UserSettings,
   UserTracking,
+  UserMessages,
 } from "@/components";
 import "element-plus/es/components/button/style/css";
 import "element-plus/es/components/row/style/css";
@@ -23,4 +24,5 @@ export const components = {
   UserOrders,
   UserSettings,
   UserTracking,
+  UserMessages,
 };

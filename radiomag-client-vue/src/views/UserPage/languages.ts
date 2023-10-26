@@ -10,6 +10,7 @@ export const ua = {
       notification: "повідомлення",
       tracking: "відстеження",
       settings: "налаштування",
+      messages: "повідомлення",
     },
   },
 };
@@ -26,6 +27,7 @@ export const en = {
       notification: "notification",
       tracking: "tracking",
       settings: "settings",
+      messages: "messages",
     },
   },
 };

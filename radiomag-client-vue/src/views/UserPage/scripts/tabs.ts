@@ -5,6 +5,7 @@ export type TabName =
   | "history"
   | "notification"
   | "tracking"
+  | "messages"
   | "settings";
 
 export interface Tab {
@@ -37,6 +38,12 @@ export const tabs: Readonly<Tab[]> = [
     label: "userPage.tabs.tracking",
     name: "tracking",
     component: "UserTracking",
+    disabled: true,
+  },
+  {
+    label: "userPage.tabs.messages",
+    name: "messages",
+    component: "UserMessages",
     disabled: true,
   },
   {
