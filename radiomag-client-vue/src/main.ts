@@ -8,8 +8,9 @@ import router from "@/router";
 import Toast from "vue-toastification";
 import { ElLoading } from "element-plus";
 import "vue-toastification/dist/index.css";
-import "@/assets/styles/style.scss";
 import "element-plus/es/components/loading/style/css";
+import "element-plus/theme-chalk/dark/css-vars.css";
+import "@/assets/styles/style.scss";
 
 export const app = createApp(App);
 export const pinia = createPinia();

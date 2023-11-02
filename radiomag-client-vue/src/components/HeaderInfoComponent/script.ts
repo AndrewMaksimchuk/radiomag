@@ -2,9 +2,12 @@ import type { StateMenu } from "@/components/ButtonMenuComponent/ButtonMenuCompo
 import { defineComponent, ref } from "vue";
 import { HeaderUserAction } from "@/components/HeaderUserActionComponent";
 import HeaderInfoContacts from "@/components/HeaderInfoContactsComponent.vue";
-import { HeaderCart } from "@/components";
-import { LangChoose } from "@/components";
-import { ButtonMenu } from "@/components";
+import {
+  HeaderCart,
+  LangChoose,
+  ButtonMenu,
+  ButtonColorScheme,
+} from "@/components";
 
 export default defineComponent({
   components: {
@@ -13,6 +16,7 @@ export default defineComponent({
     HeaderCart,
     LangChoose,
     ButtonMenu,
+    ButtonColorScheme,
   },
   setup() {
     const isMenuOpen = ref(false);

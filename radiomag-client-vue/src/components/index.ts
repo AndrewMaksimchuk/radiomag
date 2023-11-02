@@ -32,3 +32,4 @@ export { LangChoose } from "./LangChooseComponent";
 export { CardLineDescription } from "./CardLineDescriptionComponent";
 export { FilterItem } from "./FilterItemComponent";
 export { Filter } from "./FilterComponent";
+export { ButtonColorScheme } from "./ButtonColorSchemeComponent";
