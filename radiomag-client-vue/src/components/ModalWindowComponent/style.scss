@@ -40,7 +40,7 @@
   z-index: 999;
   border: 1px solid #d8d8d8;
   padding: var(--modal-padding);
-  background-color: var(--bg-color-overlay);
+  background-color: var(--color-black-light-alpha);
 
   @media (max-width: $breakpoint-tablet) {
     padding: 0;
