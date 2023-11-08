@@ -11,7 +11,7 @@ const emits = defineEmits<{
   <div class="header__info-item">
     <a class="link" href="tel:+380442200173" @click="emits('click')">
       <img src="@/assets/images/fax.svg" alt="fax" class="header__img-info" />
-      <span class="contacts"> +38 (044) 220-01-73 </span>
+      <span class="header-info-contacts"> +38 (044) 220-01-73 </span>
     </a>
   </div>
   <div class="header__info-item">
@@ -25,13 +25,13 @@ const emits = defineEmits<{
         alt="email"
         class="header__img-info"
       />
-      <span class="contacts"> sales@rcscomponents.kiev.ua </span>
+      <span class="header-info-contacts"> sales@rcscomponents.kiev.ua </span>
     </a>
   </div>
 </template>
 
 <style lang="scss">
-.contacts {
+.header-info-contacts {
   @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-pre-tablet) {
     display: none;
   }
