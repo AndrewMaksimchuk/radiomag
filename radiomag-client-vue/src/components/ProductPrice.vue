@@ -24,7 +24,7 @@ defineProps<{
 .product-price {
   list-style: none;
   padding: 0;
-  color: var(--color-gray-dark);
+  color: var(--text-color-regular);
 
   &__item {
     display: flex;

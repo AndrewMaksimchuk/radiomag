@@ -24,7 +24,7 @@ watch(props, (newPropsValue) => {
 .pagination {
   width: 100%;
   padding: 14px 0;
-  color: var(--color-black-light);
+  color: var(--text-color-primary);
   display: flex;
   align-items: center;
   column-gap: 4px;
@@ -38,7 +38,7 @@ watch(props, (newPropsValue) => {
   &__button {
     min-width: 29px;
     height: 24px;
-    border: 1px solid var(--color-gray-light);
+    border: 1px solid var(--border-color);
     border-radius: 2px;
     display: flex;
     justify-content: center;

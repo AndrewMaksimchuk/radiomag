@@ -32,13 +32,13 @@
       margin: 0;
       padding-bottom: 20px;
       letter-spacing: 1px;
-      color: var(--color-black-light);
+      color: var(--text-color-primary);
       font-style: normal;
     }
 
     &-link {
       text-decoration: none;
-      color: var(--color-black-light);
+      color: var(--text-color-primary);
 
       &:hover {
         text-decoration: underline;

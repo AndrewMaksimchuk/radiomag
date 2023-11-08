@@ -2,7 +2,7 @@
   &__center {
     &-description {
       flex: 5;
-      color: var(--color-gray-dark);
+      color: var(--text-color-regular);
       padding-right: 28px;
 
       @media (max-width: $breakpoint-tablet) {
@@ -14,7 +14,7 @@
       &-header-text {
         display: block;
         text-decoration: none;
-        color: var(--color-black-light);
+        color: var(--text-color-primary);
         font-size: 1.4rem;
         padding-bottom: 20px;
 
@@ -28,12 +28,12 @@
         padding-bottom: 6px;
 
         &-paragraph {
-          color: var(--color-black-light);
+          color: var(--text-color-primary);
           font-weight: 700;
           padding-bottom: 10px;
 
           &_light-color {
-            color: var(--color-gray-dark);
+            color: var(--text-color-regular);
             font-weight: 400;
           }
         }

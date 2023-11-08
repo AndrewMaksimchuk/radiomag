@@ -24,7 +24,7 @@ const store = usePagination();
   &__quantity {
     min-width: 50px;
     height: 24px;
-    border: 1px solid var(--color-gray-light);
+    border: 1px solid var(--border-color);
     border-radius: 2px;
     display: flex;
     justify-content: center;

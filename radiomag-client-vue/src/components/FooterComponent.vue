@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { FooterCatalog } from "./FooterCatalogComponent";
-import FooterDescription from "./FooterDescriptionComponent.vue";
+import { FooterDescription } from "@/components";
 </script>
 
 <style lang="scss">

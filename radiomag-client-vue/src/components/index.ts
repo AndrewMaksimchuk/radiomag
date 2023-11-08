@@ -33,3 +33,8 @@ export { CardLineDescription } from "./CardLineDescriptionComponent";
 export { FilterItem } from "./FilterItemComponent";
 export { Filter } from "./FilterComponent";
 export { ButtonColorScheme } from "./ButtonColorSchemeComponent";
+export { CardSmall } from "./CardSmallComponent";
+export { ModalWindowItem } from "./ModalWindowItemComponent";
+export { ModalWindow } from "./ModalWindowComponent";
+export { FooterDescription } from "./FooterDescriptionComponent";
+export { ContactShop } from "./ContactShopComponent";

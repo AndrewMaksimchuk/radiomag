@@ -1,5 +1,9 @@
 <UseDark v-slot="{ isDark, toggleDark }" storageKey="radiomag-color-scheme">
-	<button class="lang-choose" @click="toggleDark()">
-		<Icon :icon="isDark ? 'carbon:moon' : 'carbon:sun'" />
+	<button class="lang-choose lang-choose_center" @click="toggleDark()">
+		<Icon
+			class="color-scheme-icon"
+			:icon="isDark ? 'carbon:moon' : 'carbon:sun'"
+			@click="onClick"
+		/>
 	</button>
 </UseDark>

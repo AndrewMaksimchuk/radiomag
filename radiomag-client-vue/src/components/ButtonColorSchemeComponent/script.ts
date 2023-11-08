@@ -7,4 +7,14 @@ export default defineComponent({
     UseDark,
     Icon,
   },
+  emits: ["click"],
+  setup(_props, { emit }) {
+    const onClick = () => {
+      emit("click");
+    };
+
+    return {
+      onClick,
+    };
+  },
 });
