@@ -24,7 +24,7 @@ import { onBeforeMount, onBeforeUnmount } from "vue";
 import { useSlider } from "@/store/slider";
 import { getScreenCurrentWidth } from "@/utils/screenCurrentWidth";
 import { getScreenBreakpoint } from "@/utils/screenBreakpoint";
-import CardSmall from "@/components/CardSmallComponent.vue";
+import { CardSmall } from "@/components";
 import SliderButton from "@/components/SliderButton.vue";
 
 const store = useSlider();

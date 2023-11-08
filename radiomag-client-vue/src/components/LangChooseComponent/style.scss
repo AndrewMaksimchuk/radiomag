@@ -8,9 +8,21 @@
   font-size: 18px;
   color: #fff;
   background-color: var(--blue-medium);
+  border: none;
 
   @media (max-width: $breakpoint-tablet) {
     width: 100%;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--blue-light);
+    line-height: $line-height;
+  }
+
+  &_center {
+    display: grid;
+    place-items: center;
   }
 
   &__select {

@@ -29,7 +29,7 @@ defineProps<{
 .product-availability {
   padding: 0;
   list-style: none;
-  color: var(--color-gray-dark);
+  color: var(--text-color-regular);
 
   &__item {
     line-height: 1.8rem;

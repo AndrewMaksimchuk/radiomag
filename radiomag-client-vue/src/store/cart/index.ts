@@ -22,7 +22,8 @@ export const useCart = defineStore("cart", () => {
     });
 
     0 > isDataHaveIndex
-      ? cart.value.push(structuredClone(data))
+      ? // ? cart.value.push(structuredClone(data))
+        cart.value.push(JSON.parse(JSON.stringify(data)))
       : (cart.value[isDataHaveIndex].quantity += data.quantity);
 
     localStorage.value = cart.value;

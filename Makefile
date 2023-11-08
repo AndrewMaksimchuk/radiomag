@@ -18,9 +18,9 @@ start_dev: ## Run developer dashboard with start project
 	tmux new-session -d -s $(session_name)
 	tmux split-window -h
 	tmux send-keys -t $(panel_client) \
-	"cd ./radiomag-client-vue && npm run dev" Enter
+	"make start_client" Enter
 	tmux send-keys -t $(panel_server) \
-	"cd ./radiomag-server-express && npm run dev" Enter
+	"make start_server" Enter
 	tmux select-pane -t $(panel_client)
 	tmux attach-session -t $(session_name)
 
@@ -28,11 +28,7 @@ start_ide: ## Run editor (VSCode)
 	code
 
 start_browser: ## Run chromium (fullscreen + devtools)
-	chromium \
-	--auto-open-devtools-for-tabs \
-	--start-fullscreen \
-	http://localhost:5173/ > /dev/null \
-	2>&1 &
+	@RADIOMAG_HOST=radiomag node ./tools/startBrowser.mjs
 
 install: init_dev_env hooks init_database ## Init project first time
 
@@ -47,11 +43,11 @@ list_installed_packages: ## List installed packages
 
 explore_packages: check_package check_packages_all list_installed_packages ## Get info about installed packages
 
-start_client: ## Run developer client
-	$(to_client) && npm run dev
+start_client: start_browser ## Run developer client
+	@$(to_client) && npm run dev
 
 start_server: ## Run developer server
-	$(to_server) && npm run dev
+	@$(to_server) && npm run dev
 
 update_interactive: ## Update packages interactive
 	npx npm-check-updates && npx npm-check-updates -i

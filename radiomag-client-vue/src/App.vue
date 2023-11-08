@@ -17,7 +17,7 @@
 import { RouterView } from "vue-router";
 import { Header } from "@/components/HeaderMainComponent";
 import { Breadcrumbs } from "@/components/BreadcrumbsComponent";
-import ModalWindow from "@/components/ModalWindow.vue";
+import { ModalWindow } from "@/components";
 import { ImageShowBig } from "@/components";
 import { ShopInfo } from "@/components/ShopInfoComponent";
 import Footer from "@/components/FooterComponent.vue";

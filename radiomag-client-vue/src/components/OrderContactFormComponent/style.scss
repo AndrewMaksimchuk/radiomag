@@ -41,7 +41,7 @@
       display: inline-block;
       font-size: 1.6rem;
       line-height: $line-height;
-      color: var(--color-black-light);
+      color: var(--text-color-primary);
 
       @media (max-width: $breakpoint-tablet) {
         width: 100%;
@@ -54,7 +54,7 @@
       padding-left: 5px;
       font-size: 1.6rem;
       line-height: $line-height;
-      color: var(--color-black-light);
+      color: var(--text-color-primary);
       border: solid 1px var(--color-gray-light);
 
       @media (max-width: $breakpoint-tablet) {
@@ -68,7 +68,7 @@
 
     &-select {
       padding: calc(($line-height - 1.6rem) / 2);
-      background-color: var(--color-white);
+      background-color: var(--bg-color);
     }
   }
 }

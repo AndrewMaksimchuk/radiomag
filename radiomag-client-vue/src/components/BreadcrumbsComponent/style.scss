@@ -1,4 +1,4 @@
-.breadcrumbs {
+section.breadcrumbs {
   width: 100%;
   background-color: var(--blue-medium);
   color: var(--color-white);
@@ -7,6 +7,12 @@
   padding: 12px;
   display: flex;
 
+  @media (max-width: $breakpoint-desktop) {
+    padding: 0 12px;
+  }
+}
+
+.breadcrumbs {
   &__list {
     padding: 0;
     list-style: none;

@@ -1,11 +1,11 @@
 .footer {
   &-catalog {
-    padding: 40px 0 28px;
+    padding: 40px 15px 28px;
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: #fafafa;
+    background-color: var(--bg-color);
 
     @media (max-width: $breakpoint-mobile) {
       flex-direction: column;
@@ -19,7 +19,7 @@
       flex: 1;
       display: flex;
       align-items: center;
-      color: var(--color-black-light);
+      color: var(--text-color-primary);
 
       @media (max-width: $breakpoint-mobile) {
         justify-content: center;

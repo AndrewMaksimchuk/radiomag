@@ -13,7 +13,7 @@ export default defineConfig(({ command }) => {
       },
     },
     server: {
-      open: true,
+      host: "127.1.1.1",
       proxy: {
         "/api": "http://localhost:3000/",
       },

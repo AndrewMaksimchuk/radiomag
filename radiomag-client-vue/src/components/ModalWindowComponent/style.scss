@@ -1,32 +1,3 @@
-<template>
-  <section class="modal-window" v-if="store.isVisible" @click.self="store.hide">
-    <header class="modal-window__header">
-      <h2 class="modal-window__header-text">{{ store.headerText }}</h2>
-      <button class="close-button" @click="store.hide">
-        <div class="close-button__line"></div>
-        <div class="close-button__line close-button__line_rotate-180"></div>
-      </button>
-    </header>
-    <div class="modal-window__slot">
-      <ModalWindowItem
-        v-for="(item, index) in store.data"
-        :key="item.id"
-        :data="item"
-        :index="index"
-      />
-    </div>
-    <slot></slot>
-  </section>
-</template>
-
-<script setup lang="ts">
-import ModalWindowItem from "./ModalWindowItem.vue";
-import { useModalWindow } from "@/store/modalWindow";
-
-const store = useModalWindow();
-</script>
-
-<style lang="scss">
 .close-button {
   min-width: 24px;
   min-height: 24px;
@@ -37,6 +8,7 @@ const store = useModalWindow();
   padding: 0;
   position: relative;
   opacity: 0.3;
+
   &:hover {
     opacity: 1;
     cursor: pointer;
@@ -68,7 +40,7 @@ const store = useModalWindow();
   z-index: 999;
   border: 1px solid #d8d8d8;
   padding: var(--modal-padding);
-  background-color: var(--color-black-light-alpha);
+  background-color: var(--bg-color-overlay);
 
   @media (max-width: $breakpoint-tablet) {
     padding: 0;
@@ -79,7 +51,7 @@ const store = useModalWindow();
     padding: 18px;
     font-size: 1.8rem;
     color: #fff;
-    background-color: #2d7dbc;
+    background-color: var(--blue-medium);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -104,7 +76,7 @@ const store = useModalWindow();
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--bg-color);
     overflow-y: auto;
 
     @media (max-width: $breakpoint-tablet) {
@@ -112,4 +84,3 @@ const store = useModalWindow();
     }
   }
 }
-</style>

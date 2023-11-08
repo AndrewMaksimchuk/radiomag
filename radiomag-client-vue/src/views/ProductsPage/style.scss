@@ -1,11 +1,10 @@
 .products {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 50px;
-  row-gap: 50px;
+  gap: 50px;
   padding: 45px 0;
   list-style: none;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
   @media (max-width: $breakpoint-tablet) {
     padding: 0;
@@ -27,6 +26,10 @@
       &:hover {
         text-decoration: underline;
         transform: scale(1.1);
+      }
+
+      &:focus {
+        padding: 15px;
       }
     }
 

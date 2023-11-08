@@ -1,14 +1,19 @@
-import type { SliderItem } from "../../../dto/Slider";
+import type { SliderItem } from "$/dto/Slider";
 import { describe, it, expect } from "vitest";
 import { shallowMount, VueWrapper } from "@vue/test-utils";
-import CardSmall from "@/components/CardSmallComponent.vue";
+import { CardSmall } from "@/components";
 
 let wrapper: VueWrapper;
 
-const getElementImg = () => wrapper.find("img");
-const getElementHeader = () => wrapper.find("h3");
-const getElementDescription = () =>
-  wrapper.find(".small-goods-card__description");
+const getElementImg = () => {
+  return wrapper.find("img");
+};
+const getElementHeader = () => {
+  return wrapper.find("h3");
+};
+const getElementDescription = () => {
+  return wrapper.find(".small-goods-card__description");
+};
 
 const props: Record<"data", SliderItem> = {
   data: {
