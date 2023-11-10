@@ -15,12 +15,14 @@ The following functionality is implemented:
 - Cart page
 - Contacts page
 - Model window
+- User page
 - Dynamic bread crumbs
 - Background Web Worker in group page for work with data from server
   and no blocking page
 - Save data in localStorage of products in cart when user close page
   and not make the order and restore data when user open shop page again
   ![](index.png)
+- Color schemes
 
 ### [Screenshots](screenshots.md)
 
