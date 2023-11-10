@@ -1,1 +1,0 @@
-import{_ as s,o as t,c,b as o,t as a}from"./index.ec921d61.js";const r={},n={class:"container search-box"},_={class:"search-box__header-text"};function h(e,i){return t(),c("section",n,[o("h2",_,a(e.$t("search"))+' "'+a(e.$route.params.name)+'": ',1)])}const d=s(r,[["render",h]]);export{d as default};

@@ -1,0 +1,1 @@
+import{_ as t,o,c,a as e,t as r}from"./index-e707bf7d.js";const a={},_={class:"error"},n={class:"error__header-text"},i={class:"error__description-text"},d=e("span",{class:"error__icon"},"☹",-1);function h(s,l){return o(),c("div",_,[e("h2",n,r(s.$t("403.header")),1),e("h3",i,r(s.$t("403.description")),1),d])}const f=t(a,[["render",h]]);export{f as default};
