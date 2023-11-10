@@ -149,3 +149,7 @@
 [#5105f34](https://github.com/AndrewMaksimchuk/radiomag/commit/5105f34) Added: Handle of bulletin subscribe(#84).  
 [#c6e03f9](https://github.com/AndrewMaksimchuk/radiomag/commit/c6e03f9) Added: Handle of bulletin subscribe(#85).  
 [#5c1812a](https://github.com/AndrewMaksimchuk/radiomag/commit/5c1812a) Added: Changes from git commit to CHANGELOG.md.
+
+### 2023-11-05
+
+[#9c48792](https://github.com/AndrewMaksimchuk/radiomag/commit/9c48792) Added: Update README.md file.
