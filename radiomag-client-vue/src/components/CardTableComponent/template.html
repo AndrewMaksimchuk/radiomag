@@ -1,0 +1,31 @@
+<article class="card-table visibility-hide">
+	<CardLineImage
+		:img="product?.image ?? ''"
+		:alt="product.description[0]"
+	/>
+
+	<section class="card-table__section">
+		<RouterLink
+			:to="{ name: 'goods', params: { code: product.id } }"
+			@click="addGoodsToStorage"
+		>
+			{{ product.articul.trim() || "n/a" }}
+		</RouterLink>
+	</section>
+
+	<section
+		class="card-table__section"
+		v-for="(filter, index) in filterHeaders"
+		:key="index"
+		:title="product.description[index + 1]"
+	>
+		{{ product.description[index + 1] || "-" }}
+	</section>
+
+	<section
+		class="card-table__section"
+		:title="setTitleStock(product.stock_data, product.pcs)"
+	>
+		{{ `${product.total_stock} ${product.pcs}` }}
+	</section>
+</article>

@@ -1,0 +1,33 @@
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+
+  &__header {
+    padding: 12px;
+    background-color: var(--blue-medium);
+    color: var(--color-white);
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 14px;
+    }
+  }
+
+  &__control {
+    display: flex;
+    column-gap: 4px;
+    padding: 14px 0;
+
+    @media (max-width: $breakpoint-tablet) {
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    &-button {
+      height: auto;
+
+      @media (max-width: $breakpoint-tablet) {
+        min-height: 24px;
+      }
+    }
+  }
+}

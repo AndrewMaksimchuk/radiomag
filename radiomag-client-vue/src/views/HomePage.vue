@@ -18,12 +18,12 @@
 </template>
 
 <script setup lang="ts">
-import CatalogShort from "@/components/CatalogShortComponent.vue";
-import Linecard from "@/components/LinecardComponent.vue";
+import { CatalogShort } from "@/components/CatalogShortComponent";
+import { Linecard } from "@/components/LinecardComponent";
 import PopularProducts from "@/components/PopularProductsComponent.vue";
-import NewsShort from "@/components/NewsShortComponent.vue";
+import { NewsShort } from "@/components";
 import Manufacturers from "@/components/ManufacturersComponent.vue";
-import Bulletin from "@/components/BulletinComponent.vue";
+import { Bulletin } from "@/components/BulletinComponent";
 </script>
 
 <style lang="scss">

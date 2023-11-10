@@ -1,0 +1,23 @@
+<ElInput
+	v-model="input"
+	size="small"
+	maxlength="30"
+	:placeholder="$t('groupSearch.placeholder')"
+	class="group-search"
+	show-word-limit
+	clearable
+	@clear="reset"
+	@keyup.enter="toSearch"
+	@keydown.escape="reset"
+>
+	<template #prefix>
+		<ElIcon>
+			<Search />
+		</ElIcon>
+	</template>
+	<template #append>
+		<ElButton @click="toSearch" :disabled="input ? false : true">
+			{{ $t("groupSearch.button") }}
+		</ElButton>
+	</template>
+</ElInput>

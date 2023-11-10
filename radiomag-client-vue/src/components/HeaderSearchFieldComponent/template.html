@@ -1,0 +1,24 @@
+<form action="/" class="search__form">
+	<input
+		required
+		aria-required="true"
+		aria-label="Write product name or code"
+		type="text"
+		inputmode="text"
+		enterkeyhint="search"
+		class="search__form-input"
+		v-model="productName"
+		:placeholder="searchPlaceholder"
+	/>
+	<button
+		type="submit"
+		class="search__form-submit"
+		@click.prevent="searchProduct"
+	>
+		<img
+			src="@/assets/images/magnifying-glass.svg"
+			alt="search button"
+			class="search__form-button hover"
+		/>
+	</button>
+</form>

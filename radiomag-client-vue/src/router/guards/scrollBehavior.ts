@@ -1,8 +1,24 @@
 import type { RouterScrollBehavior } from "vue-router";
 
-export const scrollBehavior: RouterScrollBehavior = () => {
-  // if(to.name === "group" && from.name === "goods" && savedPosition) { // savedPosition return uncorrect top value
-  // return savedPosition;
-  // }
-  return { top: 0, behavior: "smooth" };
+const behavior = "smooth";
+
+export const scrollBehavior: RouterScrollBehavior = (to, from) => {
+  if ("group" === to.name && "group" === from.name) {
+    return {
+      behavior,
+      el: ".pagination",
+    };
+  }
+
+  if ("group" === to.name) {
+    return {
+      behavior,
+      el: ".group",
+    };
+  }
+
+  return {
+    behavior,
+    top: 0,
+  };
 };

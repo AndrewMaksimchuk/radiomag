@@ -2,7 +2,7 @@ import { ref, watch } from "vue";
 import { defineStore } from "pinia";
 import { useModal } from "@/utils/useModal";
 
-interface Image {
+export interface Image {
   src: string;
   alt: string;
 }

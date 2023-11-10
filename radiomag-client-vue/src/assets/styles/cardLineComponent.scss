@@ -1,14 +1,11 @@
 .card-line {
   width: 100%;
   min-height: 175px;
-  border: 1px solid var(--color-gray-light);
-  background-color: var(--color-white);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
   display: flex;
   justify-content: space-between;
-
-  &:hover {
-    background-color: var(--blue-white);
-  }
+  visibility: hidden;
 
   @media (max-width: $breakpoint-tablet) {
     min-height: auto;
@@ -44,7 +41,7 @@
     justify-content: space-between;
     flex: 1;
     padding: 18px 14px;
-    color: var(--color-black-light);
+    color: var(--text-color-primary);
     font-size: 1.2rem;
 
     @media (max-width: $breakpoint-tablet) {
@@ -78,7 +75,7 @@
   &__right {
     width: 170px;
     min-height: 100%;
-    background-color: var(--color-gray-white);
+    background-color: var(--bg-color);
     display: flex;
     justify-content: center;
     align-items: center;

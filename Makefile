@@ -18,9 +18,9 @@ start_dev: ## Run developer dashboard with start project
 	tmux new-session -d -s $(session_name)
 	tmux split-window -h
 	tmux send-keys -t $(panel_client) \
-	"cd ./radiomag-client-vue && npm run dev" Enter
+	"make start_client" Enter
 	tmux send-keys -t $(panel_server) \
-	"cd ./radiomag-server-express && npm run dev" Enter
+	"make start_server" Enter
 	tmux select-pane -t $(panel_client)
 	tmux attach-session -t $(session_name)
 
@@ -28,30 +28,26 @@ start_ide: ## Run editor (VSCode)
 	code
 
 start_browser: ## Run chromium (fullscreen + devtools)
-	chromium \
-	--auto-open-devtools-for-tabs \
-	--start-fullscreen \
-	http://localhost:5173/ > /dev/null \
-	2>&1 &
+	@RADIOMAG_HOST=radiomag node ./tools/startBrowser.mjs
 
 install: init_dev_env hooks init_database ## Init project first time
 
 check_package: ## Check version of npm packages, only the direct dependencies of the root project
-	npm outdated | cat > outdated.txt
+	npm outdated | tee outdated.txt
 
 check_packages_all: ## Check version of all npm packages, find all outdated meta-dependencies
-	npm outdated --all --long | sort -u -k1,1 -k2,2 | nl > outdated-all.txt
+	npm outdated --all --long | sort -u -k1,1 -k2,2 | nl | tee outdated-all.txt
 
 list_installed_packages: ## List installed packages
 	npm list --all > list_installed_packages.txt
 
 explore_packages: check_package check_packages_all list_installed_packages ## Get info about installed packages
 
-start_client: ## Run developer client
-	$(to_client) && npm run dev
+start_client: start_browser ## Run developer client
+	@$(to_client) && npm run dev
 
 start_server: ## Run developer server
-	$(to_server) && npm run dev
+	@$(to_server) && npm run dev
 
 update_interactive: ## Update packages interactive
 	npx npm-check-updates && npx npm-check-updates -i
@@ -87,8 +83,11 @@ git_clear: ## Delete unmerged branches
 git_config: ## Add git config for this project
 	git config --add include.path '../gitconfig'
 
+git_lint: ## Lint all files that has been add after last commit
+	@./tools/git_lint.sh
+
 init_dev_env: ## Install npm packages
-	npm i
+	rm -rf node_modules && npm i
 
 diagram: ## Create diagram of files dependencies
 	npm run diagram
@@ -134,3 +133,13 @@ update_changelog: ## Append commits to CHANGELOG.md file
 screenshots: ## Make screenshots of pages
 	@rm -f ./screenshots/*
 	@node ./tools/screenshotsUpdate.mjs
+
+story: ## Run storybook server
+	cd $(client) && npm run storybook
+
+story_check: ## Show list of components without own directory and stories(storybook)
+	@chmod +x ./tools/stories.sh && ./tools/stories.sh
+
+metrics: ## Puppeteer metrics(file .metrics) and lighthouse metrics(folder .metrics_lighthouse)
+	node ./tools/metrics.mjs | tee .metrics
+	node ./tools/metrics.lighthouse.mjs

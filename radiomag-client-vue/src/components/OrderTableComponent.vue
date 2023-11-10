@@ -25,8 +25,8 @@
     &-row {
       font-size: 1.2rem;
       font-weight: 400;
-      background-color: var(--color-white);
-      border: 1px solid var(--color-gray-light);
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
 
       @media (max-width: $breakpoint-tablet) {
         display: none;

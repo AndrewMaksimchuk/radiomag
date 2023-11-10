@@ -15,12 +15,14 @@ The following functionality is implemented:
 - Cart page
 - Contacts page
 - Model window
+- User page
 - Dynamic bread crumbs
 - Background Web Worker in group page for work with data from server
   and no blocking page
 - Save data in localStorage of products in cart when user close page
   and not make the order and restore data when user open shop page again
   ![](index.png)
+- Color schemes
 
 ### [Screenshots](screenshots.md)
 
@@ -53,6 +55,25 @@ add `GIT_TESTS=false` before `git push`:
 
 ```sh
 GIT_TESTS=false git push -u origin <branch-name>
+```
+
+You can set custom host(url) for client(browser).  
+Write ip and hostname in `/etc/hosts` with `sudo`.  
+After that set environment variable `RADIOMAG_HOST`  
+to yout new url.
+
+```/ets/hosts
+127.0.0.1   localhost
+127.1.1.1   radiomag
+```
+
+Also you can set browser that open url.  
+Write environment variable `RADIOMAG_BROWSER`  
+to your favorite developer browser name.  
+y default use `chromium`.
+
+```sh
+RADIOMAG_BROWSER=firefox
 ```
 
 ## Require

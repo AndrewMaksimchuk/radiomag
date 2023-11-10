@@ -3,7 +3,9 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const continueShopping = () => router.push("products");
+const continueShopping = () => {
+  router.push("products");
+};
 </script>
 
 <template>
@@ -42,9 +44,9 @@ const continueShopping = () => router.push("products");
   &__button {
     padding: 13px 26px;
     border: none;
-    color: var(--color-white);
+    color: var(--bg-color);
     text-transform: uppercase;
-    background-color: var(--color-gray-dark);
+    background-color: var(--text-color-regular);
 
     &:hover {
       cursor: pointer;

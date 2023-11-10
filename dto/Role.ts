@@ -6,3 +6,5 @@ export const enum Role {
 }
 
 export type RoleName = keyof typeof Role;
+
+export type RoleValues = typeof Role[keyof typeof Role];

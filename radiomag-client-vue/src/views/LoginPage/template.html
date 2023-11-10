@@ -1,0 +1,75 @@
+<ElForm
+	status-icon
+	ref="formRef"
+	label-position="top"
+	size="large"
+	class="login"
+	:model="formData"
+	:rules="rules"
+>
+	<ElFormItem required prop="phone" :label="$t('login.label.phone')">
+		<ElInput
+			enterkeyhint="next"
+			autocomplete="tel"
+			autofocus
+			clearable
+			show-word-limit
+			v-model="formData.phone"
+			placeholder="380675346713"
+			type="text"
+			inputmode="tel"
+			maxlength="13"
+			name="phone"
+			:parser="parserPhone"
+			:formatter="formatterPhone"
+		>
+		</ElInput>
+	</ElFormItem>
+
+	<ElFormItem
+		required
+		prop="password"
+		:label="$t('login.label.password')"
+	>
+		<ElInput
+			autocomplete="current-password"
+			enterkeyhint="next"
+			clearable
+			show-password
+			v-model="formData.password"
+			placeholder="s$G32dfn238e"
+			type="password"
+			inputmode="text"
+			name="password"
+		>
+		</ElInput>
+	</ElFormItem>
+
+	<ElFormItem :label="$t('login.label.name')">
+		<ElInput
+			autocomplete="username"
+			clearable
+			v-model="formData.name"
+			placeholder="Andrew"
+			type="text"
+			inputmode="text"
+			name="name"
+		>
+		</ElInput>
+		<ElText type="info" size="small">
+			{{ $t("login.notes.name") }}
+		</ElText>
+	</ElFormItem>
+
+	<ElFormItem>
+		<ElButton
+			plain
+			type="primary"
+			class="login__button"
+			@click="onSubmit(formRef)"
+			:disabled="isDisable"
+		>
+			{{ $t('login.button.submit') }}
+		</ElButton>
+	</ElFormItem>
+</ElForm>

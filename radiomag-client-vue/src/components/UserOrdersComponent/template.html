@@ -1,0 +1,85 @@
+<ElTable
+	v-loading="ordersStore.isLoading"
+	table-layout="auto"
+	:data="ordersStore.orders"
+	:default-sort="{ prop: 'created', order: 'ascending' }"
+>
+	<ElTableColumn
+		:label="$t('orders.window.orders.tableHeaderLabels.number')"
+		prop="id"
+	/>
+
+	<ElTableColumn
+		:label="$t('orders.window.orders.tableHeaderLabels.date')"
+		prop="created"
+		sortable
+	/>
+
+	<ElTableColumn
+		:label="$t('orders.window.orders.tableHeaderLabels.form')"
+		prop="formId"
+	>
+		<template #default="scope">
+			<ElButton
+				@click="showDetails('form', scope.row.id, `${$t('orders.title')} №${scope.row.id} ${scope.row.created}`)"
+			>
+				{{ $t('orders.window.orders.tableBody.showForm')
+				}}
+			</ElButton>
+		</template>
+	</ElTableColumn>
+
+	<ElTableColumn
+		:label="$t('orders.window.orders.tableHeaderLabels.goods')"
+		prop="data"
+	>
+		<template #default="scope">
+			<ElButton
+				@click="showDetails('goods', scope.row.id, `${$t('orders.title')} №${scope.row.id} ${scope.row.created}`)"
+			>
+				{{
+				$t('orders.window.orders.tableBody.showGoods')
+				}}
+			</ElButton>
+		</template>
+	</ElTableColumn>
+
+	<ElTableColumn
+		:label="$t('orders.window.orders.tableHeaderLabels.cost')"
+		prop="totalCost"
+	>
+		<template #default="scope">
+			{{ scope.row.totalCost }}
+		</template>
+	</ElTableColumn>
+
+	<ElTableColumn
+		:label="$t('orders.window.orders.tableHeaderLabels.manager')"
+		prop="manager"
+	>
+		<template #default="scope"> {{ scope.row.manager }} </template>
+	</ElTableColumn>
+
+	<ElTableColumn
+		:label="$t('orders.window.orders.tableHeaderLabels.status')"
+		prop="status"
+	>
+		<template #default="scope">
+			{{ scope.row.status && $t(scope.row.status) }}
+		</template>
+	</ElTableColumn>
+</ElTable>
+
+<ElDialog
+	class="detail-dialog"
+	v-model="dialogTableVisible"
+	:title="dialogTitle"
+	@close="dialogTableClose"
+>
+	<ElTable table-layout="auto" :data="dialogTableData">
+		<component
+			:is="dialogComponent"
+			:dialogColumns="dialogColumns"
+		/>
+	</ElTable>
+</ElDialog>

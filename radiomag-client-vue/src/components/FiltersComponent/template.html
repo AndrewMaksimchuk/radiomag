@@ -1,0 +1,24 @@
+<section v-if="data.length">
+	<h2 class="filters__header">{{ $t("filters.header") }}</h2>
+	<div class="filters">
+		<Filter
+			v-for="(header, index) in headers"
+			:key="index"
+			:filterIndex="index"
+			:header="header"
+			:data="data[index]"
+		/>
+	</div>
+	<div class="filters__control" id="filters-control">
+		<slot name="default"></slot>
+		<button class="button filters__control-button" @click="reset">
+			{{ $t("filters.buttons.reset") }}
+		</button>
+		<button
+			class="button filters__control-button"
+			@click="$emit('filtersApply', store.allSearchParams)"
+		>
+			{{ $t("filters.buttons.apply") }}
+		</button>
+	</div>
+</section>

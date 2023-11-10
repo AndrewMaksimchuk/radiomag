@@ -1,14 +1,17 @@
+/* eslint-disable max-lines */
 import { describe, it, expect, beforeEach } from "vitest";
 import { shallowMount, VueWrapper, RouterLinkStub } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
-import HeaderCart from "@/components/HeaderCartComponent.vue";
+import { HeaderCart } from "@/components";
 
 let wrapper: VueWrapper;
 
 const plugins = [createTestingPinia()];
 
 const mocks = {
-  $t: (text: string) => text,
+  $t: (text: string) => {
+    return text;
+  },
 };
 
 const stubs = {
@@ -25,9 +28,15 @@ const buildWrapper = (options = {}) => {
   wrapper = shallowMount(HeaderCart, { global, ...options });
 };
 
-const findButton = () => wrapper.find("button");
-const findImg = () => wrapper.find("img");
-const findText = () => wrapper.find("span");
+const findButton = () => {
+  return wrapper.find("button");
+};
+const findImg = () => {
+  return wrapper.find("img");
+};
+const findText = () => {
+  return wrapper.find(".card__items");
+};
 
 describe("HeaderCart component", () => {
   beforeEach(() => {

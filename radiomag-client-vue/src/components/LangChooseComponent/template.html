@@ -1,0 +1,19 @@
+<div class="lang-choose">
+	<button class="lang-choose__select hover" @click="toggle">
+		{{ useI18n.locale }}
+	</button>
+
+	<div
+		class="lang-choose__options-list"
+		:class="{ 'lang-choose__options-list_open': isOpen }"
+	>
+		<button
+			class="lang-choose__options-item hover"
+			v-for="lang in useI18n.availableLocales"
+			:key="lang"
+			@click="choose(lang)"
+		>
+			{{ lang }}
+		</button>
+	</div>
+</div>

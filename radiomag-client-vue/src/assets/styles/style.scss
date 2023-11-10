@@ -1,17 +1,26 @@
 @import "variables";
 @import "components";
+@import "global";
 @import "cardLineComponent";
+@import "error";
 
 * {
   margin: 0;
   box-sizing: border-box;
+  scrollbar-color: var(--blue-medium) var(--color-gray-light);
 }
 
 *:focus,
 *:focus-visible {
   text-decoration: underline;
   border-radius: 5px;
-  outline: black solid 3px;
+  outline: var(--text-color-primary) solid 3px;
+  outline-offset: -3px;
+}
+
+*::selection {
+  color: var(--color-white);
+  background-color: var(--blue-medium);
 }
 
 html {
@@ -22,15 +31,26 @@ body {
   position: relative;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
-  background-color: var(--color-body);
+  background-color: var(--bg-color-page);
+  color: var(--text-color-regular);
 }
 
 .container {
   margin: 0 auto;
   max-width: 1440px;
+  background-color: var(--bg-color-page);
+  color: var(--text-color-primary);
 
-  @media (max-width: $breakpoint-tablet) {
+  @media (max-width: $breakpoint-desktop) {
     padding: 0 15px;
+  }
+
+  &_transparent {
+    background-color: transparent;
+  }
+
+  &_min-height {
+    min-height: 600px;
   }
 }
 
@@ -45,11 +65,19 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--color-black-light);
+  color: var(--text-color-primary);
 }
 
 .m-hide {
   @media (max-width: $breakpoint-mobile) {
     display: none;
   }
+}
+
+.visibility-hidden {
+  visibility: hidden;
+}
+
+.visibility-visible {
+  visibility: visible;
 }

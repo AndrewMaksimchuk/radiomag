@@ -1,0 +1,17 @@
+import { Meta } from "@storybook/blocks";
+import ToggleGroupView from "./toggleGroupView.stories.ts";
+
+<Meta of={ToggleGroupView} />
+
+# ToggleGroupViewComponent
+
+The button that switch view of goods in group page.
+
+## Events
+
+`click` - click on button that change internal state
+and emit event `change` with payload of
+new state
+
+`change` - emitted when press on button, have payload,
+the new state

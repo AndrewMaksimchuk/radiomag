@@ -1,0 +1,12 @@
+<section class="order">
+	<h2 class="order__header-text">{{ $t("order.header") }}:</h2>
+	<OrderTable>
+		<OrderCard
+			v-for="(product, index) in cartItems"
+			:key="index"
+			:index="index"
+			:goods="product"
+		/>
+	</OrderTable>
+	<OrderForm />
+</section>

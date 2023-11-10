@@ -1,0 +1,22 @@
+.image-show-big {
+  position: fixed;
+  background-color: var(--color-black-light-alpha);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  padding-top: 10vmin;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding-top: 50vmin;
+  }
+
+  &__image {
+    display: block;
+    margin: auto;
+    max-width: 80vmin;
+    height: auto;
+    object-fit: contain;
+  }
+}

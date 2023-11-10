@@ -1,0 +1,10 @@
+.contact-form-order {
+  &__row {
+    min-height: 40px;
+    padding-bottom: 8px;
+
+    @media (max-width: $breakpoint-tablet) {
+      padding-bottom: 20px;
+    }
+  }
+}

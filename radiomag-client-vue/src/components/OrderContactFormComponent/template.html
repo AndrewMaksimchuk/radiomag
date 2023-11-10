@@ -1,0 +1,17 @@
+<form
+	id="orderContactsForm"
+	name="orderContacts"
+	method="post"
+	action="/api/order"
+	novalidate="true"
+	class="contact-form-order"
+	@submit="sendFormData"
+>
+	<OrderContactFormContact ref="contact" />
+	<OrderContactFormUnit ref="unit" />
+	<OrderContactFormSubscriptions ref="subscriptions" />
+	<OrderContactFormSending ref="sending" />
+	<OrderContactFormFieldsetComment />
+	<OrderContactFormButtonsGroup />
+</form>
+<OrderContactFormNotify />

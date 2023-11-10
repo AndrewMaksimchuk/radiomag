@@ -1,0 +1,39 @@
+.button {
+  min-width: $line-height;
+  min-height: $line-height;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  row-gap: 3px;
+  position: absolute;
+  top: calc($line-height / 2);
+  right: 0;
+  transform: translateY(-50%);
+
+  @media (max-width: $breakpoint-tablet) {
+    display: flex;
+  }
+
+  &[data-state="open"] {
+    :nth-child(1) {
+      transform: translate(0, 6px) rotate(-45deg);
+    }
+
+    :nth-child(2) {
+      opacity: 0;
+    }
+
+    :nth-child(3) {
+      transform: translate(0, -6px) rotate(45deg);
+    }
+  }
+
+  &__line {
+    width: 20px;
+    height: 3px;
+    background-color: var(--bg-color);
+    transition: 0.4s;
+  }
+}

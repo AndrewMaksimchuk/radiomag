@@ -1,0 +1,31 @@
+.breadcrumbs {
+  &__item {
+    position: relative;
+
+    &:not(:last-child)::after {
+      content: "";
+      width: 1px;
+      height: 1.2rem;
+      position: absolute;
+      top: 50%;
+      right: -9px;
+      transform: translateY(-50%) rotate(15deg);
+      background-color: var(--bg-color);
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: var(--color-white);
+    letter-spacing: 1px;
+
+    &:focus {
+      border-radius: 1px;
+      outline-offset: 5px;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

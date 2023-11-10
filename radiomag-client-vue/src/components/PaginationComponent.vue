@@ -1,7 +1,7 @@
 <template>
-  <PaginationItem />
+  <PaginationItem v-if="hide" />
   <slot></slot>
-  <PaginationItem />
+  <PaginationItem v-if="hide" />
 </template>
 
 <script setup lang="ts">
@@ -11,17 +11,20 @@ import PaginationItem from "./PaginationItemComponent.vue";
 
 const props = defineProps<{
   length: number;
+  hide: boolean;
 }>();
 
 const store = usePagination();
-watch(props, (newPropsValue) => store.setLength(newPropsValue.length));
+watch(props, (newPropsValue) => {
+  return store.setLength(newPropsValue.length);
+});
 </script>
 
 <style lang="scss">
 .pagination {
   width: 100%;
-  padding: 14px 4px;
-  color: var(--color-black-light);
+  padding: 14px 0;
+  color: var(--text-color-primary);
   display: flex;
   align-items: center;
   column-gap: 4px;
@@ -35,7 +38,7 @@ watch(props, (newPropsValue) => store.setLength(newPropsValue.length));
   &__button {
     min-width: 29px;
     height: 24px;
-    border: 1px solid var(--color-gray-light);
+    border: 1px solid var(--border-color);
     border-radius: 2px;
     display: flex;
     justify-content: center;

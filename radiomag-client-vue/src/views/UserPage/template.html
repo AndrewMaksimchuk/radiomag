@@ -1,0 +1,34 @@
+<section class="user">
+	<ElRow>
+		<ElCol>
+			<h2>
+				{{ $t("userPage.greet") }}, {{
+				userStore.user.name }}
+			</h2>
+		</ElCol>
+		<ElCol>
+			<ElButton plain type="primary" @click="onLogout">
+				{{ $t("userPage.button.logout") }}
+			</ElButton>
+		</ElCol>
+	</ElRow>
+	<ElTabs
+		type="border-card"
+		v-model="activeTab"
+		@tab-click="handleTabClick"
+	>
+		<ElTabPane
+			v-for="item in tabs"
+			:key="item.label"
+			:label="$t(item.label)"
+			:name="item.name"
+			:disabled="item.disabled"
+		>
+			<component
+				v-if="activeTab === item.name"
+				:is="item.component"
+			>
+			</component>
+		</ElTabPane>
+	</ElTabs>
+</section>

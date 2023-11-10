@@ -1,0 +1,69 @@
+.card-line {
+  &__center {
+    &-description {
+      flex: 5;
+      color: var(--text-color-regular);
+      padding-right: 28px;
+
+      @media (max-width: $breakpoint-tablet) {
+        flex: auto;
+        padding: 0;
+        padding-bottom: 16px;
+      }
+
+      &-header-text {
+        display: block;
+        text-decoration: none;
+        color: var(--text-color-primary);
+        font-size: 1.4rem;
+        padding-bottom: 20px;
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+
+      &-small {
+        padding-bottom: 6px;
+
+        &-paragraph {
+          color: var(--text-color-primary);
+          font-weight: 700;
+          padding-bottom: 10px;
+
+          &_light-color {
+            color: var(--text-color-regular);
+            font-weight: 400;
+          }
+        }
+      }
+
+      &-main-text {
+        line-height: 1.8rem;
+        padding-bottom: 12px;
+      }
+
+      &-tech-info {
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+
+        &-icon {
+          width: 18px;
+          height: 18px;
+          padding-right: 5px;
+        }
+
+        &-link {
+          text-decoration: none;
+          color: inherit;
+        }
+      }
+    }
+  }
+}

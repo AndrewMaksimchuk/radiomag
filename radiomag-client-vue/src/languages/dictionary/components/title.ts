@@ -8,6 +8,9 @@ export const ua = {
     product: "Товар",
     products: "Каталог продукції",
     search: "Пошук",
+    login: "Увійти",
+    user: "Сторінка користувача",
+    http_403: "Заборонено 403",
   },
 };
 
@@ -21,6 +24,9 @@ export const en = {
     product: "Product",
     products: "Product catalog",
     search: "Search",
+    login: "Log in",
+    user: "User page",
+    http_403: "Forbidden 403",
   },
 };
 

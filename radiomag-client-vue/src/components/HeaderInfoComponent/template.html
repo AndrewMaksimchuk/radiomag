@@ -1,0 +1,15 @@
+<div class="line" />
+<section
+	class="header__info container container_transparent"
+	:class="{
+		'header__info_h-auto': isMenuOpen,
+		'header__info_overflow-disable': isOverflow,
+	}"
+>
+	<HeaderInfoContacts @click="closeMenu" />
+	<HeaderUserAction @click="closeMenu" />
+	<HeaderCart @click="closeMenu" />
+	<ButtonColorScheme @click="closeMenu" />
+	<LangChoose @on-open="toggleOverflow" @on-close="closeMenu" />
+	<ButtonMenu :menuState="isMenuOpen" @change="toggleMenu" />
+</section>

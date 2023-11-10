@@ -1,0 +1,23 @@
+.el-row {
+  justify-content: space-between;
+}
+
+.el-col {
+  flex-basis: auto;
+  padding-bottom: 20px;
+}
+
+.el-tabs {
+  &__item {
+    text-transform: capitalize;
+  }
+
+  &__content {
+    min-height: 50vh;
+  }
+}
+
+.user {
+  min-height: 50vh;
+  padding-bottom: 20px;
+}

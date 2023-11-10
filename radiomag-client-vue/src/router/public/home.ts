@@ -1,7 +1,9 @@
 export default {
   path: "/",
-  name: "Home",
-  component: () => import("@/views/HomePage.vue"),
+  name: "home" as const,
+  component: () => {
+    return import("@/views/HomePage.vue");
+  },
   meta: {
     title: "home",
   },

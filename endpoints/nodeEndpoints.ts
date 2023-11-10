@@ -5,6 +5,8 @@ export const endpoints = {
   order: "/api/order",
   error: "/api/error",
   ping: "/api/ping",
+  bulletin: "/api/bulletin",
+  login: "/api/login",
 
   catalogGroups: "/api/catalog/:id",
   group: "/api/group/:id",

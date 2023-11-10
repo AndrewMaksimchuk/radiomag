@@ -12,6 +12,7 @@ const global = {
 
 const props = {
   length: 0,
+  hide: false,
 };
 
 const slots = {
@@ -27,7 +28,9 @@ const buildWrapper = (options = {}) => {
   });
 };
 
-const findComponent = () => wrapper.findComponent(PaginationItem);
+const findComponent = () => {
+  return wrapper.findComponent(PaginationItem);
+};
 
 describe("Pagination component", () => {
   beforeEach(() => {
@@ -38,7 +41,17 @@ describe("Pagination component", () => {
     expect(wrapper.isVisible()).toBe(true);
   });
 
-  it("should have component", () => {
+  it("should don`t have component PaginationItem", () => {
+    expect(findComponent().exists()).toBe(false);
+  });
+
+  it("should have component PaginationItem visible", () => {
+    buildWrapper({
+      props: {
+        length: 0,
+        hide: true,
+      },
+    });
     expect(findComponent().isVisible()).toBe(true);
   });
 

@@ -1,4 +1,4 @@
-import type { Product } from "../../../dto/Product";
+import type { WorkerProduct } from "../../../dto/Product";
 import type { Group } from "../../../dto/Group";
 import type { AllSearchParams } from "../store/filters";
 
@@ -19,11 +19,3 @@ export type TransferObject =
       type: "reset";
       data: undefined;
     };
-
-export interface WorkerProduct extends Omit<Product, "stock_data"> {
-  description: string[];
-  stock_data: {
-    stock: string;
-    stockName: string;
-  }[];
-}

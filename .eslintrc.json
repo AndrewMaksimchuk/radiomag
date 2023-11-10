@@ -10,7 +10,8 @@
     "eslint:recommended",
     "plugin:vue/vue3-essential",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
+    "plugin:storybook/recommended"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -23,7 +24,6 @@
     "eqeqeq": "error",
     "default-param-last": "error",
     "capitalized-comments": "error",
-    "spaced-comment": "error",
     "curly": "error",
     "arrow-parens": "error",
     "arrow-body-style": ["error", "always"],
@@ -31,7 +31,6 @@
     "max-depth": ["error", 2],
     "max-lines": ["warn", 60],
     "max-params": "error",
-    "max-len": "error",
     "no-console": "error",
     "no-implicit-coercion": "error",
     "yoda": ["error", "always"],

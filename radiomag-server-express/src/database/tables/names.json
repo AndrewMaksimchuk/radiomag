@@ -5,5 +5,9 @@
   "slider": "slider",
   "originGroups": "originGroups",
   "user": "user",
-  "ping": "ping"
+  "ping": "ping",
+  "bulletin": "bulletin",
+  "order": "order",
+  "orderForm": "orderForm",
+  "cart": "cart"
 }

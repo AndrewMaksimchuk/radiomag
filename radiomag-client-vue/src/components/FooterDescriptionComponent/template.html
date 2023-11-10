@@ -1,0 +1,73 @@
+<section class="footer-description">
+	<div class="footer-description__item">
+		<h2 class="footer-description__item-header-text">
+			{{ storeContacts.salesDepartment.headerText }}
+		</h2>
+		<address
+			class="shops-info__shop-item footer-description__item_padding-bottom"
+		>
+			{{ storeContacts.salesDepartment.location }}
+		</address>
+		<a
+			class="shops-info__shop-link footer-description__item_padding-bottom"
+			:href="
+	      'tel:' + storeContacts.salesDepartment.telephons?.replaceAll('-', '')
+	    "
+			>{{ storeContacts.salesDepartment.telephons }}</a
+		>
+		<p
+			class="shops-info__shop-item footer-description__item_padding-bottom"
+		>
+			{{ storeContacts.salesDepartment.workTime }}
+		</p>
+		<p
+			class="shops-info__shop-item footer-description__item_padding-bottom"
+		>
+			<a
+				class="shops-info__shop-link"
+				:href="'emailto:' + storeContacts.salesDepartment.email"
+				>{{ storeContacts.salesDepartment.email }}</a
+			>
+		</p>
+	</div>
+
+	<div class="footer-description__item footer-description__item_row-gap">
+		<a class="footer-description__item-link" href="#"
+			>{{ $t("footer.product") }}</a
+		>
+		<a class="footer-description__item-link" href="#"
+			>{{ $t("footer.news") }}</a
+		>
+		<a class="footer-description__item-link" href="#"
+			>{{ $t("footer.shops") }}</a
+		>
+		<a class="footer-description__item-link" href="#"
+			>{{ $t("footer.contacts") }}</a
+		>
+	</div>
+
+	<div class="footer-description__item footer-description__item_row-gap">
+		<a class="footer-description__item-link" href="#"
+			>{{ $t("footer.feedbackSuggestions") }}</a
+		>
+		<a class="footer-description__item-link" href="#"
+			>{{ $t("footer.howBuy") }}</a
+		>
+		<a class="footer-description__item-link" href="#"
+			>{{ $t("footer.delivery") }}</a
+		>
+	</div>
+
+	<div class="footer-description__item footer-description__item_row-gap">
+		<a class="footer-description__item-link" href="#"
+			>{{ $t("footer.personalInformation") }}</a
+		>
+		<a class="footer-description__item-link" href="#"
+			>{{ $t("footer.order") }}</a
+		>
+		<a class="footer-description__item-link" href="#"
+			>{{ $t("footer.basket") }}</a
+		>
+	</div>
+	<FooterSocial />
+</section>

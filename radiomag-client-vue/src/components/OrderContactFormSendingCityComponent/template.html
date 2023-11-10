@@ -1,0 +1,19 @@
+<FormValidationError :errors="errors" :is-show="showErrorMessage">
+	<div class="contact-form-order__row">
+		<label for="city" class="contact-form-order__fieldset-label">
+			{{ $t("order.form.city") }}
+		</label>
+		<input
+			autocomplete="address-level2"
+			class="contact-form-order__fieldset-input"
+			type="text"
+			name="city"
+			enterkeyhint="done"
+			inputmode="text"
+			id="city"
+			v-model="store.formData.city"
+			:placeholder="$t('orderContactFormSendingCity.placeholder')"
+			@blur="useValidation"
+		/>
+	</div>
+</FormValidationError>

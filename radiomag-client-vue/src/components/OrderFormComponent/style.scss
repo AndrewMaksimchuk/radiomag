@@ -1,0 +1,53 @@
+.order-form {
+  width: 100%;
+  min-height: 146px;
+  padding: 26px 147px;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 18px 15px;
+  }
+
+  &__total-cost {
+    padding-bottom: 24px;
+    font-size: 1.6rem;
+  }
+
+  &__buttons-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 100%;
+      flex-flow: column nowrap;
+    }
+  }
+
+  &__button {
+    padding: 13px 26px;
+    border: none;
+    color: var(--bg-color);
+    text-transform: uppercase;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &_color-gray {
+      background-color: var(--text-color-regular);
+    }
+
+    &_color-red {
+      background-color: var(--color-red);
+    }
+
+    &-link {
+      color: inherit;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+&__item-header {
+  width: 162px;
+  font-size: 16px;
+  color: var(--text-color-primary);
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 12px;
+    text-align: left;
+  }
+}

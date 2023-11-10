@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-rm -rf ../endpoints/nodeEndpoints.js
-npm run start &
-npm exec jest
-killall node
+npm exec bun ./src/app.ts &
+sleep 1
+npm exec bun test
+killall bun

@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import type { ContactItemList } from "../../../dto/Contacts";
-import ContactShop from "./ContactShop.vue";
+import { ContactShop } from "@/components";
 
 defineProps<{
   datas: ContactItemList[];

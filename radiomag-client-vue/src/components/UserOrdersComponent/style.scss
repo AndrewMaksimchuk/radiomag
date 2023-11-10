@@ -1,0 +1,13 @@
+.el-dialog {
+  --el-dialog-width: 90%;
+}
+
+.el-table {
+  min-height: 100px;
+}
+
+.detail-dialog .el-table {
+  &__cell {
+    min-width: 130px;
+  }
+}

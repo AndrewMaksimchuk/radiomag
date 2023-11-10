@@ -1,9 +1,20 @@
+div.line {
+  width: 100%;
+  height: $line-height;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--blue-medium);
+  z-index: -99;
+}
+
 .reset-text-decor {
   text-decoration: none;
 }
 
 .color-black-light {
-  color: var(--color-black-light);
+  color: var(--text-color-primary);
 }
 
 .padding-bottom {
@@ -11,7 +22,7 @@
 }
 
 .borders {
-  border: 1px solid var(--color-gray-light);
+  border: 1px solid var(--border-color);
 }
 
 .cursor-pointer:hover {
@@ -32,7 +43,7 @@
 .button {
   min-width: 29px;
   height: 24px;
-  border: 1px solid var(--color-gray-light);
+  border: 1px solid var(--border-color);
   border-radius: 2px;
   display: flex;
   justify-content: center;
