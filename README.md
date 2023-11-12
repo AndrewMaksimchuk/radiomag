@@ -76,6 +76,9 @@ y default use `chromium`.
 RADIOMAG_BROWSER=firefox
 ```
 
+For server, you can see response of api by use  
+`radiomag-server-express/tests/curl.bash`
+
 ## Require
 
 Server:
