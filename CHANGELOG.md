@@ -145,3 +145,8 @@
 
 [#9c48792](https://github.com/AndrewMaksimchuk/radiomag/commit/9c48792) Added: Update README.md file.
 [#9fe039f](https://github.com/AndrewMaksimchuk/radiomag/commit/9fe039f) Added: Changes from git commit.
+
+### 2023-12-06
+
+[#03629bb](https://github.com/AndrewMaksimchuk/radiomag/commit/03629bb) Added: Manager to select manager in cart form(#103).  
+[#27f53ce](https://github.com/AndrewMaksimchuk/radiomag/commit/27f53ce) Added: Use curl for see response of api.
