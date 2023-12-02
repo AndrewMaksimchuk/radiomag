@@ -33,6 +33,22 @@ function POST_JSON
   echo -e "\n"
 }
 
+function TEST_API
+{
+  if test ${#1} -gt 0
+  then
+    GET $1
+    exit
+  fi
+}
+
+echo '[ Clear redis db ]'
+redis-cli flushall
+
+TEST_API $1
+
+echo '[ Make requests ]'
+
 GET 'bulletin'
 POST_FORM 'bulletin' 'email=testmail@radiomag.com'
 POST_FORM 'error' 'data=test'

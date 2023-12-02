@@ -25,7 +25,7 @@ export const testGoodsColumn = (
     it("should show goods details modal window", async () => {
       await button.trigger("click");
       await nextTick();
-      expect(wrapper.vm.showDetails.calls.at(-1)[0]).toEqual("goods");
+      expect(wrapper.vm.showDetails.calls.at(-1)[0]).toEqual("DialogGoods");
     });
   });
 };

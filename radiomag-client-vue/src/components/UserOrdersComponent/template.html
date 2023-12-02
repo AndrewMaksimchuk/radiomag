@@ -7,6 +7,7 @@
 	<ElTableColumn
 		:label="$t('orders.window.orders.tableHeaderLabels.number')"
 		prop="id"
+		sortable
 	/>
 
 	<ElTableColumn
@@ -21,7 +22,7 @@
 	>
 		<template #default="scope">
 			<ElButton
-				@click="showDetails('form', scope.row.id, `${$t('orders.title')} №${scope.row.id} ${scope.row.created}`)"
+				@click="showDetails('DialogForm', scope.row.id, `${$t('orders.title')} №${scope.row.id} ${scope.row.created}`)"
 			>
 				{{ $t('orders.window.orders.tableBody.showForm')
 				}}
@@ -35,7 +36,7 @@
 	>
 		<template #default="scope">
 			<ElButton
-				@click="showDetails('goods', scope.row.id, `${$t('orders.title')} №${scope.row.id} ${scope.row.created}`)"
+				@click="showDetails('DialogGoods', scope.row.id, `${$t('orders.title')} №${scope.row.id} ${scope.row.created}`)"
 			>
 				{{
 				$t('orders.window.orders.tableBody.showGoods')
@@ -47,6 +48,7 @@
 	<ElTableColumn
 		:label="$t('orders.window.orders.tableHeaderLabels.cost')"
 		prop="totalCost"
+		sortable
 	>
 		<template #default="scope">
 			{{ scope.row.totalCost }}
@@ -57,7 +59,21 @@
 		:label="$t('orders.window.orders.tableHeaderLabels.manager')"
 		prop="manager"
 	>
-		<template #default="scope"> {{ scope.row.manager }} </template>
+		<template #default="scope">
+			<ElTooltip placement="right-end" effect="dark">
+				<template #content>
+					<div>{{ scope.row.manager.phone }}</div>
+					<div>{{ scope.row.manager.email }}</div>
+					<div>
+						{{
+						scope.row.manager.messenger_telegram
+						}}
+					</div>
+				</template>
+				{{ scope.row.manager.firstName }} {{
+				scope.row.manager.lastName }}
+			</ElTooltip>
+		</template>
 	</ElTableColumn>
 
 	<ElTableColumn

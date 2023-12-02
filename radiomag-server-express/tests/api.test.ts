@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { describe } from "bun:test";
 import { endpoints } from "../../endpoints/nodeEndpoints";
 import catalogGroupsSeed from "../src/database/seeds/data/catalogGroups.json";
@@ -51,4 +52,14 @@ describe("GET /search", () => {
 describe("GET /slider", () => {
   tobe200(endpoints.slider);
   tobejson(endpoints.slider);
+});
+
+describe("GET /manager", () => {
+  tobe200(endpoints.manager);
+  tobejson(endpoints.manager);
+});
+
+describe("GET /shop", () => {
+  tobe200(endpoints.shop);
+  tobejson(endpoints.shop);
 });

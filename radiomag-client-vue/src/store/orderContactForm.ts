@@ -4,7 +4,7 @@ import { defineStore } from "pinia";
 
 export const initFormData: FormData = {
   email: "",
-  unit: "shop",
+  unit: 0,
   subscriptions: "creditCard",
   typeOfDelivery: "selfPickup",
   city: "",

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { endpoints } from "../../../endpoints/nodeEndpoints.js";
 import { catalogGroups } from "../database/tables/catalogGroups/model.js";
-import { redisClient } from "../services/redis.js";
+import { redisSetWithEx } from "../services/redis.js";
 
 export const routerGroupName = Router();
 
@@ -15,6 +15,6 @@ routerGroupName.get(endpoints.groupName, async (req, res) => {
   }
 
   const [row] = data;
-  await redisClient.set(req.url, JSON.stringify(row.name));
+  await redisSetWithEx(req.url, JSON.stringify(row.name));
   return res.json(row.name);
 });

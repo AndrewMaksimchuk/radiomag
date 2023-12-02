@@ -21,7 +21,8 @@ export const testOrderRow = (wrapper: BuildWrapper) => {
     });
 
     it("should have manager", () => {
-      expect(findRowCells()[5].text()).toEqual(ordersStore.orders[0].manager);
+      const { firstName, lastName } = ordersStore.orders[0].manager;
+      expect(findRowCells()[5].text()).toEqual(`${firstName} ${lastName}`);
     });
 
     it("should have status", () => {

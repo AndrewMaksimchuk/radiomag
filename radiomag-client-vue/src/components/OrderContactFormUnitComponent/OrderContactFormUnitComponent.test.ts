@@ -1,6 +1,6 @@
 /* eslint-disable max-lines */
 import { describe, it, expect, beforeEach } from "vitest";
-import { mount, VueWrapper } from "@vue/test-utils";
+import { mount, type VueWrapper } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import { i18nValidators } from "tests/mock/i18n-validators";
 import { OrderContactFormUnit } from "@/components";
@@ -26,19 +26,11 @@ const buildWrapper = (options = {}) => {
   wrapper = mount(OrderContactFormUnit, { global, ...options });
 };
 
-const options = [
-  { value: "shop", textI18nKey: "orderContactFormUnit.options.shop" },
-  { value: "manager", textI18nKey: "orderContactFormUnit.options.manager" },
-];
-
 const findHeader = () => {
   return wrapper.find("h3");
 };
 const findSelect = () => {
   return wrapper.find("select");
-};
-const findOptions = () => {
-  return wrapper.findAll("option");
 };
 
 describe("OrderContactFormUnit component", () => {
@@ -57,12 +49,5 @@ describe("OrderContactFormUnit component", () => {
 
   it("should have select field", () => {
     expect(findSelect().attributes()["name"]).toEqual("unit");
-  });
-
-  it("should have option fields", () => {
-    findOptions().forEach((element, index) => {
-      expect(element.attributes()["value"]).toEqual(options[index].value);
-      expect(element.text()).toEqual(options[index].textI18nKey);
-    });
   });
 });

@@ -1,3 +1,4 @@
+import { Endpoints } from "./nodeEndpoints";
 import type { UserRegistration, UserClientData } from "../dto/User";
 import type {
   OrderRequestBody,
@@ -5,22 +6,37 @@ import type {
   OrdersRequestBody,
   OrdersResponse,
 } from "../dto/Order";
+import type { Shops } from "$/dto/Shop";
+import type { Managers } from "$/dto/Manager";
+
+type APIDefinition<
+  url extends keyof Endpoints,
+  method extends "get" | "post",
+  request,
+  response
+> = {
+  url: Endpoints[url];
+  method: method;
+  request: request;
+  response: response;
+};
 
 export interface DefaultResponse {
   ok: boolean;
   message?: string;
 }
 
-export interface APILogin {
-  url: "/api/login";
-  method: "post";
-  request: UserRegistration;
-  response: UserClientData | DefaultResponse;
-}
-
-export interface APIOrder {
-  url: "/api/order";
-  method: "post";
-  request: OrderRequestBody | OrdersRequestBody;
-  response: OrderResponse | OrdersResponse;
-}
+export type APILogin = APIDefinition<
+  "login",
+  "post",
+  UserRegistration,
+  UserClientData | DefaultResponse
+>;
+export type APIOrder = APIDefinition<
+  "order",
+  "post",
+  OrderRequestBody | OrdersRequestBody,
+  OrderResponse | OrdersResponse
+>;
+export type APIShop = APIDefinition<"shop", "get", undefined, Shops>;
+export type APIManager = APIDefinition<"manager", "get", undefined, Managers>;

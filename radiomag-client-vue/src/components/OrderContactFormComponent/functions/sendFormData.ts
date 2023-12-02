@@ -25,9 +25,12 @@ export const useSendFormData = () => {
       storeCart,
       storeUser,
     });
-
     if (responseData === undefined) {
       return notifyError();
+    }
+
+    if (false === responseData.ok) {
+      return notifyWarning();
     }
 
     notifySuccess();

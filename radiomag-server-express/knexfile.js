@@ -1,7 +1,4 @@
 import { join } from "node:path";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 export const DEFAULT_DB_NAME = "db.sqlite";
 

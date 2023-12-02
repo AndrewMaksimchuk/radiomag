@@ -2,7 +2,8 @@ export const HTTPget = {
   contacts: "/api/contacts",
   catalog: "/api/catalog",
   slider: "/api/slider",
-
+  shop: "/api/shop",
+  manager: "/api/manager",
   catalogGroups: (id: number | string) => {
     return `/api/catalog/${id}`;
   },

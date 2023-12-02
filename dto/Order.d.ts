@@ -2,12 +2,13 @@ import type { DefaultResponse } from "../endpoints/types";
 import type { Cart } from "./Cart";
 import type { UserClientData } from "./User";
 import type { Order as OrdersTable } from "../radiomag-server-express/src/database/tables/order/type";
+import type { ManagerTable } from "$/radiomag-server-express/src/database/tables/manager/type";
 
 export interface FormData {
   /* Require */ email: string;
   /* Require */ contactPerson: string;
   /* Require */ telFax: string;
-  unit: "shop" | "manager";
+  unit: number | string;
   subscriptions: "creditCard" | "cashlessWithoutVAT" | "cashlessWithVAT";
   typeOfDelivery: "selfPickup" | "urkPost" | "nodePost";
   city: string;
@@ -28,7 +29,6 @@ export interface Order {
     | "orders.window.orders.tableBody.status.waitingForPayment"
     | "orders.window.orders.tableBody.status.atWork"
     | "orders.window.orders.tableBody.status.done";
-  manager: string;
   closed: string;
 }
 
@@ -43,7 +43,7 @@ export interface OrdersRequestBody {
   userId: string;
 }
 
-export type Orders = OrdersTable[];
+export type Orders = Array<OrdersTable & { manager?: ManagerTable }>;
 
 export interface OrdersResponse extends DefaultResponse {
   orders?: Orders;

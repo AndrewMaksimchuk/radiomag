@@ -1,4 +1,4 @@
-export const DIALOGCOLUMNSFORM = [
+export const DIALOG_COLUMNS_FORM = [
   {
     label: "orders.window.orders.dialog.tableHeaderLabels.email",
     property: "email",

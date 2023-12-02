@@ -1,24 +1,30 @@
 import type { Orders } from "../../../../../dto/Order";
 import type { OrderTableRow } from "./type";
-import type { OrderFormTableRow } from "../orderForm/type";
-import { Knex } from "knex";
+import type { OrderForm } from "../orderForm/model";
+import type { Manager } from "../manager/model";
 import names from "../names.json" assert { type: "json" };
-import { GETALLBYUSERSELECTPARAMS, EMPTY_ORDER_FORM } from "./constants";
+import { Knex } from "knex";
+import { GETALLBYUSERSELECTPARAMS } from "./constants";
+import { getOrdersIds } from "./functions/getOrdersIds";
+import { getOrdersData } from "./functions/getOrdersData";
 
 export class Order {
   #table;
   #tableOrderForm;
+  #tableManager;
 
-  constructor(connection: Knex) {
+  constructor(
+    connection: Knex,
+    OrderFormModel?: OrderForm,
+    ManagerModel?: Manager
+  ) {
     this.#table = connection<OrderTableRow>(names.order);
-    this.#tableOrderForm = connection<OrderFormTableRow>(names.orderForm);
+    this.#tableOrderForm = OrderFormModel;
+    this.#tableManager = ManagerModel;
   }
 
   async add(order: Omit<OrderTableRow, "id">) {
-    const returningColumns = ["id"];
-    return await this.#table
-      .returning(returningColumns)
-      .insert<[{ id: string }]>(order);
+    return await this.#table.returning(["id"]).insert<[{ id: string }]>(order);
   }
 
   async get(id: number) {
@@ -26,21 +32,15 @@ export class Order {
   }
 
   private async concatFormsWithOrders(orders: Orders) {
-    const ids = orders.map((value) => {
-      return value.formId;
-    });
-    const formData = await this.#tableOrderForm.select().whereIn("id", ids);
-    const ordersData = orders.map((orderRow) => {
-      const form =
-        formData.find((formRow) => {
-          return formRow.id === orderRow.formId;
-        }) ?? EMPTY_ORDER_FORM;
-      return {
-        ...orderRow,
-        form,
-      };
-    });
-    return ordersData;
+    if (!this.#tableOrderForm || !this.#tableManager) {
+      return [];
+    }
+    const ids = getOrdersIds(orders);
+    const [formData, managers] = await Promise.all([
+      this.#tableOrderForm.getByIds(ids),
+      this.#tableManager.getAll(),
+    ]);
+    return getOrdersData(orders, formData, managers);
   }
 
   async getAllByUser(id: string) {

@@ -15,7 +15,7 @@ panel_server=1
 start: start_ide start_dev ## Run editor and developer dashboard
 
 start_dev: ## Run developer dashboard with start project
-	tmux new-session -d -s $(session_name)
+	tmux new-session -A -d -s $(session_name)
 	tmux split-window -h
 	tmux send-keys -t $(panel_client) \
 	"make start_client" Enter
@@ -46,7 +46,7 @@ explore_packages: check_package check_packages_all list_installed_packages ## Ge
 start_client: start_browser ## Run developer client
 	@$(to_client) && npm run dev
 
-start_server: ## Run developer server
+start_server: redis_clear ## Run developer server
 	@$(to_server) && npm run dev
 
 update_interactive: ## Update packages interactive
@@ -143,3 +143,9 @@ story_check: ## Show list of components without own directory and stories(storyb
 metrics: ## Puppeteer metrics(file .metrics) and lighthouse metrics(folder .metrics_lighthouse)
 	node ./tools/metrics.mjs | tee .metrics
 	node ./tools/metrics.lighthouse.mjs
+
+redis_clear: ## Redis delete all keys
+	redis-cli flushall
+
+tmux_kill: ## Close session
+	tmux kill-session -t $(session_name)

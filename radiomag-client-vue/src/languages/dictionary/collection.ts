@@ -36,6 +36,7 @@ import userPage from "@/views/UserPage/languages";
 import HTTP403Page from "@/views/HTTP403Page/languages";
 import ordersStore from "@/store/orders/languages";
 import userOrdersComponent from "@/components/UserOrdersComponent/languages";
+import orderContactFormUnitOptions from "@/components/OrderContactFormUnitOptionsComponent/languages";
 
 export type Collection = Record<Locale, Record<string, unknown>>[];
 
@@ -76,4 +77,5 @@ export const collection = [
   HTTP403Page,
   ordersStore,
   userOrdersComponent,
+  orderContactFormUnitOptions,
 ];

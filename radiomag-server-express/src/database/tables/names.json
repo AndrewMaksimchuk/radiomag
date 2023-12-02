@@ -9,5 +9,7 @@
   "bulletin": "bulletin",
   "order": "order",
   "orderForm": "orderForm",
-  "cart": "cart"
+  "cart": "cart",
+  "shop": "shop",
+  "manager": "manager"
 }

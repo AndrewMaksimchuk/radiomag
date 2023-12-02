@@ -12,11 +12,13 @@ import type { PingPayload } from "../dto/Ping";
 import type { Bulletin } from "../dto/Bulletin";
 import type { UserRegistration, UserClientData } from "../dto/User";
 import type { DefaultResponse } from "../endpoints/types";
+import type { Shops } from "$/dto/Shop";
+import type { Managers } from "$/dto/Manager";
 
 declare global {
   namespace Express {
     interface Request {
-      dbConnection: Knex;
+      dbConnection: Knex | undefined;
     }
   }
 }
@@ -85,6 +87,34 @@ declare module "express-serve-static-core" {
       P = RouteParameters<Route>,
       ResBody = UserClientData | DefaultResponse,
       ReqBody = UserRegistration,
+      ReqQuery = ParsedQs,
+      LocalsObj extends Record<string, unknown> = Record<string, unknown>
+    >(
+      path: Route,
+      ...handlers: Array<
+        RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>
+      >
+    ): T;
+
+    <
+      Route extends Endpoints["shop"],
+      P = RouteParameters<Route>,
+      ResBody = Shops,
+      ReqBody = unknown,
+      ReqQuery = ParsedQs,
+      LocalsObj extends Record<string, unknown> = Record<string, unknown>
+    >(
+      path: Route,
+      ...handlers: Array<
+        RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>
+      >
+    ): T;
+
+    <
+      Route extends Endpoints["manager"],
+      P = RouteParameters<Route>,
+      ResBody = Managers,
+      ReqBody = unknown,
       ReqQuery = ParsedQs,
       LocalsObj extends Record<string, unknown> = Record<string, unknown>
     >(

@@ -33,7 +33,6 @@ export const addOrderToDatabase = async ({
 
   const [{ id: orderId }] = await orderTable.add({
     closed: body.closed,
-    manager: body.manager,
     status: body.status,
     ...newOrder,
     ...mixin,

@@ -26,7 +26,6 @@ export const useFormResponse = ({
       totalCost: storeCart.totalCost,
     },
     user: storeUser.user,
-    manager: "", // TODO: Move to form entity
     status: "orders.window.orders.tableBody.status.waitingForPayment",
     closed: "",
   });

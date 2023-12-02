@@ -25,7 +25,7 @@ export const testFormColumn = (
     it("should show form details modal window", async () => {
       await button.trigger("click");
       await nextTick();
-      expect(wrapper.vm.showDetails.calls.at(-1)[0]).toEqual("form");
+      expect(wrapper.vm.showDetails.calls.at(-1)[0]).toEqual("DialogForm");
     });
   });
 };

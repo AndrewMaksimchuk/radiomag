@@ -1,11 +1,15 @@
 [
   {
-    "id": "0",
+    "id": "12eda61b-ffcc-40a0-a6dd-28b2973aec49",
     "role": 0,
-    "name": "Root",
+    "name": "Admin",
     "secondName": "Root",
-    "phoneNumber": 0,
+    "phone": "+111111111111",
     "email": "localhost@localhost",
-    "password": "localhost"
+    "password": "2a5c3eab9bf0abea304b889f289870b22b3f64dd05971805b8ea062345e03c5c",
+    "created_at": "2023-09-08 06:13:49",
+    "updated_at": "2023-09-08 06:13:49",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IisxMTExMTExMTExMTEiLCJuYW1lIjoiQWRtaW4iLCJleHAiOjE2OTQxNTQ1Mjl9.-L8e0UnslvCzt7gCLKIoPSBA2vtiw_7y5kwQaJJ7DCg",
+    "tokenRefresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2OTQ3NTg0Mjl9.p92m13HXhgY-lG9iihID858ZHcTSxMUmEVllvJ0qe5I"
   }
 ]

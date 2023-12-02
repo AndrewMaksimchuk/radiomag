@@ -4,6 +4,10 @@
 
 .el-table {
   min-height: 100px;
+
+  & .cell {
+    word-break: break-word;
+  }
 }
 
 .detail-dialog .el-table {

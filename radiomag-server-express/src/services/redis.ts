@@ -1,19 +1,46 @@
+import type { RedisCommandArgument } from "@redis/client/dist/lib/commands";
 import type { Request, Response, NextFunction } from "express";
 import redis from "redis";
 
-export let redisClient: ReturnType<typeof redis.createClient>;
+export let redisClient: ReturnType<typeof redis.createClient> | undefined =
+  undefined;
 
 export const redisInit = async () => {
-  redisClient = redis.createClient();
-  redisClient.on("error", (error: Error) => console.error(error));
-  await redisClient.connect();
+  try {
+    redisClient = redis.createClient();
+    redisClient.on("error", (error: Error) => {
+      process.stderr.write(JSON.stringify(error));
+    });
+    await redisClient.connect();
+  } catch {
+    return;
+  }
 };
 
-export const cacheData = async (
+export const useCache = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const data = await redisClient.get(req.url);
-  data ? res.json(JSON.parse(data)) : next();
+  if (redisClient) {
+    const data = await redisClient.get(req.url);
+    data ? res.json(JSON.parse(data)) : next();
+  }
+};
+
+export const redisQuit = () => {
+  if (redisClient) {
+    redisClient.quit();
+  }
+};
+
+export const redisSetWithEx = async (
+  key: string,
+  value: number | RedisCommandArgument
+) => {
+  if (redisClient) {
+    await redisClient.set(key, value, {
+      EX: 60 * 60 * 24,
+    });
+  }
 };

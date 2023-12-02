@@ -1,4 +1,4 @@
-export const DIALOGCOLUMNSGOODS = [
+export const DIALOG_COLUMNS_GOODS = [
   {
     label: "orders.window.orders.dialog.tableHeaderLabels.code",
     property: "product.id",

@@ -7,7 +7,8 @@ export const endpoints = {
   ping: "/api/ping",
   bulletin: "/api/bulletin",
   login: "/api/login",
-
+  shop: "/api/shop",
+  manager: "/api/manager",
   catalogGroups: "/api/catalog/:id",
   group: "/api/group/:id",
   groupName: "/api/groupName/:id",

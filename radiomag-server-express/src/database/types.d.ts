@@ -8,12 +8,11 @@ import type { IBulletin } from "./tables/bulletin/types";
 import type { OrderFormTableRow } from "./tables/orderForm/type";
 import type { CartTableRow } from "./tables/cart/type";
 import type { OrderTableRow } from "./tables/order/type";
+import type { Contacts } from "./tables/contacts/type";
+import type { ShopModel } from "./tables/shop/type";
+import type { ManagerTable } from "./tables/manager/type";
 export interface CatalogGroups extends CatalogItem {
   key: number;
-}
-
-export interface Contacts {
-  data: string;
 }
 
 declare module "knex/types/tables" {
@@ -50,5 +49,11 @@ declare module "knex/types/tables" {
 
     order: OrderTableRow;
     order_composite: Knex.CompositeTableType<OrderTableRow>;
+
+    shop: ShopModel;
+    shop_composite: Knex.CompositeTableType<ShopModel>;
+
+    manager: ManagerTable;
+    manager_composite: Knex.CompositeTableType<ManagerTable>;
   }
 }

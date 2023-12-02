@@ -1,16 +1,10 @@
 <script setup lang="ts">
-import type { CreateFormOptions } from "@/utils/CreateFormOptions";
 import { ref } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { useValidationRules } from "@/utils/i18n-validators";
 import { useOrderContactForm } from "@/store/orderContactForm";
+import { OrderContactFormUnitOptions } from "@/components";
 import FormValidationError from "@/components/FormValidationErrorComponent.vue";
-import OrderContactFormOption from "@/components/OrderContactFormOptionComponent.vue";
-
-const options: CreateFormOptions<"unit"> = [
-  { value: "shop", textI18nKey: "orderContactFormUnit.options.shop" },
-  { value: "manager", textI18nKey: "orderContactFormUnit.options.manager" },
-];
 
 const store = useOrderContactForm();
 const errors = ref("");
@@ -25,10 +19,9 @@ const useValidation = () => {
       return value.$message;
     })
     .toString();
-  if (errors.value.length) {
-    return (showErrorMessage.value = true);
-  }
-  return (showErrorMessage.value = false);
+  return errors.value.length
+    ? (showErrorMessage.value = true)
+    : (showErrorMessage.value = false);
 };
 
 defineExpose({ useValidation });
@@ -51,7 +44,7 @@ defineExpose({ useValidation });
           v-model="store.formData.unit"
           @blur="useValidation"
         >
-          <OrderContactFormOption :options="options" />
+          <OrderContactFormUnitOptions />
         </select>
       </FormValidationError>
     </div>

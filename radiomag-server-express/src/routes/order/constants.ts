@@ -19,4 +19,16 @@ export const RESPONSE = {
     ok: false,
     message: "Error - can`t save order",
   },
+  BAD_USER: {
+    ok: false,
+    message: "Invalid user id",
+  },
+  BAD_DATABASE: {
+    ok: false,
+    message: "Database error",
+  },
+  BAD_ORDERS: {
+    ok: false,
+    message: "Error - can`t get orders",
+  },
 };

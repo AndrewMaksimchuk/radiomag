@@ -1,8 +1,24 @@
+import type { Request, Response, NextFunction } from "express";
 import type { Knex } from "knex";
 import knex from "knex";
+import dbConfig from "@/../knexfile.js";
 
-export let connection: Knex | undefined = undefined;
+let connection: Knex | undefined = undefined;
 
-export const getConnection = (config: Knex.Config) => {
-  return !connection ? (connection = knex(config)) : connection;
+const dbConnection =
+  "development" === process.env.NODE_ENV
+    ? dbConfig.development
+    : dbConfig.production;
+
+export const getConnection = () => {
+  return !connection ? (connection = knex(dbConnection)) : connection;
+};
+
+export const useDbConnection = (
+  req: Request,
+  _res: Response,
+  next: NextFunction
+) => {
+  req.dbConnection = getConnection();
+  next();
 };

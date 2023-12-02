@@ -24,4 +24,12 @@ export class OrderForm {
   async getAllByTel(tel: string) {
     return await this.#table.where("telFax", tel);
   }
+
+  async getByIds(ids: number[]) {
+    try {
+      return await this.#table.select().whereIn("id", ids);
+    } catch (error) {
+      return [];
+    }
+  }
 }

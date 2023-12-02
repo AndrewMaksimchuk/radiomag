@@ -6,7 +6,6 @@ export const GETALLBYUSERSELECTPARAMS = [
   "order.formId",
   "order.cartId",
   "order.status",
-  "order.manager",
   "order.closed",
   "cart.items",
   "cart.totalCost",
@@ -23,5 +22,5 @@ export const EMPTY_ORDER_FORM: OrderFormTableRow = {
   subscriptions: "creditCard",
   telFax: "",
   typeOfDelivery: "selfPickup",
-  unit: "shop",
+  unit: 0,
 };

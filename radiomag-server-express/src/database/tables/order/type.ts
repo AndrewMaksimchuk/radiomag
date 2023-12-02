@@ -8,7 +8,6 @@ export interface OrderTableRow {
   formId: number;
   userId: string;
   status: null | string;
-  manager: null | string;
   closed: null | string; // Datetime
 }
 

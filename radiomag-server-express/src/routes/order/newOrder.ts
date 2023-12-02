@@ -7,6 +7,10 @@ import { RESPONSE } from "./constants.js";
 
 export const newOrder: MethodHandlerCreateOrder = async (req, res) => {
   try {
+    if (undefined === req.dbConnection) {
+      return res.json(RESPONSE.ERROR);
+    }
+
     if (undefined === req.body.form) {
       return res.json(RESPONSE.FORM_NOT_PROVIDED);
     }
@@ -32,7 +36,7 @@ export const newOrder: MethodHandlerCreateOrder = async (req, res) => {
     const orderId = await addOrderToDatabase({
       databaseConnection: req.dbConnection,
       body: req.body,
-      user: user,
+      user,
     });
 
     return user
